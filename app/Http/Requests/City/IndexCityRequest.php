@@ -24,7 +24,8 @@ class IndexCityRequest extends FormRequest
         return [
             'name' => 'string',
             'page' => 'numeric',
-            'limit' => 'numeric|max:50'
+            'limit' => 'numeric|max:150',
+            'extends' => 'array'
         ];
     }
 }

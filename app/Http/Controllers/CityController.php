@@ -12,13 +12,13 @@ class CityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(IndexCityRequest $indexCityRequest)
+    public function index(IndexCityRequest $request)
     {
-        $city_init = City::paginate($indexCityRequest->limit ?? 20);
+        $city_init = City::extends($request->extends ?? []);
 
-        // if ($city_init) $city_init->
+        if ($request->name) $city_init->whereLike('name', $request->name);
 
-        $city = $city_init;
+        $city = $city_init->paginate($request->limit ?? 50);
 
         return response()->json([
             'data' => $city
