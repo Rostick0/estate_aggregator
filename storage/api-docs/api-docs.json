@@ -407,6 +407,142 @@
     },
     "components": {
         "schemas": {
+            "CitySchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Москва"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "ImageSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "type_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "photo"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Какое-то фото"
+                    },
+                    "path": {
+                        "type": "number",
+                        "example": "http://site.com/url"
+                    },
+                    "rubric_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "source": {
+                        "type": "string",
+                        "example": "<a href=\">источник<a>"
+                    },
+                    "width": {
+                        "type": "number",
+                        "example": 100
+                    },
+                    "height": {
+                        "type": "number",
+                        "example": 100
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "PostSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Почему надо продавать"
+                    },
+                    "content": {
+                        "type": "string",
+                        "example": "Да потому что это принесет вам прибыль"
+                    },
+                    "user_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "city_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "rubric_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "source": {
+                        "type": "string",
+                        "example": "<a href=\">источник<a>"
+                    },
+                    "count_view": {
+                        "type": "number",
+                        "example": 100
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "RubricSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Продажа"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
             "UserSchema": {
                 "properties": {
                     "id": {
