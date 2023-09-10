@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\LoginAuthRequest;
 use App\Http\Requests\Auth\RegisterAuthRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -50,7 +49,7 @@ class AuthController extends Controller
      *                      ref="#/components/schemas/UserSchema"
      *                  ),
      *              ),
-     *          )
+     *          ),
      *      ),
      *      @OA\Response(
      *          response=400,
@@ -205,7 +204,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        auth()?->logout();
         return response()->json(['message' => 'User successfully signed out']);
     }
 
@@ -245,7 +244,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this::createNewToken(auth()->refresh());
+        return $this::createNewToken(auth()?->refresh());
     }
 
     /**
@@ -280,7 +279,7 @@ class AuthController extends Controller
     public function me()
     {
         return response()->json([
-            'data' => auth()->user()
+            'data' => auth()?->user()
         ]);
     }
 
@@ -290,7 +289,7 @@ class AuthController extends Controller
             'data' => [
                 'access_token' => $token,
                 'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60 * 24 * 7,
+                'expires_in' => auth()?->factory()->getTTL() * 60 * 24 * 7,
                 'user' => auth()->user()
             ]
         ], 201);
