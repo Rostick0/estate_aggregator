@@ -40,25 +40,11 @@ class ImageController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Image $image)
+    public function update(UpdateImageRequest $request, int $id)
     {
-        //
+        // dd($request->file('image'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateImageRequest $request, Image $image)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Image $image)
     {
         //

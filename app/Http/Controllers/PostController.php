@@ -7,13 +7,40 @@ use App\Http\Requests\Post\ShowPostRequest;
 use App\Models\Post;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
+use App\Models\Image;
+use App\Utils\ImageUtil;
 use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private static function uploadImage($images, Post $post)
+    {
+        foreach ($images as $image) {
+            $path = ImageUtil::upload($image);
+
+            [$width, $height] = getimagesize($image);
+
+            $post->images()->create([
+                'name' => $image->getClientOriginalName(),
+                'path' => $path,
+                'type' => 'post',
+                'width' => $width,
+                'height' => $height,
+            ]);
+        }
+    }
+
+    private static function deleteImage(array $images_delete_ids, int $id)
+    {
+        $images = collect(Image::whereIn('id', $images_delete_ids)->where('type_id', $id)->get());
+
+        $images->each(function ($item) {
+            ImageUtil::delete($item->path);
+
+            Image::destroy($item->id);
+        });
+    }
+
     public function index(IndexPostRequest $request)
     {
         $post_init = Post::with($request->extends ?? []);
@@ -29,12 +56,17 @@ class PostController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorePostRequest $request)
     {
-        $post = Post::create($request->validated());
+        $post = Post::create($request->only(
+            'title',
+            'content',
+            'city_id',
+            'rubric_id',
+            'source'
+        ));
+
+        if ($request->hasFile('images')) PostController::uploadImage($request->file('images'), $post);
 
         return new JsonResponse(
             [
@@ -44,9 +76,6 @@ class PostController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(ShowPostRequest $request, int $id)
     {
         $post = Post::with($request ?? [])->findOrFail($id);
@@ -58,9 +87,6 @@ class PostController extends Controller
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdatePostRequest $request, int $id)
     {
         $post = Post::findOrFail($id);
@@ -69,6 +95,10 @@ class PostController extends Controller
 
         $post->update($request);
 
+        if ($request->hasFile('images')) PostController::uploadImage($request->file('images'), $post);
+
+        if (!empty($request->images_delete)) PostController::deleteImage($request->images_delete, $id);
+
         return new JsonResponse(
             [
                 'data' => Post::find($id)
@@ -76,9 +106,6 @@ class PostController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(int $id)
     {
         $post = Post::findOrFail($id);
