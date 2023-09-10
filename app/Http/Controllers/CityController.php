@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\City\IndexCityRequest;
 use App\Models\City;
-use App\Http\Requests\StoreCityRequest;
-use App\Http\Requests\UpdateCityRequest;
+use App\Http\Requests\City\StoreCityRequest;
+use App\Http\Requests\City\UpdateCityRequest;
 
 class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexCityRequest $indexCityRequest)
     {
-        //
+        $city_init = City::paginate($indexCityRequest->limit ?? 20);
+
+        // if ($city_init) $city_init->
+
+        $city = $city_init;
+
+        return response()->json([
+            'data' => $city
+        ]);
     }
 
     /**

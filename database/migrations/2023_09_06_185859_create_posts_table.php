@@ -17,7 +17,11 @@ return new class extends Migration
             $table->text('content');
             $table->foreignId('main_image_id')->references('id')->on('images')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-    
+            $table->foreignId('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreignId('rubric_id')->references('id')->on('rubrics')->onDelete('cascade');
+            $table->string('source')->nullable();
+            $table->integer('count_view')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
