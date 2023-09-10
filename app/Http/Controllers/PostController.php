@@ -83,7 +83,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (auth()?->user()?->cannot('update', $post)) return abort(403, 'no auth');
+        if (auth()->check() && auth()?->user()?->cannot('delete', $post)) return abort(403, 'no auth');
 
         Post::destroy($id);
 

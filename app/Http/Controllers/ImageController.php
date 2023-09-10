@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
-use App\Http\Requests\StoreImageRequest;
-use App\Http\Requests\UpdateImageRequest;
+use App\Http\Requests\Image\StoreImageRequest;
+use App\Http\Requests\Image\UpdateImageRequest;
 
 class ImageController extends Controller
 {
