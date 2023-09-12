@@ -113,7 +113,7 @@ class PostController extends Controller
     }
 
     /**
-     * Post store
+     * Store
      * @OA\Post (
      *     path="/api/post",
      *     tags={"Post"},
@@ -250,7 +250,7 @@ class PostController extends Controller
     }
 
     /**
-     * Post update
+     * Update
      * @OA\Post (
      *     path="/api/post/{id}",
      *     tags={"Post"},
@@ -392,7 +392,7 @@ class PostController extends Controller
     }
 
     /**
-     * Post delete
+     * Delete
      * @OA\Delete (
      *     path="/api/post/{id}",
      *     tags={"Post"},
