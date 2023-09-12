@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rubric;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,23 @@ class RubricSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $rubrics = [
+            [
+                'name' => 'Инвестиции',
+            ],
+            [
+                'name' => 'Рынки и цены',
+            ],
+            [
+                'name' => 'Стиль жизни',
+            ],
+            [
+                'name' => 'Туризм',
+            ],
+        ];
+
+        foreach ($rubrics as $rubric) {
+            Rubric::firstOrCreate($rubric);
+        }
     }
 }
