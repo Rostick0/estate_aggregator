@@ -403,6 +403,570 @@
                     }
                 ]
             }
+        },
+        "/api/city": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Index",
+                "operationId": "c2504917c4da1139bffc3dd1d5409f8f",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name city",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Москва"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "30"
+                    },
+                    {
+                        "name": "extends[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {},
+                            "example": [
+                                "posts"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CitySchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/post": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Index",
+                "operationId": "b4b7284c8fb22330a82699a8356a5e88",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Title post",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Сайт"
+                    },
+                    {
+                        "name": "city_id",
+                        "in": "query",
+                        "description": "City id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "rubric_id",
+                        "in": "query",
+                        "description": "Rubric id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {},
+                            "example": [
+                                "images",
+                                "main_image",
+                                "user",
+                                "city",
+                                "rubric"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PostSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Post store",
+                "operationId": "2b5846c8a1e7a22fa31af93f7accb003",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "content",
+                                    "city_id",
+                                    "rubric_id",
+                                    "source"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Сайт"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Хорошо делайте, плохо не делайте"
+                                    },
+                                    "city_id": {
+                                        "type": "number",
+                                        "example": "3"
+                                    },
+                                    "rubric_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "source": {
+                                        "type": "number",
+                                        "example": "<a href>сайт</a>"
+                                    },
+                                    "main_image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "images[]": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PostSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The title field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The title title is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "content": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The content field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "city_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The city_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "rubric_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The rubric_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "source": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The source field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/api/post/{id}": {
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Post update",
+                "operationId": "5dd9f9ecae375d4c615dfc3bac75b741",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "content",
+                                    "city_id",
+                                    "rubric_id",
+                                    "source",
+                                    "_method"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Сайт"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Хорошо делайте, плохо не делайте"
+                                    },
+                                    "city_id": {
+                                        "type": "number",
+                                        "example": "3"
+                                    },
+                                    "rubric_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "source": {
+                                        "type": "number",
+                                        "example": "<a href>сайт</a>"
+                                    },
+                                    "main_image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "images[]": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "images_delete[]": {
+                                        "type": "number"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "PUT"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PostSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The title field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The title title is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "content": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The content field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "city_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The city_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "rubric_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The rubric_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "source": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The source field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Post delete",
+                "operationId": "6d25b4d3f1749560f4d0d0ae67e41858",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Post 1 deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/api/rubric": {
+            "get": {
+                "tags": [
+                    "Rubric"
+                ],
+                "summary": "Index",
+                "operationId": "262e115ddd743d3f7bb77df4af1f704c",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RubricSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {

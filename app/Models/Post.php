@@ -45,7 +45,7 @@ class Post extends Model
         return $this->hasMany(Image::class, 'id', 'type_id')->where('type', 'post');
     }
 
-    public function mainImage(): BelongsTo
+    public function main_image(): BelongsTo
     {
         return $this->belongsTo(Image::class, 'main_image_id', 'id');
     }
