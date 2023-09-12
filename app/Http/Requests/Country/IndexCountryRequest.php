@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Requests\City;
+namespace App\Http\Requests\Country;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class IndexCityRequest extends FormRequest
+class IndexCountryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,11 +22,7 @@ class IndexCityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string',
-            'country_id' => 'numeric|'  . Rule::exists('countries', 'id'),
-            'page' => 'numeric',
-            'limit' => 'numeric|max:150',
-            'extends' => 'array'
+            //
         ];
     }
 }

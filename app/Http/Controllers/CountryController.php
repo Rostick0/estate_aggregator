@@ -2,34 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\City\IndexCityRequest;
-use App\Models\City;
-use App\Http\Requests\City\StoreCityRequest;
-use App\Http\Requests\City\UpdateCityRequest;
+use App\Http\Requests\Country\IndexCountryRequest;
+use App\Models\Country;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class CityController extends Controller
+class CountryController extends Controller
 {
+
     /**
      * Index
      * @OA\get (
-     *     path="/api/city",
-     *     tags={"City"},
+     *     path="/api/country",
+     *     tags={"Country"},
      *     @OA\Parameter(
      *          name="name",
-     *          description="Name city",
+     *          description="Name country",
      *          in="query",
      *          example="Москва",
      *          @OA\Schema(
      *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="country_id",
-     *          description="Country id",
-     *          in="query",
-     *          example="1",
-     *          @OA\Schema(
-     *              type="number"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -59,7 +51,7 @@ class CityController extends Controller
      *              @OA\Items(
      *                  @OA\Schema(type="string"),
      *              ),
-     *              example={"posts"},
+     *              example={"cities"},
      *          )
      *      ),
      *      @OA\Response(
@@ -67,7 +59,7 @@ class CityController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/CitySchema"
+     *                  ref="#/components/schemas/CountrySchema"
      *              ),
      *          )
      *      ),
@@ -81,19 +73,21 @@ class CityController extends Controller
      *      )
      * )
      */
-    public function index(IndexCityRequest $request)
+    public function index(IndexCountryRequest $request)
     {
-        $city_init = City::extends($request->extends ?? [])->orderByDesc('name');
+        $country_init = Country::with($request->extends ?? []);
 
-        if ($request->name) $city_init->whereLike('name', $request->name);
+        if ($request->name) $country_init->whereLike('name', $request->name);
 
-        if ($city_init->isEmpty()) return abort(404, 'Not found');
+        if ($country_init->isEmpty()) return abort(404, 'Not found');
 
-        $city = $city_init->paginate($request->limit ?? 50);
+        $country = $country_init->orderByDesc('name')->paginate($request->limit ?? 50);
 
-        return response()->json([
-            'data' => $city
-        ]);
+        return new JsonResource(
+            [
+                'data' => $country
+            ]
+        );
     }
 
     /**
@@ -107,7 +101,7 @@ class CityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCityRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -115,7 +109,7 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(City $city)
+    public function show(Country $country)
     {
         //
     }
@@ -123,7 +117,7 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(City $city)
+    public function edit(Country $country)
     {
         //
     }
@@ -131,7 +125,7 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCityRequest $request, City $city)
+    public function update(Request $request, Country $country)
     {
         //
     }
@@ -139,7 +133,7 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(City $city)
+    public function destroy(Country $country)
     {
         //
     }
