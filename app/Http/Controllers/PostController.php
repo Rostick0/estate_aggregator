@@ -41,9 +41,10 @@ class PostController extends Controller
         });
     }
 
+
     public function index(IndexPostRequest $request)
     {
-        $post_init = Post::with($request->extends ?? []);
+        $post_init = Post::with($request->extends ?? [])->orderByDesc('id');
 
         if ($request->title) $post_init->whereLike('title', $request->title);
         if ($request->city_id) $post_init->where('city_id', $request->city_id);
@@ -112,6 +113,12 @@ class PostController extends Controller
 
         if (auth()->check() && auth()?->user()?->cannot('delete', $post)) return abort(403, 'no auth');
 
+
+        $delete_image_ids = collect($post->images())->map(function ($item) {
+            return $item->id;
+        });
+
+        $this::deleteImage([...$delete_image_ids], $id);
         Post::destroy($id);
 
         return new JsonResponse(

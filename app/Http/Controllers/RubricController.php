@@ -9,7 +9,20 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class RubricController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * @OA\get (
+     *     path="/api/rubric",
+     *     tags={"Rubric"},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/RubricSchema"
+     *              ),
+     *          )
+     *      ),
+     * )
      */
     public function index()
     {

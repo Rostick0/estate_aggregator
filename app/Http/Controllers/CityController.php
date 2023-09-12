@@ -10,13 +10,75 @@ use App\Http\Requests\City\UpdateCityRequest;
 class CityController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * @OA\get (
+     *     path="/api/city",
+     *     tags={"City"},
+     *     @OA\Parameter(
+     *          name="name",
+     *          description="Name city",
+     *          in="query",
+     *          example="Москва",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page",
+     *          in="query",
+     *          example="2",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="limit",
+     *          description="Limit data",
+     *          in="query",
+     *          example="30",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends[]",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"posts"},
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/CitySchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function index(IndexCityRequest $request)
     {
-        $city_init = City::extends($request->extends ?? []);
+        $city_init = City::extends($request->extends ?? [])->orderByDesc('name');
 
         if ($request->name) $city_init->whereLike('name', $request->name);
+
+        if ($city_init->isEmpty()) return abort(404, 'Not found');
 
         $city = $city_init->paginate($request->limit ?? 50);
 
