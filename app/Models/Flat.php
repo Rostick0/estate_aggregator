@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Flat extends Model
@@ -42,4 +43,8 @@ class Flat extends Model
         'filename',
         'tour_link',
     ];
+
+    public function flat_properties(): HasMany {
+        return $this->hasMany(FlatProperty::class, 'id', 'flat_id');
+    }
 }

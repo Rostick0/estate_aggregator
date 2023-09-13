@@ -6,7 +6,8 @@
 	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>11</property_id>
-		<name>Расположение</name>		
+		<name>Расположение</name>
+				
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -18,7 +19,37 @@
 			6 	В пригороде
 			7 	В деревне
 			10 	У озера
-		-->		
+		-->
+		<property_values>
+			<property_value>
+				<property_value_id>1</property_value_id>
+				<name>У моря</name>
+			</property_value>
+			<property_value>
+				<property_value_id>2</property_value_id>
+				<name>В лесу</name>
+			</property_value>
+			<property_value>
+				<property_value_id>3</property_value_id>
+				<name>В горах</name>
+			</property_value>
+			<property_value>
+				<property_value_id>5</property_value_id>
+				<name>В большом городе</name>
+			</property_value>
+			<property_value>
+				<property_value_id>6</property_value_id>
+				<name>В пригороде</name>
+			</property_value>
+			<property_value>
+				<property_value_id>7</property_value_id>
+				<name>В деревне</name>
+			</property_value>
+			<property_value>
+				<property_value_id>10</property_value_id>
+				<name>У озера</name>
+			</property_value>
+		</property_values>	
 	</property>
 	<property><!-- Множественный список -->
 	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum property_value property_value_unit -->
@@ -39,6 +70,44 @@
 			20 	продовольственные магазины
 			21 	медучреждения
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>13</property_value_id>
+				<name>аэропорт</name>
+			</property_value>
+			<property_value>
+				<property_value_id>14</property_value_id>
+				<name>вокзал</name>
+			</property_value>
+			<property_value>
+				<property_value_id>15</property_value_id>
+				<name>пляж</name>
+			</property_value>
+			<property_value>
+				<property_value_id>16</property_value_id>
+				<name>исторический центр города</name>
+			</property_value>
+			<property_value>
+				<property_value_id>17</property_value_id>
+				<name>ближайший крупный населенный пункт</name>
+			</property_value>
+			<property_value>
+				<property_value_id>18</property_value_id>
+				<name>метро</name>
+			</property_value>
+			<property_value>
+				<property_value_id>19</property_value_id>
+				<name>граница</name>
+			</property_value>
+			<property_value>
+				<property_value_id>20</property_value_id>
+				<name>продовольственные магазины</name>
+			</property_value>
+			<property_value>
+				<property_value_id>21</property_value_id>
+				<name>медучреждения</name>
+			</property_value>
+		</property_values>
 		<!-- property_value Расстояние. Число -->
 		<!-- property_value_unit Значения: -->
 		<!--
@@ -59,6 +128,12 @@
 			property_value_enum 	name
 			135 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>135</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<!-- Благоустройство/Инфраструктура -->
@@ -72,6 +147,12 @@
 			property_value_enum 	name
 			146 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>146</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Множественный список checkbox-->
 	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
@@ -94,6 +175,52 @@
 			32 	магазины
 			33 	медучреждения
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>23</property_value_id>
+				<name>фитнес-центр</name>
+			</property_value>
+			<property_value>
+				<property_value_id>24</property_value_id>
+				<name>бассейн</name>
+			</property_value>
+			<property_value>
+				<property_value_id>25</property_value_id>
+				<name>ресторан</name>
+			</property_value>
+			<property_value>
+				<property_value_id>26</property_value_id>
+				<name>салон красоты</name>
+			</property_value>
+			<property_value>
+				<property_value_id>27</property_value_id>
+				<name>охраняемая территория</name>
+			</property_value>
+			<property_value>
+				<property_value_id>28</property_value_id>
+				<name>консьерж</name>
+			</property_value>
+			<property_value>
+				<property_value_id>29</property_value_id>
+				<name>охраняемая парковка</name>
+			</property_value>
+			<property_value>
+				<property_value_id>30</property_value_id>
+				<name>лифт</name>
+			</property_value>
+			<property_value>
+				<property_value_id>31</property_value_id>
+				<name>детские площадки</name>
+			</property_value>
+			<property_value>
+				<property_value_id>32</property_value_id>
+				<name>магазины</name>
+			</property_value>
+			<property_value>
+				<property_value_id>33</property_value_id>
+				<name>медучреждения</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -108,6 +235,24 @@
 			37 	требует косметического ремонта
 			38 	требует ремонта
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>35</property_value_id>
+				<name>хорошее</name>
+			</property_value>
+			<property_value>
+				<property_value_id>36</property_value_id>
+				<name>полностью отремонтировано</name>
+			</property_value>
+			<property_value>
+				<property_value_id>37</property_value_id>
+				<name>требует косметического ремонта</name>
+			</property_value>
+			<property_value>
+				<property_value_id>38</property_value_id>
+				<name>требует ремонта</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -125,6 +270,36 @@
 			45 	на горы
 			46 	на лес
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>40</property_value_id>
+				<name>ничего особенного</name>
+			</property_value>
+			<property_value>
+				<property_value_id>41</property_value_id>
+				<name>на море</name>
+			</property_value>
+			<property_value>
+				<property_value_id>42</property_value_id>
+				<name>на реку</name>
+			</property_value>
+			<property_value>
+				<property_value_id>43</property_value_id>
+				<name>на озеро</name>
+			</property_value>
+			<property_value>
+				<property_value_id>44</property_value_id>
+				<name>на достопримечательности</name>
+			</property_value>
+			<property_value>
+				<property_value_id>45</property_value_id>
+				<name>на горы</name>
+			</property_value>
+			<property_value>
+				<property_value_id>46</property_value_id>
+				<name>на лес</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -137,6 +312,17 @@
 			48 	черновая
 			49 	чистовая
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>48</property_value_id>
+				<name>черновая</name>
+			</property_value>
+			<property_value>
+				<property_value_id>49</property_value_id>
+				<name>чистовая</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -150,6 +336,21 @@
 			52 	меблирована полностью
 			53 	меблирована только кухня
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>51</property_value_id>
+				<name>нет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>52</property_value_id>
+				<name>меблирована полностью</name>
+			</property_value>
+			<property_value>
+				<property_value_id>53</property_value_id>
+				<name>меблирована только кухня</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select+input-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -162,6 +363,16 @@
 			55 	нет
 			56 	есть
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>55</property_value_id>
+				<name>нет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>56</property_value_id>
+				<name>есть</name>
+			</property_value>
+		</property_values>
 		<!-- property_value Площадь балкона. Число (метров в квадрате) -->
 	</property>
 	<property><!-- Одиночный список select-->
@@ -177,6 +388,24 @@
 			60 	центральное кондиционирование
 			61 	другое
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>58</property_value_id>
+				<name>нет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>59</property_value_id>
+				<name>кондиционер</name>
+			</property_value>
+			<property_value>
+				<property_value_id>60</property_value_id>
+				<name>центральное кондиционирование</name>
+			</property_value>
+			<property_value>
+				<property_value_id>61</property_value_id>
+				<name>другое</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -193,6 +422,33 @@
 			154 	газовое
 			155 	по счетчику
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>63</property_value_id>
+				<name>нет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>64</property_value_id>
+				<name>центральное</name>
+			</property_value>
+			<property_value>
+				<property_value_id>65</property_value_id>
+				<name>другое</name>
+			</property_value>
+			<property_value>
+				<property_value_id>153</property_value_id>
+				<name>индивидуальное</name>
+			</property_value>
+			<property_value>
+				<property_value_id>154</property_value_id>
+				<name>газовое</name>
+			</property_value>
+			<property_value>
+				<property_value_id>155</property_value_id>
+				<name>по счетчику</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -206,6 +462,20 @@
 			68 	пожарная
 			156 	охранная
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>67</property_value_id>
+				<name>нет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>68</property_value_id>
+				<name>пожарная</name>
+			</property_value>
+			<property_value>
+				<property_value_id>156</property_value_id>
+				<name>охранная</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -220,6 +490,25 @@
 			72 	возможность подключения в/с доступа
 			73 	модем
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>70</property_value_id>
+				<name>нет доступа к Интернет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>71</property_value_id>
+				<name>высокоскоростной доступ к Интернет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>72</property_value_id>
+				<name>возможность подключения в/с доступа</name>
+			</property_value>
+			<property_value>
+				<property_value_id>73</property_value_id>
+				<name>модем</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -232,6 +521,16 @@
 			75 	нет
 			76 	есть
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>75</property_value_id>
+				<name>нет</name>
+			</property_value>
+			<property_value>
+				<property_value_id>76</property_value_id>
+				<name>есть</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Множественный список checkbox-->
 	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
@@ -249,6 +548,33 @@
 			82 	телевизор
 			83 	микроволновая печь
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>78</property_value_id>
+				<name>холодильник</name>
+			</property_value>
+			<property_value>
+				<property_value_id>79</property_value_id>
+				<name>стиральная машина</name>
+			</property_value>
+			<property_value>
+				<property_value_id>80</property_value_id>
+				<name>посудомоечная машина</name>
+			</property_value>
+			<property_value>
+				<property_value_id>81</property_value_id>
+				<name>плита</name>
+			</property_value>
+			<property_value>
+				<property_value_id>82</property_value_id>
+				<name>телевизор</name>
+			</property_value>
+			<property_value>
+				<property_value_id>83</property_value_id>
+				<name>микроволновая печь</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
@@ -269,6 +595,24 @@
 			99 	колодец/колонка
 			100 другое/нет
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>97</property_value_id>
+				<name>центральное</name>
+			</property_value>
+			<property_value>
+				<property_value_id>98</property_value_id>
+				<name>автономное</name>
+			</property_value>
+			<property_value>
+				<property_value_id>99</property_value_id>
+				<name>колодец/колонка</name>
+			</property_value>
+			<property_value>
+				<property_value_id>100</property_value_id>
+				<name>другое/нет</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Дом -->
@@ -283,6 +627,24 @@
 			104 	другое
 			145 	нет
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>102</property_value_id>
+				<name>центральное</name>
+			</property_value>
+			<property_value>
+				<property_value_id>103</property_value_id>
+				<name>генератор</name>
+			</property_value>
+			<property_value>
+				<property_value_id>104</property_value_id>
+				<name>другое</name>
+			</property_value>
+			<property_value>
+				<property_value_id>145</property_value_id>
+				<name>нет</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Множественный список checkbox-->
 		<!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
@@ -300,6 +662,33 @@
 			110 	хозяйственные постройки
 			111 	своя береговая линия
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>106</property_value_id>
+				<name>бассейн</name>
+			</property_value>
+			<property_value>
+				<property_value_id>107</property_value_id>
+				<name>сад</name>
+			</property_value>
+			<property_value>
+				<property_value_id>108</property_value_id>
+				<name>гараж</name>
+			</property_value>
+			<property_value>
+				<property_value_id>109</property_value_id>
+				<name>баня</name>
+			</property_value>
+			<property_value>
+				<property_value_id>110</property_value_id>
+				<name>хозяйственные постройки</name>
+			</property_value>
+			<property_value>
+				<property_value_id>111</property_value_id>
+				<name>своя береговая линия</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Земля -->
@@ -313,6 +702,21 @@
 			114 	под коммерческую застройку
 			115 	сельское хозяйство
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>113</property_value_id>
+				<name>под жилую застройку</name>
+			</property_value>
+			<property_value>
+				<property_value_id>114</property_value_id>
+				<name>под коммерческую застройку</name>
+			</property_value>
+			<property_value>
+				<property_value_id>115</property_value_id>
+				<name>сельское хозяйство</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Квартира, Дом -->
@@ -324,6 +728,12 @@
 			property_value_enum 	name
 			134 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>134</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Дом -->
@@ -335,6 +745,13 @@
 			property_value_enum 	name
 			136 					да
 		-->
+
+		<property_values>
+			<property_value>
+				<property_value_id>136</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Земля -->
@@ -346,6 +763,12 @@
 			property_value_enum 	name
 			137 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>137</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Земля -->
@@ -357,6 +780,12 @@
 			property_value_enum 	name
 			138 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>138</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Земля -->
@@ -368,6 +797,12 @@
 			property_value_enum 	name
 			139 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>139</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Земля -->
@@ -379,6 +814,12 @@
 			property_value_enum 	name
 			140 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>140</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список checkbox-->
 		<!-- Для типов недвижимости: Земля -->
@@ -390,6 +831,12 @@
 			property_value_enum 	name
 			141 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>141</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<!-- Рентабельность NEW! -->
@@ -431,6 +878,12 @@
 			property_value_enum 	name
 			158 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>158</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
@@ -487,6 +940,12 @@
 			property_value_enum 	name
 			92 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>92</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
@@ -510,6 +969,12 @@
 			property_value_enum 	name
 			159 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>159</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
@@ -594,6 +1059,12 @@
 			property_value_enum 	name
 			160 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>160</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<property><!-- Одиночный список checkbox NEW!-->
@@ -607,6 +1078,12 @@
 			property_value_enum 	name
 			171 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>171</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<property><!-- Одиночный список checkbox-->
@@ -619,6 +1096,12 @@
 			property_value_enum 	name
 			95 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>95</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 	<property><!-- Одиночный список radio NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
@@ -637,6 +1120,20 @@
 			для фиксированной цены Сумма в валюте объекта, иначе Процент.
 			Число
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>161</property_value_id>
+				<name>фиксированная цена в месяц</name>
+			</property_value>
+			<property_value>
+				<property_value_id>162</property_value_id>
+				<name>от оборота</name>
+			</property_value>
+			<property_value>
+				<property_value_id>163</property_value_id>
+				<name>от прибыли</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<!-- Арендаторы -->
@@ -650,6 +1147,12 @@
 			property_value_enum 	name
 			142 					да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>142</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<property><!-- Одиночный список checkbox-->
@@ -662,6 +1165,12 @@
 			property_value_enum 	name
 			172 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>172</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<property><!-- Одиночный список checkbox-->
@@ -674,6 +1183,12 @@
 			property_value_enum 	name
 			173 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>173</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<property><!-- Одиночный список checkbox-->
@@ -686,6 +1201,12 @@
 			property_value_enum 	name
 			175 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>175</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
 
 	<property><!-- Одиночный список checkbox-->
@@ -698,7 +1219,11 @@
 			property_value_enum 	name
 			177 	да
 		-->
+		<property_values>
+			<property_value>
+				<property_value_id>177</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
 	</property>
-
-
 </properties>
