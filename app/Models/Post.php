@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *       @OA\Property(property="title", type="string", example="Почему надо продавать"),
  *       @OA\Property(property="content", type="string", example="Да потому что это принесет вам прибыль"),
  *       @OA\Property(property="user_id", type="number", example=1),
- *       @OA\Property(property="city_id", type="number", example=1),
+ *       @OA\Property(property="district_id", type="number", example=1),
  *       @OA\Property(property="rubric_id", type="number", example=1),
  *       @OA\Property(property="source", type="string", example="<a href="">источник<a>"),
  *       @OA\Property(property="count_view", type="number", example=100),
@@ -34,7 +34,7 @@ class Post extends Model
         'content',
         'main_image_id',
         'user_id',
-        'city_id',
+        'district_id',
         'rubric_id',
         'source',
         'count_view',
@@ -55,9 +55,9 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function city(): BelongsTo
+    public function district(): BelongsTo
     {
-        return $this->belongsTo(City::class, 'city_id', 'id');
+        return $this->belongsTo(District::class, 'district_id', 'id');
     }
 
     public function rubric(): BelongsTo

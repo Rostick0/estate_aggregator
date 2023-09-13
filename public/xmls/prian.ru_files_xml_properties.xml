@@ -1,0 +1,704 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<properties>
+	<!-- Свойства -->
+	
+	<property><!-- Множественный список -->
+	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>11</property_id>
+		<name>Расположение</name>		
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			1 	У моря
+			2 	В лесу
+			3 	В горах
+			5 	В большом городе
+			6 	В пригороде
+			7 	В деревне
+			10 	У озера
+		-->		
+	</property>
+	<property><!-- Множественный список -->
+	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum property_value property_value_unit -->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>12</property_id>
+		<name>Расстояние до значимых объектов</name>		
+		<!-- property_value_enum property_value property_value_unit -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			13 	аэропорт
+			14 	вокзал
+			15 	пляж
+			16 	исторический центр города
+			17 	ближайший крупный населенный пункт
+			18 	метро
+			19 	граница
+			20 	продовольственные магазины
+			21 	медучреждения
+		-->
+		<!-- property_value Расстояние. Число -->
+		<!-- property_value_unit Значения: -->
+		<!--
+			property_value_unit 	name
+			148 	км
+			151 	мили
+			147 	м
+		-->		
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>133</property_id>
+		<name>Продается сданный в аренду объект недвижимости</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			135 					да
+		-->
+	</property>
+
+	<!-- Благоустройство/Инфраструктура -->
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Дом -->
+		<property_id>134</property_id>
+		<name>Входит в состав жилого комплекса</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			146 					да
+		-->
+	</property>
+	<property><!-- Множественный список checkbox-->
+	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>22</property_id>
+		<name>Инфраструктура и оснащение дома или жилого комплекса</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			23 	фитнес-центр
+			24 	бассейн
+			25 	ресторан
+			26 	салон красоты
+			27 	охраняемая территория
+			28 	консьерж
+			29 	охраняемая парковка
+			30 	лифт
+			31 	детские площадки
+			32 	магазины
+			33 	медучреждения
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>34</property_id>
+		<name>Состояние</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			35 	хорошее
+			36 	полностью отремонтировано
+			37 	требует косметического ремонта
+			38 	требует ремонта
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>39</property_id>
+		<name>Вид из окна</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			40 	ничего особенного
+			41 	на море
+			42 	на реку
+			43 	на озеро
+			44 	на достопримечательности
+			45 	на горы
+			46 	на лес
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>47</property_id>
+		<name>Отделка</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			48 	черновая
+			49 	чистовая
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>50</property_id>
+		<name>Меблировка</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			51 	нет
+			52 	меблирована полностью
+			53 	меблирована только кухня
+		-->
+	</property>
+	<property><!-- Одиночный список select+input-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>54</property_id>
+		<name>Балкон / терраса</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			55 	нет
+			56 	есть
+		-->
+		<!-- property_value Площадь балкона. Число (метров в квадрате) -->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>57</property_id>
+		<name>Кондиционирование</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			58 	нет
+			59 	кондиционер
+			60 	центральное кондиционирование
+			61 	другое
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>62</property_id>
+		<name>Отопление</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			63 	нет
+			64 	центральное
+			65 	другое
+			153 	индивидуальное
+			154 	газовое
+			155 	по счетчику
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>66</property_id>
+		<name>Сигнализация</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			67 	нет
+			68 	пожарная
+			156 	охранная
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>69</property_id>
+		<name>Доступ в Интернет</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			70 	нет доступа к Интернет
+			71 	высокоскоростной доступ к Интернет
+			72 	возможность подключения в/с доступа
+			73 	модем
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>74</property_id>
+		<name>Телефонная сеть</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			75 	нет
+			76 	есть
+		-->
+	</property>
+	<property><!-- Множественный список checkbox-->
+	    <!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>77</property_id>
+		<name>Бытовая техника</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			78 	холодильник
+			79 	стиральная машина
+			80 	посудомоечная машина
+			81 	плита
+			82 	телевизор
+			83 	микроволновая печь
+		-->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+		<property_id>190</property_id>
+		<name>Парковка</name>
+		<!-- property_value Количество мест. Число -->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Дом -->
+		<property_id>96</property_id>
+		<name>Водоснабжение</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			97 	центральное
+			98 	автономное
+			99 	колодец/колонка
+			100 другое/нет
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Дом -->
+		<property_id>101</property_id>
+		<name>Электроснабжение</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			102 	центральное
+			103 	генератор
+			104 	другое
+			145 	нет
+		-->
+	</property>
+	<property><!-- Множественный список checkbox-->
+		<!-- для свойств типа Множественный список должен быть отдельный контейнер property на каждое значение свойства property_value_enum -->
+		<!-- Для типов недвижимости: Дом -->
+		<property_id>105</property_id>
+		<name>На участке</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			106 	бассейн
+			107 	сад
+			108 	гараж
+			109 	баня
+			110 	хозяйственные постройки
+			111 	своя береговая линия
+		-->
+	</property>
+	<property><!-- Одиночный список select-->
+		<!-- Для типов недвижимости: Земля -->
+		<property_id>112</property_id>
+		<name>Назначение участка</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			113 	под жилую застройку
+			114 	под коммерческую застройку
+			115 	сельское хозяйство
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом -->
+		<property_id>131</property_id>
+		<name>Есть возможность организовать отделку и покупку мебели через компанию-продавца</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			134 					да
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Дом -->
+		<property_id>135</property_id>
+		<name>Подвал</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			136 					да
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Земля -->
+		<property_id>136</property_id>
+		<name>На участке есть постройки</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			137 					да
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Земля -->
+		<property_id>137</property_id>
+		<name>Подведено электричество</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			138 					да
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Земля -->
+		<property_id>138</property_id>
+		<name>Подведена вода</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			139 					да
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Земля -->
+		<property_id>139</property_id>
+		<name>Есть подъезд</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			140 					да
+		-->
+	</property>
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Земля -->
+		<property_id>140</property_id>
+		<name>Есть водоём</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			141 					да
+		-->
+	</property>
+
+	<!-- Рентабельность NEW! -->
+	<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+		<property_id>169</property_id>
+		<name>Доходность в год</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+		<property_id>170</property_id>
+		<name>Годовой доход</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+		<property_id>171</property_id>
+		<name>Денежный поток за год</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+		<property_id>173</property_id>
+		<name>Период окупаемости</name>
+		<!-- property_value Количество лет. Число -->
+	</property>
+
+	<!-- Расходы по сделке NEW! -->
+	<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+	<property><!-- Одиночный список checkbox NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>174</property_id>
+		<name>Расходы по сделке не включены в стоимость продажи</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			158 	да
+		-->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>198</property_id>
+		<name>Комиссионный сбор</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>177</property_id>
+		<name>Комиссия нетто (без НДС)</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>194</property_id>
+		<name>Комиссия брутто (с НДС)</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>175</property_id>
+		<name>Налог при покупке</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>179</property_id>
+		<name>Нотариальные услуги</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>195</property_id>
+		<name>Прочие расходы</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>199</property_id>
+		<name>Итого расходы на приобретение объекта</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+
+	<!-- Условия кредитования NEW! -->
+	<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>90</property_id>
+		<name>Возможность рассрочки платежа</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			92 	да
+		-->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>201</property_id>
+		<name>Срок договора От</name>
+		<!-- property_value Срок в годах. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>202</property_id>
+		<name>Срок договора До</name>
+		<!-- property_value Срок в годах. Число -->
+	</property>
+	<property><!-- Одиночный список checkbox NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>181</property_id>
+		<name>Возможность покупки в кредит</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			159 	да
+		-->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>185</property_id>
+		<name>Ставка по кредиту От</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>200</property_id>
+		<name>Ставка по кредиту До</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>182</property_id>
+		<name>Собственный капитал инвестора</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>184</property_id>
+		<name>Кредитное плечо банка</name>
+		<!-- property_value Процент. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>196</property_id>
+		<name>Сумма банковского кредита</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>183</property_id>
+		<name>Первоначальный взнос</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>186</property_id>
+		<name>Срок кредитного договора</name>
+		<!-- property_value Количество лет. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>197</property_id>
+		<name>Ежемесячное обслуживание кредита</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+
+	<!-- Содержание NEW! -->
+	<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>187</property_id>
+		<name>Ежегодный налог</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>188</property_id>
+		<name>Эксплуатационные расходы</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+	<property><!-- Текстовое поле input NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>189</property_id>
+		<name>Итого расходы в год</name>
+		<!-- property_value Сумма в валюте объекта. Число -->
+	</property>
+
+	<!-- Дополнительные услуги -->
+
+	<property><!-- Одиночный список checkbox NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<!-- Может быть указано только одно: ВНЖ или Гражданство -->
+		<property_id>191</property_id>
+		<name>При покупке предоставляется ВНЖ</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			160 	да
+		-->
+	</property>
+
+	<property><!-- Одиночный список checkbox NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<!-- Может быть указано только одно: ВНЖ или Гражданство -->
+		<property_id>203</property_id>
+		<name>При покупке предоставляется гражданство</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			171 	да
+		-->
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>93</property_id>
+		<name>Есть управляющая компания</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			95 	да
+		-->
+	</property>
+	<property><!-- Одиночный список radio NEW!-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
+		<property_id>192</property_id>
+		<name>Условия работы управляющей компании</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			161 	фиксированная цена в месяц
+			162 	от оборота
+			163 	от прибыли
+		-->
+		<!--
+			property_value 	name
+			для фиксированной цены Сумма в валюте объекта, иначе Процент.
+			Число
+		-->
+	</property>
+
+	<!-- Арендаторы -->
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Коммерческая недвижимость -->
+		<property_id>141</property_id>
+		<name>Продается с готовым бизнесом</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			142 					да
+		-->
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>204</property_id>
+		<name>Готовы провести онлайн-показ</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			172 	да
+		-->
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>205</property_id>
+		<name>Есть возможность проведения удалённой сделки</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			173 	да
+		-->
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>206</property_id>
+		<name>Есть возможность оплаты в рублях</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			175 	да
+		-->
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>207</property_id>
+		<name>Есть возможность оплаты криптовалютой</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			177 	да
+		-->
+	</property>
+
+
+</properties>

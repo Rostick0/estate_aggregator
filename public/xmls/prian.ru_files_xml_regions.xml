@@ -1,0 +1,4012 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<regions>
+<!-- Регионы Греции/Regions of Greece -->
+<region>
+<region_id>45</region_id>
+<name_rus>Центральная Греция и Пелопоннес</name_rus>
+<name_eng>Central Greece and Peloponnese</name_eng>
+<country_id>5</country_id>
+</region>
+<region>
+<region_id>46</region_id>
+<name_rus>Северная Греция</name_rus>
+<name_eng>Northern Greece</name_eng>
+<country_id>5</country_id>
+</region>
+<region>
+<region_id>47</region_id>
+<name_rus>Крит</name_rus>
+<name_eng>Crete</name_eng>
+<country_id>5</country_id>
+</region>
+<region>
+<region_id>48</region_id>
+<name_rus>Острова Эгейского и Ионического морей</name_rus>
+<name_eng>Islands of the Aegean and Ionian seas</name_eng>
+<country_id>5</country_id>
+</region>
+<!-- Регионы Великобритании/Regions of United Kingdom -->
+<region>
+<region_id>61</region_id>
+<name_rus>Англия</name_rus>
+<name_eng>England</name_eng>
+<country_id>6</country_id>
+</region>
+<region>
+<region_id>62</region_id>
+<name_rus>Шотландия</name_rus>
+<name_eng>Scotland</name_eng>
+<country_id>6</country_id>
+</region>
+<region>
+<region_id>63</region_id>
+<name_rus>Уэльс</name_rus>
+<name_eng>Wales</name_eng>
+<country_id>6</country_id>
+</region>
+<!-- Регионы Кипра/Regions of Cyprus -->
+<region>
+<region_id>149</region_id>
+<name_rus>Северный Кипр</name_rus>
+<name_eng>Northern Cyprus</name_eng>
+<country_id>7</country_id>
+</region>
+<region>
+<region_id>425</region_id>
+<name_rus>Никосия</name_rus>
+<name_eng>Nicosia</name_eng>
+<country_id>7</country_id>
+</region>
+<region>
+<region_id>426</region_id>
+<name_rus>Ларнака</name_rus>
+<name_eng>Larnaca</name_eng>
+<country_id>7</country_id>
+</region>
+<region>
+<region_id>427</region_id>
+<name_rus>Лимасол</name_rus>
+<name_eng>Limassol</name_eng>
+<country_id>7</country_id>
+</region>
+<region>
+<region_id>428</region_id>
+<name_rus>Пафос</name_rus>
+<name_eng>Paphos</name_eng>
+<country_id>7</country_id>
+</region>
+<region>
+<region_id>429</region_id>
+<name_rus>Фамагуста</name_rus>
+<name_eng>Famagusta</name_eng>
+<country_id>7</country_id>
+</region>
+<!-- Регионы Турции/Regions of Turkey -->
+<region>
+<region_id>513</region_id>
+<name_rus>Агры</name_rus>
+<name_eng>Agri</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>514</region_id>
+<name_rus>Адана</name_rus>
+<name_eng>Adana</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>515</region_id>
+<name_rus>Адыяман</name_rus>
+<name_eng>Adiyaman</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>516</region_id>
+<name_rus>Айдын</name_rus>
+<name_eng>Aydin</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>517</region_id>
+<name_rus>Аксарай</name_rus>
+<name_eng>Aksaray</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>518</region_id>
+<name_rus>Амасья</name_rus>
+<name_eng>Amasya</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>519</region_id>
+<name_rus>Анкара</name_rus>
+<name_eng>Ankara</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>520</region_id>
+<name_rus>Анталия</name_rus>
+<name_eng>Antalya</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>521</region_id>
+<name_rus>Ардахан</name_rus>
+<name_eng>Ardahan</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>522</region_id>
+<name_rus>Артвин</name_rus>
+<name_eng>Artvin</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>523</region_id>
+<name_rus>Афьонкарахисар</name_rus>
+<name_eng>Afyonkarahisar</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>524</region_id>
+<name_rus>Байбурт</name_rus>
+<name_eng>Bayburt</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>525</region_id>
+<name_rus>Балыкесир</name_rus>
+<name_eng>Balikesir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>526</region_id>
+<name_rus>Бартын</name_rus>
+<name_eng>Bartin</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>527</region_id>
+<name_rus>Батман</name_rus>
+<name_eng>Batman</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>528</region_id>
+<name_rus>Биледжик</name_rus>
+<name_eng>Bilecik</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>529</region_id>
+<name_rus>Бингёль</name_rus>
+<name_eng>Bingol</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>530</region_id>
+<name_rus>Битлис</name_rus>
+<name_eng>Bitlis</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>531</region_id>
+<name_rus>Болу</name_rus>
+<name_eng>Bolu</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>532</region_id>
+<name_rus>Бурдур</name_rus>
+<name_eng>Burdur</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>533</region_id>
+<name_rus>Бурса</name_rus>
+<name_eng>Bursa</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>534</region_id>
+<name_rus>Ван</name_rus>
+<name_eng>Van</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>535</region_id>
+<name_rus>Газиантеп</name_rus>
+<name_eng>Gaziantep</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>536</region_id>
+<name_rus>Гиресун</name_rus>
+<name_eng>Giresun</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>537</region_id>
+<name_rus>Гюмюшхане</name_rus>
+<name_eng>Gumushane</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>538</region_id>
+<name_rus>Денизли</name_rus>
+<name_eng>Denizli</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>539</region_id>
+<name_rus>Диярбакыр</name_rus>
+<name_eng>Diyarbakir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>540</region_id>
+<name_rus>Дюздже</name_rus>
+<name_eng>Duzce</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>541</region_id>
+<name_rus>Зонгулдак</name_rus>
+<name_eng>Zonguldak</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>542</region_id>
+<name_rus>Измир</name_rus>
+<name_eng>Izmir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>543</region_id>
+<name_rus>Йозгат</name_rus>
+<name_eng>Yozgat</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>544</region_id>
+<name_rus>Кайсери</name_rus>
+<name_eng>Kayseri</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>545</region_id>
+<name_rus>Карабюк</name_rus>
+<name_eng>Karabuk</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>546</region_id>
+<name_rus>Караман</name_rus>
+<name_eng>Karaman</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>547</region_id>
+<name_rus>Карс</name_rus>
+<name_eng>Kars</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>548</region_id>
+<name_rus>Кастамону</name_rus>
+<name_eng>Kastamonu</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>549</region_id>
+<name_rus>Кахраманмараш</name_rus>
+<name_eng>Kahramanmaras</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>550</region_id>
+<name_rus>Килис</name_rus>
+<name_eng>Kilis</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>551</region_id>
+<name_rus>Коджаэли</name_rus>
+<name_eng>Kocaeli</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>552</region_id>
+<name_rus>Конья</name_rus>
+<name_eng>Konya</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>553</region_id>
+<name_rus>Кыркларели</name_rus>
+<name_eng>Kirklareli</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>554</region_id>
+<name_rus>Кыршехир</name_rus>
+<name_eng>Kirsehir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>555</region_id>
+<name_rus>Кырыккале</name_rus>
+<name_eng>Kirikkale</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>556</region_id>
+<name_rus>Кютахья</name_rus>
+<name_eng>Kutahya</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>557</region_id>
+<name_rus>Малатья</name_rus>
+<name_eng>Malatya</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>558</region_id>
+<name_rus>Маниса</name_rus>
+<name_eng>Manisa</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>559</region_id>
+<name_rus>Мардин</name_rus>
+<name_eng>Mardin</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>560</region_id>
+<name_rus>Мерсин</name_rus>
+<name_eng>Mersin</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>561</region_id>
+<name_rus>Мугла</name_rus>
+<name_eng>Mugla</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>562</region_id>
+<name_rus>Муш</name_rus>
+<name_eng>Mus</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>563</region_id>
+<name_rus>Невшехир</name_rus>
+<name_eng>Nevsehir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>564</region_id>
+<name_rus>Нигде</name_rus>
+<name_eng>Nigde</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>565</region_id>
+<name_rus>Орду</name_rus>
+<name_eng>Ordu</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>566</region_id>
+<name_rus>Османие</name_rus>
+<name_eng>Osmaniye</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>567</region_id>
+<name_rus>Ризе</name_rus>
+<name_eng>Rize</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>568</region_id>
+<name_rus>Сакарья</name_rus>
+<name_eng>Sakarya</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>569</region_id>
+<name_rus>Самсун</name_rus>
+<name_eng>Samsun</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>570</region_id>
+<name_rus>Сивас</name_rus>
+<name_eng>Sivas</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>571</region_id>
+<name_rus>Сиирт</name_rus>
+<name_eng>Siirt</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>572</region_id>
+<name_rus>Синоп</name_rus>
+<name_eng>Sinop</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>573</region_id>
+<name_rus>Стамбул</name_rus>
+<name_eng>Istanbul</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>574</region_id>
+<name_rus>Текирдаг</name_rus>
+<name_eng>Tekirdag</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>575</region_id>
+<name_rus>Токат</name_rus>
+<name_eng>Tokat</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>576</region_id>
+<name_rus>Трабзон</name_rus>
+<name_eng>Trabzon</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>577</region_id>
+<name_rus>Тунджели</name_rus>
+<name_eng>Tunceli</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>578</region_id>
+<name_rus>Ушак</name_rus>
+<name_eng>Usak</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>579</region_id>
+<name_rus>Хаккяри</name_rus>
+<name_eng>Hakkari</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>580</region_id>
+<name_rus>Хатай</name_rus>
+<name_eng>Hatay</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>581</region_id>
+<name_rus>Чанаккале</name_rus>
+<name_eng>Canakkale</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>582</region_id>
+<name_rus>Чанкыры</name_rus>
+<name_eng>Cankiri</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>583</region_id>
+<name_rus>Чорум</name_rus>
+<name_eng>Corum</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>584</region_id>
+<name_rus>Шанлыурфа</name_rus>
+<name_eng>Sanliurfa</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>585</region_id>
+<name_rus>Ширнак</name_rus>
+<name_eng>Sirnak</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>586</region_id>
+<name_rus>Игдыр</name_rus>
+<name_eng>Igdir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>587</region_id>
+<name_rus>Испарта</name_rus>
+<name_eng>Isparta</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>588</region_id>
+<name_rus>Эдирне</name_rus>
+<name_eng>Edirne</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>589</region_id>
+<name_rus>Элязыг</name_rus>
+<name_eng>Elazig</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>590</region_id>
+<name_rus>Эрзинджан</name_rus>
+<name_eng>Erzincan</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>591</region_id>
+<name_rus>Эрзурум</name_rus>
+<name_eng>Erzurum</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>592</region_id>
+<name_rus>Эскишехир</name_rus>
+<name_eng>Eskisehir</name_eng>
+<country_id>38</country_id>
+</region>
+<region>
+<region_id>593</region_id>
+<name_rus>Ялова</name_rus>
+<name_eng>Yalova</name_eng>
+<country_id>38</country_id>
+</region>
+<!-- Регионы Чехии/Regions of Czech Republic -->
+<region>
+<region_id>37</region_id>
+<name_rus>Прага</name_rus>
+<name_eng>Prague</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>150</region_id>
+<name_rus>Среднечешский край</name_rus>
+<name_eng>Central Bohemian Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>151</region_id>
+<name_rus>Южночешский край</name_rus>
+<name_eng>South Bohemian Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>152</region_id>
+<name_rus>Пльзенский край</name_rus>
+<name_eng>Plzen Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>153</region_id>
+<name_rus>Карловарский край</name_rus>
+<name_eng>Karlovy Vary Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>154</region_id>
+<name_rus>Устецкий край</name_rus>
+<name_eng>Ustecky Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>155</region_id>
+<name_rus>Либерецкий край</name_rus>
+<name_eng>Liberec Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>156</region_id>
+<name_rus>Краловеградецкий край</name_rus>
+<name_eng>Hradec Kralove Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>157</region_id>
+<name_rus>Пардубицкий край</name_rus>
+<name_eng>Pardubice Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>158</region_id>
+<name_rus>Высочина</name_rus>
+<name_eng>Vysocina Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>159</region_id>
+<name_rus>Южноморавский край</name_rus>
+<name_eng>South Moravian Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>160</region_id>
+<name_rus>Оломоуцкий край</name_rus>
+<name_eng>Olomouc Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>161</region_id>
+<name_rus>Моравскосилезский край</name_rus>
+<name_eng>Moravian-Silesian Region</name_eng>
+<country_id>41</country_id>
+</region>
+<region>
+<region_id>162</region_id>
+<name_rus>Злинский край</name_rus>
+<name_eng>Zlin Region</name_eng>
+<country_id>41</country_id>
+</region>
+<!-- Регионы Венгрии/Regions of Hungary -->
+<region>
+<region_id>65</region_id>
+<name_rus>Все регионы Венгрии</name_rus>
+<name_eng>Hungary</name_eng>
+<country_id>42</country_id>
+</region>
+<!-- Регионы Испании/Regions of Spain -->
+<region>
+<region_id>5</region_id>
+<name_rus>Андалусия</name_rus>
+<name_eng>Andalusia</name_eng>
+<country_id>43</country_id>
+</region>
+<region>
+<region_id>6</region_id>
+<name_rus>Балеарские Острова</name_rus>
+<name_eng>Balearic Islands</name_eng>
+<country_id>43</country_id>
+</region>
+<region>
+<region_id>7</region_id>
+<name_rus>Валенсия и Мурсия</name_rus>
+<name_eng>Valencia and Murcia</name_eng>
+<country_id>43</country_id>
+</region>
+<region>
+<region_id>8</region_id>
+<name_rus>Канарские Острова</name_rus>
+<name_eng>Canary Islands</name_eng>
+<country_id>43</country_id>
+</region>
+<region>
+<region_id>9</region_id>
+<name_rus>Каталония</name_rus>
+<name_eng>Catalonia</name_eng>
+<country_id>43</country_id>
+</region>
+<region>
+<region_id>10</region_id>
+<name_rus>Центральная и Северная Испания</name_rus>
+<name_eng>Central and Northern Spain</name_eng>
+<country_id>43</country_id>
+</region>
+<!-- Регионы Италии/Regions of Italy -->
+<region>
+<region_id>31</region_id>
+<name_rus>Калабрия</name_rus>
+<name_eng>Calabria</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>32</region_id>
+<name_rus>Сицилия</name_rus>
+<name_eng>Sicily</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>33</region_id>
+<name_rus>Сардиния</name_rus>
+<name_eng>Sardinia</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>221</region_id>
+<name_rus>Абруццо</name_rus>
+<name_eng>Abruzzo</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>222</region_id>
+<name_rus>Валле-д’Аоста</name_rus>
+<name_eng>Aosta Valley</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>223</region_id>
+<name_rus>Апулия</name_rus>
+<name_eng>Apulia</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>224</region_id>
+<name_rus>Базиликата</name_rus>
+<name_eng>Basilicata</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>225</region_id>
+<name_rus>Кампания</name_rus>
+<name_eng>Campania</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>226</region_id>
+<name_rus>Эмилия-Романья</name_rus>
+<name_eng>Emilia-Romagna</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>227</region_id>
+<name_rus>Фриули - Венеция-Джулия</name_rus>
+<name_eng>Friuli-Venezia Giulia</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>228</region_id>
+<name_rus>Лацио</name_rus>
+<name_eng>Lazio</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>229</region_id>
+<name_rus>Лигурия</name_rus>
+<name_eng>Liguria</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>230</region_id>
+<name_rus>Ломбардия</name_rus>
+<name_eng>Lombardy</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>231</region_id>
+<name_rus>Марке</name_rus>
+<name_eng>Marche</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>232</region_id>
+<name_rus>Молизе</name_rus>
+<name_eng>Molise</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>233</region_id>
+<name_rus>Пьемонт</name_rus>
+<name_eng>Piedmont</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>234</region_id>
+<name_rus>Трентино-Альто-Адидже</name_rus>
+<name_eng>Trentino-Alto Adige</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>235</region_id>
+<name_rus>Тоскана</name_rus>
+<name_eng>Tuscany</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>236</region_id>
+<name_rus>Умбрия</name_rus>
+<name_eng>Umbria</name_eng>
+<country_id>44</country_id>
+</region>
+<region>
+<region_id>237</region_id>
+<name_rus>Венеция</name_rus>
+<name_eng>Veneto</name_eng>
+<country_id>44</country_id>
+</region>
+<!-- Регионы Литвы/Regions of Lithuania -->
+<region>
+<region_id>95</region_id>
+<name_rus>Все регионы Литвы</name_rus>
+<name_eng>Lithuania</name_eng>
+<country_id>45</country_id>
+</region>
+<!-- Регионы Польши/Regions of Poland -->
+<region>
+<region_id>104</region_id>
+<name_rus>Малопольское воеводство</name_rus>
+<name_eng>Lesser Poland Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>105</region_id>
+<name_rus>Мазовецкое воеводство</name_rus>
+<name_eng>Masovian Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>106</region_id>
+<name_rus>Любушское воеводство</name_rus>
+<name_eng>Lubusz Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>107</region_id>
+<name_rus>Нижнесилезское воеводство</name_rus>
+<name_eng>Lower Silesian Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>122</region_id>
+<name_rus>Поморское воеводство</name_rus>
+<name_eng>Pomeranian Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>137</region_id>
+<name_rus>Силезское воеводство</name_rus>
+<name_eng>Silesian Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>145</region_id>
+<name_rus>Западно-Поморское воеводство</name_rus>
+<name_eng>West Pomeranian Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>146</region_id>
+<name_rus>Великопольское воеводство</name_rus>
+<name_eng>Greater Poland Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>147</region_id>
+<name_rus>Куявско-Поморское воеводство</name_rus>
+<name_eng>Kuyavian-Pomeranian Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<region>
+<region_id>148</region_id>
+<name_rus>Лодзинское воеводство</name_rus>
+<name_eng>Lodz Voivodeship</name_eng>
+<country_id>46</country_id>
+</region>
+<!-- Регионы Словении/Regions of Slovenia -->
+<region>
+<region_id>68</region_id>
+<name_rus>Все регионы Словении</name_rus>
+<name_eng>Slovenia</name_eng>
+<country_id>47</country_id>
+</region>
+<!-- Регионы Словакии/Regions of Slovakia -->
+<region>
+<region_id>112</region_id>
+<name_rus>Нитранский край</name_rus>
+<name_eng>Nitra Region</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>113</region_id>
+<name_rus>Братиславский край</name_rus>
+<name_eng>Bratislava Region</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>114</region_id>
+<name_rus>Тренчинский край</name_rus>
+<name_eng>Trencin Region</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>120</region_id>
+<name_rus>Прешовский край</name_rus>
+<name_eng>Presov Region</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>127</region_id>
+<name_rus>Кошицкий край</name_rus>
+<name_eng>Kosice Region</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>134</region_id>
+<name_rus>Жилинский край</name_rus>
+<name_eng>Zilina Region</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>164</region_id>
+<name_rus>Банска-Бистрицкий край</name_rus>
+<name_eng>Banskobystricky kraj</name_eng>
+<country_id>48</country_id>
+</region>
+<region>
+<region_id>277</region_id>
+<name_rus>Трнавский край</name_rus>
+<name_eng>Trnava Region</name_eng>
+<country_id>48</country_id>
+</region>
+<!-- Регионы Финляндии/Regions of Finland -->
+<region>
+<region_id>24</region_id>
+<name_rus>Лапландия</name_rus>
+<name_eng>Lapland</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>238</region_id>
+<name_rus>Северная Остроботния</name_rus>
+<name_eng>North Ostrobothnia</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>239</region_id>
+<name_rus>Кайнуу</name_rus>
+<name_eng>Kainuu</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>240</region_id>
+<name_rus>Северная Карелия</name_rus>
+<name_eng>North Karelia</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>241</region_id>
+<name_rus>Северное Саво</name_rus>
+<name_eng>North Savo</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>242</region_id>
+<name_rus>Южное Саво</name_rus>
+<name_eng>South Savo</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>243</region_id>
+<name_rus>Южная Остроботния</name_rus>
+<name_eng>South Ostrobothnia</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>244</region_id>
+<name_rus>Остроботния</name_rus>
+<name_eng>Ostrobothnia</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>245</region_id>
+<name_rus>Пирканмаа</name_rus>
+<name_eng>Pirkanmaa</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>246</region_id>
+<name_rus>Сатакунта</name_rus>
+<name_eng>Satakunta</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>247</region_id>
+<name_rus>Центральная Остроботния</name_rus>
+<name_eng>Central Ostrobothnia</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>248</region_id>
+<name_rus>Центральная Финляндия</name_rus>
+<name_eng>Central Finland</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>249</region_id>
+<name_rus>Варсинайс-Суоми</name_rus>
+<name_eng>Southwest Finland</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>250</region_id>
+<name_rus>Южная Карелия</name_rus>
+<name_eng>South Karelia</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>251</region_id>
+<name_rus>Пяйят-Хяме</name_rus>
+<name_eng>Paijat-Hame</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>252</region_id>
+<name_rus>Канта-Хяме</name_rus>
+<name_eng>Kanta-Hame</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>253</region_id>
+<name_rus>Уусимаа</name_rus>
+<name_eng>Uusimaa</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>254</region_id>
+<name_rus>Кюменлааксо</name_rus>
+<name_eng>Kymenlaakso</name_eng>
+<country_id>49</country_id>
+</region>
+<region>
+<region_id>255</region_id>
+<name_rus>Аландские острова</name_rus>
+<name_eng>Aland</name_eng>
+<country_id>49</country_id>
+</region>
+<!-- Регионы Франции/Regions of France -->
+<region>
+<region_id>15</region_id>
+<name_rus>Париж и пригороды</name_rus>
+<name_eng>Paris and Isle de France</name_eng>
+<country_id>50</country_id>
+</region>
+<region>
+<region_id>16</region_id>
+<name_rus>Лазурный Берег и Прованс</name_rus>
+<name_eng>Cote d'Azur and Provence</name_eng>
+<country_id>50</country_id>
+</region>
+<region>
+<region_id>17</region_id>
+<name_rus>Французские Альпы</name_rus>
+<name_eng>French Alps</name_eng>
+<country_id>50</country_id>
+</region>
+<region>
+<region_id>18</region_id>
+<name_rus>Южная Франция</name_rus>
+<name_eng>Southern France</name_eng>
+<country_id>50</country_id>
+</region>
+<region>
+<region_id>19</region_id>
+<name_rus>Другие регионы Франции</name_rus>
+<name_eng>other regions of France</name_eng>
+<country_id>50</country_id>
+</region>
+<region>
+<region_id>20</region_id>
+<name_rus>Французская Полинезия</name_rus>
+<name_eng>French Polynesia</name_eng>
+<country_id>50</country_id>
+</region>
+<!-- Регионы Хорватии/Regions of Croatia -->
+<region>
+<region_id>52</region_id>
+<name_rus>Истрия</name_rus>
+<name_eng>Istria</name_eng>
+<country_id>51</country_id>
+</region>
+<region>
+<region_id>53</region_id>
+<name_rus>Далмация</name_rus>
+<name_eng>Dalmatia</name_eng>
+<country_id>51</country_id>
+</region>
+<region>
+<region_id>54</region_id>
+<name_rus>Другие регионы Хорватии</name_rus>
+<name_eng>Other parts of Croatia</name_eng>
+<country_id>51</country_id>
+</region>
+<!-- Регионы Эстонии/Regions of Estonia -->
+<region>
+<region_id>55</region_id>
+<name_rus>Все регионы Эстонии</name_rus>
+<name_eng>Estonia</name_eng>
+<country_id>52</country_id>
+</region>
+<!-- Регионы Болгарии/Regions of Bulgaria -->
+<region>
+<region_id>165</region_id>
+<name_rus>Благоевградская область</name_rus>
+<name_eng>Blagoevgrad Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>166</region_id>
+<name_rus>Бургасская область</name_rus>
+<name_eng>Burgas Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>167</region_id>
+<name_rus>Добричская область</name_rus>
+<name_eng>Dobrich Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>168</region_id>
+<name_rus>Габровская область</name_rus>
+<name_eng>Gabrovo Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>169</region_id>
+<name_rus>Хасковская область</name_rus>
+<name_eng>Haskovo Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>170</region_id>
+<name_rus>Кырджалийская область</name_rus>
+<name_eng>Kardzhali Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>171</region_id>
+<name_rus>Кюстендилская область</name_rus>
+<name_eng>Kyustendil Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>172</region_id>
+<name_rus>Ловечская область</name_rus>
+<name_eng>Lovech Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>173</region_id>
+<name_rus>Монтанская область</name_rus>
+<name_eng>Montana Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>174</region_id>
+<name_rus>Пазарджикская область</name_rus>
+<name_eng>Pazardzhik Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>175</region_id>
+<name_rus>Перникская область</name_rus>
+<name_eng>Pernik Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>176</region_id>
+<name_rus>Плевенская область</name_rus>
+<name_eng>Pleven Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>177</region_id>
+<name_rus>Пловдивская область</name_rus>
+<name_eng>Plovdiv Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>178</region_id>
+<name_rus>Разградская область</name_rus>
+<name_eng>Razgrad Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>179</region_id>
+<name_rus>Русенская область</name_rus>
+<name_eng>Ruse Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>180</region_id>
+<name_rus>Шуменская область</name_rus>
+<name_eng>Shumen Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>181</region_id>
+<name_rus>Силистренская область</name_rus>
+<name_eng>Silistra Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>182</region_id>
+<name_rus>Сливенская область</name_rus>
+<name_eng>Sliven Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>183</region_id>
+<name_rus>Смолянская область</name_rus>
+<name_eng>Smolyan Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>184</region_id>
+<name_rus>София</name_rus>
+<name_eng>Sofia City</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>185</region_id>
+<name_rus>Софийская область</name_rus>
+<name_eng>Sofia Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>186</region_id>
+<name_rus>Старозагорская область</name_rus>
+<name_eng>Stara Zagora Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>187</region_id>
+<name_rus>Тырговиштская область</name_rus>
+<name_eng>Targovishte Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>188</region_id>
+<name_rus>Варненская область</name_rus>
+<name_eng>Varna Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>189</region_id>
+<name_rus>Великотырновская область</name_rus>
+<name_eng>Veliko Tarnovo Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>190</region_id>
+<name_rus>Видинская область</name_rus>
+<name_eng>Vidin Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>191</region_id>
+<name_rus>Врацкая область</name_rus>
+<name_eng>Vratsa Province</name_eng>
+<country_id>71</country_id>
+</region>
+<region>
+<region_id>192</region_id>
+<name_rus>Ямбольская область</name_rus>
+<name_eng>Yambol Province</name_eng>
+<country_id>71</country_id>
+</region>
+<!-- Регионы Латвии/Regions of Latvia -->
+<region>
+<region_id>49</region_id>
+<name_rus>Все регионы Латвии</name_rus>
+<name_eng>Latvia</name_eng>
+<country_id>193</country_id>
+</region>
+<!-- Регионы Черногории/Regions of Montenegro -->
+<region>
+<region_id>193</region_id>
+<name_rus>Андриевица</name_rus>
+<name_eng>Andrijevica</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>194</region_id>
+<name_rus>Бар</name_rus>
+<name_eng>Bar</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>195</region_id>
+<name_rus>Беране</name_rus>
+<name_eng>Berane</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>196</region_id>
+<name_rus>Биело-Поле</name_rus>
+<name_eng>Bijelo Polje</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>197</region_id>
+<name_rus>Будва</name_rus>
+<name_eng>Budva</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>198</region_id>
+<name_rus>Даниловград</name_rus>
+<name_eng>Danilovgrad</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>199</region_id>
+<name_rus>Жабляк</name_rus>
+<name_eng>Zabljak</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>200</region_id>
+<name_rus>Колашин</name_rus>
+<name_eng>Kolasin</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>201</region_id>
+<name_rus>Котор</name_rus>
+<name_eng>Kotor</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>202</region_id>
+<name_rus>Мойковац</name_rus>
+<name_eng>Mojkovac</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>203</region_id>
+<name_rus>Никшич</name_rus>
+<name_eng>Niksic</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>204</region_id>
+<name_rus>Плав</name_rus>
+<name_eng>Plav</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>205</region_id>
+<name_rus>Плевля</name_rus>
+<name_eng>Pljevlja</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>206</region_id>
+<name_rus>Плужине</name_rus>
+<name_eng>Pluzine</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>207</region_id>
+<name_rus>Подгорица</name_rus>
+<name_eng>Podgorica</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>208</region_id>
+<name_rus>Рожае</name_rus>
+<name_eng>Rozaje</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>209</region_id>
+<name_rus>Тиват</name_rus>
+<name_eng>Tivat</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>210</region_id>
+<name_rus>Улцинь</name_rus>
+<name_eng>Ulcinj</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>211</region_id>
+<name_rus>Херцег-Нови</name_rus>
+<name_eng>Herceg Novi</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>212</region_id>
+<name_rus>Цетине</name_rus>
+<name_eng>Cetinje</name_eng>
+<country_id>208</country_id>
+</region>
+<region>
+<region_id>213</region_id>
+<name_rus>Шавник</name_rus>
+<name_eng>Savnik</name_eng>
+<country_id>208</country_id>
+</region>
+<!-- Регионы России/Regions of Russia -->
+<region>
+<region_id>430</region_id>
+<name_rus>Республика Адыгея</name_rus>
+<name_eng>Republic of Adygea</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>431</region_id>
+<name_rus>Республика Алтай</name_rus>
+<name_eng>Altai Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>432</region_id>
+<name_rus>Республика Башкортостан</name_rus>
+<name_eng>Republic of Bashkortostan</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>433</region_id>
+<name_rus>Республика Бурятия</name_rus>
+<name_eng>Republic of Buryatia</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>434</region_id>
+<name_rus>Республика Дагестан</name_rus>
+<name_eng>Republic of Dagestan </name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>435</region_id>
+<name_rus>Республика Ингушетия</name_rus>
+<name_eng>Republic of Ingushetia</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>436</region_id>
+<name_rus>Кабардино-Балкарская Республика</name_rus>
+<name_eng>Kabardino-Balkar Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>437</region_id>
+<name_rus>Республика Калмыкия</name_rus>
+<name_eng>Republic of Kalmykia</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>438</region_id>
+<name_rus>Карачаево-Черкесская Республика</name_rus>
+<name_eng>Karachay-Cherkess Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>439</region_id>
+<name_rus>Республика Карелия</name_rus>
+<name_eng>Republic of Karelia</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>440</region_id>
+<name_rus>Республика Коми</name_rus>
+<name_eng>Komi Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>441</region_id>
+<name_rus>Республика Марий Эл</name_rus>
+<name_eng>Mari El Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>442</region_id>
+<name_rus>Республика Мордовия</name_rus>
+<name_eng>Republic of Mordovia</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>443</region_id>
+<name_rus>Республика Саха</name_rus>
+<name_eng>Sakha Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>444</region_id>
+<name_rus>Республика Северная Осетия</name_rus>
+<name_eng>Republic of North Ossetia–Alania</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>445</region_id>
+<name_rus>Республика Татарстан</name_rus>
+<name_eng>Republic of Tatarstan</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>446</region_id>
+<name_rus>Республика Тыва</name_rus>
+<name_eng>Tuva Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>447</region_id>
+<name_rus>Удмуртская Республика</name_rus>
+<name_eng>Udmurt Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>448</region_id>
+<name_rus>Республика Хакасия</name_rus>
+<name_eng>Republic of Khakassia</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>449</region_id>
+<name_rus>Чеченская Республика</name_rus>
+<name_eng>Chechen Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>450</region_id>
+<name_rus>Чувашская Республика</name_rus>
+<name_eng>Chuvash Republic</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>451</region_id>
+<name_rus>Алтайский край</name_rus>
+<name_eng>Altai Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>452</region_id>
+<name_rus>Забайкальский край</name_rus>
+<name_eng>Zabaykalsky Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>453</region_id>
+<name_rus>Камчатский край</name_rus>
+<name_eng>Kamchatka Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>454</region_id>
+<name_rus>Краснодарский край</name_rus>
+<name_eng>Krasnodar Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>455</region_id>
+<name_rus>Красноярский край</name_rus>
+<name_eng>Krasnoyarsk Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>456</region_id>
+<name_rus>Пермский край</name_rus>
+<name_eng>Perm Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>457</region_id>
+<name_rus>Приморский край</name_rus>
+<name_eng>Primorsky Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>458</region_id>
+<name_rus>Ставропольский край</name_rus>
+<name_eng>Stavropol Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>459</region_id>
+<name_rus>Хабаровский край</name_rus>
+<name_eng>Khabarovsk Krai</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>460</region_id>
+<name_rus>Амурская область</name_rus>
+<name_eng>Amur Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>461</region_id>
+<name_rus>Архангельская область</name_rus>
+<name_eng>Arkhangelsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>462</region_id>
+<name_rus>Астраханская область</name_rus>
+<name_eng>Astrakhan Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>463</region_id>
+<name_rus>Белгородская область</name_rus>
+<name_eng>Belgorod Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>464</region_id>
+<name_rus>Брянская область</name_rus>
+<name_eng>Bryansk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>465</region_id>
+<name_rus>Владимирская область</name_rus>
+<name_eng>Vladimir Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>466</region_id>
+<name_rus>Волгоградская область</name_rus>
+<name_eng>Volgograd Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>467</region_id>
+<name_rus>Вологодская область</name_rus>
+<name_eng>Vologda Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>468</region_id>
+<name_rus>Воронежская область</name_rus>
+<name_eng>Voronezh Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>469</region_id>
+<name_rus>Ивановская область</name_rus>
+<name_eng>Ivanovo Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>470</region_id>
+<name_rus>Иркутская область</name_rus>
+<name_eng>Irkutsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>471</region_id>
+<name_rus>Калининградская область</name_rus>
+<name_eng>Kaliningrad Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>472</region_id>
+<name_rus>Калужская область</name_rus>
+<name_eng>Kaluga Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>473</region_id>
+<name_rus>Кемеровская область</name_rus>
+<name_eng>Kemerovo Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>474</region_id>
+<name_rus>Кировская область</name_rus>
+<name_eng>Kirov Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>475</region_id>
+<name_rus>Костромская область</name_rus>
+<name_eng>Kostroma Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>476</region_id>
+<name_rus>Курганская область</name_rus>
+<name_eng>Kurgan Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>477</region_id>
+<name_rus>Курская область</name_rus>
+<name_eng>Kursk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>478</region_id>
+<name_rus>Ленинградская область</name_rus>
+<name_eng>Leningrad Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>479</region_id>
+<name_rus>Липецкая область</name_rus>
+<name_eng>Lipetsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>480</region_id>
+<name_rus>Магаданская область</name_rus>
+<name_eng>Magadan Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>481</region_id>
+<name_rus>Московская область</name_rus>
+<name_eng>Moscow Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>482</region_id>
+<name_rus>Мурманская область</name_rus>
+<name_eng>Murmansk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>483</region_id>
+<name_rus>Нижегородская область</name_rus>
+<name_eng>Nizhny Novgorod Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>484</region_id>
+<name_rus>Новгородская область</name_rus>
+<name_eng>Novgorod Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>485</region_id>
+<name_rus>Новосибирская область</name_rus>
+<name_eng>Novosibirsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>486</region_id>
+<name_rus>Омская область</name_rus>
+<name_eng>Omsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>487</region_id>
+<name_rus>Оренбургская область</name_rus>
+<name_eng>Orenburg Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>488</region_id>
+<name_rus>Орловская область</name_rus>
+<name_eng>Oryol Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>489</region_id>
+<name_rus>Пензенская область</name_rus>
+<name_eng>Penza Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>490</region_id>
+<name_rus>Псковская область</name_rus>
+<name_eng>Pskov Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>491</region_id>
+<name_rus>Ростовская область</name_rus>
+<name_eng>Rostov Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>492</region_id>
+<name_rus>Рязанская область</name_rus>
+<name_eng>Ryazan Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>493</region_id>
+<name_rus>Самарская область</name_rus>
+<name_eng>Samara Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>494</region_id>
+<name_rus>Саратовская область</name_rus>
+<name_eng>Saratov Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>495</region_id>
+<name_rus>Сахалинская область</name_rus>
+<name_eng>Sakhalin Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>496</region_id>
+<name_rus>Свердловская область</name_rus>
+<name_eng>Sverdlovsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>497</region_id>
+<name_rus>Смоленская область</name_rus>
+<name_eng>Smolensk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>498</region_id>
+<name_rus>Тамбовская область</name_rus>
+<name_eng>Tambov Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>499</region_id>
+<name_rus>Тверская область</name_rus>
+<name_eng>Tver Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>500</region_id>
+<name_rus>Томская область</name_rus>
+<name_eng>Tomsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>501</region_id>
+<name_rus>Тульская область</name_rus>
+<name_eng>Tula Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>502</region_id>
+<name_rus>Тюменская область</name_rus>
+<name_eng>Tyumen Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>503</region_id>
+<name_rus>Ульяновская область</name_rus>
+<name_eng>Ulyanovsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>504</region_id>
+<name_rus>Челябинская область</name_rus>
+<name_eng>Chelyabinsk Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>505</region_id>
+<name_rus>Ярославская область</name_rus>
+<name_eng>Yaroslavl Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>506</region_id>
+<name_rus>Москва</name_rus>
+<name_eng>Moscow</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>507</region_id>
+<name_rus>Санкт-Петербург</name_rus>
+<name_eng>Saint Petersburg</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>508</region_id>
+<name_rus>Еврейская АО</name_rus>
+<name_eng>Jewish Autonomous Oblast</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>509</region_id>
+<name_rus>Ненецкий АО</name_rus>
+<name_eng>Nenets Autonomous Okrug</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>510</region_id>
+<name_rus>Ханты-Мансийский АО</name_rus>
+<name_eng>Khanty-Mansi Autonomous Okrug</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>511</region_id>
+<name_rus>Чукотский АО</name_rus>
+<name_eng>Chukotka Autonomous Okrug</name_eng>
+<country_id>233</country_id>
+</region>
+<region>
+<region_id>512</region_id>
+<name_rus>Ямало-Ненецкий АО</name_rus>
+<name_eng>Yamalo-Nenets Autonomous Okrug</name_eng>
+<country_id>233</country_id>
+</region>
+<!-- Регионы Германии/Regions of Germany -->
+<region>
+<region_id>12</region_id>
+<name_rus>Берлин</name_rus>
+<name_eng>Berlin</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>410</region_id>
+<name_rus>Баден-Вюртемберг</name_rus>
+<name_eng>Baden-Wurttemberg</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>411</region_id>
+<name_rus>Бавария</name_rus>
+<name_eng>Bavaria</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>412</region_id>
+<name_rus>Бранденбург</name_rus>
+<name_eng>Brandenburg</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>413</region_id>
+<name_rus>Бремен</name_rus>
+<name_eng>Bremen</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>414</region_id>
+<name_rus>Гамбург</name_rus>
+<name_eng>Hamburg</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>415</region_id>
+<name_rus>Гессен</name_rus>
+<name_eng>Hesse</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>416</region_id>
+<name_rus>Мекленбург-Передняя Померания</name_rus>
+<name_eng>Mecklenburg-Vorpommern</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>417</region_id>
+<name_rus>Нижняя Саксония</name_rus>
+<name_eng>Lower Saxony</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>418</region_id>
+<name_rus>Северный Рейн-Вестфалия</name_rus>
+<name_eng>North Rhine-Westphalia</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>419</region_id>
+<name_rus>Рейнланд-Пфальц</name_rus>
+<name_eng>Rhineland-Palatinate</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>420</region_id>
+<name_rus>Саар</name_rus>
+<name_eng>Saarland</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>421</region_id>
+<name_rus>Саксония</name_rus>
+<name_eng>Saxony</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>422</region_id>
+<name_rus>Саксония-Анхальт</name_rus>
+<name_eng>Saxony-Anhalt</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>423</region_id>
+<name_rus>Шлезвиг-Гольштейн</name_rus>
+<name_eng>Schleswig-Holstein</name_eng>
+<country_id>283</country_id>
+</region>
+<region>
+<region_id>424</region_id>
+<name_rus>Тюрингия</name_rus>
+<name_eng>Thuringia</name_eng>
+<country_id>283</country_id>
+</region>
+<!-- Регионы Австрии/Regions of Austria -->
+<region>
+<region_id>59</region_id>
+<name_rus>Все регионы Австрии</name_rus>
+<name_eng>Austria</name_eng>
+<country_id>284</country_id>
+</region>
+<!-- Регионы Португалии/Regions of Portugal -->
+<region>
+<region_id>594</region_id>
+<name_rus>Азорские острова</name_rus>
+<name_eng>Acores</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>595</region_id>
+<name_rus>Мадейра</name_rus>
+<name_eng>Madeira</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>596</region_id>
+<name_rus>Авейру</name_rus>
+<name_eng>Aveiro</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>597</region_id>
+<name_rus>Бежа</name_rus>
+<name_eng>Beja</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>598</region_id>
+<name_rus>Брага</name_rus>
+<name_eng>Braga</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>599</region_id>
+<name_rus>Браганса</name_rus>
+<name_eng>Braganca</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>600</region_id>
+<name_rus>Каштелу-Бранку</name_rus>
+<name_eng>Castelo Branco</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>601</region_id>
+<name_rus>Коимбра</name_rus>
+<name_eng>Coimbra</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>602</region_id>
+<name_rus>Эвора</name_rus>
+<name_eng>Evora</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>603</region_id>
+<name_rus>Фару</name_rus>
+<name_eng>Faro</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>604</region_id>
+<name_rus>Гуарда</name_rus>
+<name_eng>Guarda</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>605</region_id>
+<name_rus>Лейрия</name_rus>
+<name_eng>Leiria</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>606</region_id>
+<name_rus>Лиссабон</name_rus>
+<name_eng>Lisboa</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>607</region_id>
+<name_rus>Порталегри</name_rus>
+<name_eng>Portalegre</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>608</region_id>
+<name_rus>Порту</name_rus>
+<name_eng>Porto</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>609</region_id>
+<name_rus>Сантарен</name_rus>
+<name_eng>Santarem</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>610</region_id>
+<name_rus>Сетубал</name_rus>
+<name_eng>Setubal</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>611</region_id>
+<name_rus>Виана-ду-Каштелу</name_rus>
+<name_eng>Viana do Castelo</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>612</region_id>
+<name_rus>Вила-Реал</name_rus>
+<name_eng>Vila Real</name_eng>
+<country_id>287</country_id>
+</region>
+<region>
+<region_id>613</region_id>
+<name_rus>Визеу</name_rus>
+<name_eng>Viseu</name_eng>
+<country_id>287</country_id>
+</region>
+<!-- Регионы Норвегии/Regions of Norway -->
+<region>
+<region_id>278</region_id>
+<name_rus>Тромс-ог-Финнмарк</name_rus>
+<name_eng>Troms og Finnmark</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>309</region_id>
+<name_rus>Нурланн</name_rus>
+<name_eng>Nordland</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>310</region_id>
+<name_rus>Трёнделаг</name_rus>
+<name_eng>Trondelag</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>311</region_id>
+<name_rus>Мёре-ог-Ромсдал</name_rus>
+<name_eng>More og Romsdal</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>312</region_id>
+<name_rus>Вестланн</name_rus>
+<name_eng>Vestlandet</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>313</region_id>
+<name_rus>Ругаланн</name_rus>
+<name_eng>Rogaland</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>314</region_id>
+<name_rus>Викен</name_rus>
+<name_eng>Viken</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>315</region_id>
+<name_rus>Иннландет</name_rus>
+<name_eng>Innlandet</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>316</region_id>
+<name_rus>Осло</name_rus>
+<name_eng>Oslo</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>317</region_id>
+<name_rus>Вестфол-ог-Телемарк</name_rus>
+<name_eng>Vestfold og Telemark</name_eng>
+<country_id>288</country_id>
+</region>
+<region>
+<region_id>318</region_id>
+<name_rus>Агдер</name_rus>
+<name_eng>Agder</name_eng>
+<country_id>288</country_id>
+</region>
+<!-- Регионы Швеции/Regions of Sweden -->
+<region>
+<region_id>116</region_id>
+<name_rus>Эстергётланд</name_rus>
+<name_eng>Ostergotland County</name_eng>
+<country_id>290</country_id>
+</region>
+<region>
+<region_id>117</region_id>
+<name_rus>Емтланд</name_rus>
+<name_eng>Jamtland County</name_eng>
+<country_id>290</country_id>
+</region>
+<region>
+<region_id>118</region_id>
+<name_rus>Вестерноррланд</name_rus>
+<name_eng>Vasternorrland County</name_eng>
+<country_id>290</country_id>
+</region>
+<region>
+<region_id>119</region_id>
+<name_rus>Стокгольм и окрестности</name_rus>
+<name_eng>Stockholm</name_eng>
+<country_id>290</country_id>
+</region>
+<region>
+<region_id>128</region_id>
+<name_rus>Норрботтен</name_rus>
+<name_eng>Norrbotten County</name_eng>
+<country_id>290</country_id>
+</region>
+<!-- Регионы Грузии/Regions of Georgia -->
+<region>
+<region_id>84</region_id>
+<name_rus>Аджария</name_rus>
+<name_eng>Adjara</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>85</region_id>
+<name_rus>Самцхе-Джавахетия</name_rus>
+<name_eng>Samtskhe-Javakheti</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>86</region_id>
+<name_rus>Мцхета-Мтианетия</name_rus>
+<name_eng>Mtskheta-Mtianeti</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>87</region_id>
+<name_rus>Тбилиси</name_rus>
+<name_eng>Tbilisi</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>614</region_id>
+<name_rus>Абхазия</name_rus>
+<name_eng>Abkhazia</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>615</region_id>
+<name_rus>Гурия</name_rus>
+<name_eng>Guria</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>616</region_id>
+<name_rus>Имеретия</name_rus>
+<name_eng>Imereti</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>617</region_id>
+<name_rus>Кахетия</name_rus>
+<name_eng>Kakheti</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>618</region_id>
+<name_rus>Рача-Лечхуми и Нижняя Сванетия</name_rus>
+<name_eng>Racha-Lechkhumi and Kvemo Svaneti</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>619</region_id>
+<name_rus>Самегрело-Верхняя Сванетия</name_rus>
+<name_eng>Samegrelo-Zemo Svaneti</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>620</region_id>
+<name_rus>Квемо-Картли</name_rus>
+<name_eng>Kvemo Kartli</name_eng>
+<country_id>293</country_id>
+</region>
+<region>
+<region_id>621</region_id>
+<name_rus>Шида-Картли</name_rus>
+<name_eng>Shida Kartli</name_eng>
+<country_id>293</country_id>
+</region>
+<!-- Регионы Ирландии/Regions of Ireland -->
+<region>
+<region_id>88</region_id>
+<name_rus>Все регионы Ирландии</name_rus>
+<name_eng>Ireland</name_eng>
+<country_id>295</country_id>
+</region>
+<!-- Регионы ОАЭ/Regions of UAE -->
+<region>
+<region_id>214</region_id>
+<name_rus>Абу-Даби</name_rus>
+<name_eng>Abu Dhabi</name_eng>
+<country_id>363</country_id>
+</region>
+<region>
+<region_id>215</region_id>
+<name_rus>Аджман</name_rus>
+<name_eng>Ajman</name_eng>
+<country_id>363</country_id>
+</region>
+<region>
+<region_id>216</region_id>
+<name_rus>Дубай</name_rus>
+<name_eng>Dubai</name_eng>
+<country_id>363</country_id>
+</region>
+<region>
+<region_id>217</region_id>
+<name_rus>Рас-эль-Хайма</name_rus>
+<name_eng>Ras Al Khaimah</name_eng>
+<country_id>363</country_id>
+</region>
+<region>
+<region_id>218</region_id>
+<name_rus>Умм-эль-Кайвайн</name_rus>
+<name_eng>Umm Al Quwain</name_eng>
+<country_id>363</country_id>
+</region>
+<region>
+<region_id>219</region_id>
+<name_rus>Эль-Фуджайра</name_rus>
+<name_eng>Fujairah</name_eng>
+<country_id>363</country_id>
+</region>
+<region>
+<region_id>220</region_id>
+<name_rus>Шарджа</name_rus>
+<name_eng>Sharjah</name_eng>
+<country_id>363</country_id>
+</region>
+<!-- Регионы США/Regions of USA -->
+<region>
+<region_id>41</region_id>
+<name_rus>Флорида</name_rus>
+<name_eng>Florida</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>42</region_id>
+<name_rus>Калифорния</name_rus>
+<name_eng>California</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>43</region_id>
+<name_rus>Нью-Йорк</name_rus>
+<name_eng>New York</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>44</region_id>
+<name_rus>Другие регионы США</name_rus>
+<name_eng>Other regions of US</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>121</region_id>
+<name_rus>Техас</name_rus>
+<name_eng>Texas</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>123</region_id>
+<name_rus>Аризона</name_rus>
+<name_eng>Arizona</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>124</region_id>
+<name_rus>Иллинойс</name_rus>
+<name_eng>Illinois</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>125</region_id>
+<name_rus>Колорадо</name_rus>
+<name_eng>Colorado</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>126</region_id>
+<name_rus>Мэриленд</name_rus>
+<name_eng>Maryland</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>130</region_id>
+<name_rus>Оклахома</name_rus>
+<name_eng>Oklahoma</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>131</region_id>
+<name_rus>Вайоминг</name_rus>
+<name_eng>Wyoming</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>132</region_id>
+<name_rus>Вашингтон</name_rus>
+<name_eng>Washington</name_eng>
+<country_id>368</country_id>
+</region>
+<region>
+<region_id>133</region_id>
+<name_rus>Миннесота</name_rus>
+<name_eng>Minnesota</name_eng>
+<country_id>368</country_id>
+</region>
+<!-- Регионы Египта/Regions of Egypt -->
+<region>
+<region_id>35</region_id>
+<name_rus>Все регионы Египта</name_rus>
+<name_eng>Egypt</name_eng>
+<country_id>397</country_id>
+</region>
+<!-- Регионы Израиля/Regions of Israel -->
+<region>
+<region_id>138</region_id>
+<name_rus>Иерусалимский округ</name_rus>
+<name_eng>Jerusalem District</name_eng>
+<country_id>453</country_id>
+</region>
+<region>
+<region_id>139</region_id>
+<name_rus>Иудея и Самария</name_rus>
+<name_eng>Judea and Samaria Area</name_eng>
+<country_id>453</country_id>
+</region>
+<region>
+<region_id>140</region_id>
+<name_rus>Северный округ Израиля</name_rus>
+<name_eng>Northern District of Israel</name_eng>
+<country_id>453</country_id>
+</region>
+<region>
+<region_id>141</region_id>
+<name_rus>Тель-Авивский округ</name_rus>
+<name_eng>Tel-Aviv District</name_eng>
+<country_id>453</country_id>
+</region>
+<region>
+<region_id>142</region_id>
+<name_rus>Хайфский округ</name_rus>
+<name_eng>Haifa District</name_eng>
+<country_id>453</country_id>
+</region>
+<region>
+<region_id>143</region_id>
+<name_rus>Центральный округ Израиля</name_rus>
+<name_eng>Central District of Israel</name_eng>
+<country_id>453</country_id>
+</region>
+<region>
+<region_id>144</region_id>
+<name_rus>Южный округ Израиля</name_rus>
+<name_eng>Southern District of Israel</name_eng>
+<country_id>453</country_id>
+</region>
+<!-- Регионы Швейцарии/Regions of Switzerland -->
+<region>
+<region_id>60</region_id>
+<name_rus>Все регионы Швейцарии</name_rus>
+<name_eng>Switzerland</name_eng>
+<country_id>461</country_id>
+</region>
+<!-- Регионы Канады/Regions of Canada -->
+<region>
+<region_id>89</region_id>
+<name_rus>Провинция Квебек</name_rus>
+<name_eng>Quebec</name_eng>
+<country_id>466</country_id>
+</region>
+<region>
+<region_id>90</region_id>
+<name_rus>Новая Шотландия</name_rus>
+<name_eng>New Scotland</name_eng>
+<country_id>466</country_id>
+</region>
+<region>
+<region_id>91</region_id>
+<name_rus>Манитоба</name_rus>
+<name_eng>Manitoba</name_eng>
+<country_id>466</country_id>
+</region>
+<region>
+<region_id>92</region_id>
+<name_rus>Онтарио</name_rus>
+<name_eng>Ontario</name_eng>
+<country_id>466</country_id>
+</region>
+<region>
+<region_id>93</region_id>
+<name_rus>Британская Колумбия</name_rus>
+<name_eng>Brittish Columbia</name_eng>
+<country_id>466</country_id>
+</region>
+<region>
+<region_id>94</region_id>
+<name_rus>Альберта</name_rus>
+<name_eng>Alberta</name_eng>
+<country_id>466</country_id>
+</region>
+<!-- Регионы Марокко/Regions of Morocco -->
+<region>
+<region_id>98</region_id>
+<name_rus>Все регионы Марокко</name_rus>
+<name_eng>Marocco</name_eng>
+<country_id>469</country_id>
+</region>
+<!-- Регионы Доминиканской Республики/Regions of Dominican Republic -->
+<region>
+<region_id>56</region_id>
+<name_rus>Все регионы Доминиканской Республики</name_rus>
+<name_eng>Dominican Republic</name_eng>
+<country_id>474</country_id>
+</region>
+<!-- Регионы Нидерландов/Regions of Netherlands -->
+<region>
+<region_id>100</region_id>
+<name_rus>Южная Голландия</name_rus>
+<name_eng>South Holland</name_eng>
+<country_id>482</country_id>
+</region>
+<region>
+<region_id>101</region_id>
+<name_rus>Северная Голландия</name_rus>
+<name_eng>North Holland</name_eng>
+<country_id>482</country_id>
+</region>
+<region>
+<region_id>129</region_id>
+<name_rus>Гелдерланд</name_rus>
+<name_eng>Gelderland</name_eng>
+<country_id>482</country_id>
+</region>
+<region>
+<region_id>135</region_id>
+<name_rus>Гронинген</name_rus>
+<name_eng>Groningen</name_eng>
+<country_id>482</country_id>
+</region>
+<region>
+<region_id>136</region_id>
+<name_rus>Дренте</name_rus>
+<name_eng>Drenthe</name_eng>
+<country_id>482</country_id>
+</region>
+<region>
+<region_id>163</region_id>
+<name_rus>Северный Брабант</name_rus>
+<name_eng>North Brabant</name_eng>
+<country_id>482</country_id>
+</region>
+<!-- Регионы Монако/Regions of Monaco -->
+<region>
+<region_id>99</region_id>
+<name_rus>Все регионы Монако</name_rus>
+<name_eng>Monaco</name_eng>
+<country_id>487</country_id>
+</region>
+<!-- Регионы Таиланда/Regions of Thailand -->
+<region>
+<region_id>319</region_id>
+<name_rus>Амнатчарен</name_rus>
+<name_eng>Amnat Charoen</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>320</region_id>
+<name_rus>Ангтхонг</name_rus>
+<name_eng>Ang Thong</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>321</region_id>
+<name_rus>Аюттхая</name_rus>
+<name_eng>Ayutthaya</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>322</region_id>
+<name_rus>Большой Бангкок</name_rus>
+<name_eng>Bangkok</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>323</region_id>
+<name_rus>Бурирам</name_rus>
+<name_eng>Buriram</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>324</region_id>
+<name_rus>Бынгкан</name_rus>
+<name_eng>Bueng Kan</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>325</region_id>
+<name_rus>Каласин</name_rus>
+<name_eng>Kalasin</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>326</region_id>
+<name_rus>Кампхэнгпхет</name_rus>
+<name_eng>Kamphaeng Phet</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>327</region_id>
+<name_rus>Канчанабури</name_rus>
+<name_eng>Kanchanaburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>328</region_id>
+<name_rus>Краби</name_rus>
+<name_eng>Krabi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>329</region_id>
+<name_rus>Кхонкэн</name_rus>
+<name_eng>Khon Kaen</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>330</region_id>
+<name_rus>Лампанг</name_rus>
+<name_eng>Lampang</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>331</region_id>
+<name_rus>Лампхун</name_rus>
+<name_eng>Lamphun</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>332</region_id>
+<name_rus>Лей</name_rus>
+<name_eng>Loei</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>333</region_id>
+<name_rus>Лопбури</name_rus>
+<name_eng>Lopburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>334</region_id>
+<name_rus>Махасаракхам</name_rus>
+<name_eng>Maha Sarakham</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>335</region_id>
+<name_rus>Мукдахан</name_rus>
+<name_eng>Mukdahan</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>336</region_id>
+<name_rus>Мэхонгсон</name_rus>
+<name_eng>Mae Hong Son</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>337</region_id>
+<name_rus>Накхоннайок</name_rus>
+<name_eng>Nakhon Nayok</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>338</region_id>
+<name_rus>Накхонпатхом</name_rus>
+<name_eng>Nakhon Pathom</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>339</region_id>
+<name_rus>Накхонпханом</name_rus>
+<name_eng>Nakhon Phanom</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>340</region_id>
+<name_rus>Накхонратчасима</name_rus>
+<name_eng>Nakhon Ratchasima</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>341</region_id>
+<name_rus>Накхонсаван</name_rus>
+<name_eng>Nakhon Sawan</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>342</region_id>
+<name_rus>Накхонситхаммарат</name_rus>
+<name_eng>Nakhon Si Thammarat</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>343</region_id>
+<name_rus>Нан</name_rus>
+<name_eng>Nan</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>344</region_id>
+<name_rus>Наратхиват</name_rus>
+<name_eng>Narathiwat</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>345</region_id>
+<name_rus>Нонгбуалампху</name_rus>
+<name_eng>Nong Bua Lamphu</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>346</region_id>
+<name_rus>Нонгкхай</name_rus>
+<name_eng>Nong Khai</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>347</region_id>
+<name_rus>Нонтхабури</name_rus>
+<name_eng>Nonthaburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>348</region_id>
+<name_rus>Паттани</name_rus>
+<name_eng>Pattani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>349</region_id>
+<name_rus>Патхумтхани</name_rus>
+<name_eng>Pathum Thani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>350</region_id>
+<name_rus>Прачинбури</name_rus>
+<name_eng>Prachinburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>351</region_id>
+<name_rus>Прачуапкхирикхан</name_rus>
+<name_eng>Prachuap Khiri Khan</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>352</region_id>
+<name_rus>Пхангнга</name_rus>
+<name_eng>Phang Nga</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>353</region_id>
+<name_rus>Пхаттхалунг</name_rus>
+<name_eng>Phatthalung</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>354</region_id>
+<name_rus>Пхаяу</name_rus>
+<name_eng>Phayao</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>355</region_id>
+<name_rus>Пхетбури</name_rus>
+<name_eng>Phetchaburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>356</region_id>
+<name_rus>Пхетчабун</name_rus>
+<name_eng>Phetchabun</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>357</region_id>
+<name_rus>Пхитсанулок</name_rus>
+<name_eng>Phitsanulok</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>358</region_id>
+<name_rus>Пхичит</name_rus>
+<name_eng>Phichit</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>359</region_id>
+<name_rus>Пхрэ</name_rus>
+<name_eng>Phrae</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>360</region_id>
+<name_rus>Пхукет</name_rus>
+<name_eng>Phuket</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>361</region_id>
+<name_rus>Районг</name_rus>
+<name_eng>Rayong</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>362</region_id>
+<name_rus>Ранонг</name_rus>
+<name_eng>Ranong</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>363</region_id>
+<name_rus>Ратбури</name_rus>
+<name_eng>Ratchaburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>364</region_id>
+<name_rus>Ройет</name_rus>
+<name_eng>Roi Et</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>365</region_id>
+<name_rus>Саконнакхон</name_rus>
+<name_eng>Sakon Nakhon</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>366</region_id>
+<name_rus>Сакэу</name_rus>
+<name_eng>Sa Kaeo</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>367</region_id>
+<name_rus>Самутпракан</name_rus>
+<name_eng>Samut Prakan</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>368</region_id>
+<name_rus>Самутсакхон</name_rus>
+<name_eng>Samut Sakhon</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>369</region_id>
+<name_rus>Самутсонгкхрам</name_rus>
+<name_eng>Samut Songkhram</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>370</region_id>
+<name_rus>Сарабури</name_rus>
+<name_eng>Saraburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>371</region_id>
+<name_rus>Сатун</name_rus>
+<name_eng>Satun</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>372</region_id>
+<name_rus>Сингбури</name_rus>
+<name_eng>Sing Buri</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>373</region_id>
+<name_rus>Сисакет</name_rus>
+<name_eng>Sisaket</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>374</region_id>
+<name_rus>Сонгкхла</name_rus>
+<name_eng>Songkhla</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>375</region_id>
+<name_rus>Сукхотхай</name_rus>
+<name_eng>Sukhothai Thani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>376</region_id>
+<name_rus>Супханбури</name_rus>
+<name_eng>Suphan Buri</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>377</region_id>
+<name_rus>Сураттхани</name_rus>
+<name_eng>Surat Thani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>378</region_id>
+<name_rus>Сурин</name_rus>
+<name_eng>Surin</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>379</region_id>
+<name_rus>Так</name_rus>
+<name_eng>Tak</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>380</region_id>
+<name_rus>Транг</name_rus>
+<name_eng>Trang</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>381</region_id>
+<name_rus>Трат</name_rus>
+<name_eng>Trat</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>382</region_id>
+<name_rus>Убонратчатхани</name_rus>
+<name_eng>Ubon Ratchathani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>383</region_id>
+<name_rus>Удонтхани</name_rus>
+<name_eng>Udon Thani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>384</region_id>
+<name_rus>Уттарадит</name_rus>
+<name_eng>Uttaradit</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>385</region_id>
+<name_rus>Утхайтхани</name_rus>
+<name_eng>Uthai Thani</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>386</region_id>
+<name_rus>Чайнат</name_rus>
+<name_eng>Chai Nat</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>387</region_id>
+<name_rus>Чайяпхум</name_rus>
+<name_eng>Chaiyaphum</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>388</region_id>
+<name_rus>Чантхабури</name_rus>
+<name_eng>Chanthaburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>389</region_id>
+<name_rus>Чаченгсау</name_rus>
+<name_eng>Chachoengsao</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>390</region_id>
+<name_rus>Чиангмай</name_rus>
+<name_eng>Chiang Mai</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>391</region_id>
+<name_rus>Чианграй</name_rus>
+<name_eng>Chiang Rai</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>392</region_id>
+<name_rus>Чонбури</name_rus>
+<name_eng>Chonburi</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>393</region_id>
+<name_rus>Чумпхон</name_rus>
+<name_eng>Chumphon</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>394</region_id>
+<name_rus>Яла</name_rus>
+<name_eng>Yala</name_eng>
+<country_id>488</country_id>
+</region>
+<region>
+<region_id>395</region_id>
+<name_rus>Ясотхон</name_rus>
+<name_eng>Yasothon</name_eng>
+<country_id>488</country_id>
+</region>
+<!-- Регионы Мальты/Regions of Malta -->
+<region>
+<region_id>97</region_id>
+<name_rus>Все регионы Мальты</name_rus>
+<name_eng>Malta</name_eng>
+<country_id>528</country_id>
+</region>
+<!-- Регионы Бельгии/Regions of Belgium -->
+<region>
+<region_id>80</region_id>
+<name_rus>Брюссель и окрестности</name_rus>
+<name_eng>Bruxelles</name_eng>
+<country_id>542</country_id>
+</region>
+<region>
+<region_id>81</region_id>
+<name_rus>Фландрия</name_rus>
+<name_eng>Vlaanderen</name_eng>
+<country_id>542</country_id>
+</region>
+<region>
+<region_id>82</region_id>
+<name_rus>Валлония</name_rus>
+<name_eng>Walonreye</name_eng>
+<country_id>542</country_id>
+</region>
+<!-- Регионы Австралии/Regions of Australia -->
+<region>
+<region_id>69</region_id>
+<name_rus>Новый Южный Уэльс</name_rus>
+<name_eng>New South Wales</name_eng>
+<country_id>545</country_id>
+</region>
+<region>
+<region_id>70</region_id>
+<name_rus>Квинсленд</name_rus>
+<name_eng>Queensland</name_eng>
+<country_id>545</country_id>
+</region>
+<region>
+<region_id>71</region_id>
+<name_rus>Южная Австралия</name_rus>
+<name_eng>South Australia</name_eng>
+<country_id>545</country_id>
+</region>
+<region>
+<region_id>72</region_id>
+<name_rus>Виктория</name_rus>
+<name_eng>Victoria</name_eng>
+<country_id>545</country_id>
+</region>
+<region>
+<region_id>73</region_id>
+<name_rus>Северная Территория</name_rus>
+<name_eng>Northern Territory</name_eng>
+<country_id>545</country_id>
+</region>
+<region>
+<region_id>74</region_id>
+<name_rus>Западная Австралия</name_rus>
+<name_eng>Western Australia</name_eng>
+<country_id>545</country_id>
+</region>
+<region>
+<region_id>75</region_id>
+<name_rus>Тасмания</name_rus>
+<name_eng>Tasmania</name_eng>
+<country_id>545</country_id>
+</region>
+<!-- Регионы Новой Зеландии/Regions of New Zealand -->
+<region>
+<region_id>102</region_id>
+<name_rus>Все регионы Новой Зеландии</name_rus>
+<name_eng>New Zealand</name_eng>
+<country_id>547</country_id>
+</region>
+<!-- Регионы Китая/Regions of China -->
+<region>
+<region_id>634</region_id>
+<name_rus>Аньхой</name_rus>
+<name_eng>Anhui Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>635</region_id>
+<name_rus>Пекин</name_rus>
+<name_eng>Beijing Municipality</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>636</region_id>
+<name_rus>Чунцин</name_rus>
+<name_eng>Chongqing Municipality</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>637</region_id>
+<name_rus>Фуцзянь</name_rus>
+<name_eng>Fujian Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>638</region_id>
+<name_rus>Гуандун</name_rus>
+<name_eng>Guangdong Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>639</region_id>
+<name_rus>Ганьсу</name_rus>
+<name_eng>Gansu Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>640</region_id>
+<name_rus>Гуанси-Чжуанский автономный район</name_rus>
+<name_eng>Guangxi Zhuang Autonomous Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>641</region_id>
+<name_rus>Гуйчжоу</name_rus>
+<name_eng>Guizhou Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>642</region_id>
+<name_rus>Хэнань</name_rus>
+<name_eng>Henan Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>643</region_id>
+<name_rus>Хубэй</name_rus>
+<name_eng>Hubei Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>644</region_id>
+<name_rus>Хэбэй</name_rus>
+<name_eng>Hebei Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>645</region_id>
+<name_rus>Хайнань</name_rus>
+<name_eng>Hainan Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>646</region_id>
+<name_rus>Гонконг</name_rus>
+<name_eng>Hong Kong Special Administrative Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>647</region_id>
+<name_rus>Хэйлунцзян</name_rus>
+<name_eng>Heilongjiang Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>648</region_id>
+<name_rus>Хунань</name_rus>
+<name_eng>Hunan Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>649</region_id>
+<name_rus>Гирин</name_rus>
+<name_eng>Jilin Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>650</region_id>
+<name_rus>Цзянсу</name_rus>
+<name_eng>Jiangsu Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>651</region_id>
+<name_rus>Цзянси</name_rus>
+<name_eng>Jiangxi Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>652</region_id>
+<name_rus>Ляонин</name_rus>
+<name_eng>Liaoning Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>653</region_id>
+<name_rus>Макао</name_rus>
+<name_eng>Macau Special Administrative Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>654</region_id>
+<name_rus>Внутренняя Монголия</name_rus>
+<name_eng>Inner Mongolia Autonomous Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>655</region_id>
+<name_rus>Нинся-Хуэйский автономный район</name_rus>
+<name_eng>Ningxia Hui Autonomous Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>656</region_id>
+<name_rus>Цинхай</name_rus>
+<name_eng>Qinghai Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>657</region_id>
+<name_rus>Сычуань</name_rus>
+<name_eng>Sichuan Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>658</region_id>
+<name_rus>Шаньдун</name_rus>
+<name_eng>Shandong Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>659</region_id>
+<name_rus>Шанхай</name_rus>
+<name_eng>Shanghai Municipality</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>660</region_id>
+<name_rus>Шэньси</name_rus>
+<name_eng>Shaanxi Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>661</region_id>
+<name_rus>Шаньси</name_rus>
+<name_eng>Shanxi Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>662</region_id>
+<name_rus>Тяньцзинь</name_rus>
+<name_eng>Tianjin Municipality</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>663</region_id>
+<name_rus>Синьцзян-Уйгурский автономный район</name_rus>
+<name_eng>Xinjiang Uyghur Autonomous Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>664</region_id>
+<name_rus>Тибетский автономный район</name_rus>
+<name_eng>Tibet Autonomous Region</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>665</region_id>
+<name_rus>Юньнань</name_rus>
+<name_eng>Yunnan Province</name_eng>
+<country_id>548</country_id>
+</region>
+<region>
+<region_id>666</region_id>
+<name_rus>Чжэцзян</name_rus>
+<name_eng>Zhejiang Province</name_eng>
+<country_id>548</country_id>
+</region>
+<!-- Регионы Филиппин/Regions of Philippines -->
+<region>
+<region_id>115</region_id>
+<name_rus>Лусон</name_rus>
+<name_eng>Luzon</name_eng>
+<country_id>550</country_id>
+</region>
+<!-- Регионы Албании/Regions of Albania -->
+<region>
+<region_id>77</region_id>
+<name_rus>Все регионы Албании</name_rus>
+<name_eng>Albania</name_eng>
+<country_id>553</country_id>
+</region>
+<!-- Регионы Сейшельских островов/Regions of Seychelles -->
+<region>
+<region_id>108</region_id>
+<name_rus>Все районы Сейшельских Островов</name_rus>
+<name_eng>Seychelles</name_eng>
+<country_id>555</country_id>
+</region>
+<!-- Регионы Индонезии/Regions of Indonesia -->
+<region>
+<region_id>50</region_id>
+<name_rus>Бали</name_rus>
+<name_eng>Bali</name_eng>
+<country_id>557</country_id>
+</region>
+<region>
+<region_id>51</region_id>
+<name_rus>Ломбок</name_rus>
+<name_eng>Lombok</name_eng>
+<country_id>557</country_id>
+</region>
+<region>
+<region_id>271</region_id>
+<name_rus>Сумбава</name_rus>
+<name_eng>Sumbawa</name_eng>
+<country_id>557</country_id>
+</region>
+<region>
+<region_id>683</region_id>
+<name_rus>Суматра</name_rus>
+<name_eng>Sumatra</name_eng>
+<country_id>557</country_id>
+</region>
+<region>
+<region_id>684</region_id>
+<name_rus>Ява</name_rus>
+<name_eng>Jawa</name_eng>
+<country_id>557</country_id>
+</region>
+<!-- Регионы Малайзии/Regions of Malaysia -->
+<region>
+<region_id>667</region_id>
+<name_rus>Джохор</name_rus>
+<name_eng>Johor</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>668</region_id>
+<name_rus>Кедах</name_rus>
+<name_eng>Kedah</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>669</region_id>
+<name_rus>Келантан</name_rus>
+<name_eng>Kelantan</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>670</region_id>
+<name_rus>Малакка</name_rus>
+<name_eng>Malacca</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>671</region_id>
+<name_rus>Негери-Сембилан</name_rus>
+<name_eng>Negeri Sembilan</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>672</region_id>
+<name_rus>Паханг</name_rus>
+<name_eng>Pahang</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>673</region_id>
+<name_rus>Перак</name_rus>
+<name_eng>Perak</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>674</region_id>
+<name_rus>Перлис</name_rus>
+<name_eng>Perlis</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>675</region_id>
+<name_rus>Пулау-Пинанг</name_rus>
+<name_eng>Penang</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>676</region_id>
+<name_rus>Селангор</name_rus>
+<name_eng>Selangor</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>677</region_id>
+<name_rus>Тренгану</name_rus>
+<name_eng>Terengganu</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>678</region_id>
+<name_rus>Сабах</name_rus>
+<name_eng>Sabah</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>679</region_id>
+<name_rus>Саравак</name_rus>
+<name_eng>Sarawak</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>680</region_id>
+<name_rus>Путраджая</name_rus>
+<name_eng>Putrajaya</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>681</region_id>
+<name_rus>Куала-Лумпур</name_rus>
+<name_eng>Kuala Lumpur</name_eng>
+<country_id>558</country_id>
+</region>
+<region>
+<region_id>682</region_id>
+<name_rus>Лабуан</name_rus>
+<name_eng>Labuan</name_eng>
+<country_id>558</country_id>
+</region>
+<!-- Регионы Андорры/Regions of Andorra -->
+<region>
+<region_id>78</region_id>
+<name_rus>Все регионы Андорры</name_rus>
+<name_eng>Andorra</name_eng>
+<country_id>559</country_id>
+</region>
+<!-- Регионы Маврикия/Regions of Mauritius -->
+<region>
+<region_id>262</region_id>
+<name_rus>Блэк-Ривер</name_rus>
+<name_eng>Black River</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>263</region_id>
+<name_rus>Флак</name_rus>
+<name_eng>Flacq</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>264</region_id>
+<name_rus>Гран-Порт</name_rus>
+<name_eng>Grand Port</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>265</region_id>
+<name_rus>Мока</name_rus>
+<name_eng>Moka</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>266</region_id>
+<name_rus>Памплемус</name_rus>
+<name_eng>Pamplemousses</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>267</region_id>
+<name_rus>Плен-Вилем</name_rus>
+<name_eng>Plaines Wilhems</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>268</region_id>
+<name_rus>Порт-Луи</name_rus>
+<name_eng>Port Louis</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>269</region_id>
+<name_rus>Ривьер-дю-Рампар</name_rus>
+<name_eng>Riviere du Rempart</name_eng>
+<country_id>564</country_id>
+</region>
+<region>
+<region_id>270</region_id>
+<name_rus>Саван</name_rus>
+<name_eng>Savanne</name_eng>
+<country_id>564</country_id>
+</region>
+<!-- Регионы Сербии/Regions of Serbia -->
+<region>
+<region_id>109</region_id>
+<name_rus>Белград и окрестности</name_rus>
+<name_eng>Belgrade</name_eng>
+<country_id>566</country_id>
+</region>
+<region>
+<region_id>110</region_id>
+<name_rus>Воеводина</name_rus>
+<name_eng>Vojvodina</name_eng>
+<country_id>566</country_id>
+</region>
+<region>
+<region_id>111</region_id>
+<name_rus>Центральная Сербия</name_rus>
+<name_eng>Central Serbia</name_eng>
+<country_id>566</country_id>
+</region>
+<region>
+<region_id>685</region_id>
+<name_rus>Западная Сербия</name_rus>
+<name_eng>Western Serbia</name_eng>
+<country_id>566</country_id>
+</region>
+<!-- Регионы Азербайджана/Regions of Azerbaijan -->
+<region>
+<region_id>76</region_id>
+<name_rus>Все регионы Азербайджана</name_rus>
+<name_eng>Azerbaijan</name_eng>
+<country_id>567</country_id>
+</region>
+<!-- Регионы Северных Марианских островов/Regions of Northern Mariana Islands -->
+<region>
+<region_id>622</region_id>
+<name_rus>Все регионы Северных Марианских островов</name_rus>
+<name_eng>Northern Mariana Islands</name_eng>
+<country_id>571</country_id>
+</region>
+<!-- Регионы Люксембурга/Regions of Luxembourg -->
+<region>
+<region_id>96</region_id>
+<name_rus>Все регионы Люксембурга</name_rus>
+<name_eng>Luxembourg</name_eng>
+<country_id>574</country_id>
+</region>
+<!-- Регионы Вьетнама/Regions of Vietnam -->
+<region>
+<region_id>83</region_id>
+<name_rus>Все регионы Вьетнама</name_rus>
+<name_eng>Vietnam</name_eng>
+<country_id>581</country_id>
+</region>
+<!-- Регионы Багамских островов/Regions of The Bahamas -->
+<region>
+<region_id>79</region_id>
+<name_rus>Все регионы Багамских Островов</name_rus>
+<name_eng>Bahamas</name_eng>
+<country_id>582</country_id>
+</region>
+<!-- Регионы Вануату/Regions of Vanuatu -->
+<region>
+<region_id>256</region_id>
+<name_rus>Малампа</name_rus>
+<name_eng>Malampa</name_eng>
+<country_id>621</country_id>
+</region>
+<region>
+<region_id>257</region_id>
+<name_rus>Пенама</name_rus>
+<name_eng>Penama</name_eng>
+<country_id>621</country_id>
+</region>
+<region>
+<region_id>258</region_id>
+<name_rus>Санма</name_rus>
+<name_eng>Sanma</name_eng>
+<country_id>621</country_id>
+</region>
+<region>
+<region_id>259</region_id>
+<name_rus>Тафеа</name_rus>
+<name_eng>Tafea</name_eng>
+<country_id>621</country_id>
+</region>
+<region>
+<region_id>260</region_id>
+<name_rus>Торба</name_rus>
+<name_eng>Torba</name_eng>
+<country_id>621</country_id>
+</region>
+<region>
+<region_id>261</region_id>
+<name_rus>Шефа</name_rus>
+<name_eng>Shefa</name_eng>
+<country_id>621</country_id>
+</region>
+<!-- Регионы Намибии/Regions of Namibia -->
+<region>
+<region_id>396</region_id>
+<name_rus>Восточное Каванго</name_rus>
+<name_eng>Kavango East region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>397</region_id>
+<name_rus>Замбези</name_rus>
+<name_eng>Zambezi region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>398</region_id>
+<name_rus>Западное Каванго</name_rus>
+<name_eng>Kavango west</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>399</region_id>
+<name_rus>Карас</name_rus>
+<name_eng>Karas region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>400</region_id>
+<name_rus>Кунене</name_rus>
+<name_eng>Kunene region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>401</region_id>
+<name_rus>Кхомас</name_rus>
+<name_eng>Khomas region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>402</region_id>
+<name_rus>Омахеке</name_rus>
+<name_eng>Omaheke region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>403</region_id>
+<name_rus>Омусати</name_rus>
+<name_eng>Omusati region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>404</region_id>
+<name_rus>Охангвена</name_rus>
+<name_eng>Ohangwena region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>405</region_id>
+<name_rus>Очосондьюпа</name_rus>
+<name_eng>Otjozondjupa region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>406</region_id>
+<name_rus>Ошана</name_rus>
+<name_eng>Oshana region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>407</region_id>
+<name_rus>Ошикото</name_rus>
+<name_eng>Oshikoto region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>408</region_id>
+<name_rus>Хардап</name_rus>
+<name_eng>Hardap region</name_eng>
+<country_id>675</country_id>
+</region>
+<region>
+<region_id>409</region_id>
+<name_rus>Эронго</name_rus>
+<name_eng>Erongo region</name_eng>
+<country_id>675</country_id>
+</region>
+<!-- Регионы Омана/Regions of Oman -->
+<region>
+<region_id>623</region_id>
+<name_rus>Эз-Захира</name_rus>
+<name_eng>Ad Dhahirah</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>624</region_id>
+<name_rus>Эль-Бурайми</name_rus>
+<name_eng>Al Buraymi</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>625</region_id>
+<name_rus>Мусандам</name_rus>
+<name_eng>Musandam</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>626</region_id>
+<name_rus>Эль-Вуста</name_rus>
+<name_eng>Al Wusta</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>627</region_id>
+<name_rus>Южная Эш-Шаркия</name_rus>
+<name_eng>Ash Sharqiyah South</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>628</region_id>
+<name_rus>Маскат</name_rus>
+<name_eng>Muscat</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>629</region_id>
+<name_rus>Северная Эль-Батина</name_rus>
+<name_eng>Al Batinah North</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>630</region_id>
+<name_rus>Южная Эль-Батина</name_rus>
+<name_eng>Al Batinah South</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>631</region_id>
+<name_rus>Северная Эш-Шаркия</name_rus>
+<name_eng>Ash Sharqiyah North</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>632</region_id>
+<name_rus>Эд-Дахилия</name_rus>
+<name_eng>Ad Dakhiliyah</name_eng>
+<country_id>683</country_id>
+</region>
+<region>
+<region_id>633</region_id>
+<name_rus>Дофар</name_rus>
+<name_eng>Dhofar</name_eng>
+<country_id>683</country_id>
+</region>
+<!-- Регионы Танзании/Regions of Tanzania -->
+<region>
+<region_id>279</region_id>
+<name_rus>Аруша</name_rus>
+<name_eng>Arusha</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>280</region_id>
+<name_rus>Геита</name_rus>
+<name_eng>Geita</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>281</region_id>
+<name_rus>Дар-эс-Салам</name_rus>
+<name_eng>Dar es Salaam</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>282</region_id>
+<name_rus>Додома</name_rus>
+<name_eng>Dodoma</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>283</region_id>
+<name_rus>Западный Занзибар</name_rus>
+<name_eng>Urban/West Zanzibar</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>284</region_id>
+<name_rus>Северный Занзибар</name_rus>
+<name_eng>North Zanzibar</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>285</region_id>
+<name_rus>Центрально-Южный Занзибар</name_rus>
+<name_eng>Central/South Zanzibar</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>286</region_id>
+<name_rus>Иринга</name_rus>
+<name_eng>Iringa</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>287</region_id>
+<name_rus>Кагера</name_rus>
+<name_eng>Kagera</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>288</region_id>
+<name_rus>Катави</name_rus>
+<name_eng>Katavi</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>289</region_id>
+<name_rus>Кигома</name_rus>
+<name_eng>Kigoma</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>290</region_id>
+<name_rus>Килиманджаро</name_rus>
+<name_eng>Kilimanjaro</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>291</region_id>
+<name_rus>Линди</name_rus>
+<name_eng>Lindi</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>292</region_id>
+<name_rus>Маньяра</name_rus>
+<name_eng>Manyara</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>293</region_id>
+<name_rus>Мара</name_rus>
+<name_eng>Mara</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>294</region_id>
+<name_rus>Мбея</name_rus>
+<name_eng>Mbeya</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>295</region_id>
+<name_rus>Мванза</name_rus>
+<name_eng>Mwanza</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>296</region_id>
+<name_rus>Морогоро</name_rus>
+<name_eng>Morogoro</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>297</region_id>
+<name_rus>Мтвара</name_rus>
+<name_eng>Mtwara</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>298</region_id>
+<name_rus>Нджомбе</name_rus>
+<name_eng>Njombe</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>299</region_id>
+<name_rus>Северная Пемба</name_rus>
+<name_eng>North Pemba</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>300</region_id>
+<name_rus>Южная Пемба</name_rus>
+<name_eng>South Pemba</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>301</region_id>
+<name_rus>Пвани</name_rus>
+<name_eng>Pwani</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>302</region_id>
+<name_rus>Рувума</name_rus>
+<name_eng>Ruvuma</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>303</region_id>
+<name_rus>Руква</name_rus>
+<name_eng>Rukwa</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>304</region_id>
+<name_rus>Симию</name_rus>
+<name_eng>Simiyu</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>305</region_id>
+<name_rus>Сингида</name_rus>
+<name_eng>Singida</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>306</region_id>
+<name_rus>Табора</name_rus>
+<name_eng>Tabora</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>307</region_id>
+<name_rus>Танга</name_rus>
+<name_eng>Tanga</name_eng>
+<country_id>721</country_id>
+</region>
+<region>
+<region_id>308</region_id>
+<name_rus>Шиньянга</name_rus>
+<name_eng>Shinyanga</name_eng>
+<country_id>721</country_id>
+</region>
+<!-- Регионы Французской Полинезии/Regions of French Polynesia -->
+<region>
+<region_id>272</region_id>
+<name_rus>Наветренные острова</name_rus>
+<name_eng>Windward Islands</name_eng>
+<country_id>734</country_id>
+</region>
+<region>
+<region_id>273</region_id>
+<name_rus>Подветренные острова</name_rus>
+<name_eng>Leeward Islands</name_eng>
+<country_id>734</country_id>
+</region>
+<region>
+<region_id>274</region_id>
+<name_rus>Туамоту-Гамбье</name_rus>
+<name_eng>Tuamotu-Gambier</name_eng>
+<country_id>734</country_id>
+</region>
+<region>
+<region_id>275</region_id>
+<name_rus>Маркизские острова</name_rus>
+<name_eng>Marquesas Islands</name_eng>
+<country_id>734</country_id>
+</region>
+<region>
+<region_id>276</region_id>
+<name_rus>Острова Острал</name_rus>
+<name_eng>Austral Islands</name_eng>
+<country_id>734</country_id>
+</region>
+</regions>

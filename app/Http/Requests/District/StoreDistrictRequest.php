@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\City;
+namespace App\Http\Requests\District;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCityRequest extends FormRequest
+class StoreDistrictRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

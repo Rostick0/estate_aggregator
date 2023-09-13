@@ -29,8 +29,8 @@ class PostController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="city_id",
-     *          description="City id",
+     *          name="district_id",
+     *          description="District id",
      *          in="query",
      *          example="1",
      *          @OA\Schema(
@@ -100,7 +100,7 @@ class PostController extends Controller
         $post_init = Post::with($request->extends ?? [])->orderByDesc('id');
 
         if ($request->title) $post_init->whereLike('title', $request->title);
-        if ($request->city_id) $post_init->where('city_id', $request->city_id);
+        if ($request->district_id) $post_init->where('district_id', $request->district_id);
         if ($request->rubric_id) $post_init->where('rubric_id', $request->rubric_id);
        
         if (!$post_init->count()) return abort(404, 'Not found');
@@ -122,7 +122,7 @@ class PostController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"title", "content", "city_id", "rubric_id", "source"},
+     *                      required={"title", "content", "district_id", "rubric_id", "source"},
      *                      @OA\Property(
      *                          property="title",
      *                          type="string",
@@ -134,7 +134,7 @@ class PostController extends Controller
      *                          example="Хорошо делайте, плохо не делайте"
      *                      ),
      *                      @OA\Property(
-     *                          property="city_id",
+     *                          property="district_id",
      *                          type="number",
      *                          example="3"
      *                      ),
@@ -188,10 +188,10 @@ class PostController extends Controller
      *                          example="The content field is required.",
      *                          )
      *                      ),
-     *                      @OA\Property(property="city_id", type="array", collectionFormat="multi",
+     *                      @OA\Property(property="district_id", type="array", collectionFormat="multi",
      *                          @OA\Items(
      *                          type="string",
-     *                          example="The city_id field is required.",
+     *                          example="The district_id field is required.",
      *                          )
      *                      ),
      *                      @OA\Property(property="rubric_id", type="array", collectionFormat="multi",
@@ -216,7 +216,7 @@ class PostController extends Controller
         $post = Post::create($request->only(
             'title',
             'content',
-            'city_id',
+            'district_id',
             'rubric_id',
             'source'
         ));
@@ -268,7 +268,7 @@ class PostController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"title", "content", "city_id", "rubric_id", "source", "_method"},
+     *                      required={"title", "content", "district_id", "rubric_id", "source", "_method"},
      *                      @OA\Property(
      *                          property="title",
      *                          type="string",
@@ -280,7 +280,7 @@ class PostController extends Controller
      *                          example="Хорошо делайте, плохо не делайте"
      *                      ),
      *                      @OA\Property(
-     *                          property="city_id",
+     *                          property="district_id",
      *                          type="number",
      *                          example="3"
      *                      ),
@@ -343,10 +343,10 @@ class PostController extends Controller
      *                          example="The content field is required.",
      *                          )
      *                      ),
-     *                      @OA\Property(property="city_id", type="array", collectionFormat="multi",
+     *                      @OA\Property(property="district_id", type="array", collectionFormat="multi",
      *                          @OA\Items(
      *                          type="string",
-     *                          example="The city_id field is required.",
+     *                          example="The district_id field is required.",
      *                          )
      *                      ),
      *                      @OA\Property(property="rubric_id", type="array", collectionFormat="multi",

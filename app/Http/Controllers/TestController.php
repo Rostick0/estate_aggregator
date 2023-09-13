@@ -1,18 +1,13 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Http\Controllers;
 
-use App\Models\Country;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Http\Request;
 use SimpleXMLElement;
 
-class CountrySeeder extends Seeder
+class TestController extends Controller
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function test()
     {
         $xmlData = file_get_contents(
             public_path('xmls/prian.ru_files_xml_countries.xml')
@@ -27,6 +22,6 @@ class CountrySeeder extends Seeder
             ];
         }
 
-        Country::insert($data);
+        dd($data);
     }
 }

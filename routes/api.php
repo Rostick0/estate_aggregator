@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CityController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RubricController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,9 @@ Route::group(['middleware' => 'api'], function () {
         Route::get('/me', [AuthController::class, 'me']);
     });
 
-    Route::get('city', [CityController::class, 'index']);
+    Route::get('district', [DistrictController::class, 'index']);
+    Route::get('country', [RubricController::class, 'index']);
+    Route::get('rubric', [RubricController::class, 'index']);
     Route::get('rubric', [RubricController::class, 'index']);
     
     Route::apiResources([
@@ -37,3 +40,5 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::put('/image/{id}', [ImageController::class, 'update']);
 });
+
+// Route::get('test', [TestController::class, 'test']);

@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\City\IndexCityRequest;
-use App\Models\City;
-use App\Http\Requests\City\StoreCityRequest;
-use App\Http\Requests\City\UpdateCityRequest;
-use Illuminate\Http\JsonResponse;
+use App\Http\Requests\District\IndexDistrictRequest;
+use App\Models\District;
+use App\Http\Requests\StoreDistrictRequest;
+use App\Http\Requests\UpdateDistrictRequest;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class CityController extends Controller
+class DistrictController extends Controller
 {
     /**
      * Index
      * @OA\get (
-     *     path="/api/city",
-     *     tags={"City"},
+     *     path="/api/district",
+     *     tags={"District"},
      *     @OA\Parameter(
      *          name="name",
-     *          description="Name city",
+     *          description="Name district",
      *          in="query",
      *          example="Москва",
      *          @OA\Schema(
@@ -60,7 +60,7 @@ class CityController extends Controller
      *              @OA\Items(
      *                  @OA\Schema(type="string"),
      *              ),
-     *              example={"posts"},
+     *              example={"posts", "region"},
      *          )
      *      ),
      *      @OA\Response(
@@ -68,7 +68,7 @@ class CityController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/CitySchema"
+     *                  ref="#/components/schemas/DistrictSchema"
      *              ),
      *          )
      *      ),
@@ -82,18 +82,18 @@ class CityController extends Controller
      *      )
      * )
      */
-    public function index(IndexCityRequest $request)
+    public function index(IndexDistrictRequest $request)
     {
-        $city_init = City::with($request->extends ?? [])->orderByDesc('name');
+        $data_init = District::with($request->extends ?? [])->orderByDesc('name');
 
-        if ($request->name) $city_init->whereLike('name', $request->name);
+        if ($request->name) $data_init->whereLike('name', $request->name);
 
-        if (!$city_init->count()) return abort(404, 'Not found');
+        if (!$data_init->count()) return abort(404, 'Not found');
 
-        $city = $city_init->paginate($request->limit ?? 50);
+        $data = $data_init->paginate($request->limit ?? 50);
 
-        return new JsonResponse(
-            $city
+        return new JsonResource(
+            $data
         );
     }
 
@@ -108,7 +108,7 @@ class CityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCityRequest $request)
+    public function store(StoreDistrictRequest $request)
     {
         //
     }
@@ -116,7 +116,7 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(City $city)
+    public function show(District $district)
     {
         //
     }
@@ -124,7 +124,7 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(City $city)
+    public function edit(District $district)
     {
         //
     }
@@ -132,7 +132,7 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCityRequest $request, City $city)
+    public function update(UpdateDistrictRequest $request, District $district)
     {
         //
     }
@@ -140,7 +140,7 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(City $city)
+    public function destroy(District $district)
     {
         //
     }

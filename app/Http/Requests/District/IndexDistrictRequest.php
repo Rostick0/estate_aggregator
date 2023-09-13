@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Post;
+namespace App\Http\Requests\District;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class IndexPostRequest extends FormRequest
+class IndexDistrictRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,10 @@ class IndexPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'string',
-            'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
-            'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
-            'page' => 'numeirc',
-            'limit' => 'numeric|max:50',
+            'name' => 'string',
+            'country_id' => 'numeric|'  . Rule::exists('countries', 'id'),
+            'page' => 'numeric',
+            'limit' => 'numeric|max:150',
             'extends' => 'array'
         ];
     }
