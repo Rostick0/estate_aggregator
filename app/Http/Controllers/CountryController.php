@@ -79,14 +79,12 @@ class CountryController extends Controller
 
         if ($request->name) $country_init->whereLike('name', $request->name);
 
-        if ($country_init->isEmpty()) return abort(404, 'Not found');
+        if (!$country_init->count()) return abort(404, 'Not found');
 
         $country = $country_init->orderByDesc('name')->paginate($request->limit ?? 50);
 
         return new JsonResource(
-            [
-                'data' => $country
-            ]
+            $country
         );
     }
 

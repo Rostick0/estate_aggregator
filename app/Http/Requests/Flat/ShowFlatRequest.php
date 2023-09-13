@@ -4,14 +4,14 @@ namespace App\Http\Requests\Flat;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFlatRequest extends FormRequest
+class ShowFlatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class UpdateFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'extends' => 'array'
         ];
     }
 }

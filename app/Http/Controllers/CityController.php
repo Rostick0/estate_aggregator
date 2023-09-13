@@ -6,6 +6,7 @@ use App\Http\Requests\City\IndexCityRequest;
 use App\Models\City;
 use App\Http\Requests\City\StoreCityRequest;
 use App\Http\Requests\City\UpdateCityRequest;
+use Illuminate\Http\JsonResponse;
 
 class CityController extends Controller
 {
@@ -83,17 +84,17 @@ class CityController extends Controller
      */
     public function index(IndexCityRequest $request)
     {
-        $city_init = City::extends($request->extends ?? [])->orderByDesc('name');
+        $city_init = City::with($request->extends ?? [])->orderByDesc('name');
 
         if ($request->name) $city_init->whereLike('name', $request->name);
 
-        if ($city_init->isEmpty()) return abort(404, 'Not found');
+        if (!$city_init->count()) return abort(404, 'Not found');
 
         $city = $city_init->paginate($request->limit ?? 50);
 
-        return response()->json([
-            'data' => $city
-        ]);
+        return new JsonResponse(
+            $city
+        );
     }
 
     /**

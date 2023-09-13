@@ -2,65 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Flat\ShowFlatRequest;
 use App\Models\Flat;
-use App\Http\Requests\StoreFlatRequest;
-use App\Http\Requests\UpdateFlatRequest;
+use App\Http\Requests\Flat\StoreFlatRequest;
+use App\Http\Requests\Flat\UpdateFlatRequest;
+use App\Utils\ImageDBUtil;
+use Illuminate\Http\JsonResponse;
 
 class FlatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreFlatRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Flat $flat)
+    public function show(ShowFlatRequest $request, int $id)
+    {
+        $flat = Flat::with($request->extends ?? [])->findOrFail($id);
+
+        return new JsonResponse(
+            [
+                'data' => $flat
+            ],
+        );
+    }
+
+    public function update(UpdateFlatRequest $request, int $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Flat $flat)
+    public function destroy(int $id)
     {
-        //
-    }
+        $flat = Flat::findOrFail($id);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateFlatRequest $request, Flat $flat)
-    {
-        //
-    }
+        if (auth()->check() && auth()?->user()?->cannot('delete', $flat)) return abort(403, 'No access');
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Flat $flat)
-    {
-        //
+        $delete_image_ids = collect($flat->images())->map(function ($item) {
+            return $item->id;
+        });
+        ImageDBUtil::deleteImage([...$delete_image_ids], $id);
+        Flat::destroy($id);
+
+        return new JsonResponse(
+            [
+                'message' => 'Deleted'
+            ],
+            204
+        );
     }
 }

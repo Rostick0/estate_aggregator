@@ -102,10 +102,10 @@ class PostController extends Controller
         if ($request->title) $post_init->whereLike('title', $request->title);
         if ($request->city_id) $post_init->where('city_id', $request->city_id);
         if ($request->rubric_id) $post_init->where('rubric_id', $request->rubric_id);
+       
+        if (!$post_init->count()) return abort(404, 'Not found');
 
         $post = $post_init->paginate($request->limit ?? 20);
-
-        if ($post->isEmpty()) return abort(404, 'Not found');
 
         return new JsonResponse(
             $post
@@ -240,7 +240,7 @@ class PostController extends Controller
 
     public function show(ShowPostRequest $request, int $id)
     {
-        $post = Post::with($request ?? [])->findOrFail($id);
+        $post = Post::with($request->extends ?? [])->findOrFail($id);
 
         return new JsonResponse(
             [
