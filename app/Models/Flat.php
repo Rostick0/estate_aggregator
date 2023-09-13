@@ -36,10 +36,10 @@ class Flat extends Model
         'total_floor',
         'building_type',
         'building_date',
-        
-        // 'contact_id',
-
+        'contact_id',
         'specialtxt',
         'description',
+        'filename',
+        'tour_link',
     ];
 }

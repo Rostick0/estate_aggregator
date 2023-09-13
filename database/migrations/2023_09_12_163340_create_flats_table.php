@@ -38,12 +38,11 @@ return new class extends Migration
             $table->integer('total_floor');
             $table->integer('building_type');
             $table->string('building_date');
-            
-            // $table->integer('contact_id');
-
+            $table->foreignId('contact_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('specialtxt')->nullable();
             $table->text('description')->nullable();
-            
+            $table->string('filename')->nullable();
+            $table->string('tour_link')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -28,8 +28,6 @@ class RubricSeeder extends Seeder
             ],
         ];
 
-        foreach ($rubrics as $rubric) {
-            Rubric::firstOrCreate($rubric);
-        }
+        Rubric::insert($rubrics);
     }
 }

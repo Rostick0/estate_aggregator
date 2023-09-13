@@ -15,18 +15,19 @@ class CitySeeder extends Seeder
     {
         $cities = [
             [
-                'name' => 'Москва'
+                'name' => 'Москва',
+                'country_id' => 1
             ],
             [
-                'name' => 'Санкт-Петербург'
+                'name' => 'Санкт-Петербург',
+                'country_id' => 1
             ],
             [
-                'name' => 'Казань'
+                'name' => 'Казань',
+                'country_id' => 1
             ]
         ];
 
-        foreach ($cities as $city) {
-            City::firstOrCreate($city);
-        }
+        City::insert($cities);
     }
 }

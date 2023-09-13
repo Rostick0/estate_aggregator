@@ -11,5 +11,6 @@ class ObjectFlat extends Model
 
     protected $fillable = [
         'name',
+        'type'
     ];
 }

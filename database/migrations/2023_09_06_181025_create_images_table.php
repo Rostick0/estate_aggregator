@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('name');
             $table->string('path');
-            $table->number('width');
-            $table->number('height');
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
             $table->timestamps();
         });
     }
