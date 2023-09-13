@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\District\IndexDistrictRequest;
 use App\Models\District;
-use App\Http\Requests\StoreDistrictRequest;
-use App\Http\Requests\UpdateDistrictRequest;
+use App\Http\Requests\District\StoreDistrictRequest;
+use App\Http\Requests\District\UpdateDistrictRequest;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DistrictController extends Controller
@@ -84,7 +84,7 @@ class DistrictController extends Controller
      */
     public function index(IndexDistrictRequest $request)
     {
-        $data_init = District::with($request->extends ?? [])->orderByDesc('name');
+        $data_init = District::with($request->extends ?? [])->orderBy('name');
 
         if ($request->name) $data_init->whereLike('name', $request->name);
 

@@ -404,18 +404,18 @@
                 ]
             }
         },
-        "/api/city": {
+        "/api/country": {
             "get": {
                 "tags": [
-                    "City"
+                    "Country"
                 ],
                 "summary": "Index",
-                "operationId": "c2504917c4da1139bffc3dd1d5409f8f",
+                "operationId": "63d29649fcf556d72cacfc54b8696f1f",
                 "parameters": [
                     {
                         "name": "name",
                         "in": "query",
-                        "description": "Name city",
+                        "description": "Name country",
                         "schema": {
                             "type": "string"
                         },
@@ -447,7 +447,7 @@
                             "type": "array",
                             "items": {},
                             "example": [
-                                "posts"
+                                "regions"
                             ]
                         }
                     }
@@ -460,7 +460,100 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/CitySchema"
+                                            "$ref": "#/components/schemas/CountrySchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/district": {
+            "get": {
+                "tags": [
+                    "District"
+                ],
+                "summary": "Index",
+                "operationId": "09b3bc4dc23bef12c24ffffbfa09aee2",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name district",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Москва"
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "Country id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "30"
+                    },
+                    {
+                        "name": "extends[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {},
+                            "example": [
+                                "posts",
+                                "region"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/DistrictSchema"
                                         }
                                     },
                                     "type": "object"
@@ -505,9 +598,9 @@
                         "example": "Сайт"
                     },
                     {
-                        "name": "city_id",
+                        "name": "district_id",
                         "in": "query",
-                        "description": "City id",
+                        "description": "District id",
                         "schema": {
                             "type": "number"
                         },
@@ -595,7 +688,7 @@
                 "tags": [
                     "Post"
                 ],
-                "summary": "Post store",
+                "summary": "Store",
                 "operationId": "2b5846c8a1e7a22fa31af93f7accb003",
                 "requestBody": {
                     "content": {
@@ -604,7 +697,7 @@
                                 "required": [
                                     "title",
                                     "content",
-                                    "city_id",
+                                    "district_id",
                                     "rubric_id",
                                     "source"
                                 ],
@@ -617,7 +710,7 @@
                                         "type": "string",
                                         "example": "Хорошо делайте, плохо не делайте"
                                     },
-                                    "city_id": {
+                                    "district_id": {
                                         "type": "number",
                                         "example": "3"
                                     },
@@ -687,11 +780,11 @@
                                                     },
                                                     "collectionFormat": "multi"
                                                 },
-                                                "city_id": {
+                                                "district_id": {
                                                     "type": "array",
                                                     "items": {
                                                         "type": "string",
-                                                        "example": "The city_id field is required."
+                                                        "example": "The district_id field is required."
                                                     },
                                                     "collectionFormat": "multi"
                                                 },
@@ -733,7 +826,7 @@
                 "tags": [
                     "Post"
                 ],
-                "summary": "Post update",
+                "summary": "Update",
                 "operationId": "5dd9f9ecae375d4c615dfc3bac75b741",
                 "parameters": [
                     {
@@ -753,7 +846,7 @@
                                 "required": [
                                     "title",
                                     "content",
-                                    "city_id",
+                                    "district_id",
                                     "rubric_id",
                                     "source",
                                     "_method"
@@ -767,7 +860,7 @@
                                         "type": "string",
                                         "example": "Хорошо делайте, плохо не делайте"
                                     },
-                                    "city_id": {
+                                    "district_id": {
                                         "type": "number",
                                         "example": "3"
                                     },
@@ -844,11 +937,11 @@
                                                     },
                                                     "collectionFormat": "multi"
                                                 },
-                                                "city_id": {
+                                                "district_id": {
                                                     "type": "array",
                                                     "items": {
                                                         "type": "string",
-                                                        "example": "The city_id field is required."
+                                                        "example": "The district_id field is required."
                                                     },
                                                     "collectionFormat": "multi"
                                                 },
@@ -888,7 +981,7 @@
                 "tags": [
                     "Post"
                 ],
-                "summary": "Post delete",
+                "summary": "Delete",
                 "operationId": "6d25b4d3f1749560f4d0d0ae67e41858",
                 "parameters": [
                     {
@@ -942,6 +1035,90 @@
                 ]
             }
         },
+        "/api/region": {
+            "get": {
+                "tags": [
+                    "Region"
+                ],
+                "summary": "Index",
+                "operationId": "0c51f58df055e5721d4627d15b7ceb04",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name region",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Москва"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "30"
+                    },
+                    {
+                        "name": "extends[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {},
+                            "example": [
+                                "country",
+                                "districts"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RegionSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/rubric": {
             "get": {
                 "tags": [
@@ -971,7 +1148,28 @@
     },
     "components": {
         "schemas": {
-            "CitySchema": {
+            "CountrySchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Россия"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "DistrictSchema": {
                 "properties": {
                     "id": {
                         "type": "number",
@@ -980,6 +1178,14 @@
                     "name": {
                         "type": "string",
                         "example": "Москва"
+                    },
+                    "importance": {
+                        "type": "number",
+                        "example": 0
+                    },
+                    "region_id": {
+                        "type": "number",
+                        "example": 1
                     },
                     "created_at": {
                         "type": "string",
@@ -1013,14 +1219,6 @@
                     "path": {
                         "type": "number",
                         "example": "http://site.com/url"
-                    },
-                    "rubric_id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "source": {
-                        "type": "string",
-                        "example": "<a href=\">источник<a>"
                     },
                     "width": {
                         "type": "number",
@@ -1059,7 +1257,7 @@
                         "type": "number",
                         "example": 1
                     },
-                    "city_id": {
+                    "district_id": {
                         "type": "number",
                         "example": 1
                     },
@@ -1086,6 +1284,31 @@
                 },
                 "type": "object"
             },
+            "RegionSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Центральная Греция и Пелопоннес"
+                    },
+                    "country_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
             "RubricSchema": {
                 "properties": {
                     "id": {
@@ -1094,7 +1317,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "example": "Продажа"
+                        "example": "Туризм"
                     },
                     "created_at": {
                         "type": "string",

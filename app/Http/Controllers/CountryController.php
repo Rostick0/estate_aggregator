@@ -9,7 +9,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class CountryController extends Controller
 {
-
     /**
      * Index
      * @OA\get (
@@ -51,7 +50,7 @@ class CountryController extends Controller
      *              @OA\Items(
      *                  @OA\Schema(type="string"),
      *              ),
-     *              example={"cities"},
+     *              example={"regions"},
      *          )
      *      ),
      *      @OA\Response(
@@ -81,7 +80,7 @@ class CountryController extends Controller
 
         if (!$country_init->count()) return abort(404, 'Not found');
 
-        $country = $country_init->orderByDesc('name')->paginate($request->limit ?? 50);
+        $country = $country_init->orderBy('name')->paginate($request->limit ?? 50);
 
         return new JsonResource(
             $country

@@ -24,8 +24,8 @@ class Country extends Model
         'name',
     ];
 
-    public function cities(): HasMany
+    public function regions(): HasMany
     {
-        return $this->hasMany(City::class, 'id', 'country_id');
+        return $this->hasMany(Region::class, 'id', 'country_id');
     }
 }

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="name", type="string", example="Москва"),
  *       @OA\Property(property="importance", type="number", example=0),
- *       @OA\Property(property="country_id", type="number", example=1),
+ *       @OA\Property(property="region_id", type="number", example=1),
  *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
  *    )

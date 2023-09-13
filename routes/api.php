@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
@@ -30,8 +32,8 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::get('district', [DistrictController::class, 'index']);
-    Route::get('country', [RubricController::class, 'index']);
-    Route::get('rubric', [RubricController::class, 'index']);
+    Route::get('country', [CountryController::class, 'index']);
+    Route::get('region', [RegionController::class, 'index']);
     Route::get('rubric', [RubricController::class, 'index']);
     
     Route::apiResources([

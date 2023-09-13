@@ -24,7 +24,7 @@ class IndexDistrictRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'country_id' => 'numeric|'  . Rule::exists('countries', 'id'),
+            'region_id' => 'numeric|'  . Rule::exists('regions', 'id'),
             'page' => 'numeric',
             'limit' => 'numeric|max:150',
             'extends' => 'array'
