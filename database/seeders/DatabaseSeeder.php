@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             DistrictSeeder::class,
             RubricSeeder::class,
             UserSeeder::class,
-            ObjectFlatSeeder::class
+            FlatTypeSeeder::class,
+            ObjectFlatSeeder::class,
+            PropertyAndPropertyValueSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

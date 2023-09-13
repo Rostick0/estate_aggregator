@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('flats', function (Blueprint $table) {
             $table->id();
             $table->integer('object_id');
-            $table->integer('type_id');
+            $table->foreignId('type_id')->references('id')->on('flat_types')->onDelete('cascade');
             $table->integer('country_id');
             $table->integer('district_id');
             $table->string('district')->nullable();
