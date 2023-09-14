@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('property_id')->references('id')->on('properties')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

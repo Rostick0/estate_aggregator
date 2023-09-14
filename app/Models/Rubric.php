@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Model;
  *    schema="RubricSchema",
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="name", type="string", example="Туризм"),
- *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
- *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
  *    )
  * )
  */
 class Rubric extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 
     protected $fillable = [
         'name',

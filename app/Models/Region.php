@@ -33,6 +33,6 @@ class Region extends Model
 
     public function districts(): HasMany
     {
-        return $this->hasMany(District::class, 'id', 'region_id');
+        return $this->hasMany(District::class, 'region_id', 'id');
     }
 }

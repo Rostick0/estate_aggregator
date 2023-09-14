@@ -31,7 +31,7 @@ class District extends Model
 
     public function posts(): HasMany
     {
-        return $this->hasMany(Post::class, 'id', 'district_id');
+        return $this->hasMany(Post::class, 'district_id', 'id');
     }
 
     public function region(): BelongsTo

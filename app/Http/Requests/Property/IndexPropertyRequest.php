@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Country;
+namespace App\Http\Requests\Property;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class IndexCountryRequest extends FormRequest
+class IndexPropertyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +22,6 @@ class IndexCountryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string',
-            'page' => 'numeric',
-            'limit' => 'numeric|max:150',
             'extends' => 'array'
         ];
     }
