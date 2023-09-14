@@ -36,7 +36,7 @@ return new class extends Migration
             $table->float('square_land_unit');
             $table->integer('floor');
             $table->integer('total_floor');
-            $table->integer('building_type');
+            $table->foreignId('building_type')->references('id')->on('building_types')->onDelete('cascade');
             $table->string('building_date');
             $table->foreignId('contact_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('specialtxt')->nullable();

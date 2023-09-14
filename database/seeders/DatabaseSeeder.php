@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FlatTypeSeeder::class,
             ObjectFlatSeeder::class,
+            CurrencySeeder::class,
+            BuildingTypeSeeder::class,
+            SquareLandUnitSeeder::class,
             PropertyAndPropertyValueSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
