@@ -580,6 +580,299 @@
                 }
             }
         },
+        "/api/flat": {
+            "post": {
+                "tags": [
+                    "Flat"
+                ],
+                "summary": "Store",
+                "operationId": "9101a7e38d7cac361dcdf1eae0df364f",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "object_id",
+                                    "type_id",
+                                    "country_id",
+                                    "district_id",
+                                    "longitude",
+                                    "latitude",
+                                    "currency_id",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "object_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "type_id": {
+                                        "description": "Продажа 1 или аренда 2",
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "district_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "district": {
+                                        "type": "string",
+                                        "example": "Город, которого нет в бд"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Пушкина 1"
+                                    },
+                                    "longitude": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "latitude": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "currency_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "10000000"
+                                    },
+                                    "price_day": {
+                                        "type": "number",
+                                        "example": "3000"
+                                    },
+                                    "price_week": {
+                                        "type": "number",
+                                        "example": "10000"
+                                    },
+                                    "price_month": {
+                                        "type": "number",
+                                        "example": "35000"
+                                    },
+                                    "not_show_price": {
+                                        "type": "boolean",
+                                        "example": "0"
+                                    },
+                                    "rooms": {
+                                        "type": "number",
+                                        "example": "2"
+                                    },
+                                    "bedrooms": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "bathrooms": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "square": {
+                                        "type": "number",
+                                        "example": "40"
+                                    },
+                                    "square_land": {
+                                        "type": "number",
+                                        "example": "40"
+                                    },
+                                    "square_land_unit": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "floor": {
+                                        "type": "number",
+                                        "example": "10"
+                                    },
+                                    "total_floor": {
+                                        "type": "number",
+                                        "example": "10"
+                                    },
+                                    "building_type": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "building_date": {
+                                        "type": "string",
+                                        "example": "15.05.2012"
+                                    },
+                                    "specialtxt": {
+                                        "type": "string",
+                                        "example": "Специальный текст, специально для сайта"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Описание, которые покорит сердца покупателя"
+                                    },
+                                    "filename": {
+                                        "type": "string",
+                                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                    },
+                                    "tour_link": {
+                                        "type": "string",
+                                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                    },
+                                    "propertie_values[]": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "images[]": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FlatSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The title field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The title title is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "content": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The content field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "district_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The district_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "rubric_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The rubric_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "source": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The source field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/api/flat/{id}": {
+            "delete": {
+                "tags": [
+                    "Flat"
+                ],
+                "summary": "Delete",
+                "operationId": "30d84dd52e1dd61120989c8460ec3009",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Flat id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
         "/api/post": {
             "get": {
                 "tags": [
@@ -1198,6 +1491,143 @@
                 },
                 "type": "object"
             },
+            "FlatSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "object_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "type_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "country_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "district_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "district": {
+                        "type": "string",
+                        "example": "Редкий город"
+                    },
+                    "address": {
+                        "type": "string",
+                        "example": "Пушкин 1"
+                    },
+                    "longitude": {
+                        "type": "string",
+                        "example": "31.31"
+                    },
+                    "latitude": {
+                        "type": "string",
+                        "example": "79.01"
+                    },
+                    "currency_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "price": {
+                        "type": "number",
+                        "example": 100000
+                    },
+                    "price_per_meter": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "price_day": {
+                        "type": "number",
+                        "example": 3000
+                    },
+                    "price_week": {
+                        "type": "number",
+                        "example": 10000
+                    },
+                    "price_month": {
+                        "type": "number",
+                        "example": 30000
+                    },
+                    "not_show_price": {
+                        "type": "boolean",
+                        "example": 0
+                    },
+                    "rooms": {
+                        "type": "number",
+                        "example": 2
+                    },
+                    "bedrooms": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "bathrooms": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "square": {
+                        "type": "number",
+                        "example": 10
+                    },
+                    "square_land": {
+                        "type": "number",
+                        "example": 0
+                    },
+                    "square_land_unit": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "floor": {
+                        "type": "number",
+                        "example": 10
+                    },
+                    "total_floor": {
+                        "type": "number",
+                        "example": 10
+                    },
+                    "building_type": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "building_date": {
+                        "type": "string",
+                        "example": "15.09.2023"
+                    },
+                    "contact_id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "specialtxt": {
+                        "type": "string",
+                        "example": "Я сео текст походу"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Описание, которые мы заслужили"
+                    },
+                    "filename": {
+                        "type": "string",
+                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                    },
+                    "tour_link": {
+                        "type": "string",
+                        "example": "https://my.matterport.com/show/?m=aPjao3BZ25x"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
             "ImageSchema": {
                 "properties": {
                     "id": {
@@ -1284,6 +1714,36 @@
                 },
                 "type": "object"
             },
+            "PropertySchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Расположение"
+                    }
+                },
+                "type": "object"
+            },
+            "PropertyValueSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "У моря"
+                    },
+                    "property_id": {
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "RegionSchema": {
                 "properties": {
                     "id": {
@@ -1318,14 +1778,6 @@
                     "name": {
                         "type": "string",
                         "example": "Туризм"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
                     }
                 },
                 "type": "object"

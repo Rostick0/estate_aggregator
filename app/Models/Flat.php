@@ -8,6 +8,46 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
+/**
+ * @OA\Schema(
+ *    schema="FlatSchema",
+ *       @OA\Property(property="id", type="number", example=1),
+ *       @OA\Property(property="object_id", type="number", example=1),
+ *       @OA\Property(property="type_id", type="number", example=1),
+ *       @OA\Property(property="country_id", type="number", example=1),
+ *       @OA\Property(property="district_id", type="number", example=1),
+ *       @OA\Property(property="district", type="string", example="Редкий город"),
+ *       @OA\Property(property="address", type="string", example="Пушкин 1"),
+ *       @OA\Property(property="longitude", type="string", example="31.31"),
+ *       @OA\Property(property="latitude", type="string", example="79.01"),
+ *       @OA\Property(property="currency_id", type="number", example=1),
+ *       @OA\Property(property="price", type="number", example=100000),
+ *       @OA\Property(property="price_per_meter", type="number", example=1),
+ *       @OA\Property(property="price_day", type="number", example=3000),
+ *       @OA\Property(property="price_week", type="number", example=10000),
+ *       @OA\Property(property="price_month", type="number", example=30000),
+ *       @OA\Property(property="not_show_price", type="boolean", example=0),
+ *       @OA\Property(property="rooms", type="number", example=2),
+ *       @OA\Property(property="bedrooms", type="number", example=1),
+ *       @OA\Property(property="bathrooms", type="number", example=1),
+ *       @OA\Property(property="square", type="number", example=10),
+ *       @OA\Property(property="square_land", type="number", example=0),
+ *       @OA\Property(property="square_land_unit", type="number", example=1),
+ *       @OA\Property(property="floor", type="number", example=10),
+ *       @OA\Property(property="total_floor", type="number", example=10),
+ *       @OA\Property(property="building_type", type="number", example=1),
+ *       @OA\Property(property="building_date", type="string", example="15.09.2023"),
+ *       @OA\Property(property="contact_id", type="number", example=1),
+ *       @OA\Property(property="specialtxt", type="string", example="Я сео текст походу"),
+ *       @OA\Property(property="description", type="string", example="Описание, которые мы заслужили"),
+ *       @OA\Property(property="filename", type="string", example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"),
+ *       @OA\Property(property="tour_link", type="string", example="https://my.matterport.com/show/?m=aPjao3BZ25x"),
+ *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
+ *    )
+ * )
+ */
 class Flat extends Model
 {
     use HasFactory, SoftDeletes;

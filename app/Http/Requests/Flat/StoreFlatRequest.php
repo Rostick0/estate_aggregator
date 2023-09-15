@@ -34,7 +34,6 @@ class StoreFlatRequest extends FormRequest
             'latitude' => 'required',
             'currency_id' => 'required|numeric|' . Rule::exists('currencies', 'id'),
             'price' => '',
-            'price_per_meter' => '',
             'price_day' => '',
             'price_week' => '',
             'price_month' => '',
