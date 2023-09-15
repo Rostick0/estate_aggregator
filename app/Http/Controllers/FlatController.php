@@ -405,6 +405,63 @@ class FlatController extends Controller
         );
     }
 
+    /**
+     * Show
+     * @OA\get (
+     *     path="/api/flat/{id}",
+     *     tags={"Flat"},
+     *     @OA\Parameter( 
+     *          name="id",
+     *          description="Id",
+     *          in="query",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          ),
+     *     ),
+     *      @OA\Parameter(
+     *          name="extends[]",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"flat_properties", "object", "type", "country", "district", "currency", "square_land_unit", "building_type", "user", "images"},
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="flat_properties[]",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/PostSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
+     */
     public function show(ShowFlatRequest $request, int $id)
     {
         $flat = Flat::with($request->extends ?? [])->findOrFail($id);

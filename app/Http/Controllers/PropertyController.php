@@ -9,7 +9,33 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PropertyController extends Controller
 {
-    
+    /**
+     * Index
+     * @OA\get (
+     *     path="/api/property",
+     *     tags={"Property"},
+     *      @OA\Parameter(
+     *          name="extends[]",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"property_values"},
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/PropertySchema"
+     *              ),
+     *          )
+     *      ),
+     */
     public function index(IndexPropertyRequest $request)
     {
         $data = Property::with($request->extends ?? [])->get();

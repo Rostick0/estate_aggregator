@@ -237,7 +237,52 @@ class PostController extends Controller
         );
     }
 
-
+    /**
+     * Show
+     * @OA\get (
+     *     path="/api/post/{id}",
+     *     tags={"Post"},
+     *      @OA\Parameter( 
+     *          name="id",
+     *          description="Id",
+     *          in="query",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          ),
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends[]",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"images", "main_image", "user", "district", "rubric"},
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/PostSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
+     */
     public function show(ShowPostRequest $request, int $id)
     {
         $post = Post::with($request->extends ?? [])->findOrFail($id);
