@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Property\IndexPropertyRequest;
 use App\Models\Property;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class PropertyController extends Controller
 {
@@ -40,7 +40,7 @@ class PropertyController extends Controller
     {
         $data = Property::with($request->extends ?? [])->get();
     
-        return new JsonResource(
+        return new JsonResponse(
             [
                 'data' => $data
             ]

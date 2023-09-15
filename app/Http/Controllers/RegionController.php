@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Region\IndexRegionRequest;
 use App\Models\Region;
-use App\Http\Requests\StoreRegionRequest;
-use App\Http\Requests\UpdateRegionRequest;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Requests\Region\StoreRegionRequest;
+use App\Http\Requests\Region\UpdateRegionRequest;
+use Illuminate\Http\JsonResponse;
 
 class RegionController extends Controller
 {
@@ -83,7 +83,7 @@ class RegionController extends Controller
 
         $data = $data_init->paginate($request->limit ?? 50);
 
-        return new JsonResource(
+        return new JsonResponse(
             $data
         );
     }

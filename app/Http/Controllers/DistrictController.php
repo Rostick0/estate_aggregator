@@ -6,7 +6,7 @@ use App\Http\Requests\District\IndexDistrictRequest;
 use App\Models\District;
 use App\Http\Requests\District\StoreDistrictRequest;
 use App\Http\Requests\District\UpdateDistrictRequest;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\JsonResponse;
 
 class DistrictController extends Controller
 {
@@ -92,7 +92,7 @@ class DistrictController extends Controller
 
         $data = $data_init->paginate($request->limit ?? 50);
 
-        return new JsonResource(
+        return new JsonResponse(
             $data
         );
     }

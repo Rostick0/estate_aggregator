@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
@@ -38,6 +40,9 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('rubric', [RubricController::class, 'index']);
     Route::get('property', [PropertyController::class, 'index']);
     
+    Route::post('application', [ApplicationController::class, 'store']);
+    Route::post('application-flat', [ApplicationFlatController::class, 'store']);
+
     Route::apiResources([
         'post' => PostController::class
     ]);

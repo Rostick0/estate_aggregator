@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Country\IndexCountryRequest;
 use App\Models\Country;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class CountryController extends Controller
 {
@@ -82,7 +82,7 @@ class CountryController extends Controller
 
         $country = $country_init->orderBy('name')->paginate($request->limit ?? 50);
 
-        return new JsonResource(
+        return new JsonResponse(
             $country
         );
     }
