@@ -372,7 +372,13 @@ class PostController extends Controller
 
         if (auth()?->user()?->cannot('update', $post)) return abort(403, 'No access');
 
-        $post->update($request);
+        $post->update($request->only(
+            'title',
+            'content',
+            'district_id',
+            'rubric_id',
+            'source'
+        ));
 
         if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post, 'post');
         if ($request->hasFile('main_image')) {
@@ -382,7 +388,7 @@ class PostController extends Controller
             );
         }
 
-        if (!empty($request->images_delete)) ImageDBUtil::deleteImage($request->images_delete, $id);
+        if (!empty($request->images_delete)) ImageDBUtil::deleteImage($request->images_delete, $id, 'post');
 
         return new JsonResponse(
             [
@@ -434,7 +440,7 @@ class PostController extends Controller
             return $item->id;
         });
 
-        ImageDBUtil::deleteImage([...$delete_image_ids], $id);
+        ImageDBUtil::deleteImage([...$delete_image_ids], $id, 'post');
         Post::destroy($id);
 
         return new JsonResponse(

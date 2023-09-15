@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageDBUtil
 {
-    public static function create($image, Model $model, string $type) {
+    public static function create($image, Model $model, string $type)
+    {
         $path = ImageUtil::upload($image);
 
         [$width, $height] = getimagesize($image);
@@ -30,9 +31,12 @@ class ImageDBUtil
         }
     }
 
-    public static function deleteImage(array $images_delete_ids, int $id)
+    public static function deleteImage(array $images_delete_ids, int $id, string $type)
     {
-        $images = collect(Image::whereIn('id', $images_delete_ids)->where('type_id', $id)->get());
+        $images = collect(Image::whereIn('id', $images_delete_ids)->where([
+            ['type_id', '=', $id],
+            ['type', '=', $type]
+        ])->get());
 
         $images->each(function ($item) {
             ImageUtil::delete($item->path);
