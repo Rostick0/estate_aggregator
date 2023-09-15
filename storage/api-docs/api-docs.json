@@ -581,6 +581,150 @@
             }
         },
         "/api/flat": {
+            "get": {
+                "tags": [
+                    "Flat"
+                ],
+                "summary": "Index",
+                "operationId": "bbfd926c388bacac9605902386f1b625",
+                "parameters": [
+                    {
+                        "name": "object_id",
+                        "in": "query",
+                        "description": "Object id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "type_id",
+                        "in": "query",
+                        "description": "Покупка 1 или аренда 2",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "currency_id",
+                        "in": "query",
+                        "description": "Тип валюты",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Price",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "Country id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по стране, городу, адресу",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {},
+                            "example": [
+                                "flat_properties",
+                                "object",
+                                "type",
+                                "country",
+                                "district",
+                                "currency",
+                                "square_land_unit",
+                                "building_type",
+                                "user",
+                                "images"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "flat_properties[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {}
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PostSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Flat"
@@ -717,7 +861,7 @@
                                     },
                                     "propertie_values[]": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "number"
                                     },
                                     "images[]": {
                                         "type": "string",
@@ -757,19 +901,11 @@
                                         },
                                         "errors": {
                                             "properties": {
-                                                "title": {
+                                                "square": {
                                                     "type": "array",
                                                     "items": {
                                                         "type": "string",
-                                                        "example": "The title title is required."
-                                                    },
-                                                    "collectionFormat": "multi"
-                                                },
-                                                "content": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string",
-                                                        "example": "The content field is required."
+                                                        "example": "The square field is required."
                                                     },
                                                     "collectionFormat": "multi"
                                                 },
@@ -778,22 +914,6 @@
                                                     "items": {
                                                         "type": "string",
                                                         "example": "The district_id field is required."
-                                                    },
-                                                    "collectionFormat": "multi"
-                                                },
-                                                "rubric_id": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string",
-                                                        "example": "The rubric_id field is required."
-                                                    },
-                                                    "collectionFormat": "multi"
-                                                },
-                                                "source": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string",
-                                                        "example": "The source field is required."
                                                     },
                                                     "collectionFormat": "multi"
                                                 }
@@ -815,6 +935,236 @@
             }
         },
         "/api/flat/{id}": {
+            "post": {
+                "tags": [
+                    "Flat"
+                ],
+                "summary": "Update",
+                "operationId": "0d85b8a4cce55c58b8ac1abb336cc3ba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "object_id",
+                                    "type_id",
+                                    "country_id",
+                                    "district_id",
+                                    "longitude",
+                                    "latitude",
+                                    "currency_id",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "object_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "type_id": {
+                                        "description": "Продажа 1 или аренда 2",
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "district_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "district": {
+                                        "type": "string",
+                                        "example": "Город, которого нет в бд"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Пушкина 1"
+                                    },
+                                    "longitude": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "latitude": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "currency_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "10000000"
+                                    },
+                                    "price_day": {
+                                        "type": "number",
+                                        "example": "3000"
+                                    },
+                                    "price_week": {
+                                        "type": "number",
+                                        "example": "10000"
+                                    },
+                                    "price_month": {
+                                        "type": "number",
+                                        "example": "35000"
+                                    },
+                                    "not_show_price": {
+                                        "type": "boolean",
+                                        "example": "0"
+                                    },
+                                    "rooms": {
+                                        "type": "number",
+                                        "example": "2"
+                                    },
+                                    "bedrooms": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "bathrooms": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "square": {
+                                        "type": "number",
+                                        "example": "40"
+                                    },
+                                    "square_land": {
+                                        "type": "number",
+                                        "example": "40"
+                                    },
+                                    "square_land_unit": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "floor": {
+                                        "type": "number",
+                                        "example": "10"
+                                    },
+                                    "total_floor": {
+                                        "type": "number",
+                                        "example": "10"
+                                    },
+                                    "building_type": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "building_date": {
+                                        "type": "string",
+                                        "example": "15.05.2012"
+                                    },
+                                    "specialtxt": {
+                                        "type": "string",
+                                        "example": "Специальный текст, специально для сайта"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Описание, которые покорит сердца покупателя"
+                                    },
+                                    "filename": {
+                                        "type": "string",
+                                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                    },
+                                    "tour_link": {
+                                        "type": "string",
+                                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                    },
+                                    "propertie_values[]": {
+                                        "type": "string",
+                                        "format": "number"
+                                    },
+                                    "properties_delete[]": {
+                                        "type": "string",
+                                        "format": "number"
+                                    },
+                                    "images[]": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "images_delete[]": {
+                                        "type": "number"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "PUT"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FlatSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The title field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "square": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The square field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "district_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The district_id field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "Flat"
@@ -937,7 +1287,7 @@
                                 "images",
                                 "main_image",
                                 "user",
-                                "city",
+                                "district",
                                 "rubric"
                             ]
                         }

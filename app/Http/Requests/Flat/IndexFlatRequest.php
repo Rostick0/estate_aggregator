@@ -25,9 +25,11 @@ class IndexFlatRequest extends FormRequest
         return [
             'object_id' => 'numeric|'  . Rule::exists('object_flats', 'id'),
             'type_id' => 'numeric|'  . Rule::exists('flat_types', 'id'),
+            'currency_id' => 'numeric|'  . Rule::exists('currencies', 'id'),
             'price' => '',
             'country_id' => 'numeric|'  . Rule::exists('countries', 'id'),
             'district_id' => 'numeric|'  . Rule::exists('districts', 'id'),
+            'search' => 'string',
             'page' => 'numeric',
             'limit' => 'numeric|max:50',
             'extends' => 'array',

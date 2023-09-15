@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PropertyController extends Controller
 {
-
+    
     public function index(IndexPropertyRequest $request)
     {
         $data = Property::with($request->extends ?? [])->get();

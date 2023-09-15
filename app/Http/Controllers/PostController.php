@@ -73,7 +73,7 @@ class PostController extends Controller
      *              @OA\Items(
      *                  @OA\Schema(type="string"),
      *              ),
-     *              example={"images", "main_image", "user", "city", "rubric"},
+     *              example={"images", "main_image", "user", "district", "rubric"},
      *          )
      *      ),
      *      @OA\Response(

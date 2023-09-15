@@ -134,10 +134,5 @@ class Flat extends Model
         return $this->hasMany(Image::class, 'id', 'type_id')->where('type', 'flat');
     }
 
-    public function main_image(): BelongsTo
-    {
-        return $this->belongsTo(Image::class, 'main_image_id', 'id');
-    }
-
     // return $this->belongsTo(Region::class, 'region_id', 'id');
 }
