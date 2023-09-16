@@ -26,8 +26,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'api'], function () {
-    Route::group(['prefix' => 'auth'], function ($router) {
-        Route::post('/login', [AuthController::class, 'login']);
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
         Route::post('/register', [AuthController::class, 'register']);
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refresh']);
@@ -40,9 +40,11 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('rubric', [RubricController::class, 'index']);
     Route::get('property', [PropertyController::class, 'index']);
     
-    Route::post('application', [ApplicationController::class, 'store']);
-    Route::post('application-flat', [ApplicationFlatController::class, 'store']);
-
+    Route::group(['middleware' => 'throttle:5,1'], function() {
+        Route::post('application', [ApplicationController::class, 'store']);
+        Route::post('application-flat', [ApplicationFlatController::class, 'store']);
+    });
+   
     Route::apiResources([
         'post' => PostController::class
     ]);
