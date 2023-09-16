@@ -74,16 +74,16 @@ class CountryController extends Controller
      */
     public function index(IndexCountryRequest $request)
     {
-        $country_init = Country::with($request->extends ?? []);
+        $data_init = Country::with($request->extends ?? []);
 
-        if ($request->name) $country_init->whereLike('name', $request->name);
+        if ($request->name) $data_init->whereLike('name', $request->name);
 
-        if (!$country_init->count()) return abort(404, 'Not found');
+        if (!$data_init->count()) return abort(404, 'Not found');
 
-        $country = $country_init->orderBy('name')->paginate($request->limit ?? 50);
+        $data = $data_init->orderBy('name')->paginate($request->limit ?? 50);
 
         return new JsonResponse(
-            $country
+            $data
         );
     }
 

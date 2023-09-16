@@ -1485,6 +1485,46 @@
                 ]
             }
         },
+        "/api/property": {
+            "get": {
+                "tags": [
+                    "Property"
+                ],
+                "summary": "Index",
+                "operationId": "673e4f505d2feda35deb1c326e67f146",
+                "parameters": [
+                    {
+                        "name": "extends[]",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "array",
+                            "items": {},
+                            "example": [
+                                "property_values"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PropertySchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/region": {
             "get": {
                 "tags": [

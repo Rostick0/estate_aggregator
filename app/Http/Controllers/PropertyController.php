@@ -21,10 +21,10 @@ class PropertyController extends Controller
      *          @OA\Schema(
      *              type="array",
      *              @OA\Items(
-     *                  @OA\Schema(type="string"),
+     *                  @OA\Schema(type="object", ref="#/components/schemas/PropertyValueSchema"),
      *              ),
      *              example={"property_values"},
-     *          )
+     *          ),
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -35,6 +35,7 @@ class PropertyController extends Controller
      *              ),
      *          )
      *      ),
+     * )
      */
     public function index(IndexPropertyRequest $request)
     {
