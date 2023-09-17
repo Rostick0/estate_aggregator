@@ -808,8 +808,7 @@ class FlatController extends Controller
         return new JsonResponse(
             [
                 'message' => 'Deleted'
-            ],
-            204
+            ]
         );
     }
 }

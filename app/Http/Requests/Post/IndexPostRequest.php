@@ -24,6 +24,10 @@ class IndexPostRequest extends FormRequest
     {
         return [
             'title' => 'string',
+            'filterEQ' => 'array',
+            'filterEQ.*' => '',
+            'filterLIKE' => 'array',
+            'filterLIKE.*' => '',
             'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
             'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
             'page' => 'numeric',

@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Image;
+use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use App\Utils\ImageUtil;
 use Illuminate\Http\JsonResponse;
@@ -20,8 +21,8 @@ class PostController extends Controller
      *     path="/api/post",
      *     tags={"Post"},
      *     @OA\Parameter( 
-     *          name="title",
-     *          description="Title post",
+     *          name="filterLIKE",
+     *          description="title",
      *          in="query",
      *          example="Сайт",
      *          @OA\Schema(
@@ -29,19 +30,10 @@ class PostController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="district_id",
-     *          description="District id",
+     *          name="filterEQ",
+     *          description="district, Rubric",
      *          in="query",
      *          example="1702",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
-     *     @OA\Parameter( 
-     *          name="rubric_id",
-     *          description="Rubric id",
-     *          in="query",
-     *          example="2",
      *          @OA\Schema(
      *              type="number"
      *          ),
@@ -99,16 +91,16 @@ class PostController extends Controller
     {
         $post_init = Post::with($request->extends ?? [])->orderByDesc('id');
 
-        if ($request->title) $post_init->whereLike('title', $request->title);
-        if ($request->district_id) $post_init->where('district_id', $request->district_id);
-        if ($request->rubric_id) $post_init->where('rubric_id', $request->rubric_id);
+        $post_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $post_init->where(FilterRequestUtil::like($request->filterLIKE));
+
 
         if (!$post_init->count()) return new JsonResponse(
             [
                 'data' => []
             ],
             404
-        );;
+        );
 
         $post = $post_init->paginate($request->limit ?? 20);
 
