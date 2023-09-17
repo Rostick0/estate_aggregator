@@ -22,7 +22,7 @@ class PostController extends Controller
      *     path="/api/post",
      *     tags={"Post"},
      *     @OA\Parameter( 
-     *          name="filterLIKE",
+     *          name="filterLIKE[title]",
      *          description="title",
      *          in="query",
      *          example="Сайт",
@@ -31,10 +31,10 @@ class PostController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="filterEQ",
-     *          description="district, Rubric",
+     *          name="filterEQ[rubric]",
+     *          description="district, rubric",
      *          in="query",
-     *          example="1702",
+     *          example="1",
      *          @OA\Schema(
      *              type="number"
      *          ),
