@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->foreignId('main_image_id')->references('id')->on('images')->onDelete('cascade');
+            $table->integer('main_image_id')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('district_id')->references('id')->on('districts')->onDelete('cascade');
             $table->foreignId('rubric_id')->references('id')->on('rubrics')->onDelete('cascade');

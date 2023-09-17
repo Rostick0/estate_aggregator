@@ -13,6 +13,8 @@ use Illuminate\Routing\Controller as BaseController;
  *    version="1.0.0",
  * ),
  */
+
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;

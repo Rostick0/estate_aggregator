@@ -180,7 +180,7 @@ class AuthController extends Controller
      * @OA\Post (
      *     path="/api/auth/logout",
      *     tags={"Auth"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token":{}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -213,7 +213,7 @@ class AuthController extends Controller
      * @OA\Post (
      *     path="/api/auth/refresh",
      *     tags={"Auth"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -252,7 +252,7 @@ class AuthController extends Controller
      * @OA\Get (
      *     path="/api/auth/me",
      *     tags={"Auth"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token":{}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

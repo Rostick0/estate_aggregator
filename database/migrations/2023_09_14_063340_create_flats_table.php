@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('object_id')->references('id')->on('object_flats')->onDelete('cascade');
             $table->foreignId('type_id')->references('id')->on('flat_types')->onDelete('cascade');
-            $table->foreignId('country_id')->nullable()->constrained();
+            $table->integer('country_id')->nullable();
             $table->foreignId('district_id')->references('id')->on('districts')->onDelete('cascade');
             $table->string('district')->nullable();
             $table->string('address')->nullable();

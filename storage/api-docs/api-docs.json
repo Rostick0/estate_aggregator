@@ -458,7 +458,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -579,7 +579,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -691,7 +691,7 @@
                         "schema": {
                             "type": "number"
                         },
-                        "example": "1"
+                        "example": "5"
                     },
                     {
                         "name": "page",
@@ -811,7 +811,7 @@
                         "schema": {
                             "type": "number"
                         },
-                        "example": "2"
+                        "example": "5"
                     },
                     {
                         "name": "search",
@@ -937,11 +937,11 @@
                                     },
                                     "country_id": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "5"
                                     },
                                     "district_id": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "1702"
                                     },
                                     "district": {
                                         "type": "string",
@@ -952,12 +952,10 @@
                                         "example": "Пушкина 1"
                                     },
                                     "longitude": {
-                                        "type": "string",
-                                        "format": "binary"
+                                        "type": "string"
                                     },
                                     "latitude": {
-                                        "type": "string",
-                                        "format": "binary"
+                                        "type": "string"
                                     },
                                     "currency_id": {
                                         "type": "number",
@@ -1124,7 +1122,7 @@
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "query",
+                        "in": "path",
                         "description": "Id",
                         "required": true,
                         "schema": {
@@ -1240,11 +1238,11 @@
                                     },
                                     "country_id": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "5"
                                     },
                                     "district_id": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "1702"
                                     },
                                     "district": {
                                         "type": "string",
@@ -1255,12 +1253,10 @@
                                         "example": "Пушкина 1"
                                     },
                                     "longitude": {
-                                        "type": "string",
-                                        "format": "binary"
+                                        "type": "string"
                                     },
                                     "latitude": {
-                                        "type": "string",
-                                        "format": "binary"
+                                        "type": "string"
                                     },
                                     "currency_id": {
                                         "type": "number",
@@ -1509,7 +1505,7 @@
                         "schema": {
                             "type": "number"
                         },
-                        "example": "1"
+                        "example": "1702"
                     },
                     {
                         "name": "rubric_id",
@@ -1617,7 +1613,7 @@
                                     },
                                     "district_id": {
                                         "type": "number",
-                                        "example": "3"
+                                        "example": "1702"
                                     },
                                     "rubric_id": {
                                         "type": "number",
@@ -1736,7 +1732,7 @@
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "query",
+                        "in": "path",
                         "description": "Id",
                         "required": true,
                         "schema": {
@@ -1835,7 +1831,7 @@
                                     },
                                     "district_id": {
                                         "type": "number",
-                                        "example": "3"
+                                        "example": "1702"
                                     },
                                     "rubric_id": {
                                         "type": "number",
@@ -2284,7 +2280,7 @@
                     },
                     "region_id": {
                         "type": "number",
-                        "example": 1
+                        "example": 45
                     },
                     "created_at": {
                         "type": "string",
@@ -2313,11 +2309,11 @@
                     },
                     "country_id": {
                         "type": "number",
-                        "example": 1
+                        "example": 5
                     },
                     "district_id": {
                         "type": "number",
-                        "example": 1
+                        "example": 1702
                     },
                     "district": {
                         "type": "string",
@@ -2495,7 +2491,7 @@
                     },
                     "district_id": {
                         "type": "number",
-                        "example": 1
+                        "example": 1702
                     },
                     "rubric_id": {
                         "type": "number",
@@ -2562,7 +2558,7 @@
                     },
                     "country_id": {
                         "type": "number",
-                        "example": 1
+                        "example": 5
                     },
                     "created_at": {
                         "type": "string",
@@ -2658,7 +2654,7 @@
             }
         },
         "securitySchemes": {
-            "jwt": {
+            "bearer_token": {
                 "type": "apiKey",
                 "description": "Enter token in format (Bearer <token>)",
                 "name": "Authorization",

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *    schema="RegionSchema",
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="name", type="string", example="Центральная Греция и Пелопоннес"),
- *       @OA\Property(property="country_id", type="number", example=1),
+ *       @OA\Property(property="country_id", type="number", example=5),
  *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
  *    )

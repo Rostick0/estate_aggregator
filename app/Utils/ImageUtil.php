@@ -9,21 +9,22 @@ class ImageUtil
 
     private static function getUploadPath()
     {
-        return 'upload/image';
+        return 'upload/image/';
     }
     public static function upload($image)
     {
         $upload_path = ImageUtil::getUploadPath();
 
         $extension = $image->getClientOriginalExtension();
-        $random_name = random_int(1000, 9999) . time() . '.' . $extension;
-        Storage::disk('public')->put($upload_path, $random_name);
+        $random_name = 'public/' . $upload_path . random_int(1000, 9999) . time() . '.' . $extension;
 
-        return $upload_path . $random_name;
+        $image->storeAs($random_name);
+
+        return $random_name;
     }
 
     public static function delete($image_path)
     {
-        Storage::disk('public')->delete($image_path);
+        Storage::delete($image_path);
     }
 }

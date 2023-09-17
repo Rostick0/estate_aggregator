@@ -28,7 +28,7 @@ class DistrictController extends Controller
      *          name="country_id",
      *          description="Country id",
      *          in="query",
-     *          example="1",
+     *          example="5",
      *          @OA\Schema(
      *              type="number"
      *          )
@@ -88,7 +88,12 @@ class DistrictController extends Controller
 
         if ($request->name) $data_init->whereLike('name', $request->name);
 
-        if (!$data_init->count()) return abort(404, 'Not found');
+        if (!$data_init->count()) return new JsonResponse(
+            [
+                'data' => []
+            ],
+            404
+        );
 
         $data = $data_init->paginate($request->limit ?? 50);
 

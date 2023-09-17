@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *       @OA\Property(property="title", type="string", example="Почему надо продавать"),
  *       @OA\Property(property="content", type="string", example="Да потому что это принесет вам прибыль"),
  *       @OA\Property(property="user_id", type="number", example=1),
- *       @OA\Property(property="district_id", type="number", example=1),
+ *       @OA\Property(property="district_id", type="number", example=1702),
  *       @OA\Property(property="rubric_id", type="number", example=1),
  *       @OA\Property(property="source", type="string", example="<a href="">источник<a>"),
  *       @OA\Property(property="count_view", type="number", example=100),
@@ -42,7 +42,8 @@ class Post extends Model
 
     public function images(): HasMany
     {
-        return $this->hasMany(Image::class, 'id', 'type_id')->where('type', 'post');
+        // dd($this->hasMany(Image::class, 'id', 'type_id')->where('type', 'post')->get());
+        return $this->hasMany(Image::class, 'type_id','id')->where('type', 'post');
     }
 
     public function main_image(): BelongsTo

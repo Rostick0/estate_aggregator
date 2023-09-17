@@ -26,7 +26,7 @@ class IndexPostRequest extends FormRequest
             'title' => 'string',
             'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
             'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
-            'page' => 'numeirc',
+            'page' => 'numeric',
             'limit' => 'numeric|max:50',
             'extends' => 'array'
         ];

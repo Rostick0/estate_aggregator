@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageDBUtil
 {
-    public static function create($image, Model $model, string $type)
+    public static function create($image, int $type_id, string $type)
     {
         $path = ImageUtil::upload($image);
 
         [$width, $height] = getimagesize($image);
 
-        $insert = $model->images()->create([
+        $insert = Image::create([
             'name' => $image->getClientOriginalName(),
             'path' => $path,
             'type' => $type,
+            'type_id' => $type_id,
             'width' => $width,
             'height' => $height,
         ]);
@@ -24,10 +25,10 @@ class ImageDBUtil
         return $insert->id;
     }
 
-    public static function uploadImage($images, Model $model, string $type)
+    public static function uploadImage($images, int $type_id, string $type)
     {
         foreach ($images as $image) {
-            ImageDBUtil::create($image, $model, $type);
+            ImageDBUtil::create($image, $type_id, $type);
         }
     }
 

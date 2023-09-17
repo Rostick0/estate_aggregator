@@ -32,7 +32,7 @@ class PostController extends Controller
      *          name="district_id",
      *          description="District id",
      *          in="query",
-     *          example="1",
+     *          example="1702",
      *          @OA\Schema(
      *              type="number"
      *          ),
@@ -103,7 +103,12 @@ class PostController extends Controller
         if ($request->district_id) $post_init->where('district_id', $request->district_id);
         if ($request->rubric_id) $post_init->where('rubric_id', $request->rubric_id);
 
-        if (!$post_init->count()) return abort(404, 'Not found');
+        if (!$post_init->count()) return new JsonResponse(
+            [
+                'data' => []
+            ],
+            404
+        );;
 
         $post = $post_init->paginate($request->limit ?? 20);
 
@@ -117,7 +122,7 @@ class PostController extends Controller
      * @OA\Post (
      *     path="/api/post",
      *     tags={"Post"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
@@ -136,7 +141,7 @@ class PostController extends Controller
      *                      @OA\Property(
      *                          property="district_id",
      *                          type="number",
-     *                          example="3"
+     *                          example="1702"
      *                      ),
      *                      @OA\Property(
      *                          property="rubric_id",
@@ -213,19 +218,23 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $post = Post::create($request->only(
-            'title',
-            'content',
-            'district_id',
-            'rubric_id',
-            'source'
-        ));
+        $post = Post::create([
+            ...$request->only(
+                'title',
+                'content',
+                'district_id',
+                'rubric_id',
+                'source'
+            ),
+            'user_id' => auth()->id()
+        ]);
 
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post, 'post');
+        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post->id, 'post');
         if ($request->hasFile('main_image')) {
             $post->update(
-                'main_image_id',
-                ImageDBUtil::create($request->file('main_image'), $post, 'post')
+                [
+                    'main_image_id' => ImageDBUtil::create($request->file('main_image'), $post->id, 'post')
+                ]
             );
         }
 
@@ -245,7 +254,7 @@ class PostController extends Controller
      *      @OA\Parameter( 
      *          name="id",
      *          description="Id",
-     *          in="query",
+     *          in="path",
      *          required=true,
      *          example="1",
      *          @OA\Schema(
@@ -299,7 +308,7 @@ class PostController extends Controller
      * @OA\Post (
      *     path="/api/post/{id}",
      *     tags={"Post"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
      *          description="Post id",
@@ -327,7 +336,7 @@ class PostController extends Controller
      *                      @OA\Property(
      *                          property="district_id",
      *                          type="number",
-     *                          example="3"
+     *                          example="1702"
      *                      ),
      *                      @OA\Property(
      *                          property="rubric_id",
@@ -415,7 +424,12 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (auth()?->user()?->cannot('update', $post)) return abort(403, 'No access');
+        if (auth()?->user()?->cannot('update', $post)) return new JsonResponse(
+            [
+                'message' => 'No access'
+            ],
+            404
+        );
 
         $post->update($request->only(
             'title',
@@ -425,11 +439,12 @@ class PostController extends Controller
             'source'
         ));
 
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post, 'post');
+        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post->id, 'post');
         if ($request->hasFile('main_image')) {
             $post->update(
-                'main_image_id',
-                ImageDBUtil::create($request->file('main_image'), $post, 'post')
+                [
+                    'main_image_id' => ImageDBUtil::create($request->file('main_image'), $post->id, 'post')
+                ]
             );
         }
 
@@ -447,7 +462,7 @@ class PostController extends Controller
      * @OA\Delete (
      *     path="/api/post/{id}",
      *     tags={"Post"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
      *          description="Post id",
@@ -478,10 +493,14 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (auth()->check() && auth()?->user()?->cannot('delete', $post)) return abort(403, 'No access');
+        if (auth()->check() && auth()?->user()?->cannot('delete', $post)) return new JsonResponse(
+            [
+                'message' => 'No access'
+            ],
+            404
+        );
 
-
-        $delete_image_ids = collect($post->images())->map(function ($item) {
+        $delete_image_ids = collect($post->images()->get())->map(function ($item) {
             return $item->id;
         });
 
@@ -491,8 +510,7 @@ class PostController extends Controller
         return new JsonResponse(
             [
                 'message' => 'Deleted'
-            ],
-            204
+            ]
         );
     }
 }

@@ -57,7 +57,7 @@ class FlatController extends Controller
      *          name="country_id",
      *          description="Country id",
      *          in="query",
-     *          example="2",
+     *          example="5",
      *          @OA\Schema(
      *              type="number"
      *          ),
@@ -141,18 +141,23 @@ class FlatController extends Controller
         if ($request->district_id) $data_init->where('district_id', $request->district_id);
 
         if ($request->search) {
-            $data_init->whereHas('countries', function ($query) use ($request) {
+            $data_init->whereHas('country', function ($query) use ($request) {
                 $query->whereLike('name', $request->search);
             });
 
-            $data_init->whereHas('districts', function ($query) use ($request) {
+            $data_init->whereHas('district', function ($query) use ($request) {
                 $query->whereLike('name', $request->search);
             });
 
             $data_init->whereLike('address', $request->search);
         }
 
-        if (!$data_init->count()) return abort(404, 'Not found');
+        if (!$data_init->count()) return new JsonResponse(
+            [
+                'data' => []
+            ],
+            404
+        );
 
         $data = $data_init->paginate($request->limit ?? 20);
 
@@ -166,7 +171,7 @@ class FlatController extends Controller
      * @OA\Post (
      *     path="/api/flat",
      *     tags={"Flat"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
@@ -186,12 +191,12 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="country_id",
      *                          type="number",
-     *                          example="1"
+     *                          example="5"
      *                      ),
      *                      @OA\Property(
      *                          property="district_id",
      *                          type="number",
-     *                          example="1"
+     *                          example="1702"
      *                      ),
      *                      @OA\Property(
      *                          property="district",
@@ -206,12 +211,10 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="longitude",
      *                          type="string",
-     *                          format="binary",
      *                      ),
      *                      @OA\Property(
      *                          property="latitude",
      *                          type="string",
-     *                          format="binary",
      *                      ),
      *                      @OA\Property(
      *                          property="currency_id",
@@ -397,7 +400,7 @@ class FlatController extends Controller
         ]);
 
         FlatPropertyController::createProperites($request->propertie_values, $flat);
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat, 'flat');
+        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
 
         return new JsonResponse(
             [
@@ -415,7 +418,7 @@ class FlatController extends Controller
      *     @OA\Parameter( 
      *          name="id",
      *          description="Id",
-     *          in="query",
+     *          in="path",
      *          required=true,
      *          example="1",
      *          @OA\Schema(
@@ -480,7 +483,7 @@ class FlatController extends Controller
      * @OA\Post (
      *     path="/api/flat/{id}",
      *     tags={"Flat"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
      *          description="Post id",
@@ -509,12 +512,12 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="country_id",
      *                          type="number",
-     *                          example="1"
+     *                          example="5"
      *                      ),
      *                      @OA\Property(
      *                          property="district_id",
      *                          type="number",
-     *                          example="1"
+     *                          example="1702"
      *                      ),
      *                      @OA\Property(
      *                          property="district",
@@ -529,12 +532,10 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="longitude",
      *                          type="string",
-     *                          format="binary",
      *                      ),
      *                      @OA\Property(
      *                          property="latitude",
      *                          type="string",
-     *                          format="binary",
      *                      ),
      *                      @OA\Property(
      *                          property="currency_id",
@@ -699,7 +700,12 @@ class FlatController extends Controller
     {
         $flat = Flat::findOrFail($id);
 
-        if (auth()->user()->cannot('update', $flat)) return abort(403, 'No access');
+        if (auth()->user()->cannot('update', $flat)) return new JsonResponse(
+            [
+                'message' => 'No access'
+            ],
+            404
+        );
 
         $values = $request->only([
             'object_id',
@@ -739,7 +745,7 @@ class FlatController extends Controller
         FlatPropertyController::createProperites($request->propertie_values, $flat);
         FlatPropertyController::deleteProperties($request->properties_delete, $flat);
 
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat, 'flat');
+        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
         if (!empty($request->images_delete)) ImageDBUtil::deleteImage($request->images_delete, $id, 'flat');
 
         return new JsonResponse(
@@ -755,7 +761,7 @@ class FlatController extends Controller
      * @OA\Delete (
      *     path="/api/flat/{id}",
      *     tags={"Flat"},
-     *     security={{"jwt": {}}},
+     *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
      *          description="Flat id",
@@ -786,7 +792,12 @@ class FlatController extends Controller
     {
         $flat = Flat::findOrFail($id);
 
-        if (auth()->check() && auth()?->user()?->cannot('delete', $flat)) return abort(403, 'No access');
+        if (auth()->check() && auth()?->user()?->cannot('delete', $flat)) return new JsonResponse(
+            [
+                'message' => 'No access'
+            ],
+            404
+        );
 
         $delete_image_ids = collect($flat->images())->map(function ($item) {
             return $item->id;

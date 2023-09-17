@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('value');
             $table->foreignId('flat_id')->references('id')->on('flats')->onDelete('cascade');
-            $table->foreignId('property_value_id')->nullable()->constrained();
+            $table->integer('property_value_id')->nullable();
             $table->timestamps();
         });
     }
