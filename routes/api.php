@@ -5,6 +5,7 @@ use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\FlatController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
@@ -46,7 +47,8 @@ Route::group(['middleware' => 'api'], function () {
     });
    
     Route::apiResources([
-        'post' => PostController::class
+        'post' => PostController::class,
+        'flat' => FlatController::class
     ]);
 
     Route::put('/image/{id}', [ImageController::class, 'update']);
