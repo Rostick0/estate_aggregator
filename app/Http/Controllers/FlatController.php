@@ -117,7 +117,7 @@ class FlatController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/PostSchema"
+     *                  ref="#/components/schemas/FlatSchema"
      *              ),
      *          )
      *      ),
@@ -450,7 +450,7 @@ class FlatController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/PostSchema"
+     *                  ref="#/components/schemas/FlatSchema"
      *              ),
      *          )
      *      ),
