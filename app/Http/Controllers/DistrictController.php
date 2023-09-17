@@ -90,13 +90,6 @@ class DistrictController extends Controller
 
         if ($request->name) $data_init->whereLike('name', $request->name);
 
-        if (!$data_init->count()) return new JsonResponse(
-            [
-                'data' => []
-            ],
-            404
-        );
-
         $data = $data_init->paginate($request->limit ?? 50);
 
         return new JsonResponse(

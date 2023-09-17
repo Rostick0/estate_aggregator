@@ -96,13 +96,6 @@ class PostController extends Controller
         $post_init->where(FilterRequestUtil::eq($request->filterEQ));
         $post_init->where(FilterRequestUtil::like($request->filterLIKE));
 
-        if (!$post_init->count()) return new JsonResponse(
-            [
-                'data' => []
-            ],
-            404
-        );
-
         $post = $post_init->paginate($request->limit ?? 20);
 
         return new JsonResponse(

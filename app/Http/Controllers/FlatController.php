@@ -153,13 +153,6 @@ class FlatController extends Controller
             $data_init->whereLike('address', $request->search);
         }
 
-        if (!$data_init->count()) return new JsonResponse(
-            [
-                'data' => []
-            ],
-            404
-        );
-
         $data = $data_init->paginate($request->limit ?? 20);
 
         return new JsonResponse(
