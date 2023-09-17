@@ -27,7 +27,7 @@ class IndexRegionRequest extends FormRequest
             'country_id' => 'numeric|'  . Rule::exists('countries', 'id'),
             'page' => 'numeric',
             'limit' => 'numeric|max:150',
-            'extends' => 'array'
+            'extends' => 'string'
         ];
     }
 }

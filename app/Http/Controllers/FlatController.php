@@ -7,6 +7,7 @@ use App\Http\Requests\Flat\ShowFlatRequest;
 use App\Models\Flat;
 use App\Http\Requests\Flat\StoreFlatRequest;
 use App\Http\Requests\Flat\UpdateFlatRequest;
+use App\Utils\ExplodeExtends;
 use App\Utils\ImageDBUtil;
 use Illuminate\Http\JsonResponse;
 
@@ -90,7 +91,7 @@ class FlatController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -133,7 +134,7 @@ class FlatController extends Controller
      */
     public function index(IndexFlatRequest $request)
     {
-        $data_init = Flat::with($request->extends ?? []);
+        $data_init = Flat::with(ExplodeExtends::run($request->extends));
 
         if ($request->object_id) $data_init->where('object_id', $request->object_id);
         if ($request->type_id) $data_init->where('type_id', $request->type_id);
@@ -426,7 +427,7 @@ class FlatController extends Controller
      *          ),
      *     ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -469,7 +470,8 @@ class FlatController extends Controller
      */
     public function show(ShowFlatRequest $request, int $id)
     {
-        $flat = Flat::with($request->extends ?? [])->findOrFail($id);
+        $flat = Flat::with(ExplodeExtends::run($request->extends))
+            ->findOrFail($id);
 
         return new JsonResponse(
             [

@@ -6,6 +6,7 @@ use App\Http\Requests\District\IndexDistrictRequest;
 use App\Models\District;
 use App\Http\Requests\District\StoreDistrictRequest;
 use App\Http\Requests\District\UpdateDistrictRequest;
+use App\Utils\ExplodeExtends;
 use Illuminate\Http\JsonResponse;
 
 class DistrictController extends Controller
@@ -52,7 +53,7 @@ class DistrictController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -84,7 +85,8 @@ class DistrictController extends Controller
      */
     public function index(IndexDistrictRequest $request)
     {
-        $data_init = District::with($request->extends ?? [])->orderBy('name');
+        $data_init = District::with(ExplodeExtends::run($request->extends))
+            ->orderBy('name');
 
         if ($request->name) $data_init->whereLike('name', $request->name);
 

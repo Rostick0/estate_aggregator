@@ -22,7 +22,7 @@ class IndexPropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'extends' => 'array'
+            'extends' => 'string'
         ];
     }
 }

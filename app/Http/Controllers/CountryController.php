@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Country\IndexCountryRequest;
 use App\Models\Country;
+use App\Utils\ExplodeExtends;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class CountryController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -74,7 +75,7 @@ class CountryController extends Controller
      */
     public function index(IndexCountryRequest $request)
     {
-        $data_init = Country::with($request->extends ?? []);
+        $data_init = Country::with(ExplodeExtends::run($request->extends));
 
         if ($request->name) $data_init->whereLike('name', $request->name);
 

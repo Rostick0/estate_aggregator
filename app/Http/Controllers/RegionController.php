@@ -6,6 +6,7 @@ use App\Http\Requests\Region\IndexRegionRequest;
 use App\Models\Region;
 use App\Http\Requests\Region\StoreRegionRequest;
 use App\Http\Requests\Region\UpdateRegionRequest;
+use App\Utils\ExplodeExtends;
 use Illuminate\Http\JsonResponse;
 
 class RegionController extends Controller
@@ -43,7 +44,7 @@ class RegionController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -75,7 +76,8 @@ class RegionController extends Controller
      */
     public function index(IndexRegionRequest $request)
     {
-        $data_init = Region::with($request->extends ?? [])->orderBy('name');
+        $data_init = Region::with(ExplodeExtends::run($request->extends))
+            ->orderBy('name');
 
         if ($request->name) $data_init->whereLike('name', $request->name);
 

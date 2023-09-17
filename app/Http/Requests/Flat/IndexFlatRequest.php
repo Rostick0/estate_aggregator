@@ -32,7 +32,7 @@ class IndexFlatRequest extends FormRequest
             'search' => 'string',
             'page' => 'numeric',
             'limit' => 'numeric|max:50',
-            'extends' => 'array',
+            'extends' => 'string',
             'flat_properties' => 'array',
         ];
     }

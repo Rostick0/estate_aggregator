@@ -32,7 +32,7 @@ class IndexPostRequest extends FormRequest
             'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
             'page' => 'numeric',
             'limit' => 'numeric|max:50',
-            'extends' => 'array'
+            'extends' => 'string'
         ];
     }
 }

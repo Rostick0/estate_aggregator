@@ -27,7 +27,7 @@ class IndexDistrictRequest extends FormRequest
             'region_id' => 'numeric|'  . Rule::exists('regions', 'id'),
             'page' => 'numeric',
             'limit' => 'numeric|max:150',
-            'extends' => 'array'
+            'extends' => 'string'
         ];
     }
 }

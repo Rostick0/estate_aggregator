@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Image;
+use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use App\Utils\ImageUtil;
@@ -57,7 +58,7 @@ class PostController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -89,11 +90,11 @@ class PostController extends Controller
      */
     public function index(IndexPostRequest $request)
     {
-        $post_init = Post::with($request->extends ?? [])->orderByDesc('id');
+        $post_init = Post::with(ExplodeExtends::run($request->extends))
+            ->orderByDesc('id');
 
         $post_init->where(FilterRequestUtil::eq($request->filterEQ));
         $post_init->where(FilterRequestUtil::like($request->filterLIKE));
-
 
         if (!$post_init->count()) return new JsonResponse(
             [
@@ -254,7 +255,7 @@ class PostController extends Controller
      *          ),
      *      ),
      *      @OA\Parameter(
-     *          name="extends[]",
+     *          name="extends",
      *          description="Extends data",
      *          in="query",
      *          @OA\Schema(
@@ -286,7 +287,7 @@ class PostController extends Controller
      */
     public function show(ShowPostRequest $request, int $id)
     {
-        $post = Post::with($request->extends ?? [])->findOrFail($id);
+        $post = Post::with(ExplodeExtends::run($request->extends))->findOrFail($id);
 
         return new JsonResponse(
             [
