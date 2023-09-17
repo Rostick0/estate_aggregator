@@ -31,8 +31,8 @@ class PostController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="filterEQ[rubric]",
-     *          description="district, rubric",
+     *          name="filterEQ[rubric_id]",
+     *          description="district_id, rubric_id",
      *          in="query",
      *          example="1",
      *          @OA\Schema(
