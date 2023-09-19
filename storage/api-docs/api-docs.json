@@ -40,6 +40,9 @@
                                             },
                                             "messager_type": {
                                                 "type": "string"
+                                            },
+                                            "is_agree": {
+                                                "type": "boolean"
                                             }
                                         },
                                         "type": "object"
@@ -51,7 +54,8 @@
                                     "email": "john@test.com",
                                     "phone": "+799999",
                                     "text": "Мне понравилась одна квартира, хотел бы ...",
-                                    "messager_type": "telegram"
+                                    "messager_type": "telegram",
+                                    "is_agree": true
                                 }
                             }
                         }
@@ -527,7 +531,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -620,7 +624,7 @@
                         "example": "30"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -712,7 +716,7 @@
                         "example": "30"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -769,31 +773,13 @@
                 "operationId": "bbfd926c388bacac9605902386f1b625",
                 "parameters": [
                     {
-                        "name": "object_id",
+                        "name": "filterEQ[object_id]",
                         "in": "query",
-                        "description": "Object id",
+                        "description": "object_id, type_id, country_id, district_id",
                         "schema": {
                             "type": "number"
                         },
                         "example": "1"
-                    },
-                    {
-                        "name": "type_id",
-                        "in": "query",
-                        "description": "Покупка 1 или аренда 2",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "currency_id",
-                        "in": "query",
-                        "description": "Тип валюты",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "2"
                     },
                     {
                         "name": "price",
@@ -803,15 +789,6 @@
                             "type": "number"
                         },
                         "example": "2"
-                    },
-                    {
-                        "name": "country_id",
-                        "in": "query",
-                        "description": "Country id",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "5"
                     },
                     {
                         "name": "search",
@@ -841,7 +818,7 @@
                         "example": "20"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -1107,7 +1084,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -1131,7 +1108,7 @@
                         "example": "1"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -1419,7 +1396,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             },
@@ -1476,7 +1453,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -1490,31 +1467,22 @@
                 "operationId": "b4b7284c8fb22330a82699a8356a5e88",
                 "parameters": [
                     {
-                        "name": "title",
+                        "name": "filterLIKE[title]",
                         "in": "query",
-                        "description": "Title post",
+                        "description": "title",
                         "schema": {
                             "type": "string"
                         },
                         "example": "Сайт"
                     },
                     {
-                        "name": "district_id",
+                        "name": "filterEQ[rubric_id]",
                         "in": "query",
-                        "description": "District id",
+                        "description": "district_id, rubric_id",
                         "schema": {
                             "type": "number"
                         },
-                        "example": "1702"
-                    },
-                    {
-                        "name": "rubric_id",
-                        "in": "query",
-                        "description": "Rubric id",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "2"
+                        "example": "1"
                     },
                     {
                         "name": "page",
@@ -1535,7 +1503,7 @@
                         "example": "20"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -1717,7 +1685,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -1741,7 +1709,7 @@
                         "example": "1"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -1942,7 +1910,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             },
@@ -1999,7 +1967,7 @@
                 },
                 "security": [
                     {
-                        "jwt": []
+                        "bearer_token": []
                     }
                 ]
             }
@@ -2013,7 +1981,7 @@
                 "operationId": "673e4f505d2feda35deb1c326e67f146",
                 "parameters": [
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
@@ -2080,7 +2048,7 @@
                         "example": "30"
                     },
                     {
-                        "name": "extends[]",
+                        "name": "extends",
                         "in": "query",
                         "description": "Extends data",
                         "schema": {

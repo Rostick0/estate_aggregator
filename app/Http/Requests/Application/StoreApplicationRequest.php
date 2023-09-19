@@ -22,11 +22,12 @@ class StoreApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'requred|max:255',
-            'phone' => 'requred|max:255',
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
             'email' => 'email|max:255',
-            'text' => 'requred|min:10|max:255',
+            'text' => 'required|min:10|max:255',
             'messager_type' => 'in:telegram,whatsapp,viber',
+            'is_agree' => 'required|accepted'
         ];
     }
 }

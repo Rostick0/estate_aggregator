@@ -47,13 +47,18 @@ class ApplicationController extends Controller
      *                          property="messager_type",
      *                          type="string"
      *                      ),
+     *                      @OA\Property(
+     *                          property="is_agree",
+     *                          type="boolean"
+     *                      ),
      *                 ),
      *                 example={
      *                     "name":"Олег",
      *                     "email":"john@test.com",
      *                     "phone":"+799999",
      *                     "text": "Мне понравилась одна квартира, хотел бы ...",
-     *                     "messager_type": "telegram"
+     *                     "messager_type": "telegram",
+     *                     "is_agree": true
      *                }
      *             )
      *         )

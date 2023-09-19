@@ -48,7 +48,11 @@ class ApplicationFlatController extends Controller
      *                      @OA\Property(
      *                          property="messager_type",
      *                          type="string"
-     *                      )
+     *                      ),
+     *                      @OA\Property(
+     *                          property="is_agree",
+     *                          type="boolean"
+     *                      ),
      *                 ),
      *                 example={
      *                     "flat_id": 1,
@@ -58,7 +62,8 @@ class ApplicationFlatController extends Controller
      *                     "email":"john@test.com",
      *                     "phone":"+799999",
      *                     "text": "Мне понравилась ваша квартира, хотел бы ...",
-     *                     "messager_type": "telegram"
+     *                     "messager_type": "telegram",
+     *                     "is_agree": true
      *                }
      *             )
      *         )

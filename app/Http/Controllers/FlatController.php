@@ -8,6 +8,7 @@ use App\Models\Flat;
 use App\Http\Requests\Flat\StoreFlatRequest;
 use App\Http\Requests\Flat\UpdateFlatRequest;
 use App\Utils\ExplodeExtends;
+use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use Illuminate\Http\JsonResponse;
 
@@ -19,28 +20,10 @@ class FlatController extends Controller
      *     path="/api/flat",
      *     tags={"Flat"},
      *     @OA\Parameter( 
-     *          name="object_id",
-     *          description="Object id",
+     *          name="filterEQ[object_id]",
+     *          description="object_id, type_id, country_id, district_id",
      *          in="query",
      *          example="1",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
-     *     @OA\Parameter( 
-     *          name="type_id",
-     *          description="Покупка 1 или аренда 2",
-     *          in="query",
-     *          example="1",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
-     *     @OA\Parameter( 
-     *          name="currency_id",
-     *          description="Тип валюты",
-     *          in="query",
-     *          example="2",
      *          @OA\Schema(
      *              type="number"
      *          ),
@@ -50,15 +33,6 @@ class FlatController extends Controller
      *          description="Price",
      *          in="query",
      *          example="2",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
-     *     @OA\Parameter( 
-     *          name="country_id",
-     *          description="Country id",
-     *          in="query",
-     *          example="5",
      *          @OA\Schema(
      *              type="number"
      *          ),
@@ -136,10 +110,7 @@ class FlatController extends Controller
     {
         $data_init = Flat::with(ExplodeExtends::run($request->extends));
 
-        if ($request->object_id) $data_init->where('object_id', $request->object_id);
-        if ($request->type_id) $data_init->where('type_id', $request->type_id);
-        if ($request->country_id) $data_init->where('country_id', $request->country_id);
-        if ($request->district_id) $data_init->where('district_id', $request->district_id);
+        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
 
         if ($request->search) {
             $data_init->whereHas('country', function ($query) use ($request) {
