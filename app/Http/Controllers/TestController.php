@@ -9,6 +9,7 @@ class TestController extends Controller
 {
     public function test()
     {
-        
+        // dd);
+        // url()->base()
     }
 }

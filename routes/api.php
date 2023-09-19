@@ -54,4 +54,4 @@ Route::group(['middleware' => 'api'], function () {
     Route::put('/image/{id}', [ImageController::class, 'update']);
 });
 
-// Route::get('test', [TestController::class, 'test']);
+Route::get('test', [TestController::class, 'test']);

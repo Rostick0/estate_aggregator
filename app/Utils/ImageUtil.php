@@ -16,11 +16,11 @@ class ImageUtil
         $upload_path = ImageUtil::getUploadPath();
 
         $extension = $image->getClientOriginalExtension();
-        $random_name = 'public/' . $upload_path . random_int(1000, 9999) . time() . '.' . $extension;
+        $random_name = $upload_path . random_int(1000, 9999) . time() . '.' . $extension;
 
-        $image->storeAs($random_name);
+        $image->storeAs('public/' . $random_name);
 
-        return $random_name;
+        return url('') . '/storage/' . $random_name;
     }
 
     public static function delete($image_path)
