@@ -151,6 +151,9 @@
                                             },
                                             "messager_type": {
                                                 "type": "string"
+                                            },
+                                            "is_agree": {
+                                                "type": "boolean"
                                             }
                                         },
                                         "type": "object"
@@ -165,7 +168,8 @@
                                     "email": "john@test.com",
                                     "phone": "+799999",
                                     "text": "Мне понравилась ваша квартира, хотел бы ...",
-                                    "messager_type": "telegram"
+                                    "messager_type": "telegram",
+                                    "is_agree": true
                                 }
                             }
                         }
@@ -597,13 +601,13 @@
                 "operationId": "63d29649fcf556d72cacfc54b8696f1f",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "filterLIKE[name]",
                         "in": "query",
-                        "description": "Name country",
+                        "description": "name",
                         "schema": {
-                            "type": "string"
+                            "type": "number"
                         },
-                        "example": "Москва"
+                        "example": "5"
                     },
                     {
                         "name": "page",
@@ -680,18 +684,18 @@
                 "operationId": "09b3bc4dc23bef12c24ffffbfa09aee2",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "filterEQ[country_id]",
                         "in": "query",
-                        "description": "Name district",
+                        "description": "country_id",
                         "schema": {
                             "type": "string"
                         },
                         "example": "Москва"
                     },
                     {
-                        "name": "country_id",
+                        "name": "filterLIKE[name]",
                         "in": "query",
-                        "description": "Country id",
+                        "description": "name",
                         "schema": {
                             "type": "number"
                         },
@@ -2021,13 +2025,22 @@
                 "operationId": "0c51f58df055e5721d4627d15b7ceb04",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "filterLIKE[name]",
                         "in": "query",
-                        "description": "Name region",
+                        "description": "name",
                         "schema": {
                             "type": "string"
                         },
-                        "example": "Москва"
+                        "example": "Северная Греция"
+                    },
+                    {
+                        "name": "filterEQ[country_id]",
+                        "in": "query",
+                        "description": "country_id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "45"
                     },
                     {
                         "name": "page",

@@ -239,7 +239,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="square_land_unit",
      *                          type="number",
-     *                          example="1"
+     *                          example="129"
      *                      ),
      *                      @OA\Property(
      *                          property="floor",
@@ -254,7 +254,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="building_type",
      *                          type="number",
-     *                          example="1"
+     *                          example="1117"
      *                      ),
      *                      @OA\Property(
      *                          property="building_date",

@@ -23,8 +23,8 @@ class IndexDistrictRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string',
-            'region_id' => 'numeric|'  . Rule::exists('regions', 'id'),
+            'filterEQ' => 'array',
+            'filterLIKE' => 'array',
             'page' => 'numeric',
             'limit' => 'numeric|max:150',
             'extends' => 'string'

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Country\IndexCountryRequest;
 use App\Models\Country;
 use App\Utils\ExplodeExtends;
+use App\Utils\FilterRequestUtil;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -15,13 +16,13 @@ class CountryController extends Controller
      * @OA\get (
      *     path="/api/country",
      *     tags={"Country"},
-     *     @OA\Parameter(
-     *          name="name",
-     *          description="Name country",
+     *      @OA\Parameter(
+     *          name="filterLIKE[name]",
+     *          description="name",
      *          in="query",
-     *          example="Москва",
+     *          example="5",
      *          @OA\Schema(
-     *              type="string"
+     *              type="number"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -77,7 +78,7 @@ class CountryController extends Controller
     {
         $data_init = Country::with(ExplodeExtends::run($request->extends));
 
-        if ($request->name) $data_init->whereLike('name', $request->name);
+        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
 
         $data = $data_init->orderBy('name')->paginate($request->limit ?? 50);
 

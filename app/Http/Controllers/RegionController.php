@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Http\Requests\Region\StoreRegionRequest;
 use App\Http\Requests\Region\UpdateRegionRequest;
 use App\Utils\ExplodeExtends;
+use App\Utils\FilterRequestUtil;
 use Illuminate\Http\JsonResponse;
 
 class RegionController extends Controller
@@ -17,10 +18,19 @@ class RegionController extends Controller
      *     path="/api/region",
      *     tags={"Region"},
      *     @OA\Parameter(
-     *          name="name",
-     *          description="Name region",
+     *          name="filterLIKE[name]",
+     *          description="name",
      *          in="query",
-     *          example="Москва",
+     *          example="Си",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="filterEQ[country_id]",
+     *          description="country_id",
+     *          in="query",
+     *          example="721",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -79,7 +89,8 @@ class RegionController extends Controller
         $data_init = Region::with(ExplodeExtends::run($request->extends))
             ->orderBy('name');
 
-        if ($request->name) $data_init->whereLike('name', $request->name);
+        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
 
         $data = $data_init->paginate($request->limit ?? 50);
 

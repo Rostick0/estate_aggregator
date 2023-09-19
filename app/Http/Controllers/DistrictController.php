@@ -7,6 +7,7 @@ use App\Models\District;
 use App\Http\Requests\District\StoreDistrictRequest;
 use App\Http\Requests\District\UpdateDistrictRequest;
 use App\Utils\ExplodeExtends;
+use App\Utils\FilterRequestUtil;
 use Illuminate\Http\JsonResponse;
 
 class DistrictController extends Controller
@@ -17,8 +18,8 @@ class DistrictController extends Controller
      *     path="/api/district",
      *     tags={"District"},
      *     @OA\Parameter(
-     *          name="name",
-     *          description="Name district",
+     *          name="filterEQ[country_id]",
+     *          description="country_id",
      *          in="query",
      *          example="Москва",
      *          @OA\Schema(
@@ -26,8 +27,8 @@ class DistrictController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="country_id",
-     *          description="Country id",
+     *          name="filterLIKE[name]",
+     *          description="name",
      *          in="query",
      *          example="5",
      *          @OA\Schema(
@@ -88,7 +89,8 @@ class DistrictController extends Controller
         $data_init = District::with(ExplodeExtends::run($request->extends))
             ->orderBy('name');
 
-        if ($request->name) $data_init->whereLike('name', $request->name);
+        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
 
         $data = $data_init->paginate($request->limit ?? 50);
 
