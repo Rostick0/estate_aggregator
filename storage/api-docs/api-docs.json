@@ -984,7 +984,7 @@
                                     },
                                     "square_land_unit": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "129"
                                     },
                                     "floor": {
                                         "type": "number",
@@ -996,7 +996,7 @@
                                     },
                                     "building_type": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "1117"
                                     },
                                     "building_date": {
                                         "type": "string",
@@ -2031,7 +2031,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "Северная Греция"
+                        "example": "Си"
                     },
                     {
                         "name": "filterEQ[country_id]",
@@ -2040,7 +2040,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "45"
+                        "example": "721"
                     },
                     {
                         "name": "page",
