@@ -37,7 +37,7 @@ class StoreFlatRequest extends FormRequest
             'price_day' => '',
             'price_week' => '',
             'price_month' => '',
-            'not_show_price' => 'accepted',
+            'not_show_price' => 'boolean',
             'rooms' => 'required|numeric',
             'bedrooms' => 'required|numeric',
             'bathrooms' => 'required|numeric',
@@ -54,7 +54,7 @@ class StoreFlatRequest extends FormRequest
             'tour_link' => 'string|max:255',
             'propertie_values' => 'array',
             'images' => 'array',
-            'images.*' => 'image|mimes:png,jpg,jpeg,gif,svg',
+            'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
         ];
     }
 }

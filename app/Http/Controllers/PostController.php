@@ -141,13 +141,11 @@ class PostController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="main_image",
-     *                          type="string",
-     *                          format="file",
+     *                          type="file",
      *                      ),
      *                      @OA\Property(
      *                          property="images[]",
-     *                          type="string",
-     *                          format="file",
+     *                          type="file",
      *                      ),
      *              )
      *         )
@@ -336,13 +334,11 @@ class PostController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="main_image",
-     *                          type="string",
-     *                          format="file",
+     *                          type="file",
      *                      ),
      *                      @OA\Property(
      *                          property="images[]",
-     *                          type="string",
-     *                          format="file",
+     *                          type="file",
      *                      ),
      *                      @OA\Property(
      *                          property="images_delete[]",

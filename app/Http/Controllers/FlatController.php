@@ -142,7 +142,7 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price", "not_show_price"},
+     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price"},
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -177,10 +177,12 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="longitude",
      *                          type="string",
+     *                          example="79"
      *                      ),
      *                      @OA\Property(
      *                          property="latitude",
      *                          type="string",
+     *                          example="79"
      *                      ),
      *                      @OA\Property(
      *                          property="currency_id",
@@ -209,8 +211,8 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="not_show_price",
-     *                          type="boolean",
-     *                          example="false"
+     *                          type="true",
+     *                          example="1"
      *                      ),
      *                      @OA\Property(
      *                          property="rooms",
@@ -255,7 +257,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="building_type",
      *                          type="number",
-     *                          example="1117"
+     *                          example="117"
      *                      ),
      *                      @OA\Property(
      *                          property="building_date",
@@ -289,8 +291,7 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="images[]",
-     *                          type="string",
-     *                          format="file",
+     *                          type="file",
      *                      ),
      *              )
      *         )
@@ -464,7 +465,7 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price", "not_show_price"},
+     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price"},
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -499,10 +500,12 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="longitude",
      *                          type="string",
+     *                          example="79"
      *                      ),
      *                      @OA\Property(
      *                          property="latitude",
      *                          type="string",
+     *                          example="79"
      *                      ),
      *                      @OA\Property(
      *                          property="currency_id",
@@ -531,8 +534,8 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="not_show_price",
-     *                          type="boolean",
-     *                          example="false"
+     *                          type="number",
+     *                          example="1"
      *                      ),
      *                      @OA\Property(
      *                          property="rooms",
@@ -577,7 +580,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="building_type",
      *                          type="number",
-     *                          example="1"
+     *                          example="117"
      *                      ),
      *                      @OA\Property(
      *                          property="building_date",
@@ -616,8 +619,7 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="images[]",
-     *                          type="string",
-     *                          format="file",
+     *                          type="file",
      *                      ),
      *                      @OA\Property(
      *                          property="images_delete[]",

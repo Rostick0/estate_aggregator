@@ -30,10 +30,10 @@ class UpdatePostRequest extends FormRequest
             'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
             'source' => 'required',
             'images' => 'array',
-            'main_image' => 'image|mimes:png,jpg,jpeg,gif,svg',
-            'images.*' => 'image|mimes:png,jpg,jpeg,gif,svg',
+            'main_image' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
+            'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
             'images_delete' => 'array',
-            'images_delete.*' => 'numeric'
+            'images_delete.*' => 'nullable|numeric'
         ];
     }
 }

@@ -42,7 +42,6 @@ class Post extends Model
 
     public function images(): HasMany
     {
-        // dd($this->hasMany(Image::class, 'id', 'type_id')->where('type', 'post')->get());
         return $this->hasMany(Image::class, 'type_id','id')->where('type', 'post');
     }
 

@@ -1260,10 +1260,12 @@
                                         "example": "Пушкина 1"
                                     },
                                     "longitude": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "79"
                                     },
                                     "latitude": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "79"
                                     },
                                     "currency_id": {
                                         "type": "number",
@@ -1286,8 +1288,8 @@
                                         "example": "35000"
                                     },
                                     "not_show_price": {
-                                        "type": "boolean",
-                                        "example": "0"
+                                        "type": "true",
+                                        "example": "1"
                                     },
                                     "rooms": {
                                         "type": "number",
@@ -1323,7 +1325,7 @@
                                     },
                                     "building_type": {
                                         "type": "number",
-                                        "example": "1117"
+                                        "example": "117"
                                     },
                                     "building_date": {
                                         "type": "string",
@@ -1350,8 +1352,7 @@
                                         "format": "number"
                                     },
                                     "images[]": {
-                                        "type": "string",
-                                        "format": "file"
+                                        "type": "file"
                                     }
                                 },
                                 "type": "object"
@@ -1561,10 +1562,12 @@
                                         "example": "Пушкина 1"
                                     },
                                     "longitude": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "79"
                                     },
                                     "latitude": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "79"
                                     },
                                     "currency_id": {
                                         "type": "number",
@@ -1587,8 +1590,8 @@
                                         "example": "35000"
                                     },
                                     "not_show_price": {
-                                        "type": "boolean",
-                                        "example": "0"
+                                        "type": "number",
+                                        "example": "1"
                                     },
                                     "rooms": {
                                         "type": "number",
@@ -1624,7 +1627,7 @@
                                     },
                                     "building_type": {
                                         "type": "number",
-                                        "example": "1"
+                                        "example": "117"
                                     },
                                     "building_date": {
                                         "type": "string",
@@ -1655,8 +1658,7 @@
                                         "format": "number"
                                     },
                                     "images[]": {
-                                        "type": "string",
-                                        "format": "file"
+                                        "type": "file"
                                     },
                                     "images_delete[]": {
                                         "type": "number"
@@ -1923,12 +1925,10 @@
                                         "example": "<a href>сайт</a>"
                                     },
                                     "main_image": {
-                                        "type": "string",
-                                        "format": "file"
+                                        "type": "file"
                                     },
                                     "images[]": {
-                                        "type": "string",
-                                        "format": "file"
+                                        "type": "file"
                                     }
                                 },
                                 "type": "object"
@@ -2141,12 +2141,10 @@
                                         "example": "<a href>сайт</a>"
                                     },
                                     "main_image": {
-                                        "type": "string",
-                                        "format": "file"
+                                        "type": "file"
                                     },
                                     "images[]": {
-                                        "type": "string",
-                                        "format": "file"
+                                        "type": "file"
                                     },
                                     "images_delete[]": {
                                         "type": "number"
