@@ -20,8 +20,8 @@ class DistrictController extends Controller
      *     path="/api/district",
      *     tags={"District"},
      *     @OA\Parameter(
-     *          name="filterEQ[country_id]",
-     *          description="country_id",
+     *          name="filterEQ[region_id]",
+     *          description="region_id",
      *          in="query",
      *          example="5",
      *          @OA\Schema(
