@@ -23,7 +23,7 @@ class DistrictController extends Controller
      *          name="filterEQ[country_id]",
      *          description="country_id",
      *          in="query",
-     *          example="Москва",
+     *          example="5",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -32,7 +32,7 @@ class DistrictController extends Controller
      *          name="filterLIKE[name]",
      *          description="name",
      *          in="query",
-     *          example="5",
+     *          example="Москва",
      *          @OA\Schema(
      *              type="number"
      *          )
@@ -102,7 +102,69 @@ class DistrictController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * @OA\Post (
+     *     path="/api/district",
+     *     tags={"District"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="importance",
+     *                          type="number"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="region_id",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"Кахан",
+     *                     "importance": 10,
+     *                     "region_id":45
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/DistrictSchema"
+     *              ),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The name field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="name", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The name field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="region_id", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The region_id field is required.",
+     *                          )
+     *                      ),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function store(StoreDistrictRequest $request)
     {
@@ -117,7 +179,49 @@ class DistrictController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * @OA\get (
+     *     path="/api/district/{id}",
+     *     tags={"District"},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Id",
+     *          in="path",
+     *          example="523",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"posts", "region"},
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/DistrictSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function show(ShowDistrictRequest $request, int $id)
     {
@@ -131,7 +235,78 @@ class DistrictController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update
+     * @OA\Put (
+     *     path="/api/district/{id}",
+     *     tags={"District"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="id",
+     *          in="path",
+     *          example="523",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="importance",
+     *                          type="number"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="region_id",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"Кахан",
+     *                     "importance": 10,
+     *                     "region_id":45
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/DistrictSchema"
+     *              ),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The name field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="name", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The name field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="region_id", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The region_id field is required.",
+     *                          )
+     *                      ),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function update(UpdateDistrictRequest $request, int $id)
     {
@@ -148,7 +323,36 @@ class DistrictController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     * @OA\Delete (
+     *     path="/api/district/{id}",
+     *     tags={"District"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="District id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Post 1 deleted"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Access error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="No access"),
+     *                 ),
+     *          )
+     *      )
+     * )
      */
     public function destroy(DestroyDistrictRequest $requst, int $id)
     {
