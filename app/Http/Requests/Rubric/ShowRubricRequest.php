@@ -22,6 +22,7 @@ class ShowRubricRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'extends' => 'string'
         ];
     }
 }

@@ -44,7 +44,59 @@ class RubricController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * @OA\Post (
+     *     path="/api/rubric",
+     *     tags={"Rubric"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "name":"Продажа"
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/RubricSchema"
+     *              ),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The name field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="name", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The name field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="region_id", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The region_id field is required.",
+     *                          )
+     *                      ),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function store(StoreRubricRequest $request)
     {
@@ -59,7 +111,49 @@ class RubricController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * @OA\get (
+     *     path="/api/rubric/{id}",
+     *     tags={"Rubric"},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Id",
+     *          in="path",
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"posts"},
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/RubricSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function show(ShowRubricRequest $request, int $id)
     {
@@ -74,7 +168,68 @@ class RubricController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update
+     * @OA\Put (
+     *     path="/api/rubric/{id}",
+     *     tags={"Rubric"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="id",
+     *          in="path",
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "name":"Продажа",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/RubricSchema"
+     *              ),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The name field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="name", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The name field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="region_id", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The region_id field is required.",
+     *                          )
+     *                      ),
+     *                  ),
+     *          )
+     *      )
+     * )
      */
     public function update(UpdateRubricRequest $request, int $id)
     {
@@ -91,7 +246,36 @@ class RubricController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     * @OA\Delete (
+     *     path="/api/rubric/{id}",
+     *     tags={"Rubric"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="Rubric id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Deleted"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Access error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="No access"),
+     *                 ),
+     *          )
+     *      )
+     * )
      */
     public function destroy(DestroyRubricRequest $request, int $id)
     {

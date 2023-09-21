@@ -341,7 +341,7 @@ class DistrictController extends Controller
      *          response=200,
      *          description="Success",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Post 1 deleted"),
+     *              @OA\Property(property="message", type="string", example="Deleted"),
      *          )
      *      ),
      *      @OA\Response(
