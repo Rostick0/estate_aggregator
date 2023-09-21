@@ -1351,7 +1351,7 @@
                                     },
                                     "images[]": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "file"
                                     }
                                 },
                                 "type": "object"
@@ -1656,7 +1656,7 @@
                                     },
                                     "images[]": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "file"
                                     },
                                     "images_delete[]": {
                                         "type": "number"
@@ -1924,11 +1924,11 @@
                                     },
                                     "main_image": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "file"
                                     },
                                     "images[]": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "file"
                                     }
                                 },
                                 "type": "object"
@@ -2142,11 +2142,11 @@
                                     },
                                     "main_image": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "file"
                                     },
                                     "images[]": {
                                         "type": "string",
-                                        "format": "binary"
+                                        "format": "file"
                                     },
                                     "images_delete[]": {
                                         "type": "number"

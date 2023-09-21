@@ -142,7 +142,7 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price"},
+     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price", "not_show_price"},
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -210,7 +210,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="not_show_price",
      *                          type="boolean",
-     *                          example="0"
+     *                          example="false"
      *                      ),
      *                      @OA\Property(
      *                          property="rooms",
@@ -290,7 +290,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="images[]",
      *                          type="string",
-     *                          format="binary",
+     *                          format="file",
      *                      ),
      *              )
      *         )
@@ -464,7 +464,7 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price"},
+     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price", "not_show_price"},
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -532,7 +532,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="not_show_price",
      *                          type="boolean",
-     *                          example="0"
+     *                          example="false"
      *                      ),
      *                      @OA\Property(
      *                          property="rooms",
@@ -617,7 +617,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="images[]",
      *                          type="string",
-     *                          format="binary",
+     *                          format="file",
      *                      ),
      *                      @OA\Property(
      *                          property="images_delete[]",
