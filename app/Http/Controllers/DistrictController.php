@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\District\DestroyDistrictRequest;
 use App\Http\Requests\District\IndexDistrictRequest;
+use App\Http\Requests\District\ShowDistrictRequest;
 use App\Models\District;
 use App\Http\Requests\District\StoreDistrictRequest;
 use App\Http\Requests\District\UpdateDistrictRequest;
@@ -100,50 +102,67 @@ class DistrictController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreDistrictRequest $request)
     {
-        //
+        $data = District::create($request->validated());
+
+        return new JsonResponse(
+            [
+                'data' => $data
+            ],
+            201
+        );
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(District $district)
+    public function show(ShowDistrictRequest $request, int $id)
     {
-        //
-    }
+        $data = District::with(ExplodeExtends::run($request->extends))->findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(District $district)
-    {
-        //
+        return new JsonResponse(
+            [
+                'data' => $data
+            ]
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDistrictRequest $request, District $district)
+    public function update(UpdateDistrictRequest $request, int $id)
     {
-        //
+        $data = District::findOrFail($id);
+        $data->update(
+            $request->validated()
+        );
+
+        return new JsonResponse(
+            [
+                'data' => District::find($id)
+            ],
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(District $district)
+    public function destroy(DestroyDistrictRequest $requst, int $id)
     {
-        //
+        $deleted = District::destroy($id);
+
+        if (!$deleted) return new JsonResponse([
+            'message' => 'Not deleted',
+            404
+        ]);
+
+        return new JsonResponse(
+            [
+                'message' => 'Deleted'
+            ]
+        );
     }
 }

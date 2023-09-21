@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Requests\District;
+namespace App\Http\Requests\Rubric;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateDistrictRequest extends FormRequest
+class UpdateRubricRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('update', District::class);
+        return auth()->check() && auth()?->user()?->cannot('update', Rubric::class);
     }
 
     /**
@@ -26,11 +25,8 @@ class UpdateDistrictRequest extends FormRequest
             'name' => [
                 'string',
                 'max:255',
-                'unique:districts,name' . $this->id
-            ],
-            'importance' => 'numeric',
-            'region_id' => 'numeric|' . Rule::exists('regions', 'id'),
-
+                'unique:rubrics,name' . $this->id
+            ]
         ];
     }
 }

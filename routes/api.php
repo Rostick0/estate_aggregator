@@ -35,10 +35,8 @@ Route::group(['middleware' => 'api'], function () {
         Route::get('/me', [AuthController::class, 'me']);
     });
 
-    Route::get('district', [DistrictController::class, 'index']);
     Route::get('country', [CountryController::class, 'index']);
     Route::get('region', [RegionController::class, 'index']);
-    Route::get('rubric', [RubricController::class, 'index']);
     Route::get('property', [PropertyController::class, 'index']);
     
     Route::group(['middleware' => 'throttle:5,1'], function() {
@@ -48,7 +46,9 @@ Route::group(['middleware' => 'api'], function () {
    
     Route::apiResources([
         'post' => PostController::class,
-        'flat' => FlatController::class
+        'flat' => FlatController::class,
+        'district' => DistrictController::class,
+        'rubric' => RubricController::class
     ]);
 
     Route::put('/image/{id}', [ImageController::class, 'update']);

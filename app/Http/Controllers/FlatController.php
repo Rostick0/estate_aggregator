@@ -111,6 +111,7 @@ class FlatController extends Controller
         $data_init = Flat::with(ExplodeExtends::run($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
 
         if ($request->search) {
             $data_init->whereHas('country', function ($query) use ($request) {

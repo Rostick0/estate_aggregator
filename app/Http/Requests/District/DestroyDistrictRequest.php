@@ -2,17 +2,17 @@
 
 namespace App\Http\Requests\District;
 
+use App\Models\District;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateDistrictRequest extends FormRequest
+class DestroyDistrictRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('update', District::class);
+        return auth()->check() && auth()?->user()?->cannot('delete', District::class);
     }
 
     /**
@@ -23,14 +23,7 @@ class UpdateDistrictRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
-                'string',
-                'max:255',
-                'unique:districts,name' . $this->id
-            ],
-            'importance' => 'numeric',
-            'region_id' => 'numeric|' . Rule::exists('regions', 'id'),
-
+            //
         ];
     }
 }

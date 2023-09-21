@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Requests\District;
+namespace App\Http\Requests\Rubric;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreDistrictRequest extends FormRequest
+class DestroyRubricRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('create', District::class);
+        return auth()->check() && auth()?->user()?->cannot('delete', Rubric::class);
     }
 
     /**
@@ -23,9 +22,7 @@ class StoreDistrictRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|max:255|unique:districts,name',
-            'importance' => 'numeric',
-            'region_id' => 'required|numeric|' . Rule::exists('regions', 'id'),
+            //
         ];
     }
 }

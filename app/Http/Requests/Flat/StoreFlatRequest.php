@@ -37,7 +37,7 @@ class StoreFlatRequest extends FormRequest
             'price_day' => '',
             'price_week' => '',
             'price_month' => '',
-            'not_show_price' => '',
+            'not_show_price' => 'accepted',
             'rooms' => 'required|numeric',
             'bedrooms' => 'required|numeric',
             'bathrooms' => 'required|numeric',
