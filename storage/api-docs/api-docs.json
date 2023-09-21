@@ -684,9 +684,9 @@
                 "operationId": "09b3bc4dc23bef12c24ffffbfa09aee2",
                 "parameters": [
                     {
-                        "name": "filterEQ[country_id]",
+                        "name": "filterEQ[region_id]",
                         "in": "query",
-                        "description": "country_id",
+                        "description": "region_id",
                         "schema": {
                             "type": "string"
                         },
