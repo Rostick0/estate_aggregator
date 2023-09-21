@@ -211,6 +211,7 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="not_show_price",
+     *                          description="1 - true, 0 - false",
      *                          type="true",
      *                          example="1"
      *                      ),
@@ -534,6 +535,7 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="not_show_price",
+     *                          description="1 - true, 0 - false",
      *                          type="number",
      *                          example="1"
      *                      ),
