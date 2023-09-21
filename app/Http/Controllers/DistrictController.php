@@ -34,7 +34,8 @@ class DistrictController extends Controller
      *          in="query",
      *          example="Москва",
      *          @OA\Schema(
-     *              type="number"
+     *          format="textarea",
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(

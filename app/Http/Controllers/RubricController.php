@@ -20,6 +20,18 @@ class RubricController extends Controller
      * @OA\get (
      *     path="/api/rubric",
      *     tags={"Rubric"},
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  @OA\Schema(type="string"),
+     *              ),
+     *              example={"posts"},
+     *          )
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Success",
