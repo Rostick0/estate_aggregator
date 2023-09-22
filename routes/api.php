@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\FlatController;
@@ -48,7 +49,8 @@ Route::group(['middleware' => 'api'], function () {
         'post' => PostController::class,
         'flat' => FlatController::class,
         'district' => DistrictController::class,
-        'rubric' => RubricController::class
+        'rubric' => RubricController::class,
+        'collection' => CollectionController::class
     ]);
 
     Route::put('/image/{id}', [ImageController::class, 'update']);

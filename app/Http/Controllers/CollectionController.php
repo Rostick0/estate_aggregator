@@ -2,29 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Rubric\DestroyRubricRequest;
-use App\Http\Requests\Rubric\IndexRubricRequest;
-use App\Http\Requests\Rubric\ShowRubricRequest;
-use App\Http\Requests\Rubric\StoreRubricRequest;
-use App\Http\Requests\Rubric\UpdateRubricRequest;
-use App\Models\Rubric;
-use App\Utils\ExplodeExtends;
+use App\Models\Collection;
+use App\Http\Requests\Collection\DestroyCollectionRequest;
+use App\Http\Requests\Collection\IndexCollectionRequest;
+use App\Http\Requests\Collection\StoreCollectionRequest;
+use App\Http\Requests\Collection\UpdateCollectionRequest;
 use App\Utils\FilterRequestUtil;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
-class RubricController extends Controller
+class CollectionController extends Controller
 {
     /**
      * Index
      * @OA\get (
-     *     path="/api/rubric",
-     *     tags={"Rubric"},
+     *     path="/api/collection",
+     *     tags={"Collection"},
      *      @OA\Parameter(
-     *          name="filterEQ[name]",
-     *          description="name",
+     *          name="filterEQ[collection_name]",
+     *          description="collection_name, value",
      *          in="query",
-     *          example="721",
+     *          example="коллекция",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -47,32 +44,20 @@ class RubricController extends Controller
      *              type="number",
      *          )
      *      ),
-     *      @OA\Parameter(
-     *          name="extends",
-     *          description="Extends data",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"posts"},
-     *          )
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/RubricSchema"
+     *                  ref="#/components/schemas/CollectionSchema"
      *              ),
      *          )
      *      ),
      * )
      */
-    public function index(IndexRubricRequest $request)
+    public function index(IndexCollectionRequest $request)
     {
-        $data_init = Rubric::with(ExplodeExtends::run($request->extends));
+        $data_init = Collection::with([]);
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
@@ -85,22 +70,28 @@ class RubricController extends Controller
     /**
      * Store
      * @OA\Post (
-     *     path="/api/rubric",
-     *     tags={"Rubric"},
+     *     path="/api/collection",
+     *     tags={"Collection"},
      *     security={{"bearer_token": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                      type="object",
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string"
-     *                      ),
-     *                 ),
+     *                  @OA\Property(
+     *                      property="collection_name",
+     *                      description="Название",
+     *                      type="number",
+     *                      example="Тип продажи"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="value",
+     *                      description="Значение",
+     *                      type="number",
+     *                      example="Аренда"
+     *                  ),
      *                 example={
-     *                     "name":"Продажа"
+     *                     "collection_name":"Тип продажи",
+     *                     "value":"Аренда"
      *                }
      *             )
      *         )
@@ -110,7 +101,7 @@ class RubricController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/RubricSchema"
+     *                  ref="#/components/schemas/CollectionSchema"
      *              ),
      *          ),
      *      ),
@@ -118,7 +109,7 @@ class RubricController extends Controller
      *          response=400,
      *          description="Validation error",
      *          @OA\JsonContent(
-     *                  @OA\Property(property="message", type="string", example="The name field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="message", type="string", example="The name field is required."),
      *                  @OA\Property(property="errors", type="object",
      *                      @OA\Property(property="name", type="array", collectionFormat="multi",
      *                        @OA\Items(
@@ -126,20 +117,14 @@ class RubricController extends Controller
      *                          example="The name field is required.",
      *                          )
      *                      ),
-     *                      @OA\Property(property="region_id", type="array", collectionFormat="multi",
-     *                        @OA\Items(
-     *                          type="string",
-     *                          example="The region_id field is required.",
-     *                          )
-     *                      ),
      *                  ),
      *          )
      *      )
      * )
      */
-    public function store(StoreRubricRequest $request)
+    public function store(StoreCollectionRequest $request)
     {
-        $data = Rubric::create($request->validated());
+        $data = Collection::create($request->validated());
 
         return new JsonResponse(
             [
@@ -152,8 +137,8 @@ class RubricController extends Controller
     /**
      * Show
      * @OA\get (
-     *     path="/api/rubric/{id}",
-     *     tags={"Rubric"},
+     *     path="/api/collection/{id}",
+     *     tags={"Collection"},
      *      @OA\Parameter(
      *          name="id",
      *          description="Id",
@@ -163,24 +148,12 @@ class RubricController extends Controller
      *              type="number"
      *          )
      *      ),
-     *      @OA\Parameter(
-     *          name="extends",
-     *          description="Extends data",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"posts"},
-     *          )
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/RubricSchema"
+     *                  ref="#/components/schemas/CollectionSchema"
      *              ),
      *          )
      *      ),
@@ -194,9 +167,9 @@ class RubricController extends Controller
      *      )
      * )
      */
-    public function show(ShowRubricRequest $request, int $id)
+    public function show(int $id)
     {
-        $data = Rubric::findOrFail($id);
+        $data = Collection::findOrFail($id);
 
         return new JsonResponse(
             [
@@ -209,8 +182,8 @@ class RubricController extends Controller
     /**
      * Update
      * @OA\Put (
-     *     path="/api/rubric/{id}",
-     *     tags={"Rubric"},
+     *     path="/api/collection/{id}",
+     *     tags={"Collection"},
      *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
@@ -225,15 +198,21 @@ class RubricController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                      type="object",
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string"
-     *                      ),
-     *                 ),
+     *                  @OA\Property(
+     *                      property="collection_name",
+     *                      description="Название",
+     *                      type="number",
+     *                      example="Тип продажи"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="value",
+     *                      description="Значение",
+     *                      type="number",
+     *                      example="Аренда"
+     *                  ),
      *                 example={
-     *                     "name":"Продажа",
+     *                     "collection_name":"Тип продажи",
+     *                     "value":"Аренда"
      *                }
      *             )
      *         )
@@ -243,7 +222,7 @@ class RubricController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/RubricSchema"
+     *                  ref="#/components/schemas/CollectionSchema"
      *              ),
      *          ),
      *      ),
@@ -251,7 +230,7 @@ class RubricController extends Controller
      *          response=400,
      *          description="Validation error",
      *          @OA\JsonContent(
-     *                  @OA\Property(property="message", type="string", example="The name field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="message", type="string", example="The name field is required."),
      *                  @OA\Property(property="errors", type="object",
      *                      @OA\Property(property="name", type="array", collectionFormat="multi",
      *                        @OA\Items(
@@ -259,27 +238,21 @@ class RubricController extends Controller
      *                          example="The name field is required.",
      *                          )
      *                      ),
-     *                      @OA\Property(property="region_id", type="array", collectionFormat="multi",
-     *                        @OA\Items(
-     *                          type="string",
-     *                          example="The region_id field is required.",
-     *                          )
-     *                      ),
      *                  ),
      *          )
      *      )
      * )
      */
-    public function update(UpdateRubricRequest $request, int $id)
+    public function update(UpdateCollectionRequest $request, int $id)
     {
-        $data = Rubric::findOrFail($id);
+        $data = Collection::findOrFail($id);
         $data->update(
             $request->validated()
         );
 
         return new JsonResponse(
             [
-                'data' => Rubric::find($id)
+                'data' => Collection::find($id)
             ],
         );
     }
@@ -287,12 +260,12 @@ class RubricController extends Controller
     /**
      * Delete
      * @OA\Delete (
-     *     path="/api/rubric/{id}",
-     *     tags={"Rubric"},
+     *     path="/api/collection/{id}",
+     *     tags={"Collection"},
      *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
-     *          description="Rubric id",
+     *          description="Collection id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -316,9 +289,9 @@ class RubricController extends Controller
      *      )
      * )
      */
-    public function destroy(DestroyRubricRequest $request, int $id)
+    public function destroy(DestroyCollectionRequest $request, int $id)
     {
-        $deleted = Rubric::destroy($id);
+        $deleted = Collection::destroy($id);
 
         if (!$deleted) return new JsonResponse([
             'message' => 'Not deleted',

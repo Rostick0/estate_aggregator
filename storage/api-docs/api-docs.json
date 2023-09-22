@@ -592,6 +592,348 @@
                 ]
             }
         },
+        "/api/collection": {
+            "get": {
+                "tags": [
+                    "Collection"
+                ],
+                "summary": "Index",
+                "operationId": "ade4da6a635b8953d374846f5cb23ef4",
+                "parameters": [
+                    {
+                        "name": "filterEQ[collection_name]",
+                        "in": "query",
+                        "description": "collection_name, value",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "коллекция"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "30"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CollectionSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Collection"
+                ],
+                "summary": "Store",
+                "operationId": "e6c140a47f36a2207191be45d74a855a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "collection_name": {
+                                        "description": "Название",
+                                        "type": "number",
+                                        "example": "Тип продажи"
+                                    },
+                                    "value": {
+                                        "description": "Значение",
+                                        "type": "number",
+                                        "example": "Аренда"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "collection_name": "Тип продажи",
+                                    "value": "Аренда"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CollectionSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The name field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/collection/{id}": {
+            "get": {
+                "tags": [
+                    "Collection"
+                ],
+                "summary": "Show",
+                "operationId": "2c3c8075567aba8d0f7444f29ebeefa5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CollectionSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Collection"
+                ],
+                "summary": "Update",
+                "operationId": "bdb35112a7f7fffee5ced73a27dacdb5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "collection_name": {
+                                        "description": "Название",
+                                        "type": "number",
+                                        "example": "Тип продажи"
+                                    },
+                                    "value": {
+                                        "description": "Значение",
+                                        "type": "number",
+                                        "example": "Аренда"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "collection_name": "Тип продажи",
+                                    "value": "Аренда"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CollectionSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The name field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Collection"
+                ],
+                "summary": "Delete",
+                "operationId": "af8143774096f7ca2aa5b7e9318f57db",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Collection id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/country": {
             "get": {
                 "tags": [
@@ -1288,6 +1630,7 @@
                                         "example": "35000"
                                     },
                                     "not_show_price": {
+                                        "description": "1 - true, 0 - false",
                                         "type": "true",
                                         "example": "1"
                                     },
@@ -1590,6 +1933,7 @@
                                         "example": "35000"
                                     },
                                     "not_show_price": {
+                                        "description": "1 - true, 0 - false",
                                         "type": "number",
                                         "example": "1"
                                     },
@@ -2443,6 +2787,33 @@
                 "operationId": "262e115ddd743d3f7bb77df4af1f704c",
                 "parameters": [
                     {
+                        "name": "filterEQ[name]",
+                        "in": "query",
+                        "description": "name",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "721"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "30"
+                    },
+                    {
                         "name": "extends",
                         "in": "query",
                         "description": "Extends data",
@@ -2868,6 +3239,23 @@
                     "updated_at": {
                         "type": "string",
                         "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "CollectionSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "collection_name": {
+                        "type": "string",
+                        "example": "Тип продажи"
+                    },
+                    "value": {
+                        "type": "string",
+                        "example": "Аренда"
                     }
                 },
                 "type": "object"
