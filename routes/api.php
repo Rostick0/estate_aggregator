@@ -40,7 +40,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('region', [RegionController::class, 'index']);
     Route::get('property', [PropertyController::class, 'index']);
     
-    Route::group(['middleware' => 'throttle:5,1'], function() {
+    Route::group(['middleware' => 'throttle:3,1'], function() {
         Route::post('application', [ApplicationController::class, 'store']);
         Route::post('application-flat', [ApplicationFlatController::class, 'store']);
     });

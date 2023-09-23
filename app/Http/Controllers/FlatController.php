@@ -10,6 +10,7 @@ use App\Http\Requests\Flat\UpdateFlatRequest;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\JsonResponse;
 
 class FlatController extends Controller
@@ -112,18 +113,20 @@ class FlatController extends Controller
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init->where(FilterRequestUtil::has($request->filterHas));
 
         if ($request->search) {
-            $data_init->whereHas('country', function ($query) use ($request) {
-                $query->whereLike('name', $request->search);
-            });
+            // $data_init->whereHas('country', function ($query) use ($request) {
+            //     $query->whereLike('name', $request->search);
+            // });
 
             $data_init->whereHas('district', function ($query) use ($request) {
                 $query->whereLike('name', $request->search);
             });
 
-            $data_init->whereLike('address', $request->search);
+            // $data_init->whereLike('address', $request->search);
         }
+
 
         $data = $data_init->paginate($request->limit ?? 20);
 
@@ -286,9 +289,10 @@ class FlatController extends Controller
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
-     *                          property="propertie_values[]",
+     *                          property="properties_values",
      *                          type="string",
-     *                          format="number",
+     *                          format="json",
+     *                          description="Конвертируйте в json [{value:800,property_value_id:1}]"
      *                      ),
      *                      @OA\Property(
      *                          property="images[]",
@@ -367,7 +371,7 @@ class FlatController extends Controller
             'contact_id' => auth()->id()
         ]);
 
-        FlatPropertyController::createProperites($request->propertie_values, $flat);
+        if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
         if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
 
         return new JsonResponse(
@@ -610,12 +614,14 @@ class FlatController extends Controller
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
-     *                          property="propertie_values[]",
+     *                          property="properties_values",
      *                          type="string",
-     *                          format="number",
+     *                          format="json",
+     *                          description="Конвертируйте в json [{value:800,property_value_id:1}]"
      *                      ),
      *                      @OA\Property(
-     *                          property="properties_delete[]",
+     *                          property="properties_delete",
+     *                          description="Пример: 1,2,3",
      *                          type="string",
      *                          format="number",
      *                      ),
@@ -624,8 +630,10 @@ class FlatController extends Controller
      *                          type="file",
      *                      ),
      *                      @OA\Property(
-     *                          property="images_delete[]",
-     *                          type="number",
+     *                          property="images_delete",
+     *                          description="Пример: 1,2,3",
+     *                          type="string",
+     *                          format="number",
      *                      ),
      *                      @OA\Property(
      *                          property="_method",
@@ -675,7 +683,7 @@ class FlatController extends Controller
             [
                 'message' => 'No access'
             ],
-            404
+            403
         );
 
         $values = $request->only([
@@ -713,11 +721,11 @@ class FlatController extends Controller
             ...$values
         ]);
 
-        FlatPropertyController::createProperites($request->propertie_values, $flat);
-        FlatPropertyController::deleteProperties($request->properties_delete, $flat);
+        if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
+        if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
         if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
-        if (!empty($request->images_delete)) ImageDBUtil::deleteImage($request->images_delete, $id, 'flat');
+        if ($request->images_delete) ImageDBUtil::deleteImage(explode(',', $request->images_delete), $id, 'flat');
 
         return new JsonResponse(
             [

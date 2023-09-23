@@ -1690,9 +1690,10 @@
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
-                                    "propertie_values[]": {
+                                    "properties_values": {
+                                        "description": "Конвертируйте в json [{value:800,property_value_id:1}]",
                                         "type": "string",
-                                        "format": "number"
+                                        "format": "json"
                                     },
                                     "images[]": {
                                         "type": "file"
@@ -1993,19 +1994,23 @@
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
-                                    "propertie_values[]": {
+                                    "properties_values": {
+                                        "description": "Конвертируйте в json [{value:800,property_value_id:1}]",
                                         "type": "string",
-                                        "format": "number"
+                                        "format": "json"
                                     },
-                                    "properties_delete[]": {
+                                    "properties_delete": {
+                                        "description": "Пример: 1,2,3",
                                         "type": "string",
                                         "format": "number"
                                     },
                                     "images[]": {
                                         "type": "file"
                                     },
-                                    "images_delete[]": {
-                                        "type": "number"
+                                    "images_delete": {
+                                        "description": "Пример: 1,2,3",
+                                        "type": "string",
+                                        "format": "number"
                                     },
                                     "_method": {
                                         "type": "string",
@@ -2490,8 +2495,9 @@
                                     "images[]": {
                                         "type": "file"
                                     },
-                                    "images_delete[]": {
-                                        "type": "number"
+                                    "images_delete": {
+                                        "description": "Пример: 1,2,3",
+                                        "type": "string"
                                     },
                                     "_method": {
                                         "type": "string",

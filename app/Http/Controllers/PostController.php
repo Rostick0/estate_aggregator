@@ -341,8 +341,9 @@ class PostController extends Controller
      *                          type="file",
      *                      ),
      *                      @OA\Property(
-     *                          property="images_delete[]",
-     *                          type="number",
+     *                          property="images_delete",
+     *                          description="Пример: 1,2,3",
+     *                          type="string",
      *                      ),
      *                      @OA\Property(
      *                          property="_method",
@@ -430,7 +431,7 @@ class PostController extends Controller
             );
         }
 
-        if (!empty($request->images_delete)) ImageDBUtil::deleteImage($request->images_delete, $id, 'post');
+        if (!empty($request->images_delete)) ImageDBUtil::deleteImage(explode(',', $request->images_delete), $id, 'post');
 
         return new JsonResponse(
             [

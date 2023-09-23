@@ -3,19 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flat;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 
 class FlatPropertyController extends Controller
 {
-    private static function emptyProperty($properties) {
-        return empty($propertie_values) || isset($propertie_values[0]);
+    private static function emptyProperty($properties)
+    {
+        return empty($properties) || isset($properties);
     }
 
-    public static function createProperites($propertie_values, Flat $flat)
+    public static function createProperites($properties_values, Flat $flat)
     {
-        if (FlatPropertyController::emptyProperty($propertie_values)) return;
+        $properties_values = Json::decode($properties_values);
+        // dd($properties_values);
 
-        foreach ($propertie_values as $item) {
+        if (!is_array($properties_values)) $properties_values = [$properties_values];
+
+        foreach ($properties_values as $item) {
+            $item = (object) $item;
+
             $flat->flat_properties()->create([
                 'value' => $item->value,
                 'property_value_id' => $item->property_value_id,

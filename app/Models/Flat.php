@@ -87,7 +87,7 @@ class Flat extends Model
 
     public function flat_properties(): HasMany
     {
-        return $this->hasMany(FlatProperty::class, 'id', 'flat_id');
+        return $this->hasMany(FlatProperty::class, 'flat_id', 'id');
     }
 
     public function object(): BelongsTo
@@ -125,13 +125,14 @@ class Flat extends Model
         return $this->belongsTo(BuildingType::class, 'building_type', 'id');
     }
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'contact_id', 'id');
     }
 
     public function images(): HasMany
     {
-        return $this->hasMany(Image::class, 'id', 'type_id')->where('type', 'flat');
+        return $this->hasMany(Image::class, 'type_id', 'id')->where('type', 'flat');
     }
 
     // return $this->belongsTo(Region::class, 'region_id', 'id');

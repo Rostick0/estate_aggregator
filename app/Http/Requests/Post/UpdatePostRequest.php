@@ -32,8 +32,7 @@ class UpdatePostRequest extends FormRequest
             'images' => 'array',
             'main_image' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
             'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
-            'images_delete' => 'array',
-            'images_delete.*' => 'nullable|numeric'
+            'images_delete' => 'string',
         ];
     }
 }

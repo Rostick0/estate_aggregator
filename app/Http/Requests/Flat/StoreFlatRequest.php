@@ -52,7 +52,7 @@ class StoreFlatRequest extends FormRequest
             'description' => 'string|max:65536',
             'filename' => 'string|max:255',
             'tour_link' => 'string|max:255',
-            'propertie_values' => 'array',
+            'properties_values' => 'string',
             'images' => 'array',
             'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
         ];
