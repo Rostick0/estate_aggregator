@@ -60,12 +60,9 @@ class DistrictController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="posts,region",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"posts", "region"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(
@@ -197,12 +194,9 @@ class DistrictController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="posts,region",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"posts", "region"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(

@@ -61,12 +61,9 @@ class PostController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="images,main_image,user,district,rubric",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"images", "main_image", "user", "district", "rubric"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(
@@ -249,12 +246,9 @@ class PostController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="images,main_image,user,district,rubric",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"images", "main_image", "user", "district", "rubric"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(

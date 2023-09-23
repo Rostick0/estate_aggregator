@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Flat;
+namespace App\Http\Requests\BuildingType;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class IndexFlatRequest extends FormRequest
+class IndexBuildingTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +22,10 @@ class IndexFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price' => '',
             'filterEQ' => 'array',
             'filterLIKE' => 'array',
             'page' => 'numeric',
-            'limit' => 'numeric|max:50',
-            'extends' => 'string',
-            'flat_properties' => 'array',
+            'limit' => 'numeric|max:150',
         ];
     }
 }

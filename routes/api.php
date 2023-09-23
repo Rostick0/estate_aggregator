@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BuildingTypeController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
@@ -39,6 +40,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('country', [CountryController::class, 'index']);
     Route::get('region', [RegionController::class, 'index']);
     Route::get('property', [PropertyController::class, 'index']);
+    Route::get('building-type', [BuildingTypeController::class, 'index']);
     
     Route::group(['middleware' => 'throttle:3,1'], function() {
         Route::post('application', [ApplicationController::class, 'store']);

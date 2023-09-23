@@ -19,12 +19,9 @@ class PropertyController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="property_values",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="object", ref="#/components/schemas/PropertyValueSchema"),
-     *              ),
-     *              example={"property_values"},
+     *              type="string",
      *          ),
      *      ),
      *      @OA\Response(

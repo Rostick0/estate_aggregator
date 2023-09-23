@@ -51,12 +51,9 @@ class RubricController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="posts",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"posts"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(
@@ -167,12 +164,9 @@ class RubricController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="posts",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"posts"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(

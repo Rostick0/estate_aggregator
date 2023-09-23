@@ -2,40 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Region\IndexRegionRequest;
-use App\Models\Region;
-use App\Http\Requests\Region\StoreRegionRequest;
-use App\Http\Requests\Region\UpdateRegionRequest;
+use App\Http\Requests\BuildingType\IndexBuildingTypeRequest;
+use App\Models\BuildingType;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class RegionController extends Controller
+class BuildingTypeController extends Controller
 {
     /**
      * Index
      * @OA\get (
-     *     path="/api/region",
-     *     tags={"Region"},
-     *     @OA\Parameter(
+     *     path="/api/flat",
+     *     tags={"Flat"},
+     *     @OA\Parameter( 
      *          name="filterLIKE[name]",
      *          description="name",
      *          in="query",
-     *          example="Си",
+     *          example="1",
      *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="filterEQ[country_id]",
-     *          description="country_id",
-     *          in="query",
-     *          example="721",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
+     *              type="number"
+     *          ),
+     *     ),
+     *     @OA\Parameter(
      *          name="page",
      *          description="Page",
      *          in="query",
@@ -48,7 +38,7 @@ class RegionController extends Controller
      *          name="limit",
      *          description="Limit data",
      *          in="query",
-     *          example="30",
+     *          example="20",
      *          @OA\Schema(
      *              type="number",
      *          )
@@ -57,7 +47,7 @@ class RegionController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="country,districts",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -67,7 +57,7 @@ class RegionController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/RegionSchema"
+     *                  ref="#/components/schemas/BuildingTypeSchema"
      *              ),
      *          )
      *      ),
@@ -81,17 +71,17 @@ class RegionController extends Controller
      *      )
      * )
      */
-    public function index(IndexRegionRequest $request)
+    public function index(IndexBuildingTypeRequest $request)
     {
-        $data_init = Region::with(ExplodeExtends::run($request->extends))
-            ->orderBy('name');
+        $data_init = BuildingType::with(ExplodeExtends::run($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init = FilterRequestUtil::has($request->filterHas, $data_init);
 
-        $data = $data_init->paginate($request->limit ?? 50);
+        $data = $data_init->paginate($request->limit ?? 20);
 
-        return new JsonResponse(
+        return new JsonResource(
             $data
         );
     }
@@ -107,7 +97,7 @@ class RegionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRegionRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -115,7 +105,7 @@ class RegionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Region $region)
+    public function show(BuildingType $buildingType)
     {
         //
     }
@@ -123,7 +113,7 @@ class RegionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Region $region)
+    public function edit(BuildingType $buildingType)
     {
         //
     }
@@ -131,7 +121,7 @@ class RegionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRegionRequest $request, Region $region)
+    public function update(Request $request, BuildingType $buildingType)
     {
         //
     }
@@ -139,7 +129,7 @@ class RegionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Region $region)
+    public function destroy(BuildingType $buildingType)
     {
         //
     }

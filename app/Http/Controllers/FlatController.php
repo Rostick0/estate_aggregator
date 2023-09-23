@@ -38,15 +38,6 @@ class FlatController extends Controller
      *              type="number"
      *          ),
      *     ),
-     *     @OA\Parameter( 
-     *          name="search",
-     *          description="Поиск по стране, городу, адресу",
-     *          in="query",
-     *          example="2",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
      *     @OA\Parameter(
      *          name="page",
      *          description="Page",
@@ -69,12 +60,9 @@ class FlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"flat_properties", "object", "type", "country", "district", "currency", "square_land_unit", "building_type", "user", "images"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Parameter(
@@ -113,20 +101,7 @@ class FlatController extends Controller
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init->where(FilterRequestUtil::has($request->filterHas));
-
-        if ($request->search) {
-            // $data_init->whereHas('country', function ($query) use ($request) {
-            //     $query->whereLike('name', $request->search);
-            // });
-
-            $data_init->whereHas('district', function ($query) use ($request) {
-                $query->whereLike('name', $request->search);
-            });
-
-            // $data_init->whereLike('address', $request->search);
-        }
-
+        $data_init = FilterRequestUtil::has($request->filterHas, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 20);
 
@@ -401,12 +376,9 @@ class FlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"flat_properties", "object", "type", "country", "district", "currency", "square_land_unit", "building_type", "user", "images"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Parameter(

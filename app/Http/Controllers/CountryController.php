@@ -47,12 +47,9 @@ class CountryController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
+     *          example="regions",
      *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *              example={"regions"},
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response(

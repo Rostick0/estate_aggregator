@@ -974,12 +974,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "regions"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "regions"
                     }
                 ],
                 "responses": {
@@ -1067,13 +1064,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "posts",
-                                "region"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "posts,region"
                     }
                 ],
                 "responses": {
@@ -1229,13 +1222,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "posts",
-                                "region"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "posts,region"
                     }
                 ],
                 "responses": {
@@ -1495,21 +1484,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "flat_properties",
-                                "object",
-                                "type",
-                                "country",
-                                "district",
-                                "currency",
-                                "square_land_unit",
-                                "building_type",
-                                "user",
-                                "images"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images"
                     },
                     {
                         "name": "flat_properties[]",
@@ -1788,21 +1765,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "flat_properties",
-                                "object",
-                                "type",
-                                "country",
-                                "district",
-                                "currency",
-                                "square_land_unit",
-                                "building_type",
-                                "user",
-                                "images"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images"
                     },
                     {
                         "name": "flat_properties[]",
@@ -2189,16 +2154,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "images",
-                                "main_image",
-                                "user",
-                                "district",
-                                "rubric"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "images,main_image,user,district,rubric"
                     }
                 ],
                 "responses": {
@@ -2393,16 +2351,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "images",
-                                "main_image",
-                                "user",
-                                "district",
-                                "rubric"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "images,main_image,user,district,rubric"
                     }
                 ],
                 "responses": {
@@ -2664,12 +2615,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "property_values"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "property_values"
                     }
                 ],
                 "responses": {
@@ -2740,13 +2688,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "country",
-                                "districts"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "country,districts"
                     }
                 ],
                 "responses": {
@@ -2824,12 +2768,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "posts"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "posts"
                     }
                 ],
                 "responses": {
@@ -2961,12 +2902,9 @@
                         "in": "query",
                         "description": "Extends data",
                         "schema": {
-                            "type": "array",
-                            "items": {},
-                            "example": [
-                                "posts"
-                            ]
-                        }
+                            "type": "string"
+                        },
+                        "example": "posts"
                     }
                 ],
                 "responses": {
