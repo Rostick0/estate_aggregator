@@ -15,7 +15,7 @@ class BuildingTypeController extends Controller
      * Index
      * @OA\get (
      *     path="/api/building-type",
-     *     tags={"Flat"},
+     *     tags={"BuildingType"},
      *     @OA\Parameter( 
      *          name="filterLIKE[name]",
      *          description="name",

@@ -595,7 +595,7 @@
         "/api/building-type": {
             "get": {
                 "tags": [
-                    "Flat"
+                    "BuildingType"
                 ],
                 "summary": "Index",
                 "operationId": "ab243826f15bdf10570dcbb718bc8c69",
