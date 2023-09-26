@@ -592,6 +592,77 @@
                 ]
             }
         },
+        "/api/building-type": {
+            "get": {
+                "tags": [
+                    "Flat"
+                ],
+                "summary": "Index",
+                "operationId": "ab243826f15bdf10570dcbb718bc8c69",
+                "parameters": [
+                    {
+                        "name": "filterLIKE[name]",
+                        "in": "query",
+                        "description": "name",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/BuildingTypeSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/collection": {
             "get": {
                 "tags": [
@@ -608,6 +679,15 @@
                             "type": "string"
                         },
                         "example": "коллекция"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
                     },
                     {
                         "name": "page",
@@ -952,6 +1032,15 @@
                         "example": "5"
                     },
                     {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page",
@@ -1040,6 +1129,15 @@
                             "format": "textarea"
                         },
                         "example": "Москва"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
                     },
                     {
                         "name": "page",
@@ -1444,22 +1542,31 @@
                         "example": "1"
                     },
                     {
-                        "name": "price",
+                        "name": "filterHas[flat_properties.property_value.property]",
                         "in": "query",
-                        "description": "Price",
+                        "description": "Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
                         "schema": {
                             "type": "number"
                         },
-                        "example": "2"
+                        "example": "1"
                     },
                     {
-                        "name": "search",
+                        "name": "sort",
                         "in": "query",
-                        "description": "Поиск по стране, городу, адресу",
+                        "description": "Сортировка по параметру",
                         "schema": {
-                            "type": "number"
+                            "type": "string"
                         },
-                        "example": "2"
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
                     },
                     {
                         "name": "page",
@@ -1487,15 +1594,6 @@
                             "type": "string"
                         },
                         "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images"
-                    },
-                    {
-                        "name": "flat_properties[]",
-                        "in": "query",
-                        "description": "Extends data",
-                        "schema": {
-                            "type": "array",
-                            "items": {}
-                        }
                     }
                 ],
                 "responses": {
@@ -1507,22 +1605,6 @@
                                     "properties": {
                                         "data": {
                                             "$ref": "#/components/schemas/FlatSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Not found"
                                         }
                                     },
                                     "type": "object"
@@ -2132,6 +2214,15 @@
                         "example": "1"
                     },
                     {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page",
@@ -2666,6 +2757,15 @@
                         "example": "721"
                     },
                     {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
                         "name": "page",
                         "in": "query",
                         "description": "Page",
@@ -2744,6 +2844,15 @@
                             "type": "string"
                         },
                         "example": "721"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
                     },
                     {
                         "name": "page",
@@ -3183,6 +3292,19 @@
                     "updated_at": {
                         "type": "string",
                         "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "BuildingTypeSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Новый дом"
                     }
                 },
                 "type": "object"

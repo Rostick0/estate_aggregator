@@ -11,7 +11,6 @@ use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use App\Utils\OrderByUtil;
-use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\JsonResponse;
 
 class FlatController extends Controller
@@ -31,14 +30,23 @@ class FlatController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="price",
-     *          description="Price",
+     *          name="filterHas[flat_properties.property_value.property]",
+     *          description="Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
      *          in="query",
-     *          example="2",
+     *          example="1",
      *          @OA\Schema(
      *              type="number"
      *          ),
      *     ),
+     *     @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
      *     @OA\Parameter(
      *          name="sort",
      *          description="Сортировка по параметру",
@@ -75,17 +83,6 @@ class FlatController extends Controller
      *              type="string",
      *          )
      *      ),
-     *      @OA\Parameter(
-     *          name="flat_properties[]",
-     *          description="Extends data",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Schema(type="string"),
-     *              ),
-     *          )
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Success",
@@ -95,14 +92,6 @@ class FlatController extends Controller
      *              ),
      *          )
      *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Validation error",
-     *          @OA\JsonContent(
-     *                  @OA\Property(property="message", type="string", example="Not found"),
-     *                  ),
-     *          )
-     *      )
      * )
      */
     public function index(IndexFlatRequest $request)

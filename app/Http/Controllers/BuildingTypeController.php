@@ -14,7 +14,7 @@ class BuildingTypeController extends Controller
     /**
      * Index
      * @OA\get (
-     *     path="/api/flat",
+     *     path="/api/building-type",
      *     tags={"Flat"},
      *     @OA\Parameter( 
      *          name="filterLIKE[name]",
@@ -41,15 +41,6 @@ class BuildingTypeController extends Controller
      *          example="20",
      *          @OA\Schema(
      *              type="number",
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="extends",
-     *          description="Extends data",
-     *          in="query",
-     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images",
-     *          @OA\Schema(
-     *              type="string",
      *          )
      *      ),
      *      @OA\Response(

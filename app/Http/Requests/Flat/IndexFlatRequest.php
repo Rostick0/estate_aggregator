@@ -26,6 +26,7 @@ class IndexFlatRequest extends FormRequest
             'price' => '',
             'filterEQ' => 'array',
             'filterLIKE' => 'array',
+            'sort' => '',
             'page' => 'numeric',
             'limit' => 'numeric|max:50',
             'extends' => 'string',
