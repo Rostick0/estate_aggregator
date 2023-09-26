@@ -8,6 +8,7 @@ use App\Http\Requests\Collection\IndexCollectionRequest;
 use App\Http\Requests\Collection\StoreCollectionRequest;
 use App\Http\Requests\Collection\UpdateCollectionRequest;
 use App\Utils\FilterRequestUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 
 class CollectionController extends Controller
@@ -22,6 +23,15 @@ class CollectionController extends Controller
      *          description="collection_name, value",
      *          in="query",
      *          example="коллекция",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -61,6 +71,7 @@ class CollectionController extends Controller
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 20);
 

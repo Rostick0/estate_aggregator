@@ -6,6 +6,7 @@ use App\Http\Requests\Country\IndexCountryRequest;
 use App\Models\Country;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,15 @@ class CountryController extends Controller
      *          example="5",
      *          @OA\Schema(
      *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -76,8 +86,9 @@ class CountryController extends Controller
         $data_init = Country::with(ExplodeExtends::run($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
-        $data = $data_init->orderBy('name')->paginate($request->limit ?? 50);
+        $data = $data_init->paginate($request->limit ?? 50);
 
         return new JsonResponse(
             $data

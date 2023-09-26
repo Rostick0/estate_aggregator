@@ -10,6 +10,7 @@ use App\Http\Requests\District\StoreDistrictRequest;
 use App\Http\Requests\District\UpdateDistrictRequest;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 
 class DistrictController extends Controller
@@ -35,6 +36,15 @@ class DistrictController extends Controller
      *          example="Москва",
      *          @OA\Schema(
      *          format="textarea",
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
      *              type="string"
      *          )
      *      ),
@@ -91,6 +101,7 @@ class DistrictController extends Controller
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 50);
 

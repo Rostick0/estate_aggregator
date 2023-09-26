@@ -12,6 +12,7 @@ use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use App\Utils\ImageUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
@@ -40,6 +41,15 @@ class PostController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
      *          name="page",
      *          description="Page",
      *          in="query",
@@ -87,16 +97,16 @@ class PostController extends Controller
      */
     public function index(IndexPostRequest $request)
     {
-        $post_init = Post::with(ExplodeExtends::run($request->extends))
-            ->orderByDesc('id');
+        $data_init = Post::with(ExplodeExtends::run($request->extends));
 
-        $post_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $post_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
-        $post = $post_init->paginate($request->limit ?? 20);
+        $data = $data_init->paginate($request->limit ?? 20);
 
         return new JsonResponse(
-            $post
+            $data
         );
     }
 

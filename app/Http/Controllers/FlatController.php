@@ -40,6 +40,15 @@ class FlatController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
      *          name="page",
      *          description="Page",
      *          in="query",

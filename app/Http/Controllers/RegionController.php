@@ -8,6 +8,7 @@ use App\Http\Requests\Region\StoreRegionRequest;
 use App\Http\Requests\Region\UpdateRegionRequest;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 
 class RegionController extends Controller
@@ -31,6 +32,15 @@ class RegionController extends Controller
      *          description="country_id",
      *          in="query",
      *          example="721",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -83,11 +93,11 @@ class RegionController extends Controller
      */
     public function index(IndexRegionRequest $request)
     {
-        $data_init = Region::with(ExplodeExtends::run($request->extends))
-            ->orderBy('name');
+        $data_init = Region::with(ExplodeExtends::run($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 50);
 

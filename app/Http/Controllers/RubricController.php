@@ -10,6 +10,7 @@ use App\Http\Requests\Rubric\UpdateRubricRequest;
 use App\Models\Rubric;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,15 @@ class RubricController extends Controller
      *          description="name",
      *          in="query",
      *          example="721",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -73,6 +83,7 @@ class RubricController extends Controller
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 20);
 
