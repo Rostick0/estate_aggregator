@@ -10,6 +10,7 @@ use App\Http\Requests\Flat\UpdateFlatRequest;
 use App\Utils\ExplodeExtends;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
+use App\Utils\OrderByUtil;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\JsonResponse;
 
@@ -102,6 +103,7 @@ class FlatController extends Controller
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
         $data_init = FilterRequestUtil::has($request->filterHas, $data_init);
+        $data_init = OrderByUtil::set($request->sort, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 20);
 
