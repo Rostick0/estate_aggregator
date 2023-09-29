@@ -1524,6 +1524,274 @@
                 ]
             }
         },
+        "/api/file": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Index",
+                "operationId": "51e517206a973caa82017786ae26e98b",
+                "parameters": [
+                    {
+                        "name": "filterEQ[object_id]",
+                        "in": "query",
+                        "description": "object_id, type_id, country_id, district_id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "filterHas[flat_properties.property_value.property]",
+                        "in": "query",
+                        "description": "Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FileSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Store",
+                "operationId": "881b29cbb24983ddb052463c168a8e26",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FileSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The file field is required."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "The": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The The field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/file/{id}": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Show",
+                "operationId": "4781352032f2d5587f4c24b7879e78fa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FileSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Delete",
+                "operationId": "32379473b7a315a5d222725584d1345e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "File id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/flat": {
             "get": {
                 "tags": [
@@ -1593,7 +1861,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images"
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files"
                     }
                 ],
                 "responses": {
@@ -1754,8 +2022,9 @@
                                         "type": "string",
                                         "format": "json"
                                     },
-                                    "images[]": {
-                                        "type": "file"
+                                    "image_ids": {
+                                        "description": "Пример: 1,2,3",
+                                        "type": "string"
                                     }
                                 },
                                 "type": "object"
@@ -1849,7 +2118,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images"
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files"
                     },
                     {
                         "name": "flat_properties[]",
@@ -2051,10 +2320,10 @@
                                         "type": "string",
                                         "format": "number"
                                     },
-                                    "images[]": {
-                                        "type": "file"
+                                    "image_ids": {
+                                        "type": "number"
                                     },
-                                    "images_delete": {
+                                    "image_delete_ids": {
                                         "description": "Пример: 1,2,3",
                                         "type": "string",
                                         "format": "number"
@@ -2187,60 +2456,6 @@
                 ]
             }
         },
-        "/api/image/{id}": {
-            "get": {
-                "tags": [
-                    "Image"
-                ],
-                "summary": "Show",
-                "operationId": "4bba6f24ab0edb74e9fa3c4aa1b78996",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ImageSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Not found"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/post": {
             "get": {
                 "tags": [
@@ -2301,7 +2516,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "images,main_image,user,district,rubric"
+                        "example": "files,main_image,user,district,rubric"
                     }
                 ],
                 "responses": {
@@ -2376,11 +2591,12 @@
                                         "type": "number",
                                         "example": "<a href>сайт</a>"
                                     },
-                                    "main_image": {
-                                        "type": "file"
+                                    "main_image_id": {
+                                        "type": "number"
                                     },
-                                    "images[]": {
-                                        "type": "file"
+                                    "image_ids": {
+                                        "description": "Пример: 1,2,3",
+                                        "type": "string"
                                     }
                                 },
                                 "type": "object"
@@ -2498,7 +2714,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "images,main_image,user,district,rubric"
+                        "example": "files,main_image,user,district,rubric"
                     }
                 ],
                 "responses": {
@@ -2585,14 +2801,15 @@
                                         "type": "number",
                                         "example": "<a href>сайт</a>"
                                     },
-                                    "main_image": {
-                                        "type": "file"
+                                    "main_image_id": {
+                                        "type": "number"
                                     },
-                                    "images[]": {
-                                        "type": "file"
-                                    },
-                                    "images_delete": {
+                                    "image_ids": {
                                         "description": "Пример: 1,2,3",
+                                        "type": "string"
+                                    },
+                                    "image_delete_ids": {
+                                        "description": "Удаление по id связи, наример: 1,2,3",
                                         "type": "string"
                                     },
                                     "_method": {
@@ -3430,6 +3647,35 @@
                 },
                 "type": "object"
             },
+            "FileSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Какое-то фото"
+                    },
+                    "path": {
+                        "type": "number",
+                        "example": "http://site.com/url"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "image/png"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
             "FlatSchema": {
                 "properties": {
                     "id": {
@@ -3555,47 +3801,6 @@
                     "tour_link": {
                         "type": "string",
                         "example": "https://my.matterport.com/show/?m=aPjao3BZ25x"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
-                    }
-                },
-                "type": "object"
-            },
-            "ImageSchema": {
-                "properties": {
-                    "id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "type_id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "type": {
-                        "type": "string",
-                        "example": "photo"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Какое-то фото"
-                    },
-                    "path": {
-                        "type": "number",
-                        "example": "http://site.com/url"
-                    },
-                    "width": {
-                        "type": "number",
-                        "example": 100
-                    },
-                    "height": {
-                        "type": "number",
-                        "example": 100
                     },
                     "created_at": {
                         "type": "string",
