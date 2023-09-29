@@ -26,13 +26,12 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => 'required|string|min:4',
             'content' => 'required|string|min:100|max:65536',
-            'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
-            'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
+            'district_id' => 'required|numeric|' . Rule::exists('districts', 'id'),
+            'rubric_id' => 'required|numeric|' . Rule::exists('rubrics', 'id'),
             'source' => 'required',
-            'images' => 'array',
-            'main_image' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
-            'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
-            'images_delete' => 'string',
+            'image_ids' => 'nullable|string',
+            'image_delete_ids' => 'nullable|string',
+            'main_image_id' => 'nullable|numeric|' . Rule::exists('files', 'id'),
         ];
     }
 }

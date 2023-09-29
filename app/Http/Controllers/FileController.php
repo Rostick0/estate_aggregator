@@ -26,6 +26,40 @@ class FileController extends Controller
         return new JsonResponse($data);
     }
 
+    /**
+     * Show
+     * @OA\get (
+     *     path="/api/file/{id}",
+     *     tags={"File"},
+     *     @OA\Parameter( 
+     *          name="id",
+     *          description="Id",
+     *          in="path",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          ),
+     *     ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/FileSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
+     */
     public function store(StoreFileRequest $request)
     {
         $file = $request->file('file');

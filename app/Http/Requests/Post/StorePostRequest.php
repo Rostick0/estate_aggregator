@@ -29,9 +29,9 @@ class StorePostRequest extends FormRequest
             'district_id' => 'required|numeric|' . Rule::exists('districts', 'id'),
             'rubric_id' => 'required|numeric|' . Rule::exists('rubrics', 'id'),
             'source' => 'required',
-            'images' => 'array',
-            'main_image' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
-            'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
+            'image_ids' => 'nullable|string',
+            'image_delete_ids' => 'nullable|string',
+            'main_image_id' => 'nullable|numeric|' . Rule::exists('files', 'id'),
         ];
     }
 }

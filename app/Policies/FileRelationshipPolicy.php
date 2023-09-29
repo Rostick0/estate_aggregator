@@ -30,7 +30,7 @@ class FileRelationshipPolicy
      */
     public static function create(User $user, int $file_id): bool
     {
-        return !empty($user) && ($user->id === File::find($file_id)?->id);
+        return !empty($user) && ($user->id === File::find($file_id)?->user_id);
     }
 
     /**

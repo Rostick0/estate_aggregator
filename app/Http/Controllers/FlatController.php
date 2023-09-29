@@ -10,7 +10,6 @@ use App\Http\Requests\Flat\UpdateFlatRequest;
 use App\Utils\FileUtil;
 use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
-use App\Utils\ImageDBUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
 
@@ -79,7 +78,7 @@ class FlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files",
      *          @OA\Schema(
      *              type="string",
      *          )

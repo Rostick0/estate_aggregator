@@ -53,8 +53,8 @@ class StoreFlatRequest extends FormRequest
             'filename' => 'string|max:255',
             'tour_link' => 'string|max:255',
             'properties_values' => 'string',
-            'images' => 'array',
-            'images.*' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
+            'image_ids' => 'nullable|string',
+            'image_delete_ids' => 'nullable|string',
         ];
     }
 }

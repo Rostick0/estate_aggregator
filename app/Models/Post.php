@@ -41,11 +41,6 @@ class Post extends Model
         'count_view',
     ];
 
-    public function images(): HasMany
-    {
-        return $this->hasMany(Image::class, 'type_id','id')->where('type', 'post');
-    }
-
     public function files(): MorphMany
     {
         return $this->morphMany(FileRelationship::class, 'file_relable');
