@@ -7,8 +7,9 @@ use App\Http\Requests\Post\ShowPostRequest;
 use App\Models\Post;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
-use App\Models\Image;
-use App\Utils\ExplodeExtends;
+use App\Policies\FileRelationshipPolicy;
+use App\Utils\QueryString;
+use App\Utils\FileUtil;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use App\Utils\OrderByUtil;
@@ -96,7 +97,7 @@ class PostController extends Controller
      */
     public function index(IndexPostRequest $request)
     {
-        $data_init = Post::with(ExplodeExtends::run($request->extends));
+        $data_init = Post::with(QueryString::convertToArray($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
@@ -104,9 +105,7 @@ class PostController extends Controller
 
         $data = $data_init->paginate($request->limit ?? 20);
 
-        return new JsonResponse(
-            $data
-        );
+        return new JsonResponse($data);
     }
 
     /**
@@ -146,12 +145,14 @@ class PostController extends Controller
      *                          example="<a href>сайт</a>"
      *                      ),
      *                      @OA\Property(
-     *                          property="main_image",
-     *                          type="file",
+     *                          property="main_image_id",
+     *                          type="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="images[]",
-     *                          type="file",
+     *                          property="image_ids",
+     *                          description="Добавление по id файла, наример: 1,2,3",
+     *                          description="Пример: 1,2,3",
+     *                          type="string",
      *                      ),
      *              )
      *         )
@@ -214,18 +215,21 @@ class PostController extends Controller
                 'content',
                 'district_id',
                 'rubric_id',
-                'source'
+                'source',
+                'main_image_id'
             ),
             'user_id' => auth()->id()
         ]);
 
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post->id, 'post');
-        if ($request->hasFile('main_image')) {
-            $post->update(
-                [
-                    'main_image_id' => ImageDBUtil::create($request->file('main_image'), $post->id, 'post')
-                ]
-            );
+        if ($request->has('image_ids')) FileUtil::create(
+            $post->files,
+            QueryString::convertToArray($request->image_ids)
+        );
+
+        if ($request->has('main_image_id') && !FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
+            $post->update([
+                'main_image_id' => $request->main_image_id
+            ]);
         }
 
         return new JsonResponse(
@@ -281,7 +285,7 @@ class PostController extends Controller
      */
     public function show(ShowPostRequest $request, int $id)
     {
-        $post = Post::with(ExplodeExtends::run($request->extends))->findOrFail($id);
+        $post = Post::with(QueryString::convertToArray($request->extends))->findOrFail($id);
 
         return new JsonResponse(
             [
@@ -336,16 +340,18 @@ class PostController extends Controller
      *                          example="<a href>сайт</a>"
      *                      ),
      *                      @OA\Property(
-     *                          property="main_image",
-     *                          type="file",
+     *                          property="main_image_id",
+     *                          type="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="images[]",
-     *                          type="file",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="images_delete",
+     *                          property="image_ids",
+     *                          description="Добавление по id файла, наример: 1,2,3",
      *                          description="Пример: 1,2,3",
+     *                          type="string",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="images_delete_id",
+     *                          description="Удаление по id связи, наример: 1,2,3",
      *                          type="string",
      *                      ),
      *                      @OA\Property(
@@ -414,7 +420,7 @@ class PostController extends Controller
             [
                 'message' => 'No access'
             ],
-            404
+            403
         );
 
         $post->update($request->only(
@@ -425,16 +431,21 @@ class PostController extends Controller
             'source'
         ));
 
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $post->id, 'post');
-        if ($request->hasFile('main_image')) {
-            $post->update(
-                [
-                    'main_image_id' => ImageDBUtil::create($request->file('main_image'), $post->id, 'post')
-                ]
-            );
+        if ($request->has('image_ids')) FileUtil::create(
+            $post->files(),
+            QueryString::convertToArray($request->image_ids)
+        );
+
+        if ($request->has('main_image_id') && !FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
+            $post->update([
+                'main_image_id' => $request->main_image_id
+            ]);
         }
 
-        if (!empty($request->images_delete)) ImageDBUtil::deleteImage(explode(',', $request->images_delete), $id, 'post');
+        if ($request->has('images_delete_id')) FileUtil::delete(
+            $post->files(),
+            QueryString::convertToArray($request->images_delete_id)
+        );
 
         return new JsonResponse(
             [
@@ -483,14 +494,9 @@ class PostController extends Controller
             [
                 'message' => 'No access'
             ],
-            404
+            403
         );
 
-        $delete_image_ids = collect($post->images()->get())->map(function ($item) {
-            return $item->id;
-        });
-
-        ImageDBUtil::deleteImage([...$delete_image_ids], $id, 'post');
         Post::destroy($id);
 
         return new JsonResponse(

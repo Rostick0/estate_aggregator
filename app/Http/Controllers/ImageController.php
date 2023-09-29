@@ -18,14 +18,6 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreImageRequest $request)
@@ -81,8 +73,8 @@ class ImageController extends Controller
         // dd($request->file('image'));
     }
 
-    public function destroy(Image $image)
+    public function destroy(int $id)
     {
-        //
+        Image::destroy($id);
     }
 }

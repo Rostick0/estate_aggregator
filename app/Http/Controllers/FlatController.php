@@ -7,7 +7,7 @@ use App\Http\Requests\Flat\ShowFlatRequest;
 use App\Models\Flat;
 use App\Http\Requests\Flat\StoreFlatRequest;
 use App\Http\Requests\Flat\UpdateFlatRequest;
-use App\Utils\ExplodeExtends;
+use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
 use App\Utils\OrderByUtil;
@@ -96,7 +96,7 @@ class FlatController extends Controller
      */
     public function index(IndexFlatRequest $request)
     {
-        $data_init = Flat::with(ExplodeExtends::run($request->extends));
+        $data_init = Flat::with(QueryString::convertToArray($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
@@ -413,7 +413,7 @@ class FlatController extends Controller
      */
     public function show(ShowFlatRequest $request, int $id)
     {
-        $flat = Flat::with(ExplodeExtends::run($request->extends))
+        $flat = Flat::with(QueryString::convertToArray($request->extends))
             ->findOrFail($id);
 
         return new JsonResponse(
@@ -696,8 +696,8 @@ class FlatController extends Controller
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
         if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
-        if ($request->images_delete) ImageDBUtil::deleteImage(explode(',', $request->images_delete), $id, 'flat');
+        if ($request->has('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
+        if ($request->has('images_delete')) ImageDBUtil::deleteImage(explode(',', $request->images_delete), $id, 'flat');
 
         return new JsonResponse(
             [
@@ -747,7 +747,7 @@ class FlatController extends Controller
             [
                 'message' => 'No access'
             ],
-            404
+            403
         );
 
         $delete_image_ids = collect($flat->images())->map(function ($item) {

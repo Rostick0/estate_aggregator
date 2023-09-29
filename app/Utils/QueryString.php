@@ -2,9 +2,9 @@
 
 namespace App\Utils;
 
-class ExplodeExtends
+class QueryString
 {
-    public static function run($string) {
+    public static function convertToArray($string) {
         if (empty($string)) return [];
 
         return explode(',', $string);

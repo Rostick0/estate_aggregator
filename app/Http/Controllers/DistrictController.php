@@ -8,7 +8,7 @@ use App\Http\Requests\District\ShowDistrictRequest;
 use App\Models\District;
 use App\Http\Requests\District\StoreDistrictRequest;
 use App\Http\Requests\District\UpdateDistrictRequest;
-use App\Utils\ExplodeExtends;
+use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
@@ -96,7 +96,7 @@ class DistrictController extends Controller
      */
     public function index(IndexDistrictRequest $request)
     {
-        $data_init = District::with(ExplodeExtends::run($request->extends))
+        $data_init = District::with(QueryString::convertToArray($request->extends))
             ->orderBy('name');
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
@@ -231,7 +231,7 @@ class DistrictController extends Controller
      */
     public function show(ShowDistrictRequest $request, int $id)
     {
-        $data = District::with(ExplodeExtends::run($request->extends))->findOrFail($id);
+        $data = District::with(QueryString::convertToArray($request->extends))->findOrFail($id);
 
         return new JsonResponse(
             [

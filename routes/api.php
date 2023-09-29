@@ -7,6 +7,7 @@ use App\Http\Controllers\BuildingTypeController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\FlatController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
@@ -52,7 +53,8 @@ Route::group(['middleware' => 'api'], function () {
         'flat' => FlatController::class,
         'district' => DistrictController::class,
         'rubric' => RubricController::class,
-        'collection' => CollectionController::class
+        'collection' => CollectionController::class,
+        'file' => FileController::class
     ]);
 
     Route::get('/image/{id}', [ImageController::class, 'show']);

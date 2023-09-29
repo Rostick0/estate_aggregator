@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -135,5 +136,8 @@ class Flat extends Model
         return $this->hasMany(Image::class, 'type_id', 'id')->where('type', 'flat');
     }
 
-    // return $this->belongsTo(Region::class, 'region_id', 'id');
+    public function files(): MorphMany
+    {
+        return $this->morphMany(FileRelationship::class, 'file_relable');
+    }
 }

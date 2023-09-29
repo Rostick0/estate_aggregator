@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Country\IndexCountryRequest;
 use App\Models\Country;
-use App\Utils\ExplodeExtends;
+use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
@@ -83,9 +83,10 @@ class CountryController extends Controller
      */
     public function index(IndexCountryRequest $request)
     {
-        $data_init = Country::with(ExplodeExtends::run($request->extends));
+        $data_init = Country::with(QueryString::convertToArray($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
         $data_init = OrderByUtil::set($request->sort, $data_init);
 
         $data = $data_init->paginate($request->limit ?? 50);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Property\IndexPropertyRequest;
 use App\Models\Property;
-use App\Utils\ExplodeExtends;
+use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -37,7 +37,7 @@ class PropertyController extends Controller
      */
     public function index(IndexPropertyRequest $request)
     {
-        $data = Property::with(ExplodeExtends::run($request->extends))->get();
+        $data = Property::with(QueryString::convertToArray($request->extends))->get();
     
         return new JsonResponse(
             [

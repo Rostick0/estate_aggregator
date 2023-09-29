@@ -26,8 +26,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|string|min:4',
             'content' => 'required|string|min:100|max:65536',
-            'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
-            'rubric_id' => 'numeric|' . Rule::exists('rubrics', 'id'),
+            'district_id' => 'required|numeric|' . Rule::exists('districts', 'id'),
+            'rubric_id' => 'required|numeric|' . Rule::exists('rubrics', 'id'),
             'source' => 'required',
             'images' => 'array',
             'main_image' => 'nullable|mimes:png,jpg,jpeg,gif,svg',

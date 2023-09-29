@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BuildingType\IndexBuildingTypeRequest;
 use App\Models\BuildingType;
-use App\Utils\ExplodeExtends;
+use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -64,7 +64,7 @@ class BuildingTypeController extends Controller
      */
     public function index(IndexBuildingTypeRequest $request)
     {
-        $data_init = BuildingType::with(ExplodeExtends::run($request->extends));
+        $data_init = BuildingType::with(QueryString::convertToArray($request->extends));
 
         $data_init->where(FilterRequestUtil::eq($request->filterEQ));
         $data_init->where(FilterRequestUtil::like($request->filterLIKE));
