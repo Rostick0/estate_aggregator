@@ -71,7 +71,7 @@ class PostController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="images,main_image,user,district,rubric",
+     *          example="files,main_image,user,district,rubric",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -222,7 +222,7 @@ class PostController extends Controller
         ]);
 
         if ($request->has('image_ids')) FileUtil::create(
-            $post->files,
+            $post->files(),
             QueryString::convertToArray($request->image_ids)
         );
 
@@ -259,7 +259,7 @@ class PostController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="images,main_image,user,district,rubric",
+     *          example="files,main_image,user,district,rubric",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -350,7 +350,7 @@ class PostController extends Controller
      *                          type="string",
      *                      ),
      *                      @OA\Property(
-     *                          property="images_delete_id",
+     *                          property="image_delete_ids",
      *                          description="Удаление по id связи, наример: 1,2,3",
      *                          type="string",
      *                      ),
@@ -442,9 +442,9 @@ class PostController extends Controller
             ]);
         }
 
-        if ($request->has('images_delete_id')) FileUtil::delete(
+        if ($request->has('image_delete_ids')) FileUtil::delete(
             $post->files(),
-            QueryString::convertToArray($request->images_delete_id)
+            QueryString::convertToArray($request->image_delete_ids)
         );
 
         return new JsonResponse(

@@ -7,6 +7,7 @@ use App\Http\Requests\Flat\ShowFlatRequest;
 use App\Models\Flat;
 use App\Http\Requests\Flat\StoreFlatRequest;
 use App\Http\Requests\Flat\UpdateFlatRequest;
+use App\Utils\FileUtil;
 use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\ImageDBUtil;
@@ -270,8 +271,10 @@ class FlatController extends Controller
      *                          description="Конвертируйте в json [{value:800,property_value_id:1}]"
      *                      ),
      *                      @OA\Property(
-     *                          property="images[]",
-     *                          type="file",
+     *                          property="image_ids",
+     *                          description="Добавление по id файла, наример: 1,2,3",
+     *                          description="Пример: 1,2,3",
+     *                          type="string",
      *                      ),
      *              )
      *         )
@@ -347,7 +350,11 @@ class FlatController extends Controller
         ]);
 
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
-        if ($request->hasFile('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
+
+        if ($request->has('image_ids')) FileUtil::create(
+            $flat->files(),
+            QueryString::convertToArray($request->image_ids)
+        );
 
         return new JsonResponse(
             [
@@ -376,7 +383,7 @@ class FlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -598,11 +605,11 @@ class FlatController extends Controller
      *                          format="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="images[]",
-     *                          type="file",
+     *                          property="image_ids",
+     *                          type="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="images_delete",
+     *                          property="image_delete_ids",
      *                          description="Пример: 1,2,3",
      *                          type="string",
      *                          format="number",
@@ -696,8 +703,16 @@ class FlatController extends Controller
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
         if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
-        if ($request->has('images')) ImageDBUtil::uploadImage($request->file('images'), $flat->id, 'flat');
-        if ($request->has('images_delete')) ImageDBUtil::deleteImage(explode(',', $request->images_delete), $id, 'flat');
+        if ($request->has('image_ids')) FileUtil::create(
+            $flat->files(),
+            QueryString::convertToArray($request->image_ids)
+        );
+
+        if ($request->has('image_delete_ids')) FileUtil::delete(
+            $flat->files(),
+            QueryString::convertToArray($request->image_delete_ids)
+        );
+
 
         return new JsonResponse(
             [
@@ -750,10 +765,6 @@ class FlatController extends Controller
             403
         );
 
-        $delete_image_ids = collect($flat->images())->map(function ($item) {
-            return $item->id;
-        });
-        ImageDBUtil::deleteImage([...$delete_image_ids], $id, 'flat');
         Flat::destroy($id);
 
         return new JsonResponse(
