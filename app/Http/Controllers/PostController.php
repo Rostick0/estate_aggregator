@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Policies\FileRelationshipPolicy;
+use App\Policies\ImagePolicy;
 use App\Utils\FileRelationUtil;
 use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
@@ -144,7 +145,7 @@ class PostController extends Controller
      *                          example="<a href>сайт</a>"
      *                      ),
      *                      @OA\Property(
-     *                          property="main_image_id",
+     *                          property="main_image",
      *                          type="number",
      *                      ),
      *                      @OA\Property(
@@ -215,7 +216,7 @@ class PostController extends Controller
                 'district_id',
                 'rubric_id',
                 'source',
-                'main_image_id'
+                'main_image'
             ),
             'user_id' => auth()->id()
         ]);
@@ -225,9 +226,9 @@ class PostController extends Controller
             QueryString::convertToArray($request->images)
         );
 
-        if (FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
+        if (ImagePolicy::create(auth()->user(), $request?->main_image)) {
             $post->update([
-                'main_image_id' => $request->main_image_id
+                'main_image_id' => $request->main_image
             ]);
         }
 
@@ -339,7 +340,7 @@ class PostController extends Controller
      *                          example="<a href>сайт</a>"
      *                      ),
      *                      @OA\Property(
-     *                          property="main_image_id",
+     *                          property="main_image",
      *                          type="number",
      *                      ),
      *                      @OA\Property(
@@ -430,9 +431,9 @@ class PostController extends Controller
             QueryString::convertToArray($request->images)
         );
 
-        if (FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
+        if (ImagePolicy::create(auth()->user(), $request?->main_image)) {
             $post->update([
-                'main_image_id' => $request->main_image_id
+                'main_image_id' => $request->main_image
             ]);
         }
 

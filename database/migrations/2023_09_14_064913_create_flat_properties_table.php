@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('flat_properties', function (Blueprint $table) {
             $table->id();
-            $table->string('value');
+            // $table->string('value_enum')->nullable();
+            $table->string('value')->nullable();
             $table->foreignId('flat_id')->references('id')->on('flats')->onDelete('cascade');
             $table->integer('property_value_id')->nullable();
             $table->timestamps();

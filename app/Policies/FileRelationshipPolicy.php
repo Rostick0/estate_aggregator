@@ -28,7 +28,7 @@ class FileRelationshipPolicy
     /**
      * Determine whether the user can create models.
      */
-    public static function create(User $user, int $file_id): bool
+    public static function create(User $user, ?int $file_id): bool
     {
         if (!$file_id) return true;
 

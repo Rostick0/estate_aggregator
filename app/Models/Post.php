@@ -57,7 +57,7 @@ class Post extends Model
 
     public function main_image(): BelongsTo
     {
-        return $this->belongsTo(FileRelationship::class, 'main_image_id', 'id')->with('file');
+        return $this->belongsTo(File::class, 'main_image_id', 'id');
     }
 
     public function user(): BelongsTo
