@@ -145,7 +145,7 @@ class PostController extends Controller
      *                          example="<a href>сайт</a>"
      *                      ),
      *                      @OA\Property(
-     *                          property="main_image",
+     *                          property="main_image_id",
      *                          type="number",
      *                      ),
      *                      @OA\Property(
@@ -216,7 +216,7 @@ class PostController extends Controller
                 'district_id',
                 'rubric_id',
                 'source',
-                'main_image'
+                'main_image_id'
             ),
             'user_id' => auth()->id()
         ]);
@@ -226,9 +226,9 @@ class PostController extends Controller
             QueryString::convertToArray($request->images)
         );
 
-        if (ImagePolicy::create(auth()->user(), $request?->main_image)) {
+        if (ImagePolicy::create(auth()->user(), $request?->main_image_id)) {
             $post->update([
-                'main_image_id' => $request->main_image
+                'main_image_id' => $request->main_image_id
             ]);
         }
 
@@ -340,7 +340,7 @@ class PostController extends Controller
      *                          example="<a href>сайт</a>"
      *                      ),
      *                      @OA\Property(
-     *                          property="main_image",
+     *                          property="main_image_id",
      *                          type="number",
      *                      ),
      *                      @OA\Property(
@@ -411,7 +411,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (auth()?->user()?->cannot('update', $post)) return new JsonResponse(
+        if (!auth()->check() || auth()?->user()?->cannot('update', $post)) return new JsonResponse(
             [
                 'message' => 'No access'
             ],
@@ -431,9 +431,9 @@ class PostController extends Controller
             QueryString::convertToArray($request->images)
         );
 
-        if (ImagePolicy::create(auth()->user(), $request?->main_image)) {
+        if (ImagePolicy::create(auth()->user(), $request?->main_image_id)) {
             $post->update([
-                'main_image_id' => $request->main_image
+                'main_image_id' => $request->main_image_id
             ]);
         }
 
@@ -480,7 +480,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (auth()->check() && auth()?->user()?->cannot('delete', $post)) return new JsonResponse(
+        if (!auth()->check() || auth()?->user()?->cannot('delete', $post)) return new JsonResponse(
             [
                 'message' => 'No access'
             ],

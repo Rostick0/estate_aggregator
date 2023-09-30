@@ -653,7 +653,7 @@ class FlatController extends Controller
     {
         $flat = Flat::findOrFail($id);
 
-        if (auth()->user()->cannot('update', $flat)) return new JsonResponse(
+        if (!auth()->check() || auth()->user()->cannot('update', $flat)) return new JsonResponse(
             [
                 'message' => 'No access'
             ],
@@ -748,7 +748,7 @@ class FlatController extends Controller
     {
         $flat = Flat::findOrFail($id);
 
-        if (auth()->check() && auth()?->user()?->cannot('delete', $flat)) return new JsonResponse(
+        if (!auth()->check() || auth()?->user()?->cannot('delete', $flat)) return new JsonResponse(
             [
                 'message' => 'No access'
             ],
