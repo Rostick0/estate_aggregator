@@ -30,7 +30,7 @@ class UpdatePostRequest extends FormRequest
             'rubric_id' => 'required|numeric|' . Rule::exists('rubrics', 'id'),
             'source' => 'required',
             'images' => 'nullable|string',
-            'main_image_id' => 'nullable|numeric|' . Rule::exists('files', 'id'),
+            'main_image' => 'nullable|numeric|' . Rule::exists('files', 'id'),
         ];
     }
 }

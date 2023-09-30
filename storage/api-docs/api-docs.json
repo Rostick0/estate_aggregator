@@ -2586,7 +2586,7 @@
                                         "type": "number",
                                         "example": "<a href>сайт</a>"
                                     },
-                                    "main_image_id": {
+                                    "main_image": {
                                         "type": "number"
                                     },
                                     "images": {
@@ -2796,7 +2796,7 @@
                                         "type": "number",
                                         "example": "<a href>сайт</a>"
                                     },
-                                    "main_image_id": {
+                                    "main_image": {
                                         "type": "number"
                                     },
                                     "images": {
