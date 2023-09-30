@@ -11,6 +11,8 @@ class FileRelationship extends Model
 {
     use HasFactory;
 
+    protected $table = 'file_rels';
+
     protected $fillable = [
         'file_id',
     ];
