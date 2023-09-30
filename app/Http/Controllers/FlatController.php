@@ -352,7 +352,7 @@ class FlatController extends Controller
 
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
 
-        if ($request->has('images')) FileRelationUtil::createAndDelete(
+        FileRelationUtil::createAndDelete(
             $flat->files(),
             QueryString::convertToArray($request->images)
         );
