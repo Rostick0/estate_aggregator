@@ -13,7 +13,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('create', Post::class);
+        return auth()->check() && auth()?->user()?->can('create', Post::class);
     }
 
     /**

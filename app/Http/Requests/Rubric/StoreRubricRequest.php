@@ -12,7 +12,7 @@ class StoreRubricRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('create', Rubric::class);
+        return auth()->check() && auth()?->user()?->can('create', Rubric::class);
     }
 
     /**

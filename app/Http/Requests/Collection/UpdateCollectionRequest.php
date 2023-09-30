@@ -11,7 +11,7 @@ class UpdateCollectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('update', Collection::class);
+        return auth()->check() && auth()?->user()?->can('update', Collection::class);
     }
 
     /**

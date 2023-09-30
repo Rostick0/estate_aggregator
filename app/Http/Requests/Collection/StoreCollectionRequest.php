@@ -12,7 +12,7 @@ class StoreCollectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('create', Collection::class);
+        return auth()->check() && auth()?->user()?->can('create', Collection::class);
     }
 
     /**

@@ -13,7 +13,7 @@ class StoreFlatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('create', Flat::class);
+        return auth()->check() && auth()?->user()?->can('create', Flat::class);
     }
 
     /**

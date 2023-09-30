@@ -11,7 +11,7 @@ class DestroyRubricRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('delete', Rubric::class);
+        return auth()->check() && auth()?->user()?->can('delete', Rubric::class);
     }
 
     /**

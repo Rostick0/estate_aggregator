@@ -11,7 +11,7 @@ class UpdateRubricRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('update', Rubric::class);
+        return auth()->check() && auth()?->user()?->can('update', Rubric::class);
     }
 
     /**

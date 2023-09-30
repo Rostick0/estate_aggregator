@@ -12,7 +12,7 @@ class UpdateDistrictRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('update', District::class);
+        return auth()->check() && auth()?->user()?->can('update', District::class);
     }
 
     /**

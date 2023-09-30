@@ -12,7 +12,7 @@ class DestroyDistrictRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('delete', District::class);
+        return auth()->check() && auth()?->user()?->can('delete', District::class);
     }
 
     /**

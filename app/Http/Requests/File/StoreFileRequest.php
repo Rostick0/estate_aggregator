@@ -12,7 +12,7 @@ class StoreFileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->cannot('create', FilePolicy::class);
+        return auth()->check() && auth()?->user()?->can('create', FilePolicy::class);
     }
 
     /**
