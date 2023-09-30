@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\File;
 
-use App\Policies\FilePolicy;
+use App\Models\File;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreFileRequest extends FormRequest
@@ -12,7 +12,7 @@ class StoreFileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->can('create', FilePolicy::class);
+        return auth()->check() && auth()?->user()?->can('create', File::class);
     }
 
     /**

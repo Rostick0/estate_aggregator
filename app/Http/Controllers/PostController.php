@@ -221,7 +221,7 @@ class PostController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        if ($request->has('images')) FileRelationUtil::createAndDelete(
+        FileRelationUtil::createAndDelete(
             $post->files(),
             QueryString::convertToArray($request->images)
         );
