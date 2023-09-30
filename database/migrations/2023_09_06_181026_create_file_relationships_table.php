@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('file_relationships');
+        Schema::dropIfExists('file_rels');
     }
 };
