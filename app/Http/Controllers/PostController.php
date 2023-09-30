@@ -225,7 +225,7 @@ class PostController extends Controller
             QueryString::convertToArray($request->images)
         );
 
-        if ($request->has('main_image_id') && !FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
+        if (FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
             $post->update([
                 'main_image_id' => $request->main_image_id
             ]);
@@ -425,12 +425,12 @@ class PostController extends Controller
             'source'
         ));
 
-        if ($request->has('images')) FileRelationUtil::createAndDelete(
+        FileRelationUtil::createAndDelete(
             $post->files(),
             QueryString::convertToArray($request->images)
         );
 
-        if ($request->has('main_image_id') && !FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
+        if (FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
             $post->update([
                 'main_image_id' => $request->main_image_id
             ]);
