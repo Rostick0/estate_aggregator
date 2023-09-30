@@ -131,9 +131,13 @@ class Flat extends Model
         return $this->belongsTo(User::class, 'contact_id', 'id');
     }
 
-    public function images(): HasMany
+    public function images(): MorphMany
     {
-        return $this->hasMany(Image::class, 'type_id', 'id')->where('type', 'flat');
+        return $this->morphMany(FileRelationship::class, 'file_relable')
+            ->with('file')
+            ->whereHas('file', function ($query) {
+                $query->where('type', 'LIKE', 'image/%');
+            });
     }
 
     public function files(): MorphMany

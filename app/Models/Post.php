@@ -46,9 +46,18 @@ class Post extends Model
         return $this->morphMany(FileRelationship::class, 'file_relable');
     }
 
+    public function images(): MorphMany
+    {
+        return $this->morphMany(FileRelationship::class, 'file_relable')
+            ->with('file')
+            ->whereHas('file', function ($query) {
+                $query->where('type', 'LIKE', 'image/%');
+            });
+    }
+
     public function main_image(): BelongsTo
     {
-        return $this->belongsTo(Image::class, 'main_image_id', 'id');
+        return $this->belongsTo(FileRelationship::class, 'main_image_id', 'id')->with('file');
     }
 
     public function user(): BelongsTo

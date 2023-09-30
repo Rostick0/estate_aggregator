@@ -8,8 +8,8 @@ use App\Models\Post;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Policies\FileRelationshipPolicy;
+use App\Utils\FileRelationUtil;
 use App\Utils\QueryString;
-use App\Utils\FileUtil;
 use App\Utils\FilterRequestUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
@@ -148,7 +148,7 @@ class PostController extends Controller
      *                          type="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="image_ids",
+     *                          property="images",
      *                          description="Добавление по id файла, наример: 1,2,3",
      *                          description="Пример: 1,2,3",
      *                          type="string",
@@ -220,9 +220,9 @@ class PostController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        if ($request->has('image_ids')) FileUtil::create(
+        if ($request->has('images')) FileRelationUtil::createAndDelete(
             $post->files(),
-            QueryString::convertToArray($request->image_ids)
+            QueryString::convertToArray($request->images)
         );
 
         if ($request->has('main_image_id') && !FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
@@ -343,14 +343,9 @@ class PostController extends Controller
      *                          type="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="image_ids",
+     *                          property="images",
      *                          description="Добавление по id файла, наример: 1,2,3",
      *                          description="Пример: 1,2,3",
-     *                          type="string",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="image_delete_ids",
-     *                          description="Удаление по id связи, наример: 1,2,3",
      *                          type="string",
      *                      ),
      *                      @OA\Property(
@@ -430,9 +425,9 @@ class PostController extends Controller
             'source'
         ));
 
-        if ($request->has('image_ids')) FileUtil::create(
+        if ($request->has('images')) FileRelationUtil::createAndDelete(
             $post->files(),
-            QueryString::convertToArray($request->image_ids)
+            QueryString::convertToArray($request->images)
         );
 
         if ($request->has('main_image_id') && !FileRelationshipPolicy::create(auth()->user(), $request->main_image_id)) {
@@ -440,11 +435,6 @@ class PostController extends Controller
                 'main_image_id' => $request->main_image_id
             ]);
         }
-
-        if ($request->has('image_delete_ids')) FileUtil::delete(
-            $post->files(),
-            QueryString::convertToArray($request->image_delete_ids)
-        );
 
         return new JsonResponse(
             [

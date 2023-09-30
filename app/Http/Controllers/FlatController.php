@@ -7,11 +7,13 @@ use App\Http\Requests\Flat\ShowFlatRequest;
 use App\Models\Flat;
 use App\Http\Requests\Flat\StoreFlatRequest;
 use App\Http\Requests\Flat\UpdateFlatRequest;
-use App\Utils\FileUtil;
+use App\Http\Requests\Flat\UploadFlatRequest;
+use App\Utils\FileRelationUtil;
 use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
+use SimpleXMLElement;
 
 class FlatController extends Controller
 {
@@ -270,7 +272,7 @@ class FlatController extends Controller
      *                          description="Конвертируйте в json [{value:800,property_value_id:1}]"
      *                      ),
      *                      @OA\Property(
-     *                          property="image_ids",
+     *                          property="images",
      *                          description="Добавление по id файла, наример: 1,2,3",
      *                          description="Пример: 1,2,3",
      *                          type="string",
@@ -350,9 +352,9 @@ class FlatController extends Controller
 
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
 
-        if ($request->has('image_ids')) FileUtil::create(
+        if ($request->has('images')) FileRelationUtil::createAndDelete(
             $flat->files(),
-            QueryString::convertToArray($request->image_ids)
+            QueryString::convertToArray($request->images)
         );
 
         return new JsonResponse(
@@ -604,14 +606,8 @@ class FlatController extends Controller
      *                          format="number",
      *                      ),
      *                      @OA\Property(
-     *                          property="image_ids",
+     *                          property="images",
      *                          type="number",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="image_delete_ids",
-     *                          description="Пример: 1,2,3",
-     *                          type="string",
-     *                          format="number",
      *                      ),
      *                      @OA\Property(
      *                          property="_method",
@@ -702,14 +698,9 @@ class FlatController extends Controller
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
         if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
-        if ($request->has('image_ids')) FileUtil::create(
+        if ($request->has('images')) FileRelationUtil::createAndDelete(
             $flat->files(),
-            QueryString::convertToArray($request->image_ids)
-        );
-
-        if ($request->has('image_delete_ids')) FileUtil::delete(
-            $flat->files(),
-            QueryString::convertToArray($request->image_delete_ids)
+            QueryString::convertToArray($request->images)
         );
 
 
@@ -771,5 +762,16 @@ class FlatController extends Controller
                 'message' => 'Deleted'
             ]
         );
+    }
+
+    public function upload(UploadFlatRequest $requst)
+    {
+        foreach (new SimpleXMLElement($requst->file) as $item) {
+            $data[] = [
+                'id ' => $item?->id,
+                'object_id ' => $item?->object_id,
+                'name' => $item?->name_rus
+            ];
+        }
     }
 }
