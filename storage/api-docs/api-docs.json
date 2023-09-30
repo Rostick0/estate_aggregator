@@ -2022,7 +2022,7 @@
                                         "type": "string",
                                         "format": "json"
                                     },
-                                    "image_ids": {
+                                    "images": {
                                         "description": "Пример: 1,2,3",
                                         "type": "string"
                                     }
@@ -2320,13 +2320,8 @@
                                         "type": "string",
                                         "format": "number"
                                     },
-                                    "image_ids": {
+                                    "images": {
                                         "type": "number"
-                                    },
-                                    "image_delete_ids": {
-                                        "description": "Пример: 1,2,3",
-                                        "type": "string",
-                                        "format": "number"
                                     },
                                     "_method": {
                                         "type": "string",
@@ -2594,7 +2589,7 @@
                                     "main_image_id": {
                                         "type": "number"
                                     },
-                                    "image_ids": {
+                                    "images": {
                                         "description": "Пример: 1,2,3",
                                         "type": "string"
                                     }
@@ -2804,12 +2799,8 @@
                                     "main_image_id": {
                                         "type": "number"
                                     },
-                                    "image_ids": {
+                                    "images": {
                                         "description": "Пример: 1,2,3",
-                                        "type": "string"
-                                    },
-                                    "image_delete_ids": {
-                                        "description": "Удаление по id связи, наример: 1,2,3",
                                         "type": "string"
                                     },
                                     "_method": {
