@@ -150,7 +150,7 @@ class FileController extends Controller
 
         $data = File::create([
             'name' =>  $file->getClientOriginalName(),
-            'path' => $random_name,
+            'path' => url('') . '/storage/' . $random_name,
             'type' => $file->getClientMimeType(),
             'user_id' => auth()->id(),
         ]);
