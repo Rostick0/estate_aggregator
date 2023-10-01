@@ -122,7 +122,7 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price"},
+     *                      required={"object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -450,7 +450,7 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "longitude", "latitude", "currency_id", "price"},
+     *                      required={"object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -768,9 +768,46 @@ class FlatController extends Controller
     {
         foreach (new SimpleXMLElement($requst->file) as $item) {
             $data[] = [
-                'id ' => $item?->id,
-                'object_id ' => $item?->object_id,
-                'name' => $item?->name_rus
+                'data' => [
+                    'id ' => $item?->id,
+                    'object_id ' => $item?->object_id,
+                    'type_id' => $item?->type_id,
+                    'country_id' => $item?->country_id,
+                    'district_id' => $item?->district_id,
+                    'district' => $item?->district,
+                    'address' => $item?->address,
+                    'longitude' => $item?->longitude,
+                    'latitude' => $item?->latitude,
+                    'currency_id' => $item?->currency_id,
+                    'price' => $item?->price,
+                    'price_per_meter' => $item?->price_per_meter,
+                    'price_day' => $item?->price_day,
+                    'price_week' => $item?->price_week,
+                    'price_month' => $item?->price_month,
+                    'not_show_price' => $item?->not_show_price == 'None' ? 0 : 1,
+                    'rooms' => $item?->rooms,
+                    'bedrooms' => $item?->bedrooms,
+                    'bathrooms' => $item?->bathrooms,
+                    'square' => (int) $item?->square,
+                    'square_land' => $item?->square_land,
+                    'square_land_unit' => $item?->square_land_unit,
+                    'floor' => $item?->floor,
+                    'total_floor' => $item?->total_floor,
+                    'building_type' => $item?->building_type,
+                    'building_date' => $item?->building_date,
+                    'contact_id' => $item?->contact_id,
+                    'specialtxt' => $item?->specialtxt,
+                    'description' => $item?->description,
+                    'filename' => $item?->filename,
+                    'tour_link' => $item?->tour_link,
+                ],
+                'user' => [
+                    'id' => $item->contact_id,
+                    'name' => $item->contact->name,
+                    'email' => $item->contact->email,
+                    'phone' => $item->contact->phone,
+                    'avatar' => $item->contact->photo,
+                ]
             ];
         }
     }

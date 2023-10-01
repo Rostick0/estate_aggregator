@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('district_id')->references('id')->on('districts')->onDelete('cascade');
             $table->string('district')->nullable();
             $table->string('address')->nullable();
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
             $table->foreignId('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->decimal('price', 10);
             $table->float('price_per_meter')->nullable();
