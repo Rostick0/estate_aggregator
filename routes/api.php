@@ -10,6 +10,7 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FlatController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MainBannerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RegionController;
@@ -42,12 +43,15 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('region', [RegionController::class, 'index']);
     Route::get('property', [PropertyController::class, 'index']);
     Route::get('building-type', [BuildingTypeController::class, 'index']);
-    
-    Route::group(['middleware' => 'throttle:3,1'], function() {
+
+    Route::group(['middleware' => 'throttle:3,1'], function () {
         Route::post('application', [ApplicationController::class, 'store']);
         Route::post('application-flat', [ApplicationFlatController::class, 'store']);
     });
-   
+
+    Route::get('main-banner', [MainBannerController::class, 'index']);
+    Route::put('main-banner', [MainBannerController::class, 'update']);
+
     Route::apiResources([
         'post' => PostController::class,
         'flat' => FlatController::class,

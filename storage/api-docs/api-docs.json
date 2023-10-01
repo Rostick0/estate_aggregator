@@ -2451,6 +2451,131 @@
                 ]
             }
         },
+        "/api/main-banner": {
+            "get": {
+                "tags": [
+                    "MainBanner"
+                ],
+                "summary": "Index",
+                "operationId": "f1a012137ce41c8ef0e746166111c5a8",
+                "parameters": [
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "image"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/MainBannerSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "MainBanner"
+                ],
+                "summary": "Update",
+                "operationId": "d61a164d6af9b6d34ee86cbd03d3d69f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "images": {
+                                        "description": "Id файлов с типом картинки",
+                                        "type": "number",
+                                        "example": "1,2,3"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "images": "1,2,3"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/MainBannerSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The images field is required."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "images": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The images field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/post": {
             "get": {
                 "tags": [
@@ -3649,7 +3774,7 @@
                         "example": "Какое-то фото"
                     },
                     "path": {
-                        "type": "number",
+                        "type": "string",
                         "example": "http://site.com/url"
                     },
                     "type": {
@@ -3792,6 +3917,27 @@
                     "tour_link": {
                         "type": "string",
                         "example": "https://my.matterport.com/show/?m=aPjao3BZ25x"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "MainBannerSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "file_id": {
+                        "type": "number",
+                        "example": "1"
                     },
                     "created_at": {
                         "type": "string",
