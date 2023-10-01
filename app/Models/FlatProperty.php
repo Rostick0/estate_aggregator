@@ -11,6 +11,7 @@ class FlatProperty extends Model
     use HasFactory;
 
     protected $fillable = [
+        'value_enum',
         'value',
         'flat_id',
         'property_value_id',

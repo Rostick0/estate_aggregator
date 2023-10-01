@@ -16,7 +16,6 @@ class FlatPropertyController extends Controller
     public static function createProperites($properties_values, Flat $flat)
     {
         $properties_values = Json::decode($properties_values);
-        // dd($properties_values);
 
         if (!is_array($properties_values)) $properties_values = [$properties_values];
 
@@ -24,7 +23,8 @@ class FlatPropertyController extends Controller
             $item = (object) $item;
 
             $flat->flat_properties()->create([
-                'value' => $item->value,
+                'value_enum' => $item?->value_enum,
+                'value' => $item?->value,
                 'property_value_id' => $item->property_value_id,
             ]);
         }
