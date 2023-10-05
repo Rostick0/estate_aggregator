@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('type'); // whatsapp | viber | telegram
+            $table->enum('type', ['whatsapp', 'viber', 'telegram']);
             $table->timestamps();
         });
     }

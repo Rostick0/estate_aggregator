@@ -52,6 +52,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('main-banner', [MainBannerController::class, 'index']);
     Route::put('main-banner', [MainBannerController::class, 'update']);
 
+    Route::post('/flat/upload', [FlatController::class,'upload']);
+
     Route::apiResources([
         'post' => PostController::class,
         'flat' => FlatController::class,

@@ -8,11 +8,15 @@ use App\Models\Flat;
 use App\Http\Requests\Flat\StoreFlatRequest;
 use App\Http\Requests\Flat\UpdateFlatRequest;
 use App\Http\Requests\Flat\UploadFlatRequest;
+use App\Models\File;
+use App\Models\FileRelationship;
+use App\Models\FlatProperty;
 use App\Utils\FileRelationUtil;
 use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\LazyCollection;
 use SimpleXMLElement;
 
 class FlatController extends Controller
@@ -766,49 +770,168 @@ class FlatController extends Controller
 
     public function upload(UploadFlatRequest $requst)
     {
-        foreach (new SimpleXMLElement($requst->file) as $item) {
-            $data[] = [
-                'data' => [
-                    'id ' => $item?->id,
-                    'object_id ' => $item?->object_id,
-                    'type_id' => $item?->type_id,
-                    'country_id' => $item?->country_id,
-                    'district_id' => $item?->district_id,
-                    'district' => $item?->district,
-                    'address' => $item?->address,
-                    'longitude' => $item?->longitude,
-                    'latitude' => $item?->latitude,
-                    'currency_id' => $item?->currency_id,
-                    'price' => $item?->price,
-                    'price_per_meter' => $item?->price_per_meter,
-                    'price_day' => $item?->price_day,
-                    'price_week' => $item?->price_week,
-                    'price_month' => $item?->price_month,
-                    'not_show_price' => $item?->not_show_price == 'None' ? 0 : 1,
-                    'rooms' => $item?->rooms,
-                    'bedrooms' => $item?->bedrooms,
-                    'bathrooms' => $item?->bathrooms,
-                    'square' => (int) $item?->square,
-                    'square_land' => $item?->square_land,
-                    'square_land_unit' => $item?->square_land_unit,
-                    'floor' => $item?->floor,
-                    'total_floor' => $item?->total_floor,
-                    'building_type' => $item?->building_type,
-                    'building_date' => $item?->building_date,
-                    'contact_id' => $item?->contact_id,
-                    'specialtxt' => $item?->specialtxt,
-                    'description' => $item?->description,
-                    'filename' => $item?->filename,
-                    'tour_link' => $item?->tour_link,
-                ],
-                'user' => [
-                    'id' => $item->contact_id,
-                    'name' => $item->contact->name,
-                    'email' => $item->contact->email,
-                    'phone' => $item->contact->phone,
-                    'avatar' => $item->contact->photo,
-                ]
-            ];
-        }
+        $xml_data = new SimpleXMLElement(
+            file_get_contents($requst->file)
+        );
+
+        LazyCollection::make(function () use ($xml_data) {
+            foreach ($xml_data->objects->object as $item) {
+                yield $item;
+                yield (object) [
+                    // 'data' => [
+                    //     'id ' => $item?->id,
+                    //     'object_id ' => $item?->object_id,
+                    //     'type_id' => $item?->type_id,
+                    //     'country_id' => $item?->country_id,
+                    //     'district_id' => $item?->district_id,
+                    //     'district' => $item?->district,
+                    //     'address' => $item?->address,
+                    //     'longitude' => $item?->longitude,
+                    //     'latitude' => $item?->latitude,
+                    //     'currency_id' => $item?->currency_id,
+                    //     'price' => $item?->price,
+                    //     'price_per_meter' => $item?->price_per_meter,
+                    //     'price_day' => $item?->price_day,
+                    //     'price_week' => $item?->price_week,
+                    //     'price_month' => $item?->price_month,
+                    //     'not_show_price' => $item?->not_show_price == 'None' ? 0 : 1,
+                    //     'rooms' => $item?->rooms,
+                    //     'bedrooms' => $item?->bedrooms,
+                    //     'bathrooms' => $item?->bathrooms,
+                    //     'square' => (int) $item?->square,
+                    //     'square_land' => $item?->square_land,
+                    //     'square_land_unit' => $item?->square_land_unit,
+                    //     'floor' => $item?->floor,
+                    //     'total_floor' => $item?->total_floor,
+                    //     'building_type' => $item?->building_type,
+                    //     'building_date' => $item?->building_date,
+                    //     'contact_id' => $item?->contact_id,
+                    //     'specialtxt' => $item?->specialtxt,
+                    //     'description' => $item?->description,
+                    //     'filename' => $item?->filename,
+                    //     'tour_link' => $item?->tour_link,
+                    // ],
+                    // 'user' => [
+                    //     'id' => $item->contact_id,
+                    //     'name' => $item->contact->name,
+                    //     'email' => $item->contact->email,
+                    //     'phone' => $item->contact->phone,
+                    //     'avatar' => $item->contact->photo,
+                    // ],
+                    'user' => $item->contact,
+                    'images' => $item->images,
+                    'properties' => $item->properties
+                ];
+            }
+        })
+            ->chunk(250)
+            ->each(function ($elem) {
+                $elem->each(function ($item) {
+                    // dd($item?->images);
+                    // $flat = Flat::firstOrCreate(
+                    //     ['id' => $item?->id],
+                    //     [
+                    //         'id ' => $item?->id,
+                    //         'object_id ' => $item?->object_id,
+                    //         'type_id' => $item?->type_id,
+                    //         'country_id' => $item?->country_id,
+                    //         'district_id' => $item?->district_id,
+                    //         'district' => $item?->district,
+                    //         'address' => $item?->address,
+                    //         'longitude' => $item?->longitude,
+                    //         'latitude' => $item?->latitude,
+                    //         'currency_id' => $item?->currency_id,
+                    //         'price' => $item?->price,
+                    //         'price_per_meter' => $item?->price_per_meter,
+                    //         'price_day' => $item?->price_day,
+                    //         'price_week' => $item?->price_week,
+                    //         'price_month' => $item?->price_month,
+                    //         'not_show_price' => $item?->not_show_price == 'None' ? 0 : 1,
+                    //         'rooms' => $item?->rooms,
+                    //         'bedrooms' => $item?->bedrooms,
+                    //         'bathrooms' => $item?->bathrooms,
+                    //         'square' => (int) $item?->square,
+                    //         'square_land' => $item?->square_land,
+                    //         'square_land_unit' => $item?->square_land_unit,
+                    //         'floor' => $item?->floor,
+                    //         'total_floor' => $item?->total_floor,
+                    //         'building_type' => $item?->building_type,
+                    //         'building_date' => $item?->building_date,
+                    //         'contact_id' => $item?->contact_id,
+                    //         'specialtxt' => $item?->specialtxt,
+                    //         'description' => $item?->description,
+                    //         'filename' => $item?->filename,
+                    //         'tour_link' => $item?->tour_link,
+                    //     ]
+                    // );
+
+                    // $user = $flat->user()->update([
+                    //     'name' => $item?->contact?->name,
+                    //     'email' => $item?->contact?->email,
+                    //     'phone' => $item?->contact?->phone,
+                    //     'avatar' => $item?->contact?->photo,
+                    // ]);
+
+                    // $user->contacts()->delete();
+
+                    // foreach (explode(',', $item?->contact->messengers) as $messager) {
+                    //     $user->contacts()->create([
+                    //         'type' => $messager
+                    //     ]);
+                    // }
+
+                    // $flat->files->delete();
+
+                    // foreach ($item?->images->image as $image) {
+                    //     $file = File::firstOrCreate([
+                    //         'path' => (string) $image->filename[0],
+                    //         'type' => 'image/' . pathinfo($image->filename[0], PATHINFO_EXTENSION),
+                    //         'user_id' => $item?->contact_id
+                    //     ]);
+
+                    //     $flat->files->create([
+                    //         'file_id' => $file->id
+                    //     ]);
+                    // }
+
+                    // $flat->flat_properties()->delete();
+
+                    // foreach ($item?->properties->property as $property) {
+                    //     if (!empty($property->property_value_enum)) {
+                    //         if (is_array($property->property_value_enum)) {
+                    //             foreach ($property->property_value_enum as $item) {
+                    //                 $flat->flat_properties()->create([
+                    //                     'value_enum' => $item,
+                    //                     'property_value_id' => $property->property_id,
+                    //                 ]);
+                    //             }
+                    //         } else {
+                    //             $flat->flat_properties()->create([
+                    //                 'value_enum' => $property->property_value_enum,
+                    //                 'property_value_id' => $property->property_id,
+                    //             ]);
+                    //         }
+                    //     }
+
+                    //     if (!empty($property->property_value)) {
+                    //         if (is_array($property->property_value)) {
+                    //             foreach ($property->property_value as $item) {
+                    //                 $flat->flat_properties()->create([
+                    //                     'value' => $item,
+                    //                     'property_value_id' => $property->property_id,
+                    //                 ]);
+                    //             }
+                    //         } else {
+                    //             $flat->flat_properties()->create([
+                    //                 'value' => $property->property_value,
+                    //                 'property_value_id' => $property->property_id,
+                    //             ]);
+                    //         }
+                    //     }
+                    // }
+                });
+
+                sleep(0.05);
+            });
     }
 }

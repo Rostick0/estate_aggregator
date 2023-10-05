@@ -11,6 +11,7 @@ class UploadFlatRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        return true;
         return auth()->check() && auth()?->user()?->can('upload', Flat::class);
     }
 
@@ -22,7 +23,7 @@ class UploadFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|xml'
+            'file' => 'required|mimes:xml'
         ];
     }
 }
