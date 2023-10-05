@@ -11,7 +11,7 @@ class UploadFlatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->can('create', Flat::class);
+        return auth()->check() && auth()?->user()?->can('upload', Flat::class);
     }
 
     /**
