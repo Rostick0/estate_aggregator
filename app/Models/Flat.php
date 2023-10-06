@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,6 +55,7 @@ class Flat extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'id',
         'object_id',
         'type_id',
         'country_id',
@@ -143,5 +145,13 @@ class Flat extends Model
     public function files(): MorphMany
     {
         return $this->morphMany(FileRelationship::class, 'file_relable');
+    }
+
+    public static function propertiesCreate(Flat $flat, string $column, string $value, int $property_id): void
+    {
+        $flat->flat_properties()->create([
+            $column => $value,
+            'property_value_id' => $property_id,
+        ]);
     }
 }

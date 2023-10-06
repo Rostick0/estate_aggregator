@@ -9,6 +9,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FlatController;
+use App\Http\Controllers\FlatUploadController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainBannerController;
 use App\Http\Controllers\PostController;
@@ -52,7 +53,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('main-banner', [MainBannerController::class, 'index']);
     Route::put('main-banner', [MainBannerController::class, 'update']);
 
-    Route::post('/flat/upload', [FlatController::class,'upload']);
+    Route::post('/flat/upload', [FlatUploadController::class, 'upload']);
 
     Route::apiResources([
         'post' => PostController::class,
