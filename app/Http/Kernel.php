@@ -43,7 +43,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\JsonResponseMiddleware::class,
-            'throttle:120,1'
+            'throttle:500,1'
         ],
     ];
 
