@@ -97,7 +97,7 @@ class ApplicationController extends Controller
      */
     public function store(StoreApplicationRequest $request)
     {
-        $data = Application::create($request);
+        $data = Application::create($request->validated());
 
         return new JsonResponse(
             [

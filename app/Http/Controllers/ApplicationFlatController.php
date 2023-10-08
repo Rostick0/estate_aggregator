@@ -103,7 +103,7 @@ class ApplicationFlatController extends Controller
      */
     public function store(StoreApplicationFlatRequest $request)
     {
-        $data = ApplicationFlat::create($request);
+        $data = ApplicationFlat::create($request->validated());
 
         return new JsonResponse(
             $data,
