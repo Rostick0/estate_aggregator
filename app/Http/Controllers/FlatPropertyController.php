@@ -23,8 +23,8 @@ class FlatPropertyController extends Controller
             $item = (object) $item;
 
             $flat->flat_properties()->create([
-                'value_enum' => $item?->value_enum,
-                'value' => $item?->value,
+                'value_enum' => $item?->value_enum ?? null,
+                'value' => $item?->value ?? null,
                 'property_value_id' => $item->property_value_id,
             ]);
         }
