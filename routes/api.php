@@ -45,7 +45,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('property', [PropertyController::class, 'index']);
     Route::get('building-type', [BuildingTypeController::class, 'index']);
 
-    Route::group(['middleware' => 'throttle:3,1'], function () {
+    Route::group(['middleware' => 'throttle:30,1'], function () {
         Route::post('application', [ApplicationController::class, 'store']);
         Route::post('application-flat', [ApplicationFlatController::class, 'store']);
     });
