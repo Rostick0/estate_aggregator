@@ -105,10 +105,9 @@ class ApplicationFlatController extends Controller
     {
         $data = ApplicationFlat::create($request->validated());
 
-        return new JsonResponse(
-            $data,
-            201
-        );
+        return new JsonResponse([
+            'data' => $data,
+        ], 201);
     }
 
     /**
