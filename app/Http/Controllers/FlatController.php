@@ -694,8 +694,9 @@ class FlatController extends Controller
             ...$values
         ]);
 
+        $flat->flat_properties()->delete();
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
-        if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
+        // if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
         FileRelationUtil::createAndDelete(
             $flat->files(),
