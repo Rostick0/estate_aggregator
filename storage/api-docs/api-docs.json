@@ -1893,16 +1893,19 @@
                         "multipart/form-data": {
                             "schema": {
                                 "required": [
+                                    "title",
                                     "object_id",
                                     "type_id",
                                     "country_id",
                                     "district_id",
-                                    "longitude",
-                                    "latitude",
                                     "currency_id",
                                     "price"
                                 ],
                                 "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Заголовок"
+                                    },
                                     "object_id": {
                                         "type": "number",
                                         "example": "1"
@@ -2186,16 +2189,19 @@
                         "multipart/form-data": {
                             "schema": {
                                 "required": [
+                                    "title",
                                     "object_id",
                                     "type_id",
                                     "country_id",
                                     "district_id",
-                                    "longitude",
-                                    "latitude",
                                     "currency_id",
                                     "price"
                                 ],
                                 "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Название"
+                                    },
                                     "object_id": {
                                         "type": "number",
                                         "example": "1"
