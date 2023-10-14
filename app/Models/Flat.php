@@ -56,6 +56,7 @@ class Flat extends Model
 
     protected $fillable = [
         'id',
+        'title',
         'object_id',
         'type_id',
         'country_id',

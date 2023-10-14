@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('flats', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->foreignId('object_id')->references('id')->on('object_flats')->onDelete('cascade');
             $table->foreignId('type_id')->references('id')->on('flat_types')->onDelete('cascade');
             $table->integer('country_id')->nullable();

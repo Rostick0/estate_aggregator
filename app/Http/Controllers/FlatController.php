@@ -121,7 +121,12 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
+     *                      required={"title", "object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
+     *                      @OA\Property(
+     *                          property="title",
+     *                          type="string",
+     *                          example="Заголовок",
+     *                      ),
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -314,6 +319,7 @@ class FlatController extends Controller
     public function store(StoreFlatRequest $request)
     {
         $values = $request->only([
+            'title',
             'object_id',
             'type_id',
             'country_id',
@@ -449,7 +455,12 @@ class FlatController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
+     *                      required={"title", "object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
+     *                      @OA\Property(
+     *                          property="title",
+     *                          type="string",
+     *                          example="Название",
+     *                      ),                     
      *                      @OA\Property(
      *                          property="object_id",
      *                          type="number",
@@ -660,6 +671,7 @@ class FlatController extends Controller
         );
 
         $values = $request->only([
+            'title',
             'object_id',
             'type_id',
             'country_id',
