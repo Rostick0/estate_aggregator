@@ -93,6 +93,7 @@ class AuthController extends Controller
      *             @OA\Schema(
      *                 @OA\Property(
      *                      type="object",
+     *                      required={"name", "password", "phone", "role", "type_social"},
      *                      @OA\Property(
      *                          property="name",
      *                          type="string"
@@ -104,12 +105,27 @@ class AuthController extends Controller
      *                      @OA\Property(
      *                          property="password",
      *                          type="string"
-     *                      )
+     *                      ),
+     *                      @OA\Property(
+     *                          property="phone",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="role",
+     *                          type="enum: client,realtor,agency,builder",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="type_social",
+     *                          type="enum: whatsapp,viber,telegram"
+     *                      ),
      *                 ),
      *                 example={
      *                     "name":"John",
      *                     "email":"john@test.com",
-     *                     "password":"johnjohn1"
+     *                     "password":"johnjohn1",
+     *                     "phone":"88005553535",
+     *                     "role":"client",
+     *                     "type_social":"whatsapp"
      *                }
      *             )
      *         )
@@ -159,7 +175,7 @@ class AuthController extends Controller
      */
     public function register(RegisterAuthRequest $request)
     {
-        $only = $request->only(['name', 'email']);
+        $only = $request->validated();
         $password = $request->password;
 
         $user = User::create([

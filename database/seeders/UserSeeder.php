@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Разраб',
                 'email' => 'admin@admin.com',
+                'phone' => '79999999',
                 'password' => Hash::make('digitaldada@2'),
                 'role' => 'admin'
             ],

@@ -313,6 +313,13 @@
                             "schema": {
                                 "properties": {
                                     "": {
+                                        "required": [
+                                            "name",
+                                            "password",
+                                            "phone",
+                                            "role",
+                                            "type_social"
+                                        ],
                                         "properties": {
                                             "name": {
                                                 "type": "string"
@@ -322,6 +329,15 @@
                                             },
                                             "password": {
                                                 "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "role": {
+                                                "type": "enum: client,realtor,agency,builder"
+                                            },
+                                            "type_social": {
+                                                "type": "enum: whatsapp,viber,telegram"
                                             }
                                         },
                                         "type": "object"
@@ -331,7 +347,10 @@
                                 "example": {
                                     "name": "John",
                                     "email": "john@test.com",
-                                    "password": "johnjohn1"
+                                    "password": "johnjohn1",
+                                    "phone": "88005553535",
+                                    "role": "client",
+                                    "type_social": "whatsapp"
                                 }
                             }
                         }

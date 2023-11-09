@@ -22,9 +22,12 @@ class RegisterAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'require',
-            'email' => 'required|email|unique:users,email|max:255',
+            'name' => 'required',
+            'email' => 'nullable|email|unique:users,email|max:255',
             'password' => 'required|min:6|max:255',
+            'phone' => 'required|unique:users,phone|max:30',
+            'role' => 'required|in:client,realtor,agency,builder',
+            'type_social' => 'required|in:whatsapp,viber,telegram',
         ];
     }
 }

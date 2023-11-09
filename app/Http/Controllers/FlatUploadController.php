@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Flat\UploadFlatRequest;
 use App\Models\Flat;
 use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\LazyCollection;
 use App\Models\File;
 use App\Models\User;
@@ -36,6 +37,8 @@ class FlatUploadController extends Controller
         $xml_data = new SimpleXMLElement(
             file_get_contents($requst->file)
         );
+
+        // dd(count($xml_data->objects->object));
 
         LazyCollection::make(function () use ($xml_data) {
             foreach ($xml_data->objects->object as $item) {
@@ -143,7 +146,7 @@ class FlatUploadController extends Controller
                                 'latitude' => $item?->latitude ?? null,
                                 'currency_id' => $item?->currency_id,
                                 'price' => $item?->price,
-                                'price_per_meter' => (float) $item?->price_per_meter,
+                                'price_per_meter' => EmptyUtil::valueOrNull($item?->price_per_meter ?? null, 'float'),
                                 'price_day' => EmptyUtil::valueOrNull($item?->price_day ?? null, 'float'),
                                 'price_week' => EmptyUtil::valueOrNull($item?->price_week ?? null, 'float'),
                                 'price_month' => EmptyUtil::valueOrNull($item?->price_month ?? null, 'float'),
@@ -200,11 +203,17 @@ class FlatUploadController extends Controller
                             }
                         }
                     } catch (Exception $e) {
-                        // dd($item);
+                        dd($item, $e);
                     }
                 });
 
                 sleep(0.05);
             });
+
+        return new JsonResponse([
+            'data' => [
+                'message' => 'success'
+            ]
+        ]);
     }
 }
