@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Models\Collection;
 use App\Http\Requests\Collection\DestroyCollectionRequest;
 use App\Http\Requests\Collection\IndexCollectionRequest;
@@ -67,15 +68,9 @@ class CollectionController extends Controller
      */
     public function index(IndexCollectionRequest $request)
     {
-        $data_init = Collection::with([]);
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = OrderByUtil::set($request->sort, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 20);
-
-        return new JsonResponse($data);
+        return new JsonResponse(
+            Filter::all($request, new Collection)
+        );
     }
 
     /**

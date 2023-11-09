@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Region\IndexRegionRequest;
 use App\Models\Region;
 use App\Http\Requests\Region\StoreRegionRequest;
@@ -93,16 +94,8 @@ class RegionController extends Controller
      */
     public function index(IndexRegionRequest $request)
     {
-        $data_init = Region::with(QueryString::convertToArray($request->extends));
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = OrderByUtil::set($request->sort, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 50);
-
         return new JsonResponse(
-            $data
+            Filter::all($request, new Region)
         );
     }
 

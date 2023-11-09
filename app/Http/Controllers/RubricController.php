@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Rubric\DestroyRubricRequest;
 use App\Http\Requests\Rubric\IndexRubricRequest;
 use App\Http\Requests\Rubric\ShowRubricRequest;
@@ -79,15 +80,9 @@ class RubricController extends Controller
      */
     public function index(IndexRubricRequest $request)
     {
-        $data_init = Rubric::with(QueryString::convertToArray($request->extends));
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = OrderByUtil::set($request->sort, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 20);
-
-        return new JsonResponse($data);
+        return new JsonResponse(
+            Filter::all($request, new Rubric)
+        );
     }
 
     /**

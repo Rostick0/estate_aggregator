@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\District\DestroyDistrictRequest;
 use App\Http\Requests\District\IndexDistrictRequest;
 use App\Http\Requests\District\ShowDistrictRequest;
@@ -96,17 +97,8 @@ class DistrictController extends Controller
      */
     public function index(IndexDistrictRequest $request)
     {
-        $data_init = District::with(QueryString::convertToArray($request->extends))
-            ->orderBy('name');
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = OrderByUtil::set($request->sort, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 50);
-
         return new JsonResponse(
-            $data
+            Filter::all($request, new District)
         );
     }
 

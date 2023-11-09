@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Flat\IndexFlatRequest;
 use App\Http\Requests\Flat\ShowFlatRequest;
 use App\Models\Flat;
@@ -16,6 +17,11 @@ use Illuminate\Http\JsonResponse;
 
 class FlatController extends Controller
 {
+    private static function getWhere()
+    {
+        return [];
+    }
+
     /**
      * Index
      * @OA\get (
@@ -97,17 +103,8 @@ class FlatController extends Controller
      */
     public function index(IndexFlatRequest $request)
     {
-        $data_init = Flat::with(QueryString::convertToArray($request->extends));
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = FilterRequestUtil::has($request->filterHas, $data_init);
-        $data_init = OrderByUtil::set($request->sort, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 20);
-
         return new JsonResponse(
-            $data
+            Filter::all($request, new Flat, [], $this::getWhere())
         );
     }
 
@@ -426,14 +423,9 @@ class FlatController extends Controller
      */
     public function show(ShowFlatRequest $request, int $id)
     {
-        $flat = Flat::with(QueryString::convertToArray($request->extends))
-            ->findOrFail($id);
-
-        return new JsonResponse(
-            [
-                'data' => $flat
-            ],
-        );
+        return new JsonResponse([
+            'data' => Filter::one($request, new Flat, $id, $this::getWhere())
+        ]);
     }
 
     /**
