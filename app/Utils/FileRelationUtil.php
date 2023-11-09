@@ -13,7 +13,7 @@ class FileRelationUtil
         $model->delete();
 
         foreach ($file_ids as $file_id) {
-            if (!FileRelationshipPolicy::create(auth()->user(), $file_id)) continue;
+            // if (!FileRelationshipPolicy::create(auth()->user(), $file_id)) continue;
 
             $model->create([
                 'file_id' => $file_id

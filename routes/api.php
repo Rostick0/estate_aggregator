@@ -7,6 +7,7 @@ use App\Http\Controllers\BuildingTypeController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FlatController;
 use App\Http\Controllers\FlatUploadController;
@@ -63,7 +64,8 @@ Route::group(['middleware' => 'api'], function () {
         'district' => DistrictController::class,
         'rubric' => RubricController::class,
         'collection' => CollectionController::class,
-        'file' => FileController::class
+        'file' => FileController::class,
+        'favorite' => FavoriteController::class,
     ]);
 });
 

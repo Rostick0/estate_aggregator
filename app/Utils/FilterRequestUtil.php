@@ -2,49 +2,68 @@
 
 namespace App\Utils;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Json;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\builder;
 
 class FilterRequestUtil
 {
-    public static function eq($request, array $fillable = [])
+    // public static function eq($request, array $fillable = [])
+    // {
+    //     $where = [];
+
+    //     collect($request)->each(function ($value, $key) use (&$where) {
+    //         $where[] = [$key, '=', $value];
+    //         return [$key, '=', $value];
+    //     });
+
+    //     return $where;
+    // }
+
+    /**
+     * @param class-string<"NULL"|"LIKE"> $type_where
+     */
+
+    public static function template($request, Builder $builder, array $fillable = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
     {
-        $where = [];
+        collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
+            if (FilterTypeUtil::check($key)) return;
 
-        collect($request)->each(function ($value, $key) use (&$where) {
-            $where[] = [$key, '=', $value];
-            return [$key, '=', $value];
-        });
-
-        return $where;
-    }
-
-    public static function like($request, array $fillable = [])
-    {
-        $where = [];
-
-        collect($request)->each(function ($value, $key) use (&$where) {
-            $where[] = [$key, 'LIKE', '%' . $value . '%'];
-            return [$key, 'LIKE', '%' . $value . '%'];
-        });
-
-        return $where;
-    }
-
-    public static function has($request, Builder $model)
-    {
-        collect($request)->each(function ($item, $name) use ($model) {
+            if (!empty($fillable) && array_search($key, $fillable) === false) return;
             $where = [];
-            foreach (Json::decode($item) as $key => $value) {
-                $where[] = [$key, '=', $value];
+
+            
+            if (!isset($value)) {
+            } else if ($type_where === 'NULL') {
+                $where[] = [$key, $type, NULL];
+            } else if ($type_where === 'LIKE') {
+                $where[] = [$key, 'LIKE', '%' . $value . '%'];
+            } else {
+                $where[] = [$key, $type, $value];
             }
 
-            $model->whereHas($name, function ($query) use ($where) {
-                $query->where($where);
-            });
+            $builder->where($where);
         });
 
-        return $model;
+        return $builder;
+    }
+
+    public static function all($request, Builder $builder, array $fillable = []): Builder
+    {
+        $data = $builder;
+
+        if ($request->filterEQ) $data = FilterRequestUtil::template($request->filterEQ, $builder, $fillable, '=');
+        if ($request->filterNEQ) $data = FilterRequestUtil::template($request->filterNEQ, $builder, $fillable, '!=');
+
+        if ($request->filterEQN) $data = FilterRequestUtil::template($request->filterEQN, $builder, $fillable, '=', 'NULL');
+        if ($request->filterNEQN) $data = FilterRequestUtil::template($request->filterNEQN, $builder, $fillable, '!=', 'NULL');
+
+        if ($request->filterCEQ) $data = FilterRequestUtil::template($request->filterCEQ, $builder, $fillable, '>=');
+        if ($request->filterLEQ) $data = FilterRequestUtil::template($request->filterLEQ, $builder, $fillable, '<=');
+        if ($request->filterCE) $data = FilterRequestUtil::template($request->filterCE, $builder, $fillable, '>');
+        if ($request->filterLE) $data = FilterRequestUtil::template($request->filterLE, $builder, $fillable, '<');
+
+        if ($request->filterLIKE) $data = FilterRequestUtil::template($request->filterLIKE, $builder, $fillable, 'LIKE', 'LIKE');
+
+        return $data;
     }
 }
