@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'api'], function () {
     Route::group(['prefix' => 'auth'], function () {
-        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
+        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:300,1');
         Route::post('/register', [AuthController::class, 'register']);
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refresh']);

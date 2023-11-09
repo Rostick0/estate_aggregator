@@ -208,6 +208,9 @@
                                 "properties": {
                                     "": {
                                         "properties": {
+                                            "phone": {
+                                                "type": "string"
+                                            },
                                             "email": {
                                                 "type": "string"
                                             },

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\LoginAuthRequest;
 use App\Http\Requests\Auth\RegisterAuthRequest;
 use App\Models\User;
+use App\Policies\AuthPolicy;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -21,6 +23,10 @@ class AuthController extends Controller
      *             @OA\Schema(
      *                 @OA\Property(
      *                      type="object",
+     *                      @OA\Property(
+     *                          property="phone",
+     *                          type="string"
+     *                      ),
      *                      @OA\Property(
      *                          property="email",
      *                          type="string"
@@ -78,7 +84,9 @@ class AuthController extends Controller
     {
         $validated = $request->validated();
 
-        if (!$token = JWTAuth::attempt($validated)) return response()->json(['message' => 'Incorrect login or password'], 401);
+        if (!$token = JWTAuth::attempt($validated)) return new JsonResponse(['message' => 'Incorrect login or password'], 401);
+
+        if (AuthPolicy::login(auth()->user())) return new JsonResponse(['message' => 'The account is not confirmed'], 401);
 
         return $this::createNewToken($token);
     }
@@ -177,10 +185,14 @@ class AuthController extends Controller
     {
         $only = $request->validated();
         $password = $request->password;
+        $is_confirm = false;
+
+        if ($request->role === 'client') $is_confirm = true;
 
         $user = User::create([
             ...$only,
-            'password' => Hash::make($password)
+            'password' => Hash::make($password),
+            'is_confirm' => $is_confirm
         ]);
 
         $token = JWTAuth::attempt([
