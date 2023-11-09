@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StorageImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/storage/upload/image/{path}', [StorageImageController::class, 'show']);
