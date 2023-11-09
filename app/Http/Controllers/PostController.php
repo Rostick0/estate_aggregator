@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Post\IndexPostRequest;
 use App\Http\Requests\Post\ShowPostRequest;
 use App\Models\Post;
@@ -17,6 +18,11 @@ use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
+    private static function getWhere()
+    {
+        return [];
+    }
+
     /**
      * Index
      * @OA\get (
@@ -97,15 +103,9 @@ class PostController extends Controller
      */
     public function index(IndexPostRequest $request)
     {
-        $data_init = Post::with(QueryString::convertToArray($request->extends));
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = OrderByUtil::set($request->sort, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 20);
-
-        return new JsonResponse($data);
+        return new JsonResponse(
+            Filter::all($request, new Post, [], $this::getWhere())
+        );
     }
 
     /**
@@ -285,13 +285,9 @@ class PostController extends Controller
      */
     public function show(ShowPostRequest $request, int $id)
     {
-        $post = Post::with(QueryString::convertToArray($request->extends))->findOrFail($id);
-
-        return new JsonResponse(
-            [
-                'data' => $post
-            ],
-        );
+        return new JsonResponse([
+            'data' => Filter::one($request, new Post, $id, $this::getWhere())
+        ]);
     }
 
     /**
