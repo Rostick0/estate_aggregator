@@ -18,6 +18,18 @@ use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
+    private static function extendsMutation($data, $request)
+    {
+        $data->images()->delete();
+        if ($request->images) {
+            $images = array_map(function ($image_id) {
+                return ['image_id' => $image_id];
+            }, QueryString::convertToArray($request->images));
+
+            $data->images()->createMany($images);
+        }
+    }
+
     private static function getWhere()
     {
         return [];
@@ -221,10 +233,7 @@ class PostController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        FileRelationUtil::createAndDelete(
-            $post->files(),
-            QueryString::convertToArray($request->images)
-        );
+        $this::extendsMutation($post, $request);
 
         if (ImagePolicy::create(auth()->user(), $request?->main_image_id)) {
             $post->update([
@@ -232,12 +241,9 @@ class PostController extends Controller
             ]);
         }
 
-        return new JsonResponse(
-            [
-                'data' => Post::find($post->id)
-            ],
-            201
-        );
+        return new JsonResponse([
+            'data' => Post::find($post->id)
+        ], 201);
     }
 
     /**
@@ -407,12 +413,9 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (!auth()->check() || auth()?->user()?->cannot('update', $post)) return new JsonResponse(
-            [
-                'message' => 'No access'
-            ],
-            403
-        );
+        if (!auth()->check() || auth()?->user()?->cannot('update', $post)) return new JsonResponse([
+            'message' => 'No access'
+        ], 403);
 
         $post->update($request->only(
             'title',
@@ -422,10 +425,7 @@ class PostController extends Controller
             'source'
         ));
 
-        FileRelationUtil::createAndDelete(
-            $post->files(),
-            QueryString::convertToArray($request->images)
-        );
+        $this::extendsMutation($post, $request);
 
         if (ImagePolicy::create(auth()->user(), $request?->main_image_id)) {
             $post->update([
@@ -433,11 +433,9 @@ class PostController extends Controller
             ]);
         }
 
-        return new JsonResponse(
-            [
-                'data' => Post::find($id)
-            ],
-        );
+        return new JsonResponse([
+            'data' => Post::find($id)
+        ]);
     }
 
     /**
@@ -476,19 +474,14 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if (!auth()->check() || auth()?->user()?->cannot('delete', $post)) return new JsonResponse(
-            [
-                'message' => 'No access'
-            ],
-            403
-        );
+        if (!auth()->check() || auth()?->user()?->cannot('delete', $post)) return new JsonResponse([
+            'message' => 'No access'
+        ], 403);
 
         Post::destroy($id);
 
-        return new JsonResponse(
-            [
-                'message' => 'Deleted'
-            ]
-        );
+        return new JsonResponse([
+            'message' => 'Deleted'
+        ]);
     }
 }

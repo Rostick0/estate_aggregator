@@ -58,6 +58,10 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::post('file', [FileController::class, 'store'])->middleware('throttle:500,1');
 
+    Route::get('/image/{id}', [ImageController::class, 'show']);
+    Route::post('/image', [ImageController::class, 'store']);
+    Route::delete('/image/{id}', [ImageController::class, 'destroy']);
+
     Route::apiResources([
         'post' => PostController::class,
         'flat' => FlatController::class,

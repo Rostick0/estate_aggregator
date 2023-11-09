@@ -204,11 +204,6 @@ class FileController extends Controller
         ]);
     }
 
-    public function update()
-    {
-        return abort(404);
-    }
-
     /**
      * Delete
      * @OA\Delete (

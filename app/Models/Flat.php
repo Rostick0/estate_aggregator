@@ -136,11 +136,7 @@ class Flat extends Model
 
     public function images(): MorphMany
     {
-        return $this->morphMany(FileRelationship::class, 'file_relable')
-            ->with('file')
-            ->whereHas('file', function ($query) {
-                $query->where('type', 'LIKE', 'image/%');
-            });
+        return $this->morphMany(ImageRelat::class, 'image_relatsable');
     }
 
     public function files(): MorphMany

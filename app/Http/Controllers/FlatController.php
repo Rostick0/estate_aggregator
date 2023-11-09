@@ -17,6 +17,18 @@ use Illuminate\Http\JsonResponse;
 
 class FlatController extends Controller
 {
+    private static function extendsMutation($data, $request)
+    {
+        $data->images()->delete();
+        if ($request->images) {
+            $images = array_map(function ($image_id) {
+                return ['image_id' => $image_id];
+            }, QueryString::convertToArray($request->images));
+
+            $data->images()->createMany($images);
+        }
+    }
+
     private static function getWhere()
     {
         return [];
@@ -354,17 +366,11 @@ class FlatController extends Controller
 
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
 
-        FileRelationUtil::createAndDelete(
-            $flat->files(),
-            QueryString::convertToArray($request->images)
-        );
+        $this::extendsMutation($flat, $request);
 
-        return new JsonResponse(
-            [
-                'data' => Flat::find($flat->id)
-            ],
-            201
-        );
+        return new JsonResponse([
+            'data' => Flat::find($flat->id)
+        ], 201);
     }
 
     /**
@@ -702,18 +708,11 @@ class FlatController extends Controller
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
         // if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
-        FileRelationUtil::createAndDelete(
-            $flat->files(),
-            QueryString::convertToArray($request->images)
-        );
+        $this::extendsMutation($flat, $request);
 
-
-        return new JsonResponse(
-            [
-                'data' => Flat::find($flat->id)
-            ],
-            201
-        );
+        return new JsonResponse([
+            'data' => Flat::find($flat->id)
+        ], 201);
     }
 
     /**
@@ -761,10 +760,8 @@ class FlatController extends Controller
 
         Flat::destroy($id);
 
-        return new JsonResponse(
-            [
-                'message' => 'Deleted'
-            ]
-        );
+        return new JsonResponse([
+            'message' => 'Deleted'
+        ]);
     }
 }
