@@ -60,9 +60,9 @@ class FavoriteController extends Controller
 
     public function destroy(int $id): JsonResponse
     {
-        $partner = Favorite::findOrFail($id);
+        $favorite = Favorite::findOrFail($id);
 
-        if (AccessUtil::cannot('delete', $partner)) return AccessUtil::errorMessage();
+        if (AccessUtil::cannot('delete', $favorite)) return AccessUtil::errorMessage();
 
         Favorite::destroy($id);
 

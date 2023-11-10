@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlertController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
@@ -70,6 +71,7 @@ Route::group(['middleware' => 'api'], function () {
         'collection' => CollectionController::class,
         'file' => FileController::class,
         'favorite' => FavoriteController::class,
+        'alert' => AlertController::class
     ]);
 });
 
