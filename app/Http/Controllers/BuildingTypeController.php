@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\BuildingType\IndexBuildingTypeRequest;
 use App\Models\BuildingType;
 use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -64,16 +66,8 @@ class BuildingTypeController extends Controller
      */
     public function index(IndexBuildingTypeRequest $request)
     {
-        $data_init = BuildingType::with(QueryString::convertToArray($request->extends));
-
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = FilterRequestUtil::has($request->filterHas, $data_init);
-
-        $data = $data_init->paginate($request->limit ?? 20);
-
-        return new JsonResource(
-            $data
+        return new JsonResponse(
+            Filter::all($request, new BuildingType)
         );
     }
 

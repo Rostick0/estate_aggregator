@@ -27,7 +27,7 @@ class FileController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="filterHas[flat_properties.property_value.property]",
+     *          name="filter[flat_properties.property_value.property]",
      *          description="Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
      *          in="query",
      *          example="1",
@@ -82,18 +82,18 @@ class FileController extends Controller
      *      ),
      * )
      */
-    public function index(IndexFileRequest $request)
-    {
-        $data_init = File::with(QueryString::convertToArray($request->extends));
+    // public function index(IndexFileRequest $request)
+    // {
+    //     $data_init = File::with(QueryString::convertToArray($request->extends));
 
-        $data_init->where(FilterRequestUtil::eq($request->filterEQ));
-        $data_init->where(FilterRequestUtil::like($request->filterLIKE));
-        $data_init = OrderByUtil::set($request->sort, $data_init);
+    //     $data_init->where(FilterRequestUtil::eq($request->filterEQ));
+    //     $data_init->where(FilterRequestUtil::like($request->filterLIKE));
+    //     $data_init = OrderByUtil::set($request->sort, $data_init);
 
-        $data = $data_init->paginate($request->limit ?? 50);
+    //     $data = $data_init->paginate($request->limit ?? 50);
 
-        return new JsonResponse($data);
-    }
+    //     return new JsonResponse($data);
+    // }
 
     /**
      * Store

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Property\IndexPropertyRequest;
 use App\Models\Property;
 use App\Utils\QueryString;
@@ -37,12 +38,8 @@ class PropertyController extends Controller
      */
     public function index(IndexPropertyRequest $request)
     {
-        $data = Property::with(QueryString::convertToArray($request->extends))->get();
-    
         return new JsonResponse(
-            [
-                'data' => $data
-            ]
+            Filter::all($request, new Property)
         );
     }
 
