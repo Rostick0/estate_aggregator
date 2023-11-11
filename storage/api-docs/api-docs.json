@@ -6,6 +6,410 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/alert": {
+            "get": {
+                "tags": [
+                    "Alert"
+                ],
+                "summary": "Index",
+                "operationId": "aa37d00148d0588b109a8646a89b55b6",
+                "parameters": [
+                    {
+                        "name": "filterEQ[country_id]",
+                        "in": "query",
+                        "description": "title, country_id, role, type",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Alert"
+                ],
+                "summary": "Store",
+                "operationId": "f5158cb4124efd4c621e865d63cb7059",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Заголовок"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Описание описания"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "example": "5"
+                                    },
+                                    "role": {
+                                        "type": "enum: client,realtor,agency,builder",
+                                        "example": "3000"
+                                    },
+                                    "type": {
+                                        "type": "number",
+                                        "example": "null"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The title field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The title field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "country_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The country_id not exsisted."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/alert/{id}": {
+            "get": {
+                "tags": [
+                    "Alert"
+                ],
+                "summary": "Show",
+                "operationId": "820f00cc070ff0e3b4c629822cac55c1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Alert"
+                ],
+                "summary": "Update",
+                "operationId": "0e6b47295c11488cf2bb1f8b8af8f8fc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Alert id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Заголовок"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Описание описания"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "example": "5"
+                                    },
+                                    "role": {
+                                        "type": "enum: client,realtor,agency,builder",
+                                        "example": "3000"
+                                    },
+                                    "type": {
+                                        "type": "number",
+                                        "example": "null"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The title field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The title field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "country_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The country_id not exsisted."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Alert"
+                ],
+                "summary": "Delete",
+                "operationId": "45fb78fbaf90c77152ace9bc0bba1099",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Alert id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/application": {
             "post": {
                 "tags": [
@@ -1547,86 +1951,6 @@
             }
         },
         "/api/file": {
-            "get": {
-                "tags": [
-                    "File"
-                ],
-                "summary": "Index",
-                "operationId": "51e517206a973caa82017786ae26e98b",
-                "parameters": [
-                    {
-                        "name": "filterEQ[object_id]",
-                        "in": "query",
-                        "description": "object_id, type_id, country_id, district_id",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "filterHas[flat_properties.property_value.property]",
-                        "in": "query",
-                        "description": "Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "2"
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "Limit data",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "20"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/FileSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "File"
@@ -1832,7 +2156,7 @@
                         "example": "1"
                     },
                     {
-                        "name": "filterHas[flat_properties.property_value.property]",
+                        "name": "filter[flat_properties.property_value.property]",
                         "in": "query",
                         "description": "Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
                         "schema": {
@@ -3625,6 +3949,35 @@
     },
     "components": {
         "schemas": {
+            "AlertSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Новое уведомление"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Описание"
+                    },
+                    "country_id": {
+                        "type": "string",
+                        "example": "5"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "client"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "null"
+                    }
+                },
+                "type": "object"
+            },
             "ApplicationSchema": {
                 "properties": {
                     "id": {

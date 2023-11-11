@@ -25,6 +25,67 @@ class AlertController extends Controller
         return [];
     }
 
+    /**
+     * Index
+     * @OA\get (
+     *     path="/api/alert",
+     *     tags={"Alert"},
+     *     @OA\Parameter( 
+     *          name="filterEQ[country_id]",
+     *          description="title, country_id, role, type",
+     *          in="query",
+     *          example="1",
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page",
+     *          in="query",
+     *          example="2",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="limit",
+     *          description="Limit data",
+     *          in="query",
+     *          example="20",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/AlertSchema"
+     *              ),
+     *          )
+     *      ),
+     * )
+     */
     public function index(Request $request)
     {
         return new JsonResponse(
@@ -32,6 +93,76 @@ class AlertController extends Controller
         );
     }
 
+    /**
+     * Store
+     * @OA\Post (
+     *     path="/api/alert",
+     *     tags={"Alert"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                      required={"title"},
+     *                      @OA\Property(
+     *                          property="title",
+     *                          type="string",
+     *                          example="Заголовок",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="description",
+     *                          type="string",
+     *                          example="Описание описания"
+     *                      ), @OA\Property(
+     *                          property="country_id",
+     *                          type="number",
+     *                          example="5"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="role",
+     *                          type="enum: client,realtor,agency,builder",
+     *                          example="3000"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="type",
+     *                          type="number",
+     *                          example="null"
+     *                      ),
+     *              )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/AlertSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The title field is required. (and 2 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="title", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The title field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="country_id", type="array", collectionFormat="multi",
+     *                          @OA\Items(
+     *                          type="string",
+     *                          example="The country_id not exsisted.",
+     *                          )
+     *                      ),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
     public function store(StoreAlertRequest $request)
     {
         $data = Alert::create([
@@ -43,6 +174,49 @@ class AlertController extends Controller
         ], 201);
     }
 
+    /**
+     * Show
+     * @OA\get (
+     *     path="/api/alert/{id}",
+     *     tags={"Alert"},
+     *      @OA\Parameter( 
+     *          name="id",
+     *          description="Id",
+     *          in="path",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          ),
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/AlertSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
+     */
     public function show(Request $request, int $id)
     {
         return new JsonResponse([
@@ -50,7 +224,85 @@ class AlertController extends Controller
         ]);
     }
 
-
+    /**
+     * Update
+     * @OA\Put (
+     *     path="/api/alert/{id}",
+     *     tags={"Alert"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="Alert id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                      required={"title"},
+     *                      @OA\Property(
+     *                          property="title",
+     *                          type="string",
+     *                          example="Заголовок",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="description",
+     *                          type="string",
+     *                          example="Описание описания"
+     *                      ), @OA\Property(
+     *                          property="country_id",
+     *                          type="number",
+     *                          example="5"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="role",
+     *                          type="enum: client,realtor,agency,builder",
+     *                          example="3000"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="type",
+     *                          type="number",
+     *                          example="null"
+     *                      ),
+     *              )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/AlertSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The title field is required. (and 2 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="title", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The title field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="country_id", type="array", collectionFormat="multi",
+     *                          @OA\Items(
+     *                          type="string",
+     *                          example="The country_id not exsisted.",
+     *                          )
+     *                      ),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
     public function update(UpdateAlertRequest $request, int $id)
     {
         $data = Alert::findOrFail($id);
@@ -66,6 +318,38 @@ class AlertController extends Controller
         ]);
     }
 
+    /**
+     * Delete
+     * @OA\Delete (
+     *     path="/api/alert/{id}",
+     *     tags={"Alert"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="Alert id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Deleted"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Access error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="No access"),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
     public function destroy(int $id)
     {
         $partner = Alert::findOrFail($id);
