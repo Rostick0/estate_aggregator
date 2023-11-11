@@ -62,6 +62,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('/image/{id}', [ImageController::class, 'show']);
     Route::post('/image', [ImageController::class, 'store']);
     Route::delete('/image/{id}', [ImageController::class, 'destroy']);
+    
+    Route::apiResource('favorite', FavoriteController::class)->only(['index', 'store', 'show', 'destroy']);
 
     Route::apiResources([
         'post' => PostController::class,
@@ -70,7 +72,6 @@ Route::group(['middleware' => 'api'], function () {
         'rubric' => RubricController::class,
         'collection' => CollectionController::class,
         'file' => FileController::class,
-        'favorite' => FavoriteController::class,
         'alert' => AlertController::class
     ]);
 });
