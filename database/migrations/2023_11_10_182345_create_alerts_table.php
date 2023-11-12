@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('country_id')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder'])->nullable();
-            $table->enum('type', [])->nullable();
+            $table->enum('type', ['test'])->nullable();
             $table->timestamps();
         });
     }
