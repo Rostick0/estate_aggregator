@@ -20,6 +20,17 @@ class AlertController extends Controller
         'type',
     ];
 
+    private static function extendsMutation($data, $request)
+    {
+        $data->image()->delete();
+        if ($request->image) {
+
+            $data->image()->create([
+                'image_id' => $request->image
+            ]);
+        }
+    }
+
     private static function getWhere()
     {
         return [];
@@ -128,6 +139,11 @@ class AlertController extends Controller
      *                          type="number",
      *                          example="null"
      *                      ),
+     *                      @OA\Property(
+     *                          property="image",
+     *                          type="number",
+     *                          example="1"
+     *                      ),
      *              )
      *         )
      *      ),
@@ -168,6 +184,8 @@ class AlertController extends Controller
         $data = Alert::create([
             ...$request->only($this->request_only),
         ]);
+
+        $this::extendsMutation($data, $request);
 
         return new JsonResponse([
             'data' => $data
@@ -268,6 +286,11 @@ class AlertController extends Controller
      *                          type="number",
      *                          example="null"
      *                      ),
+     *                      @OA\Property(
+     *                          property="image",
+     *                          type="number",
+     *                          example="1"
+     *                      ),
      *              )
      *         )
      *      ),
@@ -312,6 +335,8 @@ class AlertController extends Controller
         $data->update(
             $request->only($this->request_only)
         );
+
+        $this::extendsMutation($data, $request);
 
         return new JsonResponse([
             'data' => Filter::one($request, new Alert, $id)

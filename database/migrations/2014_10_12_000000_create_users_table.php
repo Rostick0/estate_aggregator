@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('avatar')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder', 'admin'])->default('client');
+            $table->integer('country_id')->nullable();
             $table->boolean('is_confirm')->default(false);
             $table->enum('type_social', ['whatsapp', 'viber', 'telegram'])->nullable();
             $table->rememberToken();

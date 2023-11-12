@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * @OA\Schema(
@@ -30,8 +31,13 @@ class Alert extends Model
         'type',
     ];
 
-    public function region(): BelongsTo
+    public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(ImageRelat::class, 'image_relatsable');
     }
 }

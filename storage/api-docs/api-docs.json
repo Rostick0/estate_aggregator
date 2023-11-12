@@ -111,6 +111,10 @@
                                     "type": {
                                         "type": "number",
                                         "example": "null"
+                                    },
+                                    "image": {
+                                        "type": "number",
+                                        "example": "1"
                                     }
                                 },
                                 "type": "object"
@@ -285,6 +289,10 @@
                                     "type": {
                                         "type": "number",
                                         "example": "null"
+                                    },
+                                    "image": {
+                                        "type": "number",
+                                        "example": "1"
                                     }
                                 },
                                 "type": "object"

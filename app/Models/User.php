@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,6 +41,7 @@ class User extends Authenticatable implements JWTSubject
         'role',
         'avatar',
         'role',
+        'country_id',
         'is_confirm',
         'type_social',
     ];
@@ -86,5 +88,14 @@ class User extends Authenticatable implements JWTSubject
     public function contacts(): HasMany
     {
         return $this->hasMany(UserContacts::class, 'user_id', 'id');
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    public function alert(): HasMany {
+        return $this->hasMany(AlertUser::class,'user_id', 'id');
     }
 }
