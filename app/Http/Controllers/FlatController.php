@@ -49,7 +49,7 @@ class FlatController extends Controller
      *          ),
      *     ),
      *     @OA\Parameter( 
-     *          name="filter[flat_properties.property_value.property]",
+     *          name="filterEQ[flat_properties.property_value.property]",
      *          description="Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
      *          in="query",
      *          example="1",

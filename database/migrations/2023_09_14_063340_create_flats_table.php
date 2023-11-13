@@ -32,7 +32,7 @@ return new class extends Migration
             $table->integer('rooms')->nullable();
             $table->integer('bedrooms')->nullable();
             $table->integer('bathrooms')->nullable();
-            $table->float('square');
+            $table->float('square')->nullable();
             $table->float('square_land')->nullable();
             $table->integer('square_land_unit')->nullable();
             $table->integer('floor')->nullable();

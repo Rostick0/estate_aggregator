@@ -26,15 +26,6 @@ class FileController extends Controller
      *              type="number"
      *          ),
      *     ),
-     *     @OA\Parameter( 
-     *          name="filter[flat_properties.property_value.property]",
-     *          description="Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
-     *          in="query",
-     *          example="1",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
      *     @OA\Parameter(
      *          name="sort",
      *          description="Сортировка по параметру",
