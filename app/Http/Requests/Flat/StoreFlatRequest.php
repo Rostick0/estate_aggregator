@@ -24,6 +24,7 @@ class StoreFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'title' => 'required',
             'object_id' => 'required|numeric|' . Rule::exists('object_flats', 'id'),
             'type_id' => 'required|numeric|' . Rule::exists('flat_types', 'id'),
             'country_id' => 'required|numeric|' . Rule::exists('countries', 'id'),
@@ -52,7 +53,7 @@ class StoreFlatRequest extends FormRequest
             'description' => 'string|max:65536',
             'filename' => 'string|max:255',
             'tour_link' => 'string|max:255',
-            'properties_values' => 'string',
+            'properties_values' => 'nullable',
             'images' => 'nullable|string',
         ];
     }
