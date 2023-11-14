@@ -12,67 +12,7 @@ use Illuminate\Http\JsonResponse;
 
 class FileController extends Controller
 {
-    /**
-     * Index
-     * @OA\get (
-     *     path="/api/file",
-     *     tags={"File"},
-     *     @OA\Parameter( 
-     *          name="filterEQ[object_id]",
-     *          description="object_id, type_id, country_id, district_id",
-     *          in="query",
-     *          example="1",
-     *          @OA\Schema(
-     *              type="number"
-     *          ),
-     *     ),
-     *     @OA\Parameter(
-     *          name="sort",
-     *          description="Сортировка по параметру",
-     *          in="query",
-     *          example="id",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *     @OA\Parameter(
-     *          name="sort",
-     *          description="Сортировка по параметру",
-     *          in="query",
-     *          example="id",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="page",
-     *          description="Page",
-     *          in="query",
-     *          example="2",
-     *          @OA\Schema(
-     *              type="number"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="limit",
-     *          description="Limit data",
-     *          in="query",
-     *          example="20",
-     *          @OA\Schema(
-     *              type="number",
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Success",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/FileSchema"
-     *              ),
-     *          )
-     *      ),
-     * )
-     */
+ 
     // public function index(IndexFileRequest $request)
     // {
     //     $data_init = File::with(QueryString::convertToArray($request->extends));
