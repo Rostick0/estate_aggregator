@@ -95,7 +95,13 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 
-    public function alert(): HasMany {
-        return $this->hasMany(AlertUser::class,'user_id', 'id');
+    public function alert(): HasMany
+    {
+        return $this->hasMany(AlertUser::class, 'user_id', 'id');
+    }
+
+    public function image(): BelongsTo
+    {
+        return $this->belongsTo(Image::class, 'avatar', 'id');
     }
 }
