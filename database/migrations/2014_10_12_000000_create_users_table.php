@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('country_id')->nullable();
             $table->boolean('is_confirm')->default(false);
             $table->enum('type_social', ['whatsapp', 'viber', 'telegram'])->nullable();
+            $table->float('raiting_awe')->default(5);
+            $table->float('raiting')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

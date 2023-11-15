@@ -19,6 +19,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::delete('/image/{id}', [ImageController::class, 'destroy']);
     
     Route::apiResource('favorite', FavoriteController::class)->only(['index', 'store', 'show', 'destroy']);
+    Route::apiResource('user', UserController::class)->only(['index', 'show', 'update', 'destroy']);
 
     Route::apiResources([
         'post' => PostController::class,
