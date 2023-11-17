@@ -22,6 +22,7 @@ class Property extends Model
 
     protected $fillable = [
         'name',
+        'type'
     ];
 
     public function property_values(): HasMany {

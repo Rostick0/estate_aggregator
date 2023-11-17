@@ -7,6 +7,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>11</property_id>
 		<name>Расположение</name>
+		<type>checkbox</type>
 				
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
@@ -56,6 +57,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>12</property_id>
 		<name>Расстояние до значимых объектов</name>		
+		<type>checkbox</type>
 		<!-- property_value_enum property_value property_value_unit -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -122,6 +124,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>133</property_id>
 		<name>Продается сданный в аренду объект недвижимости</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -141,6 +144,7 @@
 		<!-- Для типов недвижимости: Дом -->
 		<property_id>134</property_id>
 		<name>Входит в состав жилого комплекса</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -159,6 +163,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>22</property_id>
 		<name>Инфраструктура и оснащение дома или жилого комплекса</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -226,6 +231,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>34</property_id>
 		<name>Состояние</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -258,6 +264,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>39</property_id>
 		<name>Вид из окна</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -305,6 +312,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>47</property_id>
 		<name>Отделка</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -328,6 +336,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>50</property_id>
 		<name>Меблировка</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -356,6 +365,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>54</property_id>
 		<name>Балкон / терраса</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -379,6 +389,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>57</property_id>
 		<name>Кондиционирование</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -411,6 +422,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>62</property_id>
 		<name>Отопление</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -454,6 +466,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>66</property_id>
 		<name>Сигнализация</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -481,6 +494,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>69</property_id>
 		<name>Доступ в Интернет</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -514,6 +528,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>74</property_id>
 		<name>Телефонная сеть</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -537,6 +552,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>77</property_id>
 		<name>Бытовая техника</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -580,12 +596,14 @@
 		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
 		<property_id>190</property_id>
 		<name>Парковка</name>
+		<type>input</type>
 		<!-- property_value Количество мест. Число -->
 	</property>
 	<property><!-- Одиночный список select-->
 		<!-- Для типов недвижимости: Дом -->
 		<property_id>96</property_id>
 		<name>Водоснабжение</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -618,6 +636,7 @@
 		<!-- Для типов недвижимости: Дом -->
 		<property_id>101</property_id>
 		<name>Электроснабжение</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -651,6 +670,7 @@
 		<!-- Для типов недвижимости: Дом -->
 		<property_id>105</property_id>
 		<name>На участке</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -694,6 +714,7 @@
 		<!-- Для типов недвижимости: Земля -->
 		<property_id>112</property_id>
 		<name>Назначение участка</name>
+		<type>select</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -722,6 +743,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом -->
 		<property_id>131</property_id>
 		<name>Есть возможность организовать отделку и покупку мебели через компанию-продавца</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -739,6 +761,7 @@
 		<!-- Для типов недвижимости: Дом -->
 		<property_id>135</property_id>
 		<name>Подвал</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -757,6 +780,7 @@
 		<!-- Для типов недвижимости: Земля -->
 		<property_id>136</property_id>
 		<name>На участке есть постройки</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -774,6 +798,7 @@
 		<!-- Для типов недвижимости: Земля -->
 		<property_id>137</property_id>
 		<name>Подведено электричество</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -791,6 +816,7 @@
 		<!-- Для типов недвижимости: Земля -->
 		<property_id>138</property_id>
 		<name>Подведена вода</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -808,6 +834,7 @@
 		<!-- Для типов недвижимости: Земля -->
 		<property_id>139</property_id>
 		<name>Есть подъезд</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -825,6 +852,7 @@
 		<!-- Для типов недвижимости: Земля -->
 		<property_id>140</property_id>
 		<name>Есть водоём</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -845,24 +873,28 @@
 		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
 		<property_id>169</property_id>
 		<name>Доходность в год</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
 		<property_id>170</property_id>
 		<name>Годовой доход</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
 		<property_id>171</property_id>
 		<name>Денежный поток за год</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Коммерческая недвижимость, продажа -->
 		<property_id>173</property_id>
 		<name>Период окупаемости</name>
+		<type>input</type>
 		<!-- property_value Количество лет. Число -->
 	</property>
 
@@ -872,6 +904,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>174</property_id>
 		<name>Расходы по сделке не включены в стоимость продажи</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -889,42 +922,49 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>198</property_id>
 		<name>Комиссионный сбор</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>177</property_id>
 		<name>Комиссия нетто (без НДС)</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>194</property_id>
 		<name>Комиссия брутто (с НДС)</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>175</property_id>
 		<name>Налог при покупке</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>179</property_id>
 		<name>Нотариальные услуги</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>195</property_id>
 		<name>Прочие расходы</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>199</property_id>
 		<name>Итого расходы на приобретение объекта</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 
@@ -934,6 +974,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>90</property_id>
 		<name>Возможность рассрочки платежа</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -951,18 +992,21 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>201</property_id>
 		<name>Срок договора От</name>
+		<type>input</type>
 		<!-- property_value Срок в годах. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>202</property_id>
 		<name>Срок договора До</name>
+		<type>input</type>
 		<!-- property_value Срок в годах. Число -->
 	</property>
 	<property><!-- Одиночный список checkbox NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>181</property_id>
 		<name>Возможность покупки в кредит</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -980,48 +1024,56 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>185</property_id>
 		<name>Ставка по кредиту От</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>200</property_id>
 		<name>Ставка по кредиту До</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>182</property_id>
 		<name>Собственный капитал инвестора</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>184</property_id>
 		<name>Кредитное плечо банка</name>
+		<type>input</type>
 		<!-- property_value Процент. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>196</property_id>
 		<name>Сумма банковского кредита</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>183</property_id>
 		<name>Первоначальный взнос</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>186</property_id>
 		<name>Срок кредитного договора</name>
+		<type>input</type>
 		<!-- property_value Количество лет. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>197</property_id>
 		<name>Ежемесячное обслуживание кредита</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 
@@ -1031,18 +1083,21 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>187</property_id>
 		<name>Ежегодный налог</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>188</property_id>
 		<name>Эксплуатационные расходы</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 	<property><!-- Текстовое поле input NEW!-->
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>189</property_id>
 		<name>Итого расходы в год</name>
+		<type>input</type>
 		<!-- property_value Сумма в валюте объекта. Число -->
 	</property>
 
@@ -1053,6 +1108,7 @@
 		<!-- Может быть указано только одно: ВНЖ или Гражданство -->
 		<property_id>191</property_id>
 		<name>При покупке предоставляется ВНЖ</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1072,6 +1128,7 @@
 		<!-- Может быть указано только одно: ВНЖ или Гражданство -->
 		<property_id>203</property_id>
 		<name>При покупке предоставляется гражданство</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1090,6 +1147,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>93</property_id>
 		<name>Есть управляющая компания</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1107,6 +1165,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость, продажа -->
 		<property_id>192</property_id>
 		<name>Условия работы управляющей компании</name>
+		<type>radio</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1141,6 +1200,7 @@
 		<!-- Для типов недвижимости: Коммерческая недвижимость -->
 		<property_id>141</property_id>
 		<name>Продается с готовым бизнесом</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1159,6 +1219,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>204</property_id>
 		<name>Готовы провести онлайн-показ</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1177,6 +1238,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>205</property_id>
 		<name>Есть возможность проведения удалённой сделки</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1195,6 +1257,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>206</property_id>
 		<name>Есть возможность оплаты в рублях</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
