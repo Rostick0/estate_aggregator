@@ -1289,4 +1289,52 @@
 			</property_value>
 		</property_values>
 	</property>
+
+	<property><!-- Одиночный список radio-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>208</property_id>
+		<name>Кухонная плита</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			209 газовая
+			209 электрическая
+		-->
+		<property_values>
+			<property_value>
+				<property_value_id>209</property_value_id>
+				<name>газовая</name>
+			</property_value>
+			<property_value>
+				<property_value_id>210</property_value_id>
+				<name>электрическая</name>
+			</property_value>
+		</property_values>
+	</property>
+
+	<property><!-- Одиночный список input-->
+		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
+		<property_id>211</property_id>
+		<name>Высота потолков</name>
+		<type>input</type>
+	</property>
+
+	<property><!-- Одиночный список checkbox-->
+		<!-- От осбственика -->
+		<property_id>212</property_id>
+		<name>От собственника</name>
+		<!-- property_value_enum -->
+		<!-- property_value_enum Значения: -->
+		<!--
+			property_value_enum 	name
+			213 	да
+		-->
+		<property_values>
+			<property_value>
+				<property_value_id>213</property_value_id>
+				<name>да</name>
+			</property_value>
+		</property_values>
+	</property>
 </properties>
