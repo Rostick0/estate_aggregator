@@ -73,6 +73,6 @@ Route::group(['middleware' => 'api'], function () {
         'file' => FileController::class,
         'alert' => AlertController::class
     ]);
-});
+})->middleware('throttle:5000,1');
 
 Route::get('test', [TestController::class, 'test']);
