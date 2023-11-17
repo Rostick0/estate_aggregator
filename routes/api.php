@@ -60,7 +60,8 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::post('file', [FileController::class, 'store'])->middleware('throttle:500,1');
 
-    Route::apiResource('image', FavoriteController::class)->only(['index', 'store', 'show', 'destroy']);
+    Route::apiResource('image', ImageController::class)->only(['store', 'show', 'destroy']);
+    Route::apiResource('favorite', FavoriteController::class)->only(['index', 'store', 'show', 'destroy']);
     Route::apiResource('user', UserController::class)->only(['index', 'show', 'update', 'destroy']);
 
     Route::apiResources([
