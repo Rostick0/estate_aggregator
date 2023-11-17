@@ -54,8 +54,6 @@ class UpdateFlatRequest extends FormRequest
             'tour_link' => 'string|max:255',
             'properties_values' => 'nullable',
             'images' => 'nullable|string',
-            'properties_delete' => 'nullable|array',
-            'properties_delete.*' => 'numeric',
         ];
     }
 }

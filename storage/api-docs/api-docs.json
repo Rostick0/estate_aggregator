@@ -2236,7 +2236,7 @@
                 "operationId": "881b29cbb24983ddb052463c168a8e26",
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/json": {
                             "schema": {
                                 "required": [
                                     "file"
@@ -2422,71 +2422,21 @@
                 ],
                 "summary": "Index",
                 "operationId": "bbfd926c388bacac9605902386f1b625",
-                "parameters": [
-                    {
-                        "name": "filterEQ[object_id]",
-                        "in": "query",
-                        "description": "object_id, type_id, country_id, district_id",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "filterEQ[flat_properties.property_value.property]",
-                        "in": "query",
-                        "description": "Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "2"
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "Limit data",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "20"
-                    },
-                    {
-                        "name": "extends",
-                        "in": "query",
-                        "description": "Extends data",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "filterEQ[object_id]": {
+                                        "description": "object_id, type_id, country_id, district_id",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -2513,7 +2463,7 @@
                 "operationId": "9101a7e38d7cac361dcdf1eae0df364f",
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/json": {
                             "schema": {
                                 "required": [
                                     "title",
@@ -2732,9 +2682,6 @@
                         "in": "path",
                         "description": "Id",
                         "required": true,
-                        "schema": {
-                            "type": "number"
-                        },
                         "example": "1"
                     },
                     {
@@ -2809,7 +2756,7 @@
                 ],
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/json": {
                             "schema": {
                                 "required": [
                                     "title",
@@ -3089,7 +3036,7 @@
                 "operationId": "92609594b3c855ba1388a86319e16601",
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/json": {
                             "schema": {
                                 "required": [
                                     "file"
@@ -3498,7 +3445,7 @@
                 "operationId": "2b5846c8a1e7a22fa31af93f7accb003",
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/json": {
                             "schema": {
                                 "required": [
                                     "title",
@@ -3707,7 +3654,7 @@
                 ],
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {
+                        "application/json": {
                             "schema": {
                                 "required": [
                                     "title",

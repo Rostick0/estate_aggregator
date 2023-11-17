@@ -128,7 +128,7 @@ class FlatController extends Controller
      *     security={{"bearer_token": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
+     *             mediaType="application/json",
      *             @OA\Schema(
      *                      required={"title", "object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
      *                      @OA\Property(
@@ -451,7 +451,7 @@ class FlatController extends Controller
      *      ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
+     *             mediaType="application/json",
      *             @OA\Schema(
      *                      required={"title", "object_id", "type_id", "country_id", "district_id", "currency_id", "price"},
      *                      @OA\Property(
@@ -706,7 +706,6 @@ class FlatController extends Controller
 
         $flat->flat_properties()->delete();
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
-        // if ($request->properties_delete) FlatPropertyController::deleteProperties(explode(',', $request->properties_delete), $flat);
 
         $this::extendsMutation($flat, $request);
 

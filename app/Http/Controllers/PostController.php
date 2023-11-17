@@ -128,7 +128,7 @@ class PostController extends Controller
      *     security={{"bearer_token": {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
+     *             mediaType="application/json",
      *             @OA\Schema(
      *                      required={"title", "content", "district_id", "rubric_id", "source"},
      *                      @OA\Property(
@@ -313,7 +313,7 @@ class PostController extends Controller
      *      ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
+     *             mediaType="application/json",
      *             @OA\Schema(
      *                      required={"title", "content", "district_id", "rubric_id", "source", "_method"},
      *                      @OA\Property(
