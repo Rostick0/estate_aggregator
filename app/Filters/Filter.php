@@ -18,7 +18,7 @@ class Filter
         $data = $model->with(QueryString::convertToArray($request->extends));
         $data = FilterRequestUtil::all($request, $data, $fillable);
         $data = FilterHasRequestUtil::all($request, $data, $fillable);
-        // $data = FilterSomeRequestUtil::all($request, $data, $fillable);
+        $data = FilterSomeRequestUtil::all($request, $data, $fillable);
         $data = OrderByUtil::set($request->sort, $data);
 
         if ($where) $data->where($where);

@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Json;
 
 class FilterSomeRequestUtil
 {
@@ -12,23 +13,25 @@ class FilterSomeRequestUtil
     public static function template($request, Builder $builder, array $fillable = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
     {
         collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
-            // dd($key);
+            $obj_value = Json::decode($value, false);
 
             if (!empty($fillable) && array_search($key, $fillable) === false) return;
 
-            $where = [];
+            $where = [
+                [$obj_value->column_id, '=', $obj_value->id]
+            ];
 
-            // if (!isset($value)) {
-            // } else if ($type_where === 'NULL') {
-            //     $where[] = [$key, $type, NULL];
-            // } else if ($type_where === 'LIKE') {
-            //     $where[] = [$key, 'LIKE', '%' . $value . '%'];
-            // } else {
-            //     $where[] = [$key, $type, $value];
-            // }
+            if (!isset($value)) {
+            } else if ($type_where === 'NULL') {
+                $where[] = [$obj_value->column_value, $type, NULL];
+            } else if ($type_where === 'LIKE') {
+                $where[] = [$obj_value->column_value, 'LIKE', '%' . $obj_value->value . '%'];
+            } else {
+                $where[] = [$obj_value->column_value, $type, $obj_value->value];
+            }
 
             $builder->whereHas($key, function ($query) use ($where) {
-                // $query->where($where);
+                $query->where($where);
             });
         });
 
