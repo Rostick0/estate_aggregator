@@ -109,4 +109,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Image::class, 'avatar', 'id');
     }
+
+    public function flat_owners(): HasMany
+    {
+        return $this->hasMany(FlatOwner::class, 'user_id', 'id');
+    }
 }

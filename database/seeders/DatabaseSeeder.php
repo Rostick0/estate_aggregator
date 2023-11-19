@@ -5,10 +5,12 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Flat;
+use App\Models\FlatOwner;
 use App\Models\FlatProperty;
 use App\Models\Image;
 use App\Models\ImageRelat;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,18 +37,20 @@ class DatabaseSeeder extends Seeder
         Image::factory(50)->create();
 
         Post::factory(10)
-            ->has(ImageRelat::factory(2), 'images')
+            ->has(ImageRelat::factory(5), 'images')
             ->create();
 
-        Flat::factory(50)
-            ->has(ImageRelat::factory(2), 'images')
+        Flat::factory(100)
+            ->has(ImageRelat::factory(5), 'images')
             ->has(FlatProperty::factory(20), 'flat_properties')
             ->create();
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(40)
+            ->has(FlatOwner::factory(2), 'flat_owners')
+            ->create();
+
+        User::factory(10)->create([
+            'role' => 'client'
+        ]);
     }
 }
