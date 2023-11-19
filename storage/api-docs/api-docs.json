@@ -5298,6 +5298,30 @@
                         "type": "number",
                         "example": 0
                     },
+                    "avatar": {
+                        "type": "number",
+                        "example": "1"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "admin"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "799999999"
+                    },
+                    "country_id": {
+                        "type": "number",
+                        "example": "5"
+                    },
+                    "is_confirm": {
+                        "type": "boolean",
+                        "example": "1"
+                    },
+                    "type_social": {
+                        "type": "string",
+                        "example": "telegram"
+                    },
                     "created_at": {
                         "type": "string",
                         "example": "2022-06-28 06:06:17"
