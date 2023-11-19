@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Flat;
+use App\Models\FlatProperty;
 use App\Models\Image;
 use App\Models\ImageRelat;
 use App\Models\Post;
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
 
         Flat::factory(50)
             ->has(ImageRelat::factory(2), 'images')
+            ->has(FlatProperty::factory(20), 'flat_properties')
             ->create();
         // \App\Models\User::factory(10)->create();
 
