@@ -2484,7 +2484,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files"
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,is_owner"
                     }
                 ],
                 "responses": {
@@ -2744,7 +2744,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files"
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,is_owner"
                     },
                     {
                         "name": "flat_properties[]",
@@ -4462,7 +4462,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image"
+                        "example": "contacts,country,image,flat_owners"
                     }
                 ],
                 "responses": {
@@ -4509,7 +4509,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image"
+                        "example": "contacts,country,image,flat_owners"
                     }
                 ],
                 "responses": {

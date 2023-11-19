@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(), 
             'password' => Hash::make($email), // password
             'phone' => fake()->phoneNumber(),
-            'avatar' => fake()->imageUrl(),
+            'avatar' => random_int(1, 50),
             'role' => RandomUtil::array($roles),
             'country_id' => 233,
             'is_confirm' => 1,
