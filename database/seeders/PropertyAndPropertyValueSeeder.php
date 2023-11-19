@@ -23,7 +23,16 @@ class PropertyAndPropertyValueSeeder extends Seeder
             $properties[] = [
                 'id' => (int) $item->property_id,
                 'name' => (string) $item->name,
+                'type' => (string) $item->type,
             ];
+
+            // if ((string) $item->type == 'input') {
+            //     $property_values[] = [
+            //         'id' => (int) $item->property_id,
+            //         'name' => (string) $item->name,
+            //         'property_id' => (int) $item->property_id
+            //     ];
+            // }
 
             if (empty($item?->property_values?->property_value)) continue;
 
@@ -36,6 +45,7 @@ class PropertyAndPropertyValueSeeder extends Seeder
             }
         }
 
+        // dd($properties);
         Property::insert($properties);
         PropertyValue::insert($property_values);
     }

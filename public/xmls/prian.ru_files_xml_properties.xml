@@ -1276,6 +1276,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>207</property_id>
 		<name>Есть возможность оплаты криптовалютой</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1294,6 +1295,7 @@
 		<!-- Для типов недвижимости: Квартира, Дом, Земля, Коммерческая недвижимость -->
 		<property_id>208</property_id>
 		<name>Кухонная плита</name>
+		<type>radio</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1324,6 +1326,7 @@
 		<!-- От осбственика -->
 		<property_id>212</property_id>
 		<name>От собственника</name>
+		<type>checkbox</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1342,6 +1345,7 @@
 		<!-- От осбственика -->
 		<property_id>214</property_id>
 		<name>Санузел</name>
+		<type>radio</type>
 		<!-- property_value_enum -->
 		<!-- property_value_enum Значения: -->
 		<!--
@@ -1359,7 +1363,7 @@
 			</property_value>
 			<property_value>
 				<property_value_id>217</property_value_id>
-				<name>чекбокс два и более</name>
+				<name>два и более</name>
 			</property_value>
 		</property_values>
 	</property>

@@ -25,15 +25,9 @@ class FlatPropertyController extends Controller
             $flat->flat_properties()->create([
                 'value_enum' => $item?->value_enum ?? null,
                 'value' => $item?->value ?? null,
+                'property_id' =>  $item->property_value_id ?? null,
                 'property_value_id' => $item->property_value_id,
             ]);
         }
-    }
-
-    public static function deleteProperties($properties_delete_ids, Flat $flat)
-    {
-        if (FlatPropertyController::emptyProperty($properties_delete_ids)) return;
-
-        $flat->flat_properties()->whereIn('properties_delete_ids', $properties_delete_ids)->delete();
     }
 }

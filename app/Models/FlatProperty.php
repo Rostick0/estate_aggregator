@@ -14,8 +14,14 @@ class FlatProperty extends Model
         'value_enum',
         'value',
         'flat_id',
+        'property_id',
         'property_value_id',
     ];
+
+    public function property(): BelongsTo
+    {
+        return $this->belongsTo(Property::class, 'property_id', 'id');
+    }
 
     public function property_value(): BelongsTo
     {
