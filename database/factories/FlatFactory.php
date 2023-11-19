@@ -16,38 +16,36 @@ class FlatFactory extends Factory
      */
     public function definition(): array
     {
+        $coords = fake()->localCoordinates();
+
         return [
-            // $table->string('title');
-            // $table->foreignId('object_id')->references('id')->on('object_flats')->onDelete('cascade');
-            // $table->foreignId('type_id')->references('id')->on('flat_types')->onDelete('cascade');
-            // $table->integer('country_id')->nullable();
-            // $table->foreignId('district_id')->references('id')->on('districts')->onDelete('cascade');
-            // $table->string('district')->nullable();
-            // $table->string('address')->nullable();
-            // $table->string('longitude')->nullable();
-            // $table->string('latitude')->nullable();
-            // $table->foreignId('currency_id')->references('id')->on('currencies')->onDelete('cascade');
-            // $table->decimal('price', 10);
-            // $table->float('price_per_meter')->nullable();
-            // $table->float('price_day')->nullable();
-            // $table->float('price_week')->nullable();
-            // $table->float('price_month')->nullable();
-            // $table->boolean('not_show_price')->nullable();
-            // $table->integer('rooms')->nullable();
-            // $table->integer('bedrooms')->nullable();
-            // $table->integer('bathrooms')->nullable();
-            // $table->float('square')->nullable();
-            // $table->float('square_land')->nullable();
-            // $table->integer('square_land_unit')->nullable();
-            // $table->integer('floor')->nullable();
-            // $table->integer('total_floor')->nullable();
-            // $table->foreignId('building_type')->references('id')->on('building_types')->onDelete('cascade');
-            // $table->string('building_date')->nullable();
-            // $table->foreignId('contact_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->string('specialtxt')->nullable();
-            // $table->text('description')->nullable();
-            // $table->string('filename')->nullable();
-            // $table->string('tour_link')->nullable();
+            'title' => fake()->word(),
+            'object_id' => random_int(5, 8),
+            'type_id' => random_int(1, 2),
+            'country_id' => 233,
+            'district_id' => random_int(9561, 9562),
+            'district' => fake()->city(),
+            'address' => fake()->address(),
+            'longitude' => $coords['longitude'],
+            'latitude' => $coords['latitude'],
+            'currency_id' => random_int(1, 3),
+            'price' => random_int(3000000, 15000000),
+            'price_per_meter' => random_int(1000, 15000),
+            'price_day' => random_int(4000, 15000),
+            'price_week' => random_int(9000, 25000),
+            'price_month' => random_int(20000, 90000),
+            'not_show_price' => random_int(0, 1),
+            'rooms' => random_int(1, 3),
+            'bedrooms' => random_int(1, 3),
+            'bathrooms' => random_int(1, 2),
+            'square' => random_int(50, 120),
+            'floor' => random_int(1, 5),
+            'total_floor' => random_int(5, 10),
+            'building_type' => random_int(117, 119),
+            'building_date' => random_int(2020, 2027),
+            'contact_id' => 1,
+            'specialtxt'  => fake()->text(random_int(100, 200)),
+            'description' => fake()->text(random_int(200, 400)),
         ];
     }
 }
