@@ -16,19 +16,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-            $this->call([
-                CountrySeeder::class,
-                RegionSeeder::class,
-                DistrictSeeder::class,
-                RubricSeeder::class,
-                UserSeeder::class,
-                FlatTypeSeeder::class,
-                ObjectFlatSeeder::class,
-                CurrencySeeder::class,
-                BuildingTypeSeeder::class,
-                SquareLandUnitSeeder::class,
-                PropertyAndPropertyValueSeeder::class,
-            ]);
+        $this->call([
+            CountrySeeder::class,
+            RegionSeeder::class,
+            DistrictSeeder::class,
+            RubricSeeder::class,
+            UserSeeder::class,
+            FlatTypeSeeder::class,
+            ObjectFlatSeeder::class,
+            CurrencySeeder::class,
+            BuildingTypeSeeder::class,
+            SquareLandUnitSeeder::class,
+            PropertyAndPropertyValueSeeder::class,
+        ]);
 
         Image::factory(50)->create();
         Post::factory(10)

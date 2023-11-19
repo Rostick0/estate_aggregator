@@ -144,6 +144,11 @@ class Flat extends Model
         return $this->morphMany(FileRelationship::class, 'file_relable');
     }
 
+    public function is_owner()
+    {
+        return $this->hasOne(FlatOwner::class, 'id', 'flat_id')->fisrtWhere('user_id', auth()?->id());
+    }
+
     public static function propertiesCreate(Flat $flat, string $column, string $value, int $property_id): void
     {
         $flat->flat_properties()->create([
