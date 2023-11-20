@@ -21,7 +21,7 @@ class Collection extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'collection_name',
         'value',
+        'type',
     ];
 }

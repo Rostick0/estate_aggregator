@@ -20,8 +20,8 @@ class CollectionController extends Controller
      *     path="/api/collection",
      *     tags={"Collection"},
      *      @OA\Parameter(
-     *          name="filterEQ[collection_name]",
-     *          description="collection_name, value",
+     *          name="filterEQ[type]",
+     *          description="type, value",
      *          in="query",
      *          example="коллекция",
      *          @OA\Schema(
@@ -84,20 +84,20 @@ class CollectionController extends Controller
      *             mediaType="application/json",
      *             @OA\Schema(
      *                  @OA\Property(
-     *                      property="collection_name",
-     *                      description="Название",
-     *                      type="number",
-     *                      example="Тип продажи"
-     *                  ),
-     *                  @OA\Property(
      *                      property="value",
      *                      description="Значение",
      *                      type="number",
      *                      example="Аренда"
+     *                  ),                 
+     *                  @OA\Property(
+     *                      property="type",
+     *                      description="Название",
+     *                      type="number",
+     *                      example="Тип продажи"
      *                  ),
      *                 example={
-     *                     "collection_name":"Тип продажи",
-     *                     "value":"Аренда"
+     *                     "value":"Аренда",
+     *                     "collection_name":"test",
      *                }
      *             )
      *         )
