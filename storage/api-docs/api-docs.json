@@ -1454,6 +1454,82 @@
                 ]
             }
         },
+        "/api/company/{id}": {
+            "post": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Update",
+                "operationId": "7f13008ab99f19f43b1301347948f8a1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "banner": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "is_reliable": {
+                                        "type": "boolean",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CompanySchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/country": {
             "get": {
                 "tags": [
@@ -4431,6 +4507,7 @@
                                 "filter[type_social]": null,
                                 "filter[raiting_awe]": null,
                                 "filter[raiting]": null,
+                                "filter[work_experience]": null,
                                 "filter[created_at]": null,
                                 "filter[updated_at]": null
                             }
@@ -4869,6 +4946,31 @@
                     "value": {
                         "type": "string",
                         "example": "Аренда"
+                    }
+                },
+                "type": "object"
+            },
+            "CompanySchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "banner": {
+                        "type": "number",
+                        "example": "1"
+                    },
+                    "is_reliable": {
+                        "type": "boolean",
+                        "example": "1"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
                     }
                 },
                 "type": "object"

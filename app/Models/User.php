@@ -56,6 +56,8 @@ class User extends Authenticatable implements JWTSubject
         'raiting_awe',
         'raiting',
         'about',
+        'work_experience',
+        'company_id',
     ];
 
     /**
@@ -125,5 +127,10 @@ class User extends Authenticatable implements JWTSubject
     public function collection_relats(): MorphMany
     {
         return $this->morphMany(ColRelat::class, 'col_relatsable');
+    }
+
+    public function owner_company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'id', 'woner_id');
     }
 }

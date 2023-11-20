@@ -19,6 +19,7 @@ class UserController extends Controller
         'avatar',
         'country_id',
         'type_social',
+        'work_experience',
     ];
 
     private static function extendsMutation($data, $request)
@@ -47,6 +48,7 @@ class UserController extends Controller
      *                 "filter[type_social]":null,
      *                 "filter[raiting_awe]":null,
      *                 "filter[raiting]":null,
+     *                 "filter[work_experience]":null,
      *                 "filter[created_at]":null,
      *                 "filter[updated_at]":null,
      *               }

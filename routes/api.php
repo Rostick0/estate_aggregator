@@ -6,6 +6,7 @@ use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuildingTypeController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\FavoriteController;
@@ -38,7 +39,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:300,1');
         Route::post('/register', [AuthController::class, 'register']);
-       
+
         Route::group(['middleware' => 'jwt'], function () {
             Route::post('/logout', [AuthController::class, 'logout']);
             Route::post('/refresh', [AuthController::class, 'refresh']);
@@ -66,6 +67,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::apiResource('image', ImageController::class)->only(['store', 'show', 'destroy']);
     Route::apiResource('favorite', FavoriteController::class)->only(['index', 'store', 'show', 'destroy']);
     Route::apiResource('user', UserController::class)->only(['index', 'show', 'update', 'destroy']);
+
+    Route::put('/company/{id}', [CompanyController::class, 'update']);
 
     Route::apiResources([
         'post' => PostController::class,
