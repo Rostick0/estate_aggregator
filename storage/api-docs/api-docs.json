@@ -1106,9 +1106,9 @@
                 "operationId": "ade4da6a635b8953d374846f5cb23ef4",
                 "parameters": [
                     {
-                        "name": "filterEQ[collection_name]",
+                        "name": "filterEQ[type]",
                         "in": "query",
-                        "description": "collection_name, value",
+                        "description": "type, value",
                         "schema": {
                             "type": "string"
                         },
@@ -1171,21 +1171,21 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "collection_name": {
-                                        "description": "Название",
-                                        "type": "number",
-                                        "example": "Тип продажи"
-                                    },
                                     "value": {
                                         "description": "Значение",
                                         "type": "number",
                                         "example": "Аренда"
+                                    },
+                                    "type": {
+                                        "description": "Название",
+                                        "type": "number",
+                                        "example": "Тип продажи"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "collection_name": "Тип продажи",
-                                    "value": "Аренда"
+                                    "value": "Аренда",
+                                    "collection_name": "test"
                                 }
                             }
                         }
