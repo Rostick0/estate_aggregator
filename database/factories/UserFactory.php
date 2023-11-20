@@ -34,6 +34,7 @@ class UserFactory extends Factory
             'country_id' => 233,
             'is_confirm' => 1,
             'type_social' => RandomUtil::array($type_socials),
+            'about' => fake()->text(random_int(200, 300)),
             'remember_token' => Str::random(10),
         ];
     }

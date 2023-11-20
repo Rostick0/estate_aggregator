@@ -26,6 +26,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *       @OA\Property(property="type_social", type="string", example="telegram"),
  *       @OA\Property(property="raiting_awe", type="float", example="5"),
  *       @OA\Property(property="raiting", type="float", example="0"),
+ *       @OA\Property(property="about", type="string", example="Обо мне"),
  *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
  *    )
@@ -53,6 +54,7 @@ class User extends Authenticatable implements JWTSubject
         'type_social',
         'raiting_awe',
         'raiting',
+        'about',
     ];
 
     /**

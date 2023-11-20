@@ -25,6 +25,7 @@ return new class extends Migration
             $table->enum('type_social', ['whatsapp', 'viber', 'telegram'])->nullable();
             $table->float('raiting_awe')->default(5);
             $table->float('raiting')->nullable();
+            $table->text('about')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

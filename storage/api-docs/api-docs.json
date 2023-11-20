@@ -5342,6 +5342,10 @@
                         "format": "float",
                         "example": "0"
                     },
+                    "about": {
+                        "type": "string",
+                        "example": "Обо мне"
+                    },
                     "created_at": {
                         "type": "string",
                         "example": "2022-06-28 06:06:17"
