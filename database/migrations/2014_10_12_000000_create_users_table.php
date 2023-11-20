@@ -26,7 +26,7 @@ return new class extends Migration
             $table->float('raiting_awe')->default(5);
             $table->float('raiting')->nullable();
             $table->text('about')->nullable();
-            $table->float('work_experience')->default(0); // in year
+            $table->float('work_experience')->nullable(); // in year
             $table->integer('company_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
