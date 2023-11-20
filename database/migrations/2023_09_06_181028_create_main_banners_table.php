@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('main_banners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->foreignId('image_id')->references('id')->on('images')->onDelete('cascade');
             $table->timestamps();
         });
     }

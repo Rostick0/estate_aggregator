@@ -10,6 +10,7 @@ use App\Models\FlatOwner;
 use App\Models\FlatProperty;
 use App\Models\Image;
 use App\Models\ImageRelat;
+use App\Models\MainBanner;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -51,12 +52,14 @@ class DatabaseSeeder extends Seeder
             ->has(FlatOwner::factory(2), 'flat_owners')
             ->create();
 
-        // User::factory(10)
-        //     ->has(ColRelat::factory(1, [
-        //         'collection_id' => 1
-        //     ]), '')
-        //     ->create([
-        //         'role' => 'client'
-        //     ]);
+        User::factory(10)
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')
+            ->create([
+                'role' => 'client'
+            ]);
+
+        MainBanner::factory(10)->create();
     }
 }

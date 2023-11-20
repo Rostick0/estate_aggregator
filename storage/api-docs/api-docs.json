@@ -3280,7 +3280,7 @@
                     "MainBanner"
                 ],
                 "summary": "Index",
-                "operationId": "f1a012137ce41c8ef0e746166111c5a8",
+                "operationId": "090ffc143a6e279d834ea5629727e244",
                 "parameters": [
                     {
                         "name": "extends",
@@ -3316,17 +3316,6 @@
                 ],
                 "summary": "Update",
                 "operationId": "d61a164d6af9b6d34ee86cbd03d3d69f",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    }
-                ],
                 "requestBody": {
                     "content": {
                         "application/json": {

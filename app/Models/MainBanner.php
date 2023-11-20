@@ -21,11 +21,11 @@ class MainBanner extends Model
     use HasFactory;
 
     protected $fillable = [
-        'file_id'
+        'image'
     ];
 
     public function image(): BelongsTo
     {
-        return $this->belongsTo(File::class, 'file_id', 'id');
+        return $this->belongsTo(Image::class, 'image_id', 'id');
     }
 }

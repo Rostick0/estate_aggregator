@@ -35,7 +35,7 @@ class MainBannerController extends Controller
      *      ),
      * )
      */
-    public function get(IndexMainBannerRequest $request)
+    public function index(IndexMainBannerRequest $request)
     {
         $main_banner = MainBanner::with(QueryString::convertToArray($request->extends))
             ->get();
@@ -51,15 +51,6 @@ class MainBannerController extends Controller
      *     path="/api/main-banner",
      *     tags={"MainBanner"},
      *     security={{"bearer_token": {}}},
-     *     @OA\Parameter(
-     *          name="id",
-     *          description="id",
-     *          in="path",
-     *          example="1",
-     *          @OA\Schema(
-     *              type="number"
-     *          )
-     *      ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -107,10 +98,8 @@ class MainBannerController extends Controller
         MainBanner::all()->delete();
 
         foreach (QueryString::convertToArray($request->images) as $id) {
-            if (MainBanner::find($id)->whereNot('type', 'NOT LIKE', 'image/%')) continue;
-
             MainBanner::create([
-                'file_id' => $id
+                'image_id' => $id
             ]);
         }
 
