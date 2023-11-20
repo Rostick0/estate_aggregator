@@ -26,7 +26,7 @@ class FlatPropertyController extends Controller
                 'value_enum' => $item?->value_enum ?? null,
                 'value' => $item?->value ?? null,
                 'property_id' =>  $item->property_id ?? null,
-                'property_value_id' => $item->property_value_id,
+                'property_value_id' => $item->property_value_id ?? null,
             ]);
         }
     }

@@ -32,25 +32,26 @@ class DatabaseSeeder extends Seeder
             BuildingTypeSeeder::class,
             SquareLandUnitSeeder::class,
             PropertyAndPropertyValueSeeder::class,
+            CollectionSeeder::class,
         ]);
 
-        Image::factory(50)->create();
+        // Image::factory(50)->create();
 
-        Post::factory(10)
-            ->has(ImageRelat::factory(5), 'images')
-            ->create();
+        // Post::factory(10)
+        //     ->has(ImageRelat::factory(5), 'images')
+        //     ->create();
 
-        Flat::factory(100)
-            ->has(ImageRelat::factory(5), 'images')
-            ->has(FlatProperty::factory(20), 'flat_properties')
-            ->create();
+        // Flat::factory(100)
+        //     ->has(ImageRelat::factory(5), 'images')
+        //     ->has(FlatProperty::factory(20), 'flat_properties')
+        //     ->create();
 
-        User::factory(40)
-            ->has(FlatOwner::factory(2), 'flat_owners')
-            ->create();
+        // User::factory(40)
+        //     ->has(FlatOwner::factory(2), 'flat_owners')
+        //     ->create();
 
-        User::factory(10)->create([
-            'role' => 'client'
-        ]);
+        // User::factory(10)->create([
+        //     'role' => 'client'
+        // ]);
     }
 }
