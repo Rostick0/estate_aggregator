@@ -981,11 +981,17 @@
                 ],
                 "summary": "Me",
                 "operationId": "b9abb1a7a74670a19c215c2c133f14d8",
-                "requestBody": {
-                    "content": {
-                        "application/json": {}
+                "parameters": [
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "contacts,country,image,flat_owners,alert"
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",

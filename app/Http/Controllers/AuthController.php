@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Auth\LoginAuthRequest;
 use App\Http\Requests\Auth\RegisterAuthRequest;
 use App\Models\User;
 use App\Policies\AuthPolicy;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -281,11 +283,15 @@ class AuthController extends Controller
      *     path="/api/auth/me",
      *     tags={"Auth"},
      *     security={{"bearer_token":{}}},
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *         )
-     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="contacts,country,image,flat_owners,alert",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),    
      *      @OA\Response(
      *          response=200,
      *          description="Success",
@@ -304,10 +310,10 @@ class AuthController extends Controller
      *      )
      * )
      */
-    public function me()
+    public function me(Request $request)
     {
-        return response()->json([
-            'data' => auth()?->user()
+        return new JsonResponse([
+            'data' => Filter::one($request, new User, auth()->id())
         ]);
     }
 
