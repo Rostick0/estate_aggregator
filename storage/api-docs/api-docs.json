@@ -4420,22 +4420,26 @@
                 "operationId": "971db9bc974c0e607288cfe7ecc10096",
                 "parameters": [
                     {
-                        "name": "filterLIKE[name]",
+                        "name": "filter",
                         "in": "query",
-                        "description": "name",
+                        "description": "Page",
                         "schema": {
-                            "type": "number"
-                        },
-                        "example": "5"
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[name]": null,
+                                "filter[email]": null,
+                                "filter[phone]": null,
+                                "filter[role]": null,
+                                "filter[country_id]": null,
+                                "filter[is_confirm]": null,
+                                "filter[type_social]": null,
+                                "filter[raiting_awe]": null,
+                                "filter[raiting]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
                     },
                     {
                         "name": "page",
@@ -4443,17 +4447,23 @@
                         "description": "Page",
                         "schema": {
                             "type": "number"
-                        },
-                        "example": "2"
+                        }
                     },
                     {
                         "name": "limit",
                         "in": "query",
-                        "description": "Limit data",
+                        "description": "Count",
                         "schema": {
                             "type": "number"
-                        },
-                        "example": "30"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "extends",
@@ -5321,6 +5331,16 @@
                     "type_social": {
                         "type": "string",
                         "example": "telegram"
+                    },
+                    "raiting_awe": {
+                        "type": "number",
+                        "format": "float",
+                        "example": "5"
+                    },
+                    "raiting": {
+                        "type": "number",
+                        "format": "float",
+                        "example": "0"
                     },
                     "created_at": {
                         "type": "string",

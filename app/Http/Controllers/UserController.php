@@ -31,41 +31,51 @@ class UserController extends Controller
      *     path="/api/user",
      *     tags={"User"},
      *      @OA\Parameter(
-     *          name="filterLIKE[name]",
-     *          description="name",
+     *          name="filter",
+     *          description="Page",
      *          in="query",
-     *          example="5",
      *          @OA\Schema(
-     *              type="number"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="sort",
-     *          description="Сортировка по параметру",
-     *          in="query",
-     *          example="id",
-     *          @OA\Schema(
-     *              type="string"
+     *              type="object",
+     *              example={
+     *                 "filter[id]":null,
+     *                 "filter[name]":null,
+     *                 "filter[email]":null,
+     *                 "filter[phone]":null,
+     *                 "filter[role]":null,
+     *                 "filter[country_id]":null,
+     *                 "filter[is_confirm]":null,
+     *                 "filter[type_social]":null,
+     *                 "filter[raiting_awe]":null,
+     *                 "filter[raiting]":null,
+     *                 "filter[created_at]":null,
+     *                 "filter[updated_at]":null,
+     *               }
      *          )
      *      ),
      *      @OA\Parameter(
      *          name="page",
      *          description="Page",
      *          in="query",
-     *          example="2",
-     *          @OA\Schema(
-     *              type="number"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="limit",
-     *          description="Limit data",
-     *          in="query",
-     *          example="30",
      *          @OA\Schema(
      *              type="number",
      *          )
      *      ),
+     *      @OA\Parameter(
+     *          name="limit",
+     *          description="Count",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Sorting",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ), 
      *      @OA\Parameter(
      *          name="extends",
      *          description="Extends data",
