@@ -4472,7 +4472,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image,flat_owners"
+                        "example": "contacts,country,image,flat_owners,alert"
                     }
                 ],
                 "responses": {
@@ -4519,7 +4519,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image,flat_owners"
+                        "example": "contacts,country,image,flat_owners,alert"
                     }
                 ],
                 "responses": {
