@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -119,5 +120,10 @@ class User extends Authenticatable implements JWTSubject
     public function flat_owners(): HasMany
     {
         return $this->hasMany(FlatOwner::class, 'user_id', 'id');
+    }
+
+    public function collection_relats(): MorphMany
+    {
+        return $this->morphMany(ColRelat::class, 'col_relatsable');
     }
 }

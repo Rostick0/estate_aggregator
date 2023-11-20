@@ -33,6 +33,8 @@ class FilterSomeRequestUtil
             $builder->whereHas($key, function ($query) use ($where) {
                 $query->where($where);
             });
+
+            // dd($where);
         });
 
         return $builder;
@@ -41,6 +43,7 @@ class FilterSomeRequestUtil
     public static function all($request, Builder $builder, array $fillable = []): Builder
     {
         $data = $builder;
+
 
         if ($request->filterSomeEQ) $data = FilterSomeRequestUtil::template($request->filterSomeEQ, $builder, $fillable, '=');
         if ($request->filterSomeNEQ) $data = FilterSomeRequestUtil::template($request->filterSomeNEQ, $builder, $fillable, '!=');
