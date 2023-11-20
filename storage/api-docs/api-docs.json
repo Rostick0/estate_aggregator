@@ -989,7 +989,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image,flat_owners,alert"
+                        "example": "contacts,country,image,flat_owners,alert,collection_relats"
                     }
                 ],
                 "responses": {
@@ -4467,7 +4467,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image,flat_owners,alert"
+                        "example": "contacts,country,image,flat_owners,alert,collection_relats"
                     }
                 ],
                 "responses": {
@@ -4514,7 +4514,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "contacts,country,image,flat_owners,alert"
+                        "example": "contacts,country,image,flat_owners,alert,collection_relats"
                     }
                 ],
                 "responses": {

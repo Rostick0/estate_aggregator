@@ -50,6 +50,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory(40)
             ->has(FlatOwner::factory(2), 'flat_owners')
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')
             ->create();
 
         User::factory(10)

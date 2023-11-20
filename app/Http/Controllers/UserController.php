@@ -80,7 +80,7 @@ class UserController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="contacts,country,image,flat_owners,alert",
+     *          example="contacts,country,image,flat_owners,alert,collection_relats",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -122,7 +122,7 @@ class UserController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="contacts,country,image,flat_owners,alert",
+     *          example="contacts,country,image,flat_owners,alert,collection_relats",
      *          @OA\Schema(
      *              type="string",
      *          )
