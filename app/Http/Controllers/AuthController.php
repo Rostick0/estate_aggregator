@@ -287,7 +287,7 @@ class AuthController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="contacts,country,image,flat_owners,alert,collection_relats",
+     *          example="contacts,country,image,flat_owners,alert,collection_relats.collection",
      *          @OA\Schema(
      *              type="string",
      *          )

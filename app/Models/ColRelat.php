@@ -19,4 +19,8 @@ class ColRelat extends Model
     {
         return $this->morphTo();
     }
+
+    public function collection(): BelongsTo {
+        return $this->belongsTo(Collection::class, 'collection_id', 'id');
+    }
 }
