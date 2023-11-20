@@ -91,7 +91,9 @@ class Flat extends Model
 
     public function flat_properties(): HasMany
     {
-        return $this->hasMany(FlatProperty::class, 'flat_id', 'id');
+        return $this->hasMany(FlatProperty::class, 'flat_id', 'id')
+            ->orderBy('property_id')
+            ->orderBy('property_value_id');
     }
 
     public function object(): BelongsTo

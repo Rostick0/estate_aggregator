@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Utils;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Json;
 
@@ -13,37 +14,51 @@ class FilterSomeRequestUtil
     public static function template($request, Builder $builder, array $fillable = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
     {
         collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
-            $obj_value = Json::decode($value, false);
+            $values = Json::decode($value, false);
 
             if (!empty($fillable) && array_search($key, $fillable) === false) return;
 
-            $where = [
-                [$obj_value->column_id, '=', $obj_value->id]
-            ];
-
-            if (!isset($value)) {
-            } else if ($type_where === 'NULL') {
-                $where[] = [$obj_value->column_value, $type, NULL];
-            } else if ($type_where === 'LIKE') {
-                $where[] = [$obj_value->column_value, 'LIKE', '%' . $obj_value->value . '%'];
-            } else {
-                $where[] = [$obj_value->column_value, $type, $obj_value->value];
+            if (!is_array($values)) {
+                $values = [$values];
             }
 
-            $builder->whereHas($key, function ($query) use ($where) {
-                $query->where($where);
-            });
-
-            // dd($where);
+            foreach ($values as $once) {
+                $builder = FilterSomeRequestUtil::once(
+                    $type_where,
+                    $once->column_value ?? null,
+                    $once->value ?? null,
+                    $type,
+                    $builder,
+                    $key,
+                    [
+                        [$once->column_id ?? null, '=', $once->id ?? null]
+                    ]
+                );
+            }
         });
 
         return $builder;
     }
 
+    private static function once($type_where, $column_value, $value, $type, $builder, $key, $where)
+    {
+        if (!isset($value)) {
+        } else if ($type_where === 'NULL') {
+            $where[] = [$column_value, $type, NULL];
+        } else if ($type_where === 'LIKE') {
+            $where[] = [$column_value, 'LIKE', '%' . $value . '%'];
+        } else {
+            $where[] = [$column_value, $type, $value];
+        }
+
+        return $builder->whereHas($key, function ($query) use ($where) {
+            $query->where($where);
+        });
+    }
+
     public static function all($request, Builder $builder, array $fillable = []): Builder
     {
         $data = $builder;
-
 
         if ($request->filterSomeEQ) $data = FilterSomeRequestUtil::template($request->filterSomeEQ, $builder, $fillable, '=');
         if ($request->filterSomeNEQ) $data = FilterSomeRequestUtil::template($request->filterSomeNEQ, $builder, $fillable, '!=');
