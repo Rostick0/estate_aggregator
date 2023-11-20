@@ -17,19 +17,19 @@ use SimpleXMLElement;
 
 class FlatUploadController extends Controller
 {
-    private static function uploadCreateProperties($property_values, $property_id, Flat $flat)
+    private static function uploadCreateProperties($property_values, $property_id, $property_value_id, Flat $flat)
     {
         if (!empty($property_values)) return;
 
         if (is_array($property_values)) {
             foreach ($property_values as $item) {
-                Flat::propertiesCreate($flat, 'value_enum', $item, (int) $property_id);
+                Flat::propertiesCreate($flat, 'value_enum', $item,  $property_id, $property_value_id);
             }
 
             return;
         }
 
-        Flat::propertiesCreate($flat, 'value_enum', $property_values, (int) $property_id);
+        Flat::propertiesCreate($flat, 'value_enum', $property_values,  $property_id,  $property_value_id);
     }
 
     public function upload(UploadFlatRequest $requst)
@@ -197,8 +197,8 @@ class FlatUploadController extends Controller
                                 foreach ($item?->properties->property as $property) {
                                     $property = (object) $property;
 
-                                    if (isset($property->property_value_enum)) $this::uploadCreateProperties($property->property_value_enum, $property->property_id, $flat);
-                                    if (isset($property->property_value)) $this::uploadCreateProperties($property->property_value, $property->property_id, $flat);
+                                    if (isset($property->property_value_enum)) $this::uploadCreateProperties($property->property_value_enum, $property->property_id, $property->property_value_id, $flat);
+                                    if (isset($property->property_value)) $this::uploadCreateProperties($property->property_value, $property->property_id, $property->property_value_id, $flat);
                                 }
                             }
                         }
