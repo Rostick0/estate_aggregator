@@ -5443,6 +5443,15 @@
                         "type": "string",
                         "example": "Обо мне"
                     },
+                    "work_experience": {
+                        "type": "number",
+                        "format": "float",
+                        "example": "1"
+                    },
+                    "company_id": {
+                        "type": "number",
+                        "example": "1"
+                    },
                     "created_at": {
                         "type": "string",
                         "example": "2022-06-28 06:06:17"

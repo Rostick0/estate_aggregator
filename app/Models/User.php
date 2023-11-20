@@ -28,6 +28,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *       @OA\Property(property="raiting_awe", type="float", example="5"),
  *       @OA\Property(property="raiting", type="float", example="0"),
  *       @OA\Property(property="about", type="string", example="Обо мне"),
+ *       @OA\Property(property="work_experience", type="float", example="1"),
+ *       @OA\Property(property="company_id", type="number", example="1"),
  *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
  *    )
