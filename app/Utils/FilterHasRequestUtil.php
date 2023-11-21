@@ -41,6 +41,25 @@ class FilterHasRequestUtil
         return $builder;
     }
 
+    public static function in($request, Builder $builder, array $fillable = []): Builder
+    {
+        collect($request)->each(function ($value, $name) use ($builder, $fillable) {
+            if (!FilterTypeUtil::check($name)) return;
+
+            $name_array = explode('.', $name);
+            $key = array_splice($name_array, -1, 1)[0];
+            $name_has = implode('.', $name_array);
+
+            if (!empty($fillable) && array_search($key, $fillable) === false) return;
+
+            $builder->whereHas($name_has, function ($query) use ($key, $value) {
+                $query->whereIn($key, QueryString::convertToArray($value));
+            });
+        });
+
+        return $builder;
+    }
+
     public static function all($request, Builder $builder, array $fillable = []): Builder
     {
         $data = $builder;
@@ -57,6 +76,8 @@ class FilterHasRequestUtil
         if ($request->filterLE) $data = FilterHasRequestUtil::template($request->filterLE, $builder, $fillable, '<');
 
         if ($request->filterLIKE) $data = FilterHasRequestUtil::template($request->filterLIKE, $builder, $fillable, 'LIKE', 'LIKE');
+
+        if ($request->filterIN) $data = FilterHasRequestUtil::in($request->filterIN, $builder, $fillable);
 
         return $data;
     }
