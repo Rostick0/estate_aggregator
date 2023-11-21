@@ -7,6 +7,7 @@ use App\Http\Requests\User\UpdatePasswordUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use App\Utils\AccessUtil;
+use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +27,14 @@ class UserController extends Controller
 
     private static function extendsMutation($data, $request)
     {
+        $data->collection_relats()->delete();
+        if ($request->collection_relats) {
+            $collection_relats = array_map(function ($collection_id) {
+                return ['collection_id' => $collection_id];
+            }, QueryString::convertToArray($request->collection_relats));
+
+            $data->collection_relats()->createMany($collection_relats);
+        }
     }
 
     /**
@@ -206,6 +215,12 @@ class UserController extends Controller
      *                          property="type_social",
      *                          type="enum: whatsapp,viber,telegram",
      *                          example="whatsapp"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="collection_relats",
+     *                          description="Коллекции связаные с пользователем",
+     *                          type="string",
+     *                          example="1,2"
      *                      ),
      *              )
      *         )

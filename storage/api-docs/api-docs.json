@@ -4753,6 +4753,11 @@
                                     "type_social": {
                                         "type": "enum: whatsapp,viber,telegram",
                                         "example": "whatsapp"
+                                    },
+                                    "collection_relats": {
+                                        "description": "Коллекции связаные с пользователем",
+                                        "type": "string",
+                                        "example": "1,2"
                                     }
                                 },
                                 "type": "object"
