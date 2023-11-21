@@ -22,11 +22,6 @@ class UserController extends Controller
         'work_experience',
     ];
 
-    private  static function inputUpdate()
-    {
-    
-    }
-
     private static function extendsMutation($data, $request)
     {
     }

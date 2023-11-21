@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AlertController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
@@ -45,6 +46,10 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('/refresh', [AuthController::class, 'refresh']);
             Route::get('/me', [AuthController::class, 'me']);
         });
+    });
+
+    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+        Route::update('/user/{id}', [AdminUserController::class, 'update']);
     });
 
     Route::get('country', [CountryController::class, 'index']);
