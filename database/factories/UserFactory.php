@@ -19,14 +19,15 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $roles = ['realtor', 'agency', 'builder'];
+        // 'realtor',
+        $roles = ['agency', 'builder'];
         $type_socials = ['whatsapp', 'viber', 'telegram'];
         $email = fake()->unique()->safeEmail();
 
         return [
             'name' => fake()->name(),
             'email' => $email,
-            'email_verified_at' => now(), 
+            'email_verified_at' => now(),
             'password' => Hash::make($email), // password
             'phone' => fake()->phoneNumber(),
             'avatar' => random_int(1, 50),
@@ -35,6 +36,7 @@ class UserFactory extends Factory
             'is_confirm' => 1,
             'type_social' => RandomUtil::array($type_socials),
             'about' => fake()->text(random_int(200, 300)),
+            'work_experience' => random_int(1, 30),
             'remember_token' => Str::random(10),
         ];
     }

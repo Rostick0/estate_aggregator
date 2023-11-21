@@ -126,13 +126,14 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(FlatOwner::class, 'user_id', 'id');
     }
 
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
+
+
     public function collection_relats(): MorphMany
     {
         return $this->morphMany(ColRelat::class, 'col_relatsable');
-    }
-
-    public function owner_company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'id', 'woner_id');
     }
 }

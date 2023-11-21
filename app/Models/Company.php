@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -25,11 +26,15 @@ class Company extends Model
     protected $fillable = [
         'banner',
         'is_reliable',
-        // 'owner_id',
     ];
 
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'owner_id', 'id');
+        return $this->belongsTo(User::class, 'id', 'company_id')->whereIn('role', ['agency', 'builder']);
+    }
+
+    public function staffs(): HasMany
+    {
+        return $this->hasMany(User::class, 'company_id', 'id')->where('role', 'realtor');
     }
 }

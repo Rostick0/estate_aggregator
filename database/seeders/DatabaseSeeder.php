@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\ColRelat;
+use App\Models\Company;
 use App\Models\Flat;
 use App\Models\FlatOwner;
 use App\Models\FlatProperty;
@@ -48,19 +49,33 @@ class DatabaseSeeder extends Seeder
             ->has(FlatProperty::factory(20), 'flat_properties')
             ->create();
 
-        User::factory(40)
-            ->has(FlatOwner::factory(2), 'flat_owners')
-            ->has(ColRelat::factory(1, [
-                'collection_id' => 1
-            ]), 'collection_relats')
+
+        Company::factory(10)
+            ->has(
+                User::factory(3, [
+                    'role' => 'realtor'
+                ]),
+                'staffs'
+            )
             ->create();
+
+        for ($i = 1; $i <= 10; $i++) {
+            User::factory()
+                ->has(FlatOwner::factory(2), 'flat_owners')
+                ->has(ColRelat::factory(1, [
+                    'collection_id' => 1
+                ]), 'collection_relats')->create([
+                    'company_id' => $i
+                ]);
+        }
 
         User::factory(10)
             ->has(ColRelat::factory(1, [
                 'collection_id' => 1
             ]), 'collection_relats')
             ->create([
-                'role' => 'client'
+                'role' => 'client',
+                'work_experience' => null
             ]);
 
         MainBanner::factory(10)->create();
