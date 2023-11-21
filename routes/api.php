@@ -49,7 +49,7 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::update('/user/{id}', [AdminUserController::class, 'update']);
+        Route::put('/user/{id}', [AdminUserController::class, 'update']);
     });
 
     Route::get('country', [CountryController::class, 'index']);
@@ -70,8 +70,11 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('file', [FileController::class, 'store'])->middleware('throttle:500,1');
 
     Route::apiResource('image', ImageController::class)->only(['store', 'show', 'destroy']);
+
     Route::apiResource('favorite', FavoriteController::class)->only(['index', 'store', 'show', 'destroy']);
+
     Route::apiResource('user', UserController::class)->only(['index', 'show', 'update', 'destroy']);
+    Route::put('user-password', [UserController::class, 'update_password']);
 
     Route::put('/company/{id}', [CompanyController::class, 'update']);
 

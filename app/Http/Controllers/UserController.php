@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Filters\Filter;
+use App\Http\Requests\User\UpdatePasswordUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use App\Utils\AccessUtil;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -254,6 +256,77 @@ class UserController extends Controller
 
         return new JsonResponse([
             'data' => Filter::one($request, new User, $id)
+        ]);
+    }
+
+    /**
+     * Update
+     * @OA\Put (
+     *     path="/api/user-password",
+     *     tags={"User"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                      required={"password", "new_password"},
+     *                      @OA\Property(
+     *                          property="password",
+     *                          type="string",
+     *                          example="aboba123",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="new_password",
+     *                          type="number",
+     *                          example="aboba1234"
+     *                      ),
+     *              )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="object", example="Password changed")
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The password field is required. (and 2 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="password", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The password is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="new_password", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The new_password field is required.",
+     *                          )
+     *                      ),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
+    public function update_password(UpdatePasswordUserRequest $request)
+    {
+        if (!Hash::check($request->password, auth()->user()->password)) {
+            return new JsonResponse([
+                'message' => 'Invalid password'
+            ], 401);
+        }
+
+        User::find(auth()->id())->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return new JsonResponse([
+            'message' => 'Password changed'
         ]);
     }
 
