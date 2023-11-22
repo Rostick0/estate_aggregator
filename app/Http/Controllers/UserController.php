@@ -123,7 +123,6 @@ class UserController extends Controller
      *     tags={"User"},
      *      @OA\Parameter( 
      *          name="id",
-     *          description="Id",
      *          in="path",
      *          required=true,
      *          example="1",

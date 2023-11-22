@@ -4081,6 +4081,338 @@
                 }
             }
         },
+        "/api/recruitment": {
+            "get": {
+                "tags": [
+                    "Recruitment"
+                ],
+                "summary": "Index",
+                "operationId": "8e1e0cf6f9f8f05bac42945f441ef8e0",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[name]": null,
+                                "filter[key]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Count",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "recruitment,user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RecruitmentSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Recruitment"
+                ],
+                "summary": "Store",
+                "operationId": "aa7b4b730580358332b08fbdc55ab0cf",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Подборка"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "$ref": "#/components/schemas/RecruitmentSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/recruitment/{id}": {
+            "get": {
+                "tags": [
+                    "Recruitment"
+                ],
+                "summary": "Show",
+                "operationId": "443c520dedf25ca7f08e402a0869b0fa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "recruitment,user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RecruitmentSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Recruitment"
+                ],
+                "summary": "Update",
+                "operationId": "7bde89bb9ebe637a1877f98948614ae3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Подборка"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "$ref": "#/components/schemas/RecruitmentSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Recruitment"
+                ],
+                "summary": "Delete",
+                "operationId": "aa69fe8c1c255f139df5d17b5a633379",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/region": {
             "get": {
                 "tags": [
@@ -4653,7 +4985,6 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Id",
                         "required": true,
                         "schema": {
                             "type": "number"
@@ -5518,6 +5849,31 @@
                     "property_id": {
                         "type": "number",
                         "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "RecruitmentSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Jonh"
+                    },
+                    "key": {
+                        "type": "string",
+                        "example": "3c35gd5gbm5"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
                     }
                 },
                 "type": "object"

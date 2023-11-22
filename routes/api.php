@@ -18,6 +18,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainBannerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\TestController;
@@ -85,7 +86,8 @@ Route::group(['middleware' => 'api'], function () {
         'rubric' => RubricController::class,
         'collection' => CollectionController::class,
         'file' => FileController::class,
-        'alert' => AlertController::class
+        'alert' => AlertController::class,
+        'recruitment' => RecruitmentController::class,
     ]);
 })->middleware('throttle:5000,1');
 
