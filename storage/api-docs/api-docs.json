@@ -1531,12 +1531,12 @@
             }
         },
         "/api/company/{id}": {
-            "post": {
+            "put": {
                 "tags": [
                     "Company"
                 ],
                 "summary": "Update",
-                "operationId": "7f13008ab99f19f43b1301347948f8a1",
+                "operationId": "dba5691bd7818c368accfd785048ea90",
                 "parameters": [
                     {
                         "name": "id",
