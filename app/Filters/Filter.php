@@ -21,7 +21,17 @@ class Filter
         $data = FilterSomeRequestUtil::all($request, $data, $fillable);
         $data = OrderByUtil::set($request->sort, $data);
 
-        if ($where) $data->where($where);
+        foreach ($where as $dataWhere) {
+            if (!empty($dataWhere[3])) {
+                $data->whereHas($dataWhere[3], function ($query) use ($dataWhere) {
+                    $query->where($dataWhere[0], $dataWhere[1], $dataWhere[2]);
+                });
+
+                continue;
+            }
+
+            $data->where($dataWhere);
+        }
 
         $data = $data->paginate($request->limit);
 
