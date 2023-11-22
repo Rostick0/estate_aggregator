@@ -17,6 +17,11 @@ class RecruitmentController extends Controller
         'name',
     ];
 
+    private static function getWhere()
+    {
+        return [];
+    }
+
     /**
      * Index
      * @OA\get (
@@ -65,7 +70,7 @@ class RecruitmentController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="recruitment,user",
+     *          example="recruitment_flat,user",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -84,7 +89,7 @@ class RecruitmentController extends Controller
     public function index(Request $request)
     {
         return new JsonResponse(
-            Filter::all($request, new Recruitment)
+            Filter::all($request, new Recruitment, $this::getWhere())
         );
     }
 
@@ -145,7 +150,6 @@ class RecruitmentController extends Controller
      *     tags={"Recruitment"},
      *      @OA\Parameter( 
      *          name="id",
-     *          description="Id",
      *          in="path",
      *          required=true,
      *          example="1",
@@ -157,7 +161,7 @@ class RecruitmentController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="recruitment,user",
+     *          example="recruitment_flat,user",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -184,7 +188,7 @@ class RecruitmentController extends Controller
     public function show(Request $request, int $id)
     {
         return new JsonResponse([
-            'data' => Filter::one($request, new Recruitment, $id)
+            'data' => Filter::one($request, new Recruitment, $id, $this::getWhere())
         ]);
     }
 
@@ -245,7 +249,7 @@ class RecruitmentController extends Controller
         );
 
         return new JsonResponse([
-            'data' => Filter::one($request, new Recruitment, $id)
+            'data' => Filter::one($request, new Recruitment, $id, $this::getWhere())
         ]);
     }
 

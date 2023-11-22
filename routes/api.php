@@ -19,6 +19,7 @@ use App\Http\Controllers\MainBannerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RecruitmentController;
+use App\Http\Controllers\RecruitmentFlatController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\TestController;
@@ -78,6 +79,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::put('user-password', [UserController::class, 'update_password']);
 
     Route::put('/company/{id}', [CompanyController::class, 'update']);
+
+    Route::apiResource('recruitment-flat', RecruitmentFlatController::class)->only(['index', 'store', 'show', 'destroy']);
 
     Route::apiResources([
         'post' => PostController::class,
