@@ -43,7 +43,7 @@ class FlatFactory extends Factory
             'total_floor' => random_int(5, 10),
             'building_type' => random_int(117, 119),
             'building_date' => random_int(2020, 2027),
-            'contact_id' => 1,
+            'contact_id' => random_int(2, 30),
             'specialtxt'  => fake()->text(random_int(100, 200)),
             'description' => fake()->text(random_int(200, 400)),
         ];

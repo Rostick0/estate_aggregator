@@ -45,13 +45,8 @@ class DatabaseSeeder extends Seeder
             ->has(ImageRelat::factory(5), 'images')
             ->create();
 
-        Flat::factory(100)
-            ->has(ImageRelat::factory(5), 'images')
-            ->has(FlatProperty::factory(20), 'flat_properties')
-            ->create();
-
         User::factory()
-            ->has(FlatOwner::factory(2), 'flat_owners')
+            // ->has(FlatOwner::factory(2), 'flat_owners')
             ->has(ColRelat::factory(1, [
                 'collection_id' => 1
             ]), 'collection_relats')->create([
@@ -62,7 +57,7 @@ class DatabaseSeeder extends Seeder
             ]);
 
         User::factory()
-            ->has(FlatOwner::factory(2), 'flat_owners')
+            // ->has(FlatOwner::factory(2), 'flat_owners')
             ->has(ColRelat::factory(1, [
                 'collection_id' => 1
             ]), 'collection_relats')->create([
@@ -73,7 +68,7 @@ class DatabaseSeeder extends Seeder
             ]);
 
         User::factory()
-            ->has(FlatOwner::factory(2), 'flat_owners')
+            // ->has(FlatOwner::factory(2), 'flat_owners')
             ->has(ColRelat::factory(1, [
                 'collection_id' => 1
             ]), 'collection_relats')->create([
@@ -83,7 +78,7 @@ class DatabaseSeeder extends Seeder
             ]);
 
         User::factory()
-            ->has(FlatOwner::factory(2), 'flat_owners')
+            // ->has(FlatOwner::factory(2), 'flat_owners')
             ->has(ColRelat::factory(1, [
                 'collection_id' => 1
             ]), 'collection_relats')->create([
@@ -104,13 +99,18 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 3; $i <= 10; $i++) {
             User::factory()
-                ->has(FlatOwner::factory(2), 'flat_owners')
+                // ->has(FlatOwner::factory(2), 'flat_owners')
                 ->has(ColRelat::factory(1, [
                     'collection_id' => 1
                 ]), 'collection_relats')->create([
                     'company_id' => $i
                 ]);
         }
+
+        Flat::factory(100)
+            ->has(ImageRelat::factory(5), 'images')
+            ->has(FlatProperty::factory(20), 'flat_properties')
+            ->create();
 
         User::factory(10)
             ->has(ColRelat::factory(1, [
