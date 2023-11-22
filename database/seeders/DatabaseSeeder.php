@@ -15,6 +15,7 @@ use App\Models\MainBanner;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -49,6 +50,48 @@ class DatabaseSeeder extends Seeder
             ->has(FlatProperty::factory(20), 'flat_properties')
             ->create();
 
+        User::factory()
+            ->has(FlatOwner::factory(2), 'flat_owners')
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')->create([
+                'email' => 'adel@gmail.com',
+                'password' => Hash::make('adel@gmail.com'),
+                'role' => 'agency',
+                'company_id' => 1
+            ]);
+
+        User::factory()
+            ->has(FlatOwner::factory(2), 'flat_owners')
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')->create([
+                'email' => 'gena@gmail.com',
+                'password' => Hash::make('gena@gmail.com'),
+                'role' => 'builder',
+                'company_id' => 2
+            ]);
+
+        User::factory()
+            ->has(FlatOwner::factory(2), 'flat_owners')
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')->create([
+                'email' => 'dasha@gmail.com',
+                'password' => Hash::make('dasha@gmail.com'),
+                'role' => 'realtor',
+            ]);
+
+        User::factory()
+            ->has(FlatOwner::factory(2), 'flat_owners')
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')->create([
+                'email' => 'alena@gmail.com',
+                'password' => Hash::make('alena@gmail.com'),
+                'role' => 'client',
+                'work_experience' => null
+            ]);
 
         Company::factory(10)
             ->has(
@@ -59,7 +102,7 @@ class DatabaseSeeder extends Seeder
             )
             ->create();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 3; $i <= 10; $i++) {
             User::factory()
                 ->has(FlatOwner::factory(2), 'flat_owners')
                 ->has(ColRelat::factory(1, [
