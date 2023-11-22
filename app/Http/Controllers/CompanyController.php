@@ -18,7 +18,7 @@ class CompanyController extends Controller
 
      /**
      * Update
-     * @OA\Post (
+     * @OA\Put (
      *     path="/api/company/{id}",
      *     tags={"Company"},
      *     security={{"bearer_token": {}}},
