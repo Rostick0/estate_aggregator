@@ -20,7 +20,23 @@ class Filter
         $data = FilterHasRequestUtil::all($request, $data, $fillable);
         $data = FilterSomeRequestUtil::all($request, $data, $fillable);
         $data = OrderByUtil::set($request->sort, $data);
+        $data = Filter::where($data, $where);
+        $data = $data->paginate($request->limit);
 
+        return $data;
+    }
+
+    public static function one($request, Model $model, int $id, array $where = [])
+    {
+        $data =  $model->with(QueryString::convertToArray($request->extends));
+        $data = Filter::where($data, $where);
+        $data = $data->findOrFail($id);
+
+        return $data;
+    }
+
+    private static function where($data, $where)
+    {
         foreach ($where as $dataWhere) {
             if (!empty($dataWhere[3])) {
                 $data->whereHas($dataWhere[3], function ($query) use ($dataWhere) {
@@ -30,19 +46,8 @@ class Filter
                 continue;
             }
 
-            $data->where($dataWhere);
+            $data->where([$dataWhere]);
         }
-
-        $data = $data->paginate($request->limit);
-
-        return $data;
-    }
-
-    public static function one($request, Model $model, int $id, array $where = [])
-    {
-        $data = $model->with(QueryString::convertToArray($request->extends))
-            ->where($where)
-            ->findOrFail($id);
 
         return $data;
     }
