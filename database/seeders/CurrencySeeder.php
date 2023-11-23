@@ -14,14 +14,14 @@ class CurrencySeeder extends Seeder
     public function run(): void
     {
         $data = [
-            [
+            [ // id 1
                 'name' => 'USD'
             ],
-            [
+            [ // id 2
                 'name' => 'EUR'
             ],
-            [
-                'name' => 'RUR'
+            [ // id 3
+                'name' => 'RUR' // рубль
             ]
         ];
 

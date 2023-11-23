@@ -14,10 +14,10 @@ class FlatTypeSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            [
+            [ // id 1
                 'name' => 'Продажа'
             ],
-            [
+            [ // id 2
                 'name' => 'Аренда'
             ]
         ];

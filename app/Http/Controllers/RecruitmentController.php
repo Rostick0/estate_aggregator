@@ -24,7 +24,7 @@ class RecruitmentController extends Controller
 
     /**
      * Index
-     * @OA\get (
+     * @OA\Get (
      *     path="/api/recruitment",
      *     tags={"Recruitment"},
      *      @OA\Parameter(
@@ -145,7 +145,7 @@ class RecruitmentController extends Controller
 
     /**
      * Show
-     * @OA\get (
+     * @OA\Get (
      *     path="/api/recruitment/{id}",
      *     tags={"Recruitment"},
      *      @OA\Parameter( 

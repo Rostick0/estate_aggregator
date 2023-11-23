@@ -3540,6 +3540,73 @@
                 ]
             }
         },
+        "/api/object-flat": {
+            "get": {
+                "tags": [
+                    "ObjectFlat"
+                ],
+                "summary": "Index",
+                "operationId": "fbd4722c5b1edf92e80a2e41a0c86548",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[name]": null,
+                                "filter[type]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Count",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ObjectFlatSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/post": {
             "get": {
                 "tags": [
@@ -6060,6 +6127,33 @@
                 },
                 "type": "object"
             },
+            "ObjectFlatSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "апартаменты"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "квартира"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
             "PostSchema": {
                 "properties": {
                     "id": {
@@ -6142,6 +6236,31 @@
                         "example": 1
                     },
                     "name": {
+                        "type": "string",
+                        "example": "Jonh"
+                    },
+                    "key": {
+                        "type": "string",
+                        "example": "3c35gd5gbm5"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "RecruitmentChatSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "recruitment_id": {
                         "type": "string",
                         "example": "Jonh"
                     },

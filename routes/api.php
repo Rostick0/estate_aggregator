@@ -16,8 +16,10 @@ use App\Http\Controllers\FlatController;
 use App\Http\Controllers\FlatUploadController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainBannerController;
+use App\Http\Controllers\ObjectFlatController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\RecruitmentChatController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\RecruitmentFlatController;
 use App\Http\Controllers\RegionController;
@@ -67,6 +69,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('main-banner', [MainBannerController::class, 'index']);
     Route::put('main-banner', [MainBannerController::class, 'update']);
 
+    Route::get('object-flat', [ObjectFlatController::class, 'index']);
+
     Route::post('/flat/upload', [FlatUploadController::class, 'upload']);
 
     Route::post('file', [FileController::class, 'store'])->middleware('throttle:500,1');
@@ -91,6 +95,7 @@ Route::group(['middleware' => 'api'], function () {
         'file' => FileController::class,
         'alert' => AlertController::class,
         'recruitment' => RecruitmentController::class,
+        'recruitment-chat' => RecruitmentChatController::class
     ]);
 })->middleware('throttle:5000,1');
 
