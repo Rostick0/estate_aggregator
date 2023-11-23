@@ -6,6 +6,8 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuildingTypeController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ChatUserController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\FlatController;
 use App\Http\Controllers\FlatUploadController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainBannerController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ObjectFlatController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
@@ -86,6 +89,9 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::apiResource('recruitment-flat', RecruitmentFlatController::class)->only(['index', 'store', 'show', 'destroy']);
 
+    Route::apiResource('chat', ChatController::class)->only(['index', 'store', 'show']);
+    Route::apiResource('chat-user', ChatUserController::class)->only(['index', 'show', 'update', 'destroy']);
+
     Route::apiResources([
         'post' => PostController::class,
         'flat' => FlatController::class,
@@ -95,7 +101,7 @@ Route::group(['middleware' => 'api'], function () {
         'file' => FileController::class,
         'alert' => AlertController::class,
         'recruitment' => RecruitmentController::class,
-        'recruitment-chat' => RecruitmentChatController::class
+        'message' => MessageController::class
     ]);
 })->middleware('throttle:5000,1');
 

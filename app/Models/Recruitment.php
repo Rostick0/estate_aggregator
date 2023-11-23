@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @OA\Schema(
@@ -36,5 +37,10 @@ class Recruitment extends Model
     public function recruitment_flat(): HasMany
     {
         return $this->hasMany(RecruitmentFlat::class, 'recruitment_id', 'id');
+    }
+
+    public function chat(): MorphMany
+    {
+        return $this->morphMany(Chat::class, 'chatsable');
     }
 }
