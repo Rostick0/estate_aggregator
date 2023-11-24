@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Chat;
+use App\Models\Message;
 use App\Observers\ChatObserver;
+use App\Observers\MessageObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -28,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Chat::observe(ChatObserver::class);
+        Message::observe(MessageObserver::class);
     }
 
     /**

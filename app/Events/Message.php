@@ -2,15 +2,15 @@
 
 namespace App\Events;
 
+use App\Models\Chat;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class Message
+class Message implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -36,8 +36,14 @@ class Message
      */
     public function broadcastOn(): array
     {
-        return [
-            new PrivateChannel('message.'),
-        ];
+        $chat = Chat::find($this->data['data']['chat_id'] ?? null);
+
+        $channels = [];
+
+        foreach ($chat->chat_users ?? [] as $user) {
+            $channels[] = new PrivateChannel('message.' . $user->user_id);
+        }
+        
+        return $channels;
     }
 }
