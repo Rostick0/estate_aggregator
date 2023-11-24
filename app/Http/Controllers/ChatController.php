@@ -26,8 +26,9 @@ class ChatController extends Controller
             Recruitment::findOrFail($request->type_id);
         }
 
+        $type = $request->type;
         $data = Chat::firstOrCreate([
-            'chatsable_type' => "App\Models\{$request->type}",
+            'chatsable_type' => "App\\Models\\" . $request->type,
             'chatsable_id' => $request->type_id,
         ]);
 

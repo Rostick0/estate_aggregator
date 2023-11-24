@@ -18,7 +18,7 @@ class ChatObserver
 
             ChatUser::create([
                 'chat_id' => $chat->id,
-                'user_id' => $recruitment
+                'user_id' => $recruitment->user_id
             ]);
         }
 

@@ -752,7 +752,7 @@ class FlatController extends Controller
      *      )
      * )
      */
-    public function destroy(int $id)
+     public function destroy(int $id)
     {
         $flat = Flat::findOrFail($id);
 
