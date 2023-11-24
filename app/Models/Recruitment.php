@@ -34,7 +34,7 @@ class Recruitment extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function recruitment_flat(): HasMany
+    public function recruitment_flats(): HasMany
     {
         return $this->hasMany(RecruitmentFlat::class, 'recruitment_id', 'id');
     }

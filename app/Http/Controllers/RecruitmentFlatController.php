@@ -183,7 +183,7 @@ class RecruitmentFlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="recruitment_flat,user",
+     *          example="recruitment,flat",
      *          @OA\Schema(
      *              type="string",
      *          )

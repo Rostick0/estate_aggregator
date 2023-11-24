@@ -4202,7 +4202,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "recruitment_flat,user"
+                        "example": "recruitment_flats,user"
                     }
                 ],
                 "responses": {
@@ -4311,7 +4311,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "recruitment_flat,user"
+                        "example": "recruitment_flats,user"
                     }
                 ],
                 "responses": {
@@ -4668,7 +4668,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "recruitment_flat,user"
+                        "example": "recruitment,flat"
                     }
                 ],
                 "responses": {
@@ -6236,31 +6236,6 @@
                         "example": 1
                     },
                     "name": {
-                        "type": "string",
-                        "example": "Jonh"
-                    },
-                    "key": {
-                        "type": "string",
-                        "example": "3c35gd5gbm5"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
-                    }
-                },
-                "type": "object"
-            },
-            "RecruitmentChatSchema": {
-                "properties": {
-                    "id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "recruitment_id": {
                         "type": "string",
                         "example": "Jonh"
                     },

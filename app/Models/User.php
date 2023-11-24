@@ -131,9 +131,13 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
-
     public function collection_relats(): MorphMany
     {
         return $this->morphMany(ColRelat::class, 'col_relatsable');
+    }
+
+    public function recruitments(): HasMany
+    {
+        return $this->hasMany(Recruitment::class, 'user_id', 'id');
     }
 }

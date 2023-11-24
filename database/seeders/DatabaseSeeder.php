@@ -13,6 +13,8 @@ use App\Models\Image;
 use App\Models\ImageRelat;
 use App\Models\MainBanner;
 use App\Models\Post;
+use App\Models\Recruitment;
+use App\Models\RecruitmentFlat;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -110,6 +112,10 @@ class DatabaseSeeder extends Seeder
         Flat::factory(100)
             ->has(ImageRelat::factory(5), 'images')
             ->has(FlatProperty::factory(20), 'flat_properties')
+            ->create();
+
+        Recruitment::factory(10)
+            ->has(RecruitmentFlat::factory(3), 'recruitment_flats')
             ->create();
 
         User::factory(10)

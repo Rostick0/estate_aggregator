@@ -70,7 +70,7 @@ class RecruitmentController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="recruitment_flat,user",
+     *          example="recruitment_flats,user",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -161,7 +161,7 @@ class RecruitmentController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="recruitment_flat,user",
+     *          example="recruitment_flats,user",
      *          @OA\Schema(
      *              type="string",
      *          )
