@@ -279,6 +279,11 @@ class FlatController extends Controller
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
+     *                          property="status",
+     *                          type="enum: active, archive",
+     *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+     *                      ),
+     *                      @OA\Property(
      *                          property="properties_values",
      *                          type="string",
      *                          format="json",
@@ -357,6 +362,7 @@ class FlatController extends Controller
             'description',
             'filename',
             'tour_link',
+            'status',
         ]);
 
         $flat = Flat::create([
@@ -602,16 +608,15 @@ class FlatController extends Controller
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
+     *                          property="status",
+     *                          type="enum: active, archive",
+     *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+     *                      ),
+     *                      @OA\Property(
      *                          property="properties_values",
      *                          type="string",
      *                          format="json",
      *                          description="Конвертируйте в json [{value:800,property_value_id:1}]"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="properties_delete",
-     *                          description="Пример: 1,2,3",
-     *                          type="string",
-     *                          format="number",
      *                      ),
      *                      @OA\Property(
      *                          property="images",
@@ -698,6 +703,7 @@ class FlatController extends Controller
             'description',
             'filename',
             'tour_link',
+            'status',
         ]);
 
         $flat->update([

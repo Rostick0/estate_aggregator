@@ -45,8 +45,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *       @OA\Property(property="description", type="string", example="Описание, которые мы заслужили"),
  *       @OA\Property(property="filename", type="string", example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"),
  *       @OA\Property(property="tour_link", type="string", example="https://my.matterport.com/show/?m=aPjao3BZ25x"),
- *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
- *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="status", type="enum", example="active"),
+ *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
  *    )
  * )
  */
@@ -87,6 +88,7 @@ class Flat extends Model
         'description',
         'filename',
         'tour_link',
+        'status',
     ];
 
     public function flat_properties(): HasMany
