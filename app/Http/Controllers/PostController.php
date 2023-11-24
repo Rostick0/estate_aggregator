@@ -21,7 +21,7 @@ class PostController extends Controller
     private static function extendsMutation($data, $request)
     {
         $data->images()->delete();
-        if ($request->images) {
+        if ($request->has('images')) {
             $images = array_map(function ($image_id) {
                 return ['image_id' => $image_id];
             }, QueryString::convertToArray($request->images));

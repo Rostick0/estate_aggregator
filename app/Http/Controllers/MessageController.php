@@ -15,11 +15,10 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-
     private static function extendsMutation($data, $request)
     {
         $data->images()->delete();
-        if ($request->images) {
+        if ($request->has('images')) {
             $images = array_map(function ($image_id) {
                 return ['image_id' => $image_id];
             }, QueryString::convertToArray($request->images));
@@ -28,7 +27,7 @@ class MessageController extends Controller
         }
 
         $data->files()->delete();
-        if ($request->files) {
+        if ($request->has('files')) {
             $files = array_map(function ($file_id) {
                 return ['file_id' => $file_id];
             }, QueryString::convertToArray($request->files));
@@ -48,6 +47,7 @@ class MessageController extends Controller
     public function store(StoreMessageRequest $request)
     {
         $data = Message::create([
+            ...$request->only(['content', 'chat_id']),
             'user_id' => auth()->id()
         ]);
 

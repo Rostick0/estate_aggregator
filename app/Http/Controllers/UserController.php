@@ -28,7 +28,7 @@ class UserController extends Controller
     private static function extendsMutation($data, $request)
     {
         $data->collection_relats()->delete();
-        if ($request->collection_relats) {
+        if ($request->has('collection_relats')) {
             $collection_relats = array_map(function ($collection_id) {
                 return ['collection_id' => $collection_id];
             }, QueryString::convertToArray($request->collection_relats));

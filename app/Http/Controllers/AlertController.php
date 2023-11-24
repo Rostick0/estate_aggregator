@@ -23,7 +23,7 @@ class AlertController extends Controller
     private static function extendsMutation($data, $request)
     {
         $data->image()->delete();
-        if ($request->image) {
+        if ($request->has('image')) {
 
             $data->image()->create([
                 'image_id' => $request->image
