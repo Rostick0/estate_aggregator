@@ -22,9 +22,9 @@ class ImageController extends Controller
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
-     *                      required={"file"},
+     *                      required={"image"},
      *                      @OA\Property(
-     *                          property="file",
+     *                          property="image",
      *                          type="file",
      *                      ),
      *              )
@@ -43,12 +43,12 @@ class ImageController extends Controller
      *          response=400,
      *          description="Validation error",
      *          @OA\JsonContent(
-     *                  @OA\Property(property="message", type="string", example="The file field is required."),
+     *                  @OA\Property(property="message", type="string", example="The image field is required."),
      *                  @OA\Property(property="errors", type="object",
-     *                      @OA\Property(property="The", type="array", collectionFormat="multi",
+     *                      @OA\Property(property="image", type="array", collectionFormat="multi",
      *                        @OA\Items(
      *                          type="string",
-     *                          example="The The field is required.",
+     *                          example="The image field is required.",
      *                          )
      *                      ),
      *                 ),

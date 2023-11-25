@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\LazyCollection;
 use App\Models\File;
+use App\Models\Image;
 use App\Models\User;
 use App\Utils\EmptyUtil;
 use Exception;
@@ -170,24 +171,24 @@ class FlatUploadController extends Controller
                         );
 
                         $flat->files()->delete();
-                        if (!empty($item->images)) {
-                            $item->images = (object) $item?->images;
-                            if (!empty($item?->images->image)) {
-                                foreach ($item?->images->image as $image) {
-                                    $image = (object) $image;
+                        // if (!empty($item->images)) {
+                        //     $item->images = (object) $item?->images;
+                        //     if (!empty($item?->images->image)) {
+                        //         foreach ($item?->images->image as $image) {
+                        //             $image = (object) $image;
 
-                                    $file = File::firstOrCreate([
-                                        'path' => (string) $image->filename[0],
-                                        'type' => 'image/' . pathinfo($image->filename[0], PATHINFO_EXTENSION),
-                                        'user_id' => (int) $item?->contact_id
-                                    ]);
+                        //             $file = Image::firstOrCreate([
+                        //                 'path' => (string) $image->filename[0],
+                        //                 'type' => 'image/' . pathinfo($image->filename[0], PATHINFO_EXTENSION),
+                        //                 'user_id' => (int) $item?->contact_id
+                        //             ]);
 
-                                    $flat->files()->create([
-                                        'file_id' => $file->id
-                                    ]);
-                                }
-                            }
-                        }
+                        //             $flat->files()->create([
+                        //                 'file_id' => $file->id
+                        //             ]);
+                        //         }
+                        //     }
+                        // }
 
                         $flat->flat_properties()->delete();
                         if (!empty($item->properties)) {

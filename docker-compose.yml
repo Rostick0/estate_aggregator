@@ -77,6 +77,13 @@ services:
             - '${PUSHER_METRICS_PORT:-9601}:9601'
         networks:
             - sail
+    scheduler:
+        image: laravel-www
+        container_name: laravel-scheduler
+        depends_on:
+            - laravel.test
+        volumes:
+            - .:/var/www/html
 networks:
     sail:
         driver: bridge

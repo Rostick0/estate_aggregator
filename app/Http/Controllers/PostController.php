@@ -89,7 +89,7 @@ class PostController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="files,main_image,user,district,rubric",
+     *          example="files,images,main_image,user,district,rubric",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -265,7 +265,7 @@ class PostController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="files,main_image,user,district,rubric",
+     *          example="files,images,main_image,user,district,rubric",
      *          @OA\Schema(
      *              type="string",
      *          )
