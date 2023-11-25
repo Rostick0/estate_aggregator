@@ -43,6 +43,8 @@ class FilterSomeRequestUtil
 
     private static function once($type_where, $column_value, $value, $type, $builder, $key, $where)
     {
+        if (ctype_digit($value)) $value = (int) $value;
+
         if (!isset($value)) {
         } else if ($type_where === 'NULL') {
             $where[] = [$column_value, $type, NULL];
