@@ -15,7 +15,6 @@ class FilterSomeRequestUtil
     {
         collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
             $values = Json::decode($value, false);
-            // dd($values);
 
             if (!empty($fillable) && array_search($key, $fillable) === false) return;
 
@@ -59,6 +58,31 @@ class FilterSomeRequestUtil
         });
     }
 
+    private static function in($request, Builder $builder, array $fillable = [])
+    {
+        collect($request)->each(function ($value, $key) use ($builder, $fillable) {
+            $values = Json::decode($value, false);
+
+            if (!empty($fillable) && array_search($key, $fillable) === false) return;
+
+            if (!is_array($values)) $values = [$values];
+
+            // dd($values);
+            foreach ($values as $once) {
+                // dd($values);
+                if (!$once?->column_id ?? null && !$once->id ?? null) return;
+                $builder->whereHas($key, function ($query) use ($once) {
+                    $query->whereIn($once->column_id, QueryString::convertToArray($once->id));
+                });
+            }
+            // $builder->whereHas($key, function ($query) use ($where) {
+            //     $query->whereIn($where);
+            // });
+        });
+
+        return $builder;
+    }
+
     public static function all($request, Builder $builder, array $fillable = []): Builder
     {
         $data = $builder;
@@ -75,6 +99,8 @@ class FilterSomeRequestUtil
         if ($request->filterSomeLE) $data = FilterSomeRequestUtil::template($request->filterSomeLE, $builder, $fillable, '<');
 
         if ($request->filterSomeLIKE) $data = FilterSomeRequestUtil::template($request->filterSomeLIKE, $builder, $fillable, 'LIKE', 'LIKE');
+
+        if ($request->filterSomeIN) $data = FilterSomeRequestUtil::in($request->filterSomeIN, $builder, $fillable);
 
         return $data;
     }
