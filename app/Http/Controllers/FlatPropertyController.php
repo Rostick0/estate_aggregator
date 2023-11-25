@@ -19,8 +19,14 @@ class FlatPropertyController extends Controller
 
         if (!is_array($properties_values)) $properties_values = [$properties_values];
 
+        $ids = [];
+
         foreach ($properties_values as $item) {
             $item = (object) $item;
+
+            if (array_filter($ids, function ($item_ids) use ($item) {
+                return $item_ids['property_id'] == $item->property_id ?? null || $item_ids['property_value_id'] == $item->property_value_id ?? null;
+            })) continue;
 
             $flat->flat_properties()->create([
                 'value_enum' => $item?->value_enum ?? null,
@@ -28,6 +34,11 @@ class FlatPropertyController extends Controller
                 'property_id' =>  $item->property_id ?? null,
                 'property_value_id' => $item->property_value_id ?? null,
             ]);
+
+            $ids[] = [
+                'property_value_id' => $item?->property_value_id ?? null,
+                'property_id' => $item?->property_id ?? null,
+            ];
         }
     }
 }
