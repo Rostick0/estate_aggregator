@@ -41,15 +41,25 @@ class AlertController extends Controller
      * @OA\get (
      *     path="/api/alert",
      *     tags={"Alert"},
-     *     @OA\Parameter( 
-     *          name="filterEQ[country_id]",
-     *          description="title, country_id, role, type",
+     *     @OA\Parameter(
+     *          name="filter",
      *          in="query",
-     *          example="1",
      *          @OA\Schema(
-     *              type="string"
-     *          ),
-     *     ),
+     *              type="object",
+     *              example={
+     *                 "filter[id]":null,
+     *                 "filter[title]":null,
+     *                 "filter[description]":null,
+     *                 "filter[country_id]":null,
+     *                 "filter[role]":null,
+     *                 "filter[type]":null,
+     *                 "filter[status]":null,
+     *                 "filter[user_id]":null,
+     *                 "filter[created_at]":null,
+     *                 "filter[updated_at]":null,
+     *               }
+     *          )
+     *      ),
      *     @OA\Parameter(
      *          name="sort",
      *          description="Сортировка по параметру",
@@ -81,7 +91,7 @@ class AlertController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="",
+     *          example="country,image,user",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -212,7 +222,7 @@ class AlertController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="",
+     *          example="country,image,user",
      *          @OA\Schema(
      *              type="string",
      *          )

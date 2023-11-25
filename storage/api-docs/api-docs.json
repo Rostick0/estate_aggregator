@@ -91,13 +91,23 @@
                 "operationId": "aa37d00148d0588b109a8646a89b55b6",
                 "parameters": [
                     {
-                        "name": "filterEQ[country_id]",
+                        "name": "filter",
                         "in": "query",
-                        "description": "title, country_id, role, type",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "1"
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[title]": null,
+                                "filter[description]": null,
+                                "filter[country_id]": null,
+                                "filter[role]": null,
+                                "filter[type]": null,
+                                "filter[status]": null,
+                                "filter[user_id]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
                     },
                     {
                         "name": "sort",
@@ -133,7 +143,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": ""
+                        "example": "country,image,user"
                     }
                 ],
                 "responses": {
@@ -284,7 +294,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": ""
+                        "example": "country,image,user"
                     }
                 ],
                 "responses": {
@@ -2301,7 +2311,7 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/AlertSchema"
+                                            "$ref": "#/components/schemas/FavoriteSchema"
                                         }
                                     },
                                     "type": "object"
@@ -5253,7 +5263,6 @@
                     {
                         "name": "filter",
                         "in": "query",
-                        "description": "Page",
                         "schema": {
                             "type": "object",
                             "example": {
@@ -5686,6 +5695,14 @@
                     "type": {
                         "type": "string",
                         "example": "null"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "active"
+                    },
+                    "user_id": {
+                        "type": "number",
+                        "example": "1"
                     }
                 },
                 "type": "object"

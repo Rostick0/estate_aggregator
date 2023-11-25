@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  *       @OA\Property(property="country_id", type="string", example="5"),
  *       @OA\Property(property="role", type="string", example="client"),
  *       @OA\Property(property="type", type="string", example="null"),
+ *       @OA\Property(property="status", type="string", example="active"),
+ *       @OA\Property(property="user_id", type="number", example="1"),
  *    )
  * )
  */

@@ -182,7 +182,7 @@ class FavoriteController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/AlertSchema"
+     *                  ref="#/components/schemas/FavoriteSchema"
      *              ),
      *          )
      *      ),

@@ -44,7 +44,6 @@ class UserController extends Controller
      *     tags={"User"},
      *      @OA\Parameter(
      *          name="filter",
-     *          description="Page",
      *          in="query",
      *          @OA\Schema(
      *              type="object",
