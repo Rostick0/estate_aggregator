@@ -3105,7 +3105,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,is_owner"
+                        "example": "flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,images,files,is_owner"
                     }
                 ],
                 "responses": {
@@ -3716,10 +3716,10 @@
                         "multipart/form-data": {
                             "schema": {
                                 "required": [
-                                    "file"
+                                    "image"
                                 ],
                                 "properties": {
-                                    "file": {
+                                    "image": {
                                         "type": "file"
                                     }
                                 },
@@ -3752,15 +3752,15 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The file field is required."
+                                            "example": "The image field is required."
                                         },
                                         "errors": {
                                             "properties": {
-                                                "The": {
+                                                "image": {
                                                     "type": "array",
                                                     "items": {
                                                         "type": "string",
-                                                        "example": "The The field is required."
+                                                        "example": "The image field is required."
                                                     },
                                                     "collectionFormat": "multi"
                                                 }
@@ -4133,7 +4133,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "files,main_image,user,district,rubric"
+                        "example": "files,images,main_image,user,district,rubric"
                     }
                 ],
                 "responses": {
@@ -4331,7 +4331,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "files,main_image,user,district,rubric"
+                        "example": "files,images,main_image,user,district,rubric"
                     }
                 ],
                 "responses": {

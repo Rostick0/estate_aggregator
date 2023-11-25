@@ -77,13 +77,15 @@ services:
             - '${PUSHER_METRICS_PORT:-9601}:9601'
         networks:
             - sail
-    scheduler:
-        image: laravel-www
-        container_name: laravel-scheduler
-        depends_on:
-            - laravel.test
+    cron:
+        build:
+            context: .
+            dockerfile: cron.dockerfile
+        container_name: cron
         volumes:
-            - .:/var/www/html
+            - '.:/var/www/html'
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
