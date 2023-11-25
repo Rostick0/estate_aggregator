@@ -17,7 +17,7 @@ class AlertUserController extends Controller
     {
         $where = [];
 
-        if (auth()->user()->role !== 'admin') {
+        if (auth()?->user()?->role !== 'admin') {
             $where[] = ['user_id', '=', auth()->id()];
         }
 
@@ -309,7 +309,7 @@ class AlertUserController extends Controller
         ]);
     }
 
-/**
+    /**
      * Delete
      * @OA\Delete (
      *     path="/api/alert-user/{id}",
