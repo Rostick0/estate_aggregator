@@ -67,17 +67,13 @@ class FilterSomeRequestUtil
 
             if (!is_array($values)) $values = [$values];
 
-            // dd($values);
             foreach ($values as $once) {
-                // dd($values);
                 if (!$once?->column_id ?? null && !$once->id ?? null) return;
+                
                 $builder->whereHas($key, function ($query) use ($once) {
                     $query->whereIn($once->column_id, QueryString::convertToArray($once->id));
                 });
             }
-            // $builder->whereHas($key, function ($query) use ($where) {
-            //     $query->whereIn($where);
-            // });
         });
 
         return $builder;
