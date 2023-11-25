@@ -111,9 +111,9 @@ class DatabaseSeeder extends Seeder
         }
 
         Flat::factory(100)
-        ->has(ImageRelat::factory(5), 'images')
-        ->has(FlatProperty::factory(5), 'flat_properties')
-        ->create();
+            ->has(ImageRelat::factory(5), 'images')
+            ->has(FlatProperty::factory(5), 'flat_properties')
+            ->create();
 
 
         Recruitment::factory(10)
