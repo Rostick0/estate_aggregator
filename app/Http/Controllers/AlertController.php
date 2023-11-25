@@ -183,6 +183,7 @@ class AlertController extends Controller
     {
         $data = Alert::create([
             ...$request->only($this->request_only),
+            'user_id' => auth()->id()
         ]);
 
         $this::extendsMutation($data, $request);

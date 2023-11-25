@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('country_id')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder'])->nullable();
             $table->enum('type', ['test'])->nullable();
+            $table->enum('status', ['active', 'archive', 'processing'])->default('processing');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

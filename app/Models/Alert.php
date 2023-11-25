@@ -29,6 +29,8 @@ class Alert extends Model
         'country_id',
         'role',
         'type',
+        'status',
+        'user_id',
     ];
 
     public function country(): BelongsTo
@@ -39,5 +41,10 @@ class Alert extends Model
     public function image(): MorphOne
     {
         return $this->morphOne(ImageRelat::class, 'image_relatsable');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

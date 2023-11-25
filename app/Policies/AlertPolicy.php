@@ -29,7 +29,7 @@ class AlertPolicy
      */
     public function create(User $user): bool
     {
-        return $user?->role === 'admin';
+        return array_search($user->role, ['realtor', 'agency', 'builder', 'admin']);
     }
 
     /**
@@ -37,7 +37,7 @@ class AlertPolicy
      */
     public function update(User $user, Alert $alert): bool
     {
-        return $user?->role === 'admin';
+        return $user?->role === 'admin' || $user->id === $alert->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class AlertPolicy
      */
     public function delete(User $user, Alert $alert): bool
     {
-        return $user?->role === 'admin';
+        return $user?->role === 'admin' || $user->id === $alert->user_id;
     }
 
     /**
