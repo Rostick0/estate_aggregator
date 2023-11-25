@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @OA\Schema(
@@ -40,9 +40,9 @@ class Alert extends Model
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 
-    public function image(): MorphOne
+    public function images(): MorphMany
     {
-        return $this->morphOne(ImageRelat::class, 'image_relatsable');
+        return $this->morphMany(ImageRelat::class, 'image_relatsable');
     }
 
     public function user(): BelongsTo

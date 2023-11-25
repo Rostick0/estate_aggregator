@@ -7,6 +7,7 @@ use App\Http\Requests\Alert\StoreAlertRequest;
 use App\Http\Requests\Alert\UpdateAlertRequest;
 use App\Models\Alert;
 use App\Utils\AccessUtil;
+use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -22,12 +23,13 @@ class AlertController extends Controller
 
     private static function extendsMutation($data, $request)
     {
-        $data->image()->delete();
-        if ($request->has('image')) {
+        $data->images()->delete();
+        if ($request->has('images')) {
+            $images = array_map(function ($image_id) {
+                return ['image_id' => $image_id];
+            }, QueryString::convertToArray($request->images));
 
-            $data->image()->create([
-                'image_id' => $request->image
-            ]);
+            $data->images()->createMany($images);
         }
     }
 
@@ -91,7 +93,7 @@ class AlertController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="country,image,user",
+     *          example="country,images,user",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -150,9 +152,9 @@ class AlertController extends Controller
      *                          example="null"
      *                      ),
      *                      @OA\Property(
-     *                          property="image",
-     *                          type="number",
-     *                          example="1"
+     *                          property="images",
+     *                          type="string",
+     *                          example="1,2"
      *                      ),
      *              )
      *         )
@@ -222,7 +224,7 @@ class AlertController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="country,image,user",
+     *          example="country,images,user",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -298,9 +300,9 @@ class AlertController extends Controller
      *                          example="null"
      *                      ),
      *                      @OA\Property(
-     *                          property="image",
-     *                          type="number",
-     *                          example="1"
+     *                          property="images",
+     *                          type="string",
+     *                          example="1,2"
      *                      ),
      *              )
      *         )
