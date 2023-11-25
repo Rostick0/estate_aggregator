@@ -23,7 +23,6 @@ class FlatPropertySeecer extends Seeder
             $type_ids = [171, 95, 142, 172, 173, 175, 177, 211, 160, 140, 139, 78, 79, 80, 81, 82, 83];
 
             return [
-                'value' => 'Да',
                 'property_value_id' => RandomUtil::array($type_ids),
             ];
         } else if ($random_filter == 3) { // select with value
