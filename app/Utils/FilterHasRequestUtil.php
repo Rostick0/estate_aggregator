@@ -70,9 +70,9 @@ class FilterHasRequestUtil
         if ($request->filterEQN) $data = FilterHasRequestUtil::template($request->filterEQN, $builder, $fillable, '=', 'NULL');
         if ($request->filterNEQN) $data = FilterHasRequestUtil::template($request->filterNEQN, $builder, $fillable, '!=', 'NULL');
 
-        if ($request->filterCEQ) $data = FilterHasRequestUtil::template($request->filterCEQ, $builder, $fillable, '>=');
+        if ($request->filterGEQ) $data = FilterHasRequestUtil::template($request->filterGEQ, $builder, $fillable, '>=');
         if ($request->filterLEQ) $data = FilterHasRequestUtil::template($request->filterLEQ, $builder, $fillable, '<=');
-        if ($request->filterCE) $data = FilterHasRequestUtil::template($request->filterCE, $builder, $fillable, '>');
+        if ($request->filterGE) $data = FilterHasRequestUtil::template($request->filterGE, $builder, $fillable, '>');
         if ($request->filterLE) $data = FilterHasRequestUtil::template($request->filterLE, $builder, $fillable, '<');
 
         if ($request->filterLIKE) $data = FilterHasRequestUtil::template($request->filterLIKE, $builder, $fillable, 'LIKE', 'LIKE');

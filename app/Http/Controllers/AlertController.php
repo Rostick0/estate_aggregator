@@ -148,7 +148,7 @@ class AlertController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="type",
-     *                          type="number",
+     *                          type="string",
      *                          example="null"
      *                      ),
      *                      @OA\Property(
@@ -296,7 +296,7 @@ class AlertController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="type",
-     *                          type="number",
+     *                          type="string",
      *                          example="null"
      *                      ),
      *                      @OA\Property(

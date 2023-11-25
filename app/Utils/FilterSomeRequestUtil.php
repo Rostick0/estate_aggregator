@@ -15,6 +15,7 @@ class FilterSomeRequestUtil
     {
         collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
             $values = Json::decode($value, false);
+            // dd($values);
 
             if (!empty($fillable) && array_search($key, $fillable) === false) return;
 
@@ -66,9 +67,9 @@ class FilterSomeRequestUtil
         if ($request->filterSomeEQN) $data = FilterSomeRequestUtil::template($request->filterSomeEQN, $builder, $fillable, '=', 'NULL');
         if ($request->filterSomeNEQN) $data = FilterSomeRequestUtil::template($request->filterSomeNEQN, $builder, $fillable, '!=', 'NULL');
 
-        if ($request->filterSomeCEQ) $data = FilterSomeRequestUtil::template($request->filterSomeCEQ, $builder, $fillable, '>=');
+        if ($request->filterSomeGEQ) $data = FilterSomeRequestUtil::template($request->filterSomeGEQ, $builder, $fillable, '>=');
         if ($request->filterSomeLEQ) $data = FilterSomeRequestUtil::template($request->filterSomeLEQ, $builder, $fillable, '<=');
-        if ($request->filterSomeCE) $data = FilterSomeRequestUtil::template($request->filterSomeCE, $builder, $fillable, '>');
+        if ($request->filterSomeGE) $data = FilterSomeRequestUtil::template($request->filterSomeGE, $builder, $fillable, '>');
         if ($request->filterSomeLE) $data = FilterSomeRequestUtil::template($request->filterSomeLE, $builder, $fillable, '<');
 
         if ($request->filterSomeLIKE) $data = FilterSomeRequestUtil::template($request->filterSomeLIKE, $builder, $fillable, 'LIKE', 'LIKE');
