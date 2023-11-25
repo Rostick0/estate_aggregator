@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Alert;
 use App\Models\ColRelat;
 use App\Models\Company;
 use App\Models\Flat;
@@ -126,6 +127,8 @@ class DatabaseSeeder extends Seeder
                 'role' => 'client',
                 'work_experience' => null
             ]);
+
+        Alert::factory(30)->create();
 
         MainBanner::factory(10)->create();
     }
