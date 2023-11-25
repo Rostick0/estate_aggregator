@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('alert_id')->references('id')->on('alerts')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('is_read')->default(0);
+            $table->timestamp('send_at');
+            $table->enum('status', ['active', 'hidden'])->default('hidden');
             $table->timestamps();
         });
     }

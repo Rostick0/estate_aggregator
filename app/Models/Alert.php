@@ -18,7 +18,9 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  *       @OA\Property(property="type", type="string", example="null"),
  *       @OA\Property(property="status", type="string", example="active"),
  *       @OA\Property(property="user_id", type="number", example="1"),
- *    )
+ *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
+ *   )
  * )
  */
 class Alert extends Model

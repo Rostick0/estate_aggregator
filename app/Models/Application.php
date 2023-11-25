@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  *       @OA\Property(property="email", type="string", example="email@mail.ru"),
  *       @OA\Property(property="text", type="string", example="Есть вопрос по поводу осмотра"),
  *       @OA\Property(property="messager_type", type="string", example="telegram"),
- *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
- *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
  *    )
  * )
  */

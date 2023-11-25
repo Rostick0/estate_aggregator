@@ -143,7 +143,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "country,image,user"
+                        "example": "country,images,user"
                     }
                 ],
                 "responses": {
@@ -195,12 +195,12 @@
                                         "example": "3000"
                                     },
                                     "type": {
-                                        "type": "number",
+                                        "type": "string",
                                         "example": "null"
                                     },
-                                    "image": {
-                                        "type": "number",
-                                        "example": "1"
+                                    "images": {
+                                        "type": "string",
+                                        "example": "1,2"
                                     }
                                 },
                                 "type": "object"
@@ -294,7 +294,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "country,image,user"
+                        "example": "country,images,user"
                     }
                 ],
                 "responses": {
@@ -373,12 +373,12 @@
                                         "example": "3000"
                                     },
                                     "type": {
-                                        "type": "number",
+                                        "type": "string",
                                         "example": "null"
                                     },
-                                    "image": {
-                                        "type": "number",
-                                        "example": "1"
+                                    "images": {
+                                        "type": "string",
+                                        "example": "1,2"
                                     }
                                 },
                                 "type": "object"
@@ -457,6 +457,372 @@
                         "name": "id",
                         "in": "path",
                         "description": "Alert id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/alert-user": {
+            "get": {
+                "tags": [
+                    "AlertUser"
+                ],
+                "summary": "Index",
+                "operationId": "a8a766b15376db8f7d22776368fedac1",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[alert_id]": null,
+                                "filter[user_id]": null,
+                                "filter[is_read]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "alert,user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "AlertUser"
+                ],
+                "summary": "Store",
+                "operationId": "1dd43ce5d17aef5e805a8d1a444773b5",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "alert_id"
+                                ],
+                                "properties": {
+                                    "data": {
+                                        "properties": {
+                                            "alert_id": {
+                                                "type": "number"
+                                            },
+                                            "user_id": {
+                                                "type": "number"
+                                            },
+                                            "country_id": {
+                                                "type": "number"
+                                            },
+                                            "role": {
+                                                "type": "string"
+                                            },
+                                            "send_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "alert_id": "1",
+                                    "user_id": null,
+                                    "country_id": null,
+                                    "role": "cleint",
+                                    "send_at": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The alert_id field is required"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/alert-user/{id}": {
+            "get": {
+                "tags": [
+                    "AlertUser"
+                ],
+                "summary": "Show",
+                "operationId": "22869ae8e2184940fa2502fa9d626a6d",
+                "parameters": [
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "alert,user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "AlertUser"
+                ],
+                "summary": "Update",
+                "operationId": "312ac686a466c358ab62e8b26693596a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "alert_id"
+                                ],
+                                "properties": {
+                                    "data": {
+                                        "properties": {
+                                            "alert_id": {
+                                                "type": "number"
+                                            },
+                                            "user_id": {
+                                                "type": "number"
+                                            },
+                                            "country_id": {
+                                                "type": "number"
+                                            },
+                                            "role": {
+                                                "type": "string"
+                                            },
+                                            "send_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "alert_id": "1",
+                                    "user_id": null,
+                                    "country_id": null,
+                                    "role": "cleint",
+                                    "send_at": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AlertUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The alert_id field is required"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "AlertUser"
+                ],
+                "summary": "Delete",
+                "operationId": "77e516d41255f8922fcf6f594451a740",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -5703,6 +6069,56 @@
                     "user_id": {
                         "type": "number",
                         "example": "1"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "AlertUserSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "alert_id": {
+                        "type": "number",
+                        "example": "Новое уведомление"
+                    },
+                    "user_id": {
+                        "type": "number",
+                        "example": "Описание"
+                    },
+                    "is_read": {
+                        "type": "boolean",
+                        "example": "0"
+                    },
+                    "send_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:07:17"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "active"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
                     }
                 },
                 "type": "object"
@@ -5735,10 +6151,12 @@
                     },
                     "created_at": {
                         "type": "string",
+                        "format": "date-time",
                         "example": "2022-06-28 06:06:17"
                     },
                     "updated_at": {
                         "type": "string",
+                        "format": "date-time",
                         "example": "2022-06-28 06:06:17"
                     }
                 },

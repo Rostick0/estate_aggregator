@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AlertController;
+use App\Http\Controllers\AlertUserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\AuthController;
@@ -100,6 +101,7 @@ Route::group(['middleware' => 'api'], function () {
         'collection' => CollectionController::class,
         'file' => FileController::class,
         'alert' => AlertController::class,
+        'alert-user' => AlertUserController::class,
         'recruitment' => RecruitmentController::class,
         'message' => MessageController::class
     ]);
