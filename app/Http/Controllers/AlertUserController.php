@@ -18,7 +18,7 @@ class AlertUserController extends Controller
         $where = [];
 
         if (auth()?->user()?->role !== 'admin') {
-            $where[] = ['user_id', '=', auth()->id()];
+            $where[] = ['user_id', '=', auth()?->id()];
         }
 
         return $where;

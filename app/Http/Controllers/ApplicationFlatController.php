@@ -2,19 +2,104 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Models\ApplicationFlat;
 use App\Http\Requests\ApplicationFlat\StoreApplicationFlatRequest;
 use App\Http\Requests\ApplicationFlat\UpdateApplicationFlatRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ApplicationFlatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private static function getWhere()
     {
-        //
+        $where = [];
+
+        if (auth()?->user()?->role !== 'admin') {
+            $where[] = ['contact_id', '=', auth()?->id(), 'flat'];
+        }
+
+        return $where;
+    }
+
+    /**
+     * Index
+     * @OA\get (
+     *     path="/api/application-flat",
+     *     tags={"ApplicationFlat"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="filter",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="object",
+     *              example={
+     *                 "filter[id]":null,
+     *                 "filter[flat_id]":null,
+     *                 "filter[is_information]":null,
+     *                 "filter[is_viewing]":null,
+     *                 "filter[name]":null,
+     *                 "filter[phone]":null,
+     *                 "filter[email]":null,
+     *                 "filter[text]":null,
+     *                 "filter[messager_type]":null,
+     *                 "filter[created_at]":null,
+     *                 "filter[updated_at]":null,
+     *               }
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page",
+     *          in="query",
+     *          example="2",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="limit",
+     *          description="Limit data",
+     *          in="query",
+     *          example="20",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="flat",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/ApplicationFlatSchema"
+     *              ),
+     *          )
+     *      ),
+     * )
+     */
+    public function index(Request $request)
+    {
+        return new JsonResponse(
+            Filter::all($request, new ApplicationFlat, [], $this::getWhere())
+        );
     }
 
     /**

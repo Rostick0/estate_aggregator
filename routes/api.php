@@ -70,6 +70,8 @@ Route::group(['middleware' => 'api'], function () {
         Route::post('application-flat', [ApplicationFlatController::class, 'store']);
     });
 
+    Route::apiResource('application-flat', ApplicationFlatController::class)->only(['index']);
+
     Route::get('main-banner', [MainBannerController::class, 'index']);
     Route::put('main-banner', [MainBannerController::class, 'update']);
 
