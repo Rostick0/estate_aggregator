@@ -1850,6 +1850,290 @@
                 ]
             }
         },
+        "/api/chat-user": {
+            "get": {
+                "tags": [
+                    "ChatUser"
+                ],
+                "summary": "Index",
+                "operationId": "29dadb0af3c689bb2d7d00b2b1dc6b5f",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[chat_id]": null,
+                                "filter[user_id]": null,
+                                "filter[is_favorite]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "chat,user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ChatUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/chat-user/{id}": {
+            "get": {
+                "tags": [
+                    "ChatUser"
+                ],
+                "summary": "Show",
+                "operationId": "c90dd93fee1ffbdb78897505a71e600d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "chat,user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ChatUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "ChatUser"
+                ],
+                "summary": "Update",
+                "operationId": "1bbcce5a8ff355f9aa1669362b340602",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "is_favorite"
+                                ],
+                                "properties": {
+                                    "is_favorite": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The name is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "phone": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The phone field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ChatUser"
+                ],
+                "summary": "Delete",
+                "operationId": "9a15567746c5e11c7c52379ebdb89376",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/collection": {
             "get": {
                 "tags": [
@@ -6536,6 +6820,37 @@
                     "chatsable_id": {
                         "type": "number",
                         "example": "1"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "ChatUserSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "chat_id": {
+                        "type": "number",
+                        "example": "2"
+                    },
+                    "user_id": {
+                        "type": "number",
+                        "example": "5"
+                    },
+                    "is_favorite": {
+                        "type": "boolean",
+                        "example": "false"
                     },
                     "created_at": {
                         "type": "string",
