@@ -9,6 +9,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * @OA\Schema(
+ *    schema="ChatSchema",
+ *       @OA\Property(property="id", type="number", example=1),
+ *       @OA\Property(property="chatsable_type", type="string", example="App\Models\Recruitment"),
+ *       @OA\Property(property="chatsable_id", type="number", example="1"),
+ *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
+ *    )
+ * )
+ */
 class Chat extends Model
 {
     use HasFactory;
