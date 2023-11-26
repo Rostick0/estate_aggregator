@@ -143,7 +143,7 @@ class FavoriteController extends Controller
      */
     public function store(StoreFavoriteRequest $request): JsonResponse
     {
-        $data = Favorite::create([
+        $data = Favorite::firstOrCreate([
             ...$request->only($this->request_only),
             'user_id' => $request->user()->id
         ]);
