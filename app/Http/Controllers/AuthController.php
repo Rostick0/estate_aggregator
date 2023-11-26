@@ -86,9 +86,9 @@ class AuthController extends Controller
     {
         $validated = $request->validated();
 
-        if (!$token = JWTAuth::attempt($validated)) return new JsonResponse(['message' => 'Incorrect login or password'], 401);
+        if (!$token = JWTAuth::attempt($validated)) return new JsonResponse(['message' => 'Неправильный логин или пароль'], 401);
 
-        if (AuthPolicy::login(auth()->user())) return new JsonResponse(['message' => 'The account is not confirmed'], 401);
+        if (AuthPolicy::login(auth()->user())) return new JsonResponse(['message' => 'Аккаунт не подтвержден'], 401);
 
         return $this::createNewToken($token);
     }
@@ -235,7 +235,7 @@ class AuthController extends Controller
     public function logout()
     {
         auth()?->logout();
-        return response()->json(['message' => 'User successfully signed out']);
+        return response()->json(['message' => 'Вы вышли из аккаунта']);
     }
 
     /**
