@@ -15,8 +15,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *       @OA\Property(property="height", type="string", example="100"),
  *       @OA\Property(property="path", type="string", example="http://site.com/url"),
  *       @OA\Property(property="type", type="string", example="png"),
- *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
- *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="user_id", type="number", example="1"),
+ *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
  *    )
  * )
  */

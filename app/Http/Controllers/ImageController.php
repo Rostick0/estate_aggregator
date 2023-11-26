@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
 use App\Http\Requests\Image\ShowImageRequest;
 use App\Models\Image;
 use App\Http\Requests\Image\StoreImageRequest;
@@ -12,6 +13,91 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ImageController extends Controller
 {
+    private static function getWhere()
+    {
+        $where = [];
+
+        // if (auth()?->user()?->role !== 'admin') {
+        //     $where[] = ['user_id', '=', auth()?->id()];
+        // }
+
+        return $where;
+    }
+
+    /**
+     * Index
+     * @OA\get (
+     *     path="/api/image",
+     *     tags={"Image"},
+     *       @OA\Parameter(
+     *          name="filter",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="object",
+     *              example={
+     *                 "filter[id]":null,
+     *                 "filter[name]":null,
+     *                 "filter[width]":null,
+     *                 "filter[height]":null,
+     *                 "filter[path]":null,
+     *                 "filter[type]":null,
+     *                 "filter[user_id]":null,
+     *                 "filter[created_at]":null,
+     *                 "filter[updated_at]":null,
+     *               }
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="limit",
+     *          description="Count",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="sort",
+     *          description="Sorting",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ), 
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="user",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/ImageSchema"
+     *              ),
+     *          )
+     *      ),
+     * )
+     */
+    public function index(Request $request)
+    {
+        return new JsonResponse(
+            Filter::all($request, new Image, [], $this::getWhere())
+        );
+    }
+
     /**
      * Store
      * @OA\Post (
@@ -116,15 +202,9 @@ class ImageController extends Controller
      */
     public function show(ShowImageRequest $request, int $id)
     {
-        $img = Storage::get(
-            Image::findOrFail($id)->path
-        );
-
-        $image = ImageManagerStatic::make($img);
-
-        $image->resize($request?->w ?? $image->width(), $request->h ?? $image->height());
-
-        return $image->response();
+        return new JsonResponse([
+            'data' => Filter::one($request, new Image, $id, $this::getWhere())
+        ]);
     }
 
     /**

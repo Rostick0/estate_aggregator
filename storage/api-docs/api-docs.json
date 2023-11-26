@@ -4180,6 +4180,83 @@
             }
         },
         "/api/image": {
+            "get": {
+                "tags": [
+                    "Image"
+                ],
+                "summary": "Index",
+                "operationId": "1635eef9b114be63a3ac64e90831a3ae",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[name]": null,
+                                "filter[width]": null,
+                                "filter[height]": null,
+                                "filter[path]": null,
+                                "filter[type]": null,
+                                "filter[user_id]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Count",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ImageSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Image"
@@ -7497,12 +7574,18 @@
                         "type": "string",
                         "example": "png"
                     },
+                    "user_id": {
+                        "type": "number",
+                        "example": "1"
+                    },
                     "created_at": {
                         "type": "string",
+                        "format": "date-time",
                         "example": "2022-06-28 06:06:17"
                     },
                     "updated_at": {
                         "type": "string",
+                        "format": "date-time",
                         "example": "2022-06-28 06:06:17"
                     }
                 },
