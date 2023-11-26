@@ -98,6 +98,8 @@ class CompanyController extends Controller
             $request->only($this->request_only)
         );
 
+        $this::extendsMutation($data, $request);
+
         return new JsonResponse([
             'data' => Filter::one($request, new Company, $id)
         ]);
