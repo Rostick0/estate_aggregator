@@ -2022,6 +2022,10 @@
                                     "is_reliable": {
                                         "type": "boolean",
                                         "example": "1"
+                                    },
+                                    "staffs": {
+                                        "type": "string",
+                                        "example": "10,11,12"
                                     }
                                 },
                                 "type": "object"

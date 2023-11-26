@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Filters\Filter;
 use App\Http\Requests\Company\UpdateCompanyRequest;
 use App\Models\Company;
+use App\Models\User;
 use App\Utils\AccessUtil;
+use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,23 @@ class CompanyController extends Controller
         'is_reliable',
     ];
 
-     /**
+    private static function extendsMutation($data, $request)
+    {
+        User::where('company_id', $data->id)
+            ->where('role', 'realtor')
+            ->update([
+                'company_id' => null
+            ]);
+        if ($request->has('staffs')) {
+            User::whereIn('id', QueryString::convertToArray($request->staffs))
+                ->where('role', 'realtor')
+                ->update([
+                    'company' => $data->id
+                ]);
+        }
+    }
+
+    /**
      * Update
      * @OA\Put (
      *     path="/api/company/{id}",
@@ -44,6 +62,11 @@ class CompanyController extends Controller
      *                          type="boolean",
      *                          example="1"
      *                      ),
+     *                      @OA\Property(
+     *                          property="staffs",
+     *                          type="string",
+     *                          example="10,11,12"
+     *                      ),
      *              )
      *         )
      *      ),
@@ -65,7 +88,8 @@ class CompanyController extends Controller
      *      )
      * )
      */
-    public function update(UpdateCompanyRequest $request, int $id) {
+    public function update(UpdateCompanyRequest $request, int $id)
+    {
         $data = Company::findOrFail($id);
 
         if (AccessUtil::cannot('update', $data)) return AccessUtil::errorMessage();
