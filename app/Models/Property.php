@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *    schema="PropertySchema",
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="name", type="string", example="Расположение"),
+ *       @OA\Property(property="status", type="string", example="active"),
  *    )
  * )
  */
@@ -22,7 +23,8 @@ class Property extends Model
 
     protected $fillable = [
         'name',
-        'type'
+        'type',
+        'status'
     ];
 
     public function property_values(): HasMany {

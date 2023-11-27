@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('type', ['select', 'checkbox', 'radio', 'input']);
+            $table->enum('status', ['active', 'archive'])->default('active');
         });
     }
 
