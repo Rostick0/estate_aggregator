@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserUpdateRequest extends FormRequest
 {
@@ -22,6 +23,12 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required|max:255',
+            'email' => ['nullable', 'email', 'unique:users,email,' . $this->id, 'max:255'],
+            'phone' => 'required|max:30',
+            'avatar' => 'nullable|' . Rule::exists('images', 'id'),
+            'country_id' => 'nullable|' . Rule::exists('countries', 'id'),
+            'type_social' => 'nullable|in:whatsapp,viber,telegram',
             'is_confirm' => 'required'
         ];
     }

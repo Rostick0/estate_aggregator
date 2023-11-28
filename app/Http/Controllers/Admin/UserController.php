@@ -11,6 +11,12 @@ use Illuminate\Http\JsonResponse;
 class UserController extends Controller
 {
     private $request_only = [
+        'name',
+        'email',
+        'phone',
+        'avatar',
+        'country_id',
+        'type_social',
         'is_confirm',
     ];
 
@@ -33,7 +39,37 @@ class UserController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                      required={"is_confirm"},
+     *                      required={"is_confirm", "name", "phone"},
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="Дмитрий",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string",
+     *                          example="myemail@gmail.com"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="phone",
+     *                          type="number",
+     *                          example="79299999999"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="avatar",
+     *                          description="Добавление по id картинки, наример: 1",
+     *                          type="string",
+     *                      ),                     
+     *                      @OA\Property(
+     *                          property="country_id",
+     *                          type="number",
+     *                          example="1"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="type_social",
+     *                          type="enum: whatsapp,viber,telegram",
+     *                          example="whatsapp"
+     *                      ),
      *                      @OA\Property(
      *                          property="is_confirm",
      *                          type="boolean",
