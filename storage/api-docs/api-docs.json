@@ -29,9 +29,35 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "is_confirm"
+                                    "is_confirm",
+                                    "name",
+                                    "phone"
                                 ],
                                 "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Дмитрий"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "myemail@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "number",
+                                        "example": "79299999999"
+                                    },
+                                    "avatar": {
+                                        "description": "Добавление по id картинки, наример: 1",
+                                        "type": "string"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "type_social": {
+                                        "type": "enum: whatsapp,viber,telegram",
+                                        "example": "whatsapp"
+                                    },
                                     "is_confirm": {
                                         "type": "boolean",
                                         "example": "1"
@@ -7728,6 +7754,10 @@
                     "name": {
                         "type": "string",
                         "example": "Расположение"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "active"
                     }
                 },
                 "type": "object"
