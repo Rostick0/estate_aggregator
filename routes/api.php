@@ -57,7 +57,7 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::put('/user/{id}', [AdminUserController::class, 'update']);
+        Route::apiResource('/user', AdminUserController::class)->only(['update']);
     });
 
     Route::get('country', [CountryController::class, 'index']);

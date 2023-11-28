@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => ['nullable', 'email', 'unique:users,email,' . $this->id, 'max:255'],
+            'email' => ['nullable', 'email', 'unique:users,email,' . $this->user, 'max:255'],
             'phone' => 'required|max:30',
             'avatar' => 'nullable|' . Rule::exists('images', 'id'),
             'country_id' => 'nullable|' . Rule::exists('countries', 'id'),
