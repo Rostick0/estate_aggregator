@@ -14,7 +14,7 @@ class UserController extends Controller
         'name',
         'email',
         'phone',
-        'avatar',
+        'image_id',
         'country_id',
         'type_social',
         'is_confirm',
@@ -59,7 +59,7 @@ class UserController extends Controller
      *                          example="79299999999"
      *                      ),
      *                      @OA\Property(
-     *                          property="avatar",
+     *                          property="image_id",
      *                          description="Добавление по id картинки, наример: 1",
      *                          type="string",
      *                      ),                     

@@ -26,7 +26,7 @@ class UserUpdateRequest extends FormRequest
             'name' => 'required|max:255',
             'email' => ['nullable', 'email', 'unique:users,email,' . $this->user, 'max:255'],
             'phone' => 'required|max:30',
-            'avatar' => 'nullable|' . Rule::exists('images', 'id'),
+            'image_id' => 'nullable|' . Rule::exists('images', 'id'),
             'country_id' => 'nullable|' . Rule::exists('countries', 'id'),
             'type_social' => 'nullable|in:whatsapp,viber,telegram',
             'is_confirm' => 'required',

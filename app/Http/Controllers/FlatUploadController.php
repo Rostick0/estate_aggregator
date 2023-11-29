@@ -88,7 +88,7 @@ class FlatUploadController extends Controller
                 //     //     'name' => $item->contact->name,
                 //     //     'email' => $item->contact->email,
                 //     //     'phone' => $item->contact->phone,
-                //     //     'avatar' => $item->contact->photo,
+                //     //     'image_id' => $item->contact->photo,
                 //     // ],
                 //     'user' => $item->contact,
                 //     'images' => $item->images,
@@ -111,7 +111,7 @@ class FlatUploadController extends Controller
                                 'name' => $item?->contact?->name,
                                 'email' => $item?->contact?->email,
                                 'phone' => $item?->contact?->phone,
-                                'avatar' => EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
+                                'image_id' => EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
                             ]);
                         } else {
                             $user = User::create([
@@ -120,7 +120,7 @@ class FlatUploadController extends Controller
                                 'email' => $item?->contact?->email,
                                 'password' => Hash::make(Str::random(random_int(10, 14))),
                                 'phone' => $item?->contact?->phone,
-                                'avatar' =>  EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
+                                'image_id' =>  EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
                             ]);
                         }
 
