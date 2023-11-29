@@ -35,6 +35,79 @@ class CompanyController extends Controller
     }
 
     /**
+     * Index
+     * @OA\get (
+     *     path="/api/company",
+     *     tags={"Company"},
+     *     @OA\Parameter(
+     *          name="filter",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="object",
+     *              example={
+     *                 "filter[id]":null,
+     *                 "filter[banner]":null,
+     *                 "filter[is_reliable]":null,
+     *                 "filter[created_at]":null,
+     *                 "filter[updated_at]":null,
+     *               }
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *          name="sort",
+     *          description="Сортировка по параметру",
+     *          in="query",
+     *          example="id",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page",
+     *          in="query",
+     *          example="2",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="limit",
+     *          description="Limit data",
+     *          in="query",
+     *          example="20",
+     *          @OA\Schema(
+     *              type="number",
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="chat_users,last_message",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/ChatSchema"
+     *              ),
+     *          )
+     *      ),
+     * )
+     */
+    public function index(Request $request)
+    {
+        return new JsonResponse(
+            Filter::all($request, new Company)
+        );
+    }
+
+    /**
      * Update
      * @OA\Put (
      *     path="/api/company/{id}",
