@@ -24,7 +24,7 @@ class Property extends Model
     protected $fillable = [
         'name',
         'type',
-        'status'
+        'is_active'
     ];
 
     public function property_values(): HasMany {
