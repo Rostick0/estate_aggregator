@@ -19,7 +19,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *       @OA\Property(property="name", type="string", example="Jonh"),
  *       @OA\Property(property="email", type="string", example="john@test.com"),
  *       @OA\Property(property="email_verified_at", type="number", example=0),
- *       @OA\Property(property="avatar", type="number", example="1"),
+ *       @OA\Property(property="image_id", type="number", example="1"),
  *       @OA\Property(property="role", type="string", example="admin"),
  *       @OA\Property(property="phone", type="string", example="799999999"),
  *       @OA\Property(property="country_id", type="number", example="5"),
@@ -51,7 +51,7 @@ class User extends Authenticatable implements JWTSubject
         'password',
         'phone',
         'role',
-        'avatar',
+        'image_id',
         'country_id',
         'is_confirm',
         'type_social',
@@ -118,7 +118,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function image(): BelongsTo
     {
-        return $this->belongsTo(Image::class, 'avatar', 'id');
+        return $this->belongsTo(Image::class, 'image_id', 'id');
     }
 
     public function flat_owners(): HasMany

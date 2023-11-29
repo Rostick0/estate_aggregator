@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('phone')->unique();
-            $table->string('avatar')->nullable();
+            $table->string('image_id')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder', 'admin'])->default('client');
             $table->integer('country_id')->nullable();
             $table->boolean('is_confirm')->default(false);

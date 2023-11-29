@@ -6894,7 +6894,7 @@
                                         "type": "number",
                                         "example": "79299999999"
                                     },
-                                    "avatar": {
+                                    "image": {
                                         "description": "Добавление по id картинки, наример: 1",
                                         "type": "string"
                                     },
@@ -7985,7 +7985,7 @@
                         "type": "number",
                         "example": 0
                     },
-                    "avatar": {
+                    "image_id": {
                         "type": "number",
                         "example": "1"
                     },
