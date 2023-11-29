@@ -61,6 +61,19 @@
                                     "is_confirm": {
                                         "type": "boolean",
                                         "example": "1"
+                                    },
+                                    "about": {
+                                        "type": "string",
+                                        "example": "aboba"
+                                    },
+                                    "work_experience": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "1.5"
+                                    },
+                                    "company_id": {
+                                        "type": "number",
+                                        "example": "1"
                                     }
                                 },
                                 "type": "object"
@@ -6814,6 +6827,15 @@
                                     "type_social": {
                                         "type": "enum: whatsapp,viber,telegram",
                                         "example": "whatsapp"
+                                    },
+                                    "about": {
+                                        "type": "string",
+                                        "example": "aboba"
+                                    },
+                                    "work_experience": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "1.5"
                                     },
                                     "collection_relats": {
                                         "description": "Коллекции связаные с пользователем",

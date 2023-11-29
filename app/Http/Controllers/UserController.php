@@ -22,6 +22,7 @@ class UserController extends Controller
         'avatar',
         'country_id',
         'type_social',
+        'about',
         'work_experience',
     ];
 
@@ -213,6 +214,16 @@ class UserController extends Controller
      *                          property="type_social",
      *                          type="enum: whatsapp,viber,telegram",
      *                          example="whatsapp"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="about",
+     *                          type="string",
+     *                          example="aboba",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="work_experience",
+     *                          type="float",
+     *                          example="1.5",
      *                      ),
      *                      @OA\Property(
      *                          property="collection_relats",

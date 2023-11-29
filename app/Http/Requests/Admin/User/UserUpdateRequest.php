@@ -29,7 +29,8 @@ class UserUpdateRequest extends FormRequest
             'avatar' => 'nullable|' . Rule::exists('images', 'id'),
             'country_id' => 'nullable|' . Rule::exists('countries', 'id'),
             'type_social' => 'nullable|in:whatsapp,viber,telegram',
-            'is_confirm' => 'required'
+            'is_confirm' => 'required',
+            'company_id' => 'nullable|' . Rule::exists('companies', 'id'),
         ];
     }
 }

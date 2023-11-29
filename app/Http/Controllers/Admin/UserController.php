@@ -18,6 +18,9 @@ class UserController extends Controller
         'country_id',
         'type_social',
         'is_confirm',
+        'about',
+        'work_experience',
+        'company_id',
     ];
 
     /**
@@ -73,6 +76,21 @@ class UserController extends Controller
      *                      @OA\Property(
      *                          property="is_confirm",
      *                          type="boolean",
+     *                          example="1",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="about",
+     *                          type="string",
+     *                          example="aboba",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="work_experience",
+     *                          type="float",
+     *                          example="1.5",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="company_id",
+     *                          type="number",
      *                          example="1",
      *                      ),
      *              )
