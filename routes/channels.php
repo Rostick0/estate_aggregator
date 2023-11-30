@@ -24,3 +24,7 @@ Broadcast::channel('message.{user_id}', function (User $user, $user_id) {
     // return true;
     return (int) $user->id === (int) $user_id;
 });
+
+Broadcast::channel('alert.{user_id}', function (User $user, $user_id) {
+    return (int) $user->id === (int) $user_id;
+});
