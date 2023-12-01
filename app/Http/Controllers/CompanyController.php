@@ -84,7 +84,7 @@ class CompanyController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="chat_users,last_message",
+     *          example="owner,staffs",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -94,7 +94,7 @@ class CompanyController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/ChatSchema"
+     *                  ref="#/components/schemas/CompanySchema"
      *              ),
      *          )
      *      ),

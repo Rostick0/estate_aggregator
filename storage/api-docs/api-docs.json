@@ -46,7 +46,7 @@
                                         "type": "number",
                                         "example": "79299999999"
                                     },
-                                    "avatar": {
+                                    "image_id": {
                                         "description": "Добавление по id картинки, наример: 1",
                                         "type": "string"
                                     },
@@ -2559,7 +2559,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "chat_users,last_message"
+                        "example": "owner,staffs"
                     }
                 ],
                 "responses": {
@@ -2570,7 +2570,7 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/ChatSchema"
+                                            "$ref": "#/components/schemas/CompanySchema"
                                         }
                                     },
                                     "type": "object"
