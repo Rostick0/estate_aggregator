@@ -29,7 +29,7 @@ class FlatPolicy
      */
     public function create(User $user): bool
     {
-        return $user?->role === 'admin';
+        return array_search($user->role, ['realtor', 'agency', 'builder', 'admin']);
     }
 
     /**
