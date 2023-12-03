@@ -97,7 +97,7 @@ class FlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,is_owner,recruitments,is_recruitment",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,recruitments,is_recruitment",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -398,7 +398,7 @@ class FlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,is_owner,recruitments,is_recruitment",
+     *          example="flat_properties,object,type,country,district,currency,square_land_unit,building_type,user,files,recruitments,is_recruitment",
      *          @OA\Schema(
      *              type="string",
      *          )

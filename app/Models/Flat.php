@@ -148,11 +148,6 @@ class Flat extends Model
         return $this->morphMany(FileRelationship::class, 'file_relable');
     }
 
-    public function is_owner()
-    {
-        return $this->hasOne(FlatOwner::class, 'id', 'flat_id')->where('user_id', auth()?->id());
-    }
-
     public function recruitments()
     {
         return $this->hasMany(RecruitmentFlat::class, 'flat_id', 'id');
@@ -160,7 +155,7 @@ class Flat extends Model
 
     public function is_recruitment()
     {
-        return $this->hasOne(RecruitmentFlat::class, 'id', 'flat_id')
+        return $this->hasOne(RecruitmentFlat::class, 'flat_id', 'id')
             ->whereHas('recruitment', function ($query) {
                 $query->where('user_id', auth()?->id());
             });
