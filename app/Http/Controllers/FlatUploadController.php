@@ -39,8 +39,6 @@ class FlatUploadController extends Controller
             file_get_contents($requst->file)
         );
 
-        // dd(count($xml_data->objects->object));
-
         LazyCollection::make(function () use ($xml_data) {
             foreach ($xml_data->objects->object as $item) {
                 yield EmptyUtil::clearValues(
@@ -49,59 +47,12 @@ class FlatUploadController extends Controller
                         true
                     )
                 );
-                // yield (object) [
-                //     // 'data' => [
-                //     //     'id $item?->id,
-                //     //     'object_id $item?->object_id,
-                //     //     'type_id' => $item?->type_id,
-                //     //     'country_id' => $item?->country_id,
-                //     //     'district_id' => $item?->district_id,
-                //     //     'district' => $item?->district,
-                //     //     'address' => $item?->address,
-                //     //     'longitude' => $item?->longitude,
-                //     //     'latitude' => $item?->latitude,
-                //     //     'currency_id' => $item?->currency_id,
-                //     //     'price' => $item?->price,
-                //     //     'price_per_meter' => $item?->price_per_meter,
-                //     //     'price_day' => $item?->price_day,
-                //     //     'price_week' => $item?->price_week,
-                //     //     'price_month' => $item?->price_month,
-                //     //     'not_show_price' => $item?->not_show_price == 'None' ? 0 : 1,
-                //     //     'rooms' => $item?->rooms,
-                //     //     'bedrooms' => $item?->bedrooms,
-                //     //     'bathrooms' => $item?->bathrooms,
-                //     //     'square' => (int) $item?->square,
-                //     //     'square_land' => $item?->square_land,
-                //     //     'square_land_unit' => $item?->square_land_unit,
-                //     //     'floor' => $item?->floor,
-                //     //     'total_floor' => $item?->total_floor,
-                //     //     'building_type' => $item?->building_type,
-                //     //     'building_date' => $item?->building_date,
-                //     //     'contact_id' => $item?->contact_id,
-                //     //     'specialtxt' => $item?->specialtxt,
-                //     //     'description' => $item?->description,
-                //     //     'filename' => $item?->filename,
-                //     //     'tour_link' => $item?->tour_link,
-                //     // ],
-                //     // 'user' => [
-                //     //     'id' => $item->contact_id,
-                //     //     'name' => $item->contact->name,
-                //     //     'email' => $item->contact->email,
-                //     //     'phone' => $item->contact->phone,
-                //     //     'image_id' => $item->contact->photo,
-                //     // ],
-                //     'user' => $item->contact,
-                //     'images' => $item->images,
-                //     'properties' => $item->properties
-                // ];
             }
         })
             ->chunk(250)
             ->each(function ($elem) {
                 $elem->each(function ($item) {
                     try {
-                        // if ($item->id == 3768540) dd((int) $item?->contact_id);
-                        // if ((int) $item?->contact_id != $item?->contact_id) return;
                         if ((int) $item?->contact_id === 0 || empty($item->contact)) return;
 
                         $item->contact = (object) $item->contact;
@@ -170,25 +121,26 @@ class FlatUploadController extends Controller
                             ]
                         );
 
-                        $flat->files()->delete();
-                        // if (!empty($item->images)) {
-                        //     $item->images = (object) $item?->images;
-                        //     if (!empty($item?->images->image)) {
-                        //         foreach ($item?->images->image as $image) {
-                        //             $image = (object) $image;
+                        $flat->images()->delete();
+                        if (!empty($item->images)) {
+                            $item->images = (object) $item?->images;
+                            if (!empty($item?->images->image)) {
+                                foreach ($item?->images->image as $image) {
+                                    $image = (object) $image;
 
-                        //             $file = Image::firstOrCreate([
-                        //                 'path' => (string) $image->filename[0],
-                        //                 'type' => 'image/' . pathinfo($image->filename[0], PATHINFO_EXTENSION),
-                        //                 'user_id' => (int) $item?->contact_id
-                        //             ]);
+                                    $file = Image::firstOrCreate([
+                                        'name' => Str::random(10),
+                                        'path' => (string) $image->filename[0],
+                                        'type' => 'image/' . pathinfo($image->filename[0], PATHINFO_EXTENSION),
+                                        'user_id' => (int) $item?->contact_id
+                                    ]);
 
-                        //             $flat->files()->create([
-                        //                 'file_id' => $file->id
-                        //             ]);
-                        //         }
-                        //     }
-                        // }
+                                    $flat->files()->create([
+                                        'file_id' => $file->id
+                                    ]);
+                                }
+                            }
+                        }
 
                         $flat->flat_properties()->delete();
                         if (!empty($item->properties)) {

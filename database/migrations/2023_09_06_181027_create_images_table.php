@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('width');
-            $table->integer('height');
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
             $table->string('path');
             $table->string('type');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -390,9 +390,9 @@ class AlertController extends Controller
      */
     public function destroy(int $id)
     {
-        $partner = Alert::findOrFail($id);
+        $alert = Alert::findOrFail($id);
 
-        if (AccessUtil::cannot('delete', $partner)) return AccessUtil::errorMessage();
+        if (AccessUtil::cannot('delete', $alert)) return AccessUtil::errorMessage();
 
         Alert::destroy($id);
 
