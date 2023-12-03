@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  *    schema="RecruitmentSchema",
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="name", type="string", example="Jonh"),
+ *       @OA\Property(property="user_id", type="number", example=1),
  *       @OA\Property(property="key", type="string", example="3c35gd5gbm5"),
  *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),

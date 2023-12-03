@@ -153,6 +153,19 @@ class Flat extends Model
         return $this->hasOne(FlatOwner::class, 'id', 'flat_id')->where('user_id', auth()?->id());
     }
 
+    public function recruitments()
+    {
+        return $this->hasMany(RecruitmentFlat::class, 'flat_id', 'id');
+    }
+
+    public function is_recruitment()
+    {
+        return $this->hasOne(RecruitmentFlat::class, 'id', 'flat_id')
+            ->recruitments('user', function ($query) {
+                $query->where('user_id', auth()?->id());
+            });
+    }
+
     public static function propertiesCreate(Flat $flat, string $column, string $value, int|null $property_id, int|null $property_value_id): void
     {
         $flat->flat_properties()->create([
