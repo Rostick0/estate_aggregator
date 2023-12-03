@@ -161,8 +161,8 @@ class Flat extends Model
     public function is_recruitment()
     {
         return $this->hasOne(RecruitmentFlat::class, 'id', 'flat_id')
-            ->whereHas('user', function ($query) {
-                $query->where('user_id', auth()?->id());
+            ->whereHas('recruitment', function ($query) {
+                $query->where('user_id', 1 ?? auth()?->id());
             });
     }
 
