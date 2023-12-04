@@ -23,8 +23,8 @@ class StoreCollectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'collection_name' => 'required',
             'value' => 'required',
+            'type' => 'required',
         ];
     }
 }
