@@ -12,8 +12,8 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
-    'accepted' => 'The :attribute must be accepted.',
+    
+    'accepted' => 'Поле :attribute должено быть принято.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
     'active_url' => 'The :attribute is not a valid URL.',
     'after' => 'The :attribute must be a date after :date.',
@@ -127,8 +127,8 @@ return [
     'timezone' => 'The :attribute must be a valid timezone.',
     'unique' => 'Поле :attribute уже имеет такое значение.',
     'uploaded' => 'The :attribute failed to upload.',
-    'url' => 'The :attribute must be a valid URL.',
-    'uuid' => 'The :attribute must be a valid UUID.',
+    'url' => 'Поле :attribute не валидно URL.',
+    'uuid' => 'Поле :attribute не валидно UUID.',
 
     /*
     |--------------------------------------------------------------------------
