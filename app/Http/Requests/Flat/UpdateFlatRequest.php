@@ -12,6 +12,7 @@ class UpdateFlatRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        return true;
         return auth()->check();
     }
 
@@ -23,30 +24,30 @@ class UpdateFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'object_id' => 'required|numeric|' . Rule::exists('object_flats', 'id'),
-            'type_id' => 'required|numeric|' . Rule::exists('flat_types', 'id'),
-            'country_id' => 'required|numeric|' . Rule::exists('countries', 'id'),
+            'title' => 'string',
+            'object_id' => 'numeric|' . Rule::exists('object_flats', 'id'),
+            'type_id' => 'numeric|' . Rule::exists('flat_types', 'id'),
+            'country_id' => 'numeric|' . Rule::exists('countries', 'id'),
             'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
             'district' => 'string',
             'address' => 'string',
             'longitude' => 'nullable',
             'latitude' => 'nullable',
-            'currency_id' => 'required|numeric|' . Rule::exists('currencies', 'id'),
-            'price' => '',
+            'currency_id' => 'numeric|' . Rule::exists('currencies', 'id'),
+            'price' => 'numeric',
             'price_day' => '',
             'price_week' => '',
             'price_month' => '',
             'not_show_price' => 'boolean',
-            'rooms' => 'required|numeric',
-            'bedrooms' => 'required|numeric',
-            'bathrooms' => 'required|numeric',
+            'rooms' => 'numeric',
+            'bedrooms' => 'numeric',
+            'bathrooms' => 'numeric',
             'square' => '',
             'square_land' => '',
             'square_land_unit' => 'numeric|' . Rule::exists('square_land_units', 'id'),
-            'floor' => 'required|numeric',
-            'total_floor' => 'required|numeric',
-            'building_type' => 'required|numeric|' . Rule::exists('building_types', 'id'),
+            'floor' => 'numeric',
+            'total_floor' => 'numeric',
+            'building_type' => 'numeric|' . Rule::exists('building_types', 'id'),
             'building_date' => 'string',
             'specialtxt' => 'string|max:255',
             'description' => 'string|max:65536',

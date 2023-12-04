@@ -123,7 +123,7 @@ return [
         'array' => 'The :attribute must contain :size items.',
     ],
     'starts_with' => 'The :attribute must start with one of the following: :values.',
-    'string' => 'The :attribute must be a string.',
+    'string' => 'Поле :attribute должно быть строкой.',
     'timezone' => 'The :attribute must be a valid timezone.',
     'unique' => 'Поле :attribute уже имеет такое значение.',
     'uploaded' => 'The :attribute failed to upload.',

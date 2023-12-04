@@ -666,12 +666,9 @@ class FlatController extends Controller
     {
         $flat = Flat::findOrFail($id);
 
-        if (!auth()->check() || auth()->user()->cannot('update', $flat)) return new JsonResponse(
-            [
-                'message' => 'No access'
-            ],
-            403
-        );
+        if (!auth()->check() || auth()->user()->cannot('update', $flat)) return new JsonResponse([
+            'message' => 'No access'
+        ], 403);
 
         $values = $request->only([
             'title',
@@ -752,7 +749,7 @@ class FlatController extends Controller
      *      )
      * )
      */
-     public function destroy(int $id)
+    public function destroy(int $id)
     {
         $flat = Flat::findOrFail($id);
 
