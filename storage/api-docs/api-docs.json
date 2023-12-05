@@ -781,21 +781,8 @@
                                 "properties": {
                                     "data": {
                                         "properties": {
-                                            "alert_id": {
+                                            "is_read": {
                                                 "type": "number"
-                                            },
-                                            "user_id": {
-                                                "type": "number"
-                                            },
-                                            "country_id": {
-                                                "type": "number"
-                                            },
-                                            "role": {
-                                                "type": "string"
-                                            },
-                                            "send_at": {
-                                                "type": "string",
-                                                "format": "date-time"
                                             }
                                         },
                                         "type": "object"
@@ -803,11 +790,7 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "alert_id": "1",
-                                    "user_id": null,
-                                    "country_id": null,
-                                    "role": "cleint",
-                                    "send_at": null
+                                    "is_read": 1
                                 }
                             }
                         }

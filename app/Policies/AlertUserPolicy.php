@@ -45,7 +45,7 @@ class AlertUserPolicy
      */
     public function delete(User $user, AlertUser $alertUser): bool
     {
-        return $user->id === $alertUser->user_id;
+        return $user->role === 'admin' || $user->id === $alertUser->user_id;
     }
 
     /**

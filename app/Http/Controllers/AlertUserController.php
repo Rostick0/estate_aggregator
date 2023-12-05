@@ -244,33 +244,13 @@ class AlertUserController extends Controller
      *                  @OA\Property(
      *                      property="data",
      *                      type="object",
-     *                     @OA\Property(
-     *                          property="alert_id",
+     *                      @OA\Property(
+     *                          property="is_read",
      *                          type="number"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="user_id",
-     *                          type="number"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="country_id",
-     *                          type="number"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="role",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="send_at",
-     *                          type="datetime"
      *                      ),
      *                 ),
      *                 example={
-     *                     "alert_id": "1",
-     *                     "user_id": null,
-     *                     "country_id": null,
-     *                     "role": "cleint",
-     *                     "send_at": null,
+     *                     "is_read": 1,
      *                }
      *             )
      *         )
