@@ -8,6 +8,7 @@ use App\Models\Alert;
 use App\Models\AlertUser;
 use App\Models\User;
 use App\Utils\AccessUtil;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -165,10 +166,10 @@ class AlertUserController extends Controller
      */
     public function store(StoreAlertUserRequest $request)
     {
-        if ($request->user_id) {
-            AlertUser::create([
+        if ($request->has('user_id')) {
+            AlertUser::create(
                 $request->only(['alert_id', 'user_id', 'send_at'])
-            ]);
+            );
         } else {
             $alert = Alert::find($request->alert_id);
             $user = User::query();
@@ -176,10 +177,12 @@ class AlertUserController extends Controller
             if ($alert->country_id) $user->where('country_id', $alert->country_id);
             if ($alert->role) $user->where('role', $alert->role);
 
-            $user->alert()->create([
-                'alert_id' => $request->alert_id,
-                'send_at' => $request?->send_at ?? null
-            ]);
+            $user->lazy()->each(function ($user_item) use ($request) {
+                $user_item->alert()->create([
+                    'alert_id' => $request->alert_id,
+                    'send_at' => $request?->send_at ?? Carbon::now()
+                ]);
+            });
         }
 
         return new JsonResponse([
