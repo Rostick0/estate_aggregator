@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\Filter;
+use App\Http\Requests\AlertUser\UpdateAlertUserRequest;
 use App\Http\Requests\AlertUserRequest\StoreAlertUserRequest;
 use App\Models\Alert;
 use App\Models\AlertUser;
@@ -20,6 +21,7 @@ class AlertUserController extends Controller
 
         if (auth()?->user()?->role !== 'admin') {
             $where[] = ['user_id', '=', auth()?->id()];
+            $where[] = ['status', '!=', 'pending'];
         }
 
         return $where;
@@ -251,9 +253,15 @@ class AlertUserController extends Controller
      *                          property="is_read",
      *                          type="number"
      *                      ),
+     *                      @OA\Property(
+     *                          property="status",
+     *                          type="array",
+     *                          @OA\Items(type="enum", enum={"active", "archive", "hidden"}),
+     *                         ),
      *                 ),
      *                 example={
      *                     "is_read": 1,
+     *                     "status": "active"
      *                }
      *             )
      *         )
@@ -277,14 +285,14 @@ class AlertUserController extends Controller
      *      )
      * )
      */
-    public function update(Request $request, int $id)
+    public function update(UpdateAlertUserRequest $request, int $id)
     {
         $data = AlertUser::findOrFail($id);
 
         if (AccessUtil::cannot('update', $data)) return AccessUtil::errorMessage();
 
         $data->update(
-            $request->only('is_read')
+            $request->only(['is_read', 'status'])
         );
 
         return new JsonResponse([

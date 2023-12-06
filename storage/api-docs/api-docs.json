@@ -783,6 +783,17 @@
                                         "properties": {
                                             "is_read": {
                                                 "type": "number"
+                                            },
+                                            "status": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "enum",
+                                                    "enum": [
+                                                        "active",
+                                                        "archive",
+                                                        "hidden"
+                                                    ]
+                                                }
                                             }
                                         },
                                         "type": "object"
@@ -790,7 +801,8 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "is_read": 1
+                                    "is_read": 1,
+                                    "status": "active"
                                 }
                             }
                         }
