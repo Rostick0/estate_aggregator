@@ -77,7 +77,7 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::get('object-flat', [ObjectFlatController::class, 'index']);
 
-    Route::post('/flat/upload', [FlatUploadController::class, 'upload']);
+    Route::post('/flat-upload', [FlatUploadController::class, 'upload']);
 
     Route::post('file', [FileController::class, 'store'])->middleware('throttle:500,1');
 

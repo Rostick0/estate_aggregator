@@ -33,6 +33,42 @@ class FlatUploadController extends Controller
         Flat::propertiesCreate($flat, 'value_enum', $property_values,  $property_id,  $property_value_id);
     }
 
+    /**
+     * Store
+     * @OA\Post (
+     *     path="/api/flat-upload",
+     *     tags={"Flat"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                      required={"file"},
+     *                      @OA\Property(
+     *                          property="file",
+     *                          type="file",
+     *                      ),
+     *              )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string",
+     *                  example="success"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The file field is required."),
+     *          )
+     *      )
+     * )
+     */
     public function upload(UploadFlatRequest $requst)
     {
         $xml_data = new SimpleXMLElement(
@@ -164,9 +200,7 @@ class FlatUploadController extends Controller
             });
 
         return new JsonResponse([
-            'data' => [
-                'message' => 'success'
-            ]
+            'message' => 'success'
         ]);
     }
 }
