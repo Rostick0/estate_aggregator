@@ -3844,16 +3844,18 @@
                                         "example": "Описание, которые покорит сердца покупателя"
                                     },
                                     "filename": {
+                                        "description": "Ссылка на онлайн видео",
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
                                     "tour_link": {
+                                        "description": "Ссылка на онлайн тур",
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
                                     "status": {
                                         "type": "enum: active, archive",
-                                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                        "example": "active"
                                     },
                                     "properties_values": {
                                         "description": "Конвертируйте в json [{value:800,property_value_id:1}]",
@@ -3861,8 +3863,9 @@
                                         "format": "json"
                                     },
                                     "images": {
-                                        "description": "Пример: 1,2,3",
-                                        "type": "string"
+                                        "description": "Добавление по id файла, наример: 1,2,3",
+                                        "type": "string",
+                                        "example": "1,2,3"
                                     }
                                 },
                                 "type": "object"
@@ -4144,16 +4147,18 @@
                                         "example": "Описание, которые покорит сердца покупателя"
                                     },
                                     "filename": {
+                                        "description": "Ссылка на онлайн видео",
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
                                     "tour_link": {
+                                        "description": "Ссылка на онлайн тур",
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
                                     "status": {
                                         "type": "enum: active, archive",
-                                        "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                        "example": "active"
                                     },
                                     "properties_values": {
                                         "description": "Конвертируйте в json [{value:800,property_value_id:1}]",

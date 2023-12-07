@@ -270,18 +270,20 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="filename",
+     *                          description="Ссылка на онлайн видео",
      *                          type="string",
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
      *                          property="tour_link",
+     *                          description="Ссылка на онлайн тур",
      *                          type="string",
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
      *                          property="status",
      *                          type="enum: active, archive",
-     *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+     *                          example="active"
      *                      ),
      *                      @OA\Property(
      *                          property="properties_values",
@@ -292,7 +294,7 @@ class FlatController extends Controller
      *                      @OA\Property(
      *                          property="images",
      *                          description="Добавление по id файла, наример: 1,2,3",
-     *                          description="Пример: 1,2,3",
+     *                          example="1,2,3",
      *                          type="string",
      *                      ),
      *              )
@@ -599,18 +601,20 @@ class FlatController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="filename",
+     *                          description="Ссылка на онлайн видео",
      *                          type="string",
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
      *                          property="tour_link",
      *                          type="string",
+     *                          description="Ссылка на онлайн тур",
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
      *                          property="status",
      *                          type="enum: active, archive",
-     *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+     *                          example="active"
      *                      ),
      *                      @OA\Property(
      *                          property="properties_values",
