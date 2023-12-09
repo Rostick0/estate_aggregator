@@ -62,7 +62,7 @@ class Flat extends Model
         'type_id',
         'country_id',
         'district_id',
-        'district',
+        'district_string',
         'address',
         'longitude',
         'latitude',
