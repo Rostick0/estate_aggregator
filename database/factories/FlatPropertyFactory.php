@@ -27,7 +27,7 @@ class FlatPropertyFactory extends Factory
                 'property_id' =>  RandomUtil::array($type_ids),
             ];
         } else if ($random_filter == 2) { // checkbox
-            $type_ids = [171, 95, 142, 172, 173, 175, 177, 211, 160, 140, 139, 78, 79, 80, 81, 82, 83];
+            $type_ids = [171, 95, 142, 172, 173, 175, 177, 160, 140, 139, 78, 79, 80, 81, 82, 83];
 
             return [
                 'property_value_id' => RandomUtil::array($type_ids),

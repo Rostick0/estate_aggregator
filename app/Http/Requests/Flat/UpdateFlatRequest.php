@@ -12,7 +12,6 @@ class UpdateFlatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
         return auth()->check();
     }
 
@@ -29,7 +28,7 @@ class UpdateFlatRequest extends FormRequest
             'type_id' => 'numeric|' . Rule::exists('flat_types', 'id'),
             'country_id' => 'numeric|' . Rule::exists('countries', 'id'),
             'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
-            'district' => 'string',
+            'district_string' => 'string',
             'address' => 'string',
             'longitude' => 'nullable',
             'latitude' => 'nullable',

@@ -128,7 +128,7 @@ class FlatUploadController extends Controller
                                 'type_id' => $item?->type_id,
                                 'country_id' => EmptyUtil::valueOrNull($item?->country_id ?? null, 'int'),
                                 'district_id' => $item?->district_id,
-                                'district' => $item?->district ?? null,
+                                'district_string' => $item?->district ?? null,
                                 'address' => $item?->address ?? null,
                                 'longitude' => $item?->longitude ?? null,
                                 'latitude' => $item?->latitude ?? null,

@@ -24,7 +24,7 @@ class FlatFactory extends Factory
             'type_id' => random_int(1, 2),
             'country_id' => 233,
             'district_id' => random_int(9561, 9562),
-            'district' => fake()->city(),
+            'district_string' => fake()->city(),
             'address' => fake()->address(),
             'longitude' => $coords['longitude'],
             'latitude' => $coords['latitude'],

@@ -98,7 +98,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::apiResources([
         'post' => PostController::class,
         'flat' => FlatController::class,
-        'district' => DistrictController::class,
+        'district_string' => DistrictController::class,
         'rubric' => RubricController::class,
         'collection' => CollectionController::class,
         'file' => FileController::class,

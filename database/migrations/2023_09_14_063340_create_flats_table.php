@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('type_id')->references('id')->on('flat_types')->onDelete('cascade');
             $table->integer('country_id')->nullable();
             $table->foreignId('district_id')->references('id')->on('districts')->onDelete('cascade');
-            $table->string('district')->nullable();
+            $table->string('district_string')->nullable();
             $table->string('address')->nullable();
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
