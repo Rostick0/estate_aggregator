@@ -30,7 +30,7 @@ class StoreFlatRequest extends FormRequest
             'country_id' => 'required|numeric|' . Rule::exists('countries', 'id'),
             'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
             'district_string' => 'nullable|string',
-            'address' => 'string',
+            'address' => 'nullable|string',
             'longitude' => 'nullable',
             'latitude' => 'nullable',
             'currency_id' => 'required|numeric|' . Rule::exists('currencies', 'id'),
