@@ -192,7 +192,7 @@ class FlatUploadController extends Controller
                             }
                         }
                     } catch (Exception $e) {
-                        dd($item, $e);
+                        // dd($item, $e);
                     }
                 });
 
