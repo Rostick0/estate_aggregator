@@ -17,6 +17,39 @@ use Illuminate\Http\JsonResponse;
 
 class FlatController extends Controller
 {
+    private $request_only = [
+        'title',
+        'object_id',
+        'type_id',
+        'country_id',
+        'district_id',
+        'district_string',
+        'address',
+        'longitude',
+        'latitude',
+        'currency_id',
+        'price',
+        'price_day',
+        'price_week',
+        'price_month',
+        'not_show_price',
+        'rooms',
+        'bedrooms',
+        'bathrooms',
+        'square',
+        'square_land',
+        'square_land_unit',
+        'floor',
+        'total_floor',
+        'building_type',
+        'building_date',
+        'specialtxt',
+        'description',
+        'filename',
+        'tour_link',
+        'status',
+    ];
+
     private static function extendsMutation($data, $request)
     {
         $data->images()->delete();
@@ -334,41 +367,8 @@ class FlatController extends Controller
      */
     public function store(StoreFlatRequest $request)
     {
-        $values = $request->only([
-            'title',
-            'object_id',
-            'type_id',
-            'country_id',
-            'district_id',
-            'district_string',
-            'address',
-            'longitude',
-            'latitude',
-            'currency_id',
-            'price',
-            'price_day',
-            'price_week',
-            'price_month',
-            'not_show_price',
-            'rooms',
-            'bedrooms',
-            'bathrooms',
-            'square',
-            'square_land',
-            'square_land_unit',
-            'floor',
-            'total_floor',
-            'building_type',
-            'building_date',
-            'specialtxt',
-            'description',
-            'filename',
-            'tour_link',
-            'status',
-        ]);
-
         $flat = Flat::create([
-            ...$values,
+            ...$request->only($this->request_only),
             'contact_id' => auth()->id()
         ]);
 
@@ -674,42 +674,7 @@ class FlatController extends Controller
             'message' => 'No access'
         ], 403);
 
-        $values = $request->only([
-            'title',
-            'object_id',
-            'type_id',
-            'country_id',
-            'district_id',
-            'district_string',
-            'address',
-            'longitude',
-            'latitude',
-            'currency_id',
-            'price',
-            'price_day',
-            'price_week',
-            'price_month',
-            'not_show_price',
-            'rooms',
-            'bedrooms',
-            'bathrooms',
-            'square',
-            'square_land',
-            'square_land_unit',
-            'floor',
-            'total_floor',
-            'building_type',
-            'building_date',
-            'specialtxt',
-            'description',
-            'filename',
-            'tour_link',
-            'status',
-        ]);
-
-        $flat->update([
-            ...$values
-        ]);
+        $flat->update($request->only($this->request_only));
 
         $flat->flat_properties()->delete();
         if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
