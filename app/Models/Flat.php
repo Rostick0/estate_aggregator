@@ -161,6 +161,12 @@ class Flat extends Model
             });
     }
 
+    public function is_favorite()
+    {
+        return $this->hasOne(Favorite::class, 'flat_id', 'id')
+            ->where('user_id', auth()?->id());
+    }
+
     public static function propertiesCreate(Flat $flat, string $column, string $value, int|null $property_id, int|null $property_value_id): void
     {
         $flat->flat_properties()->create([
