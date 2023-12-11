@@ -1179,6 +1179,224 @@
                 }
             }
         },
+        "/api/application-user": {
+            "get": {
+                "tags": [
+                    "ApplicationUser"
+                ],
+                "summary": "Index",
+                "operationId": "fcd6ffc06bf313ce0194d95983ad4261",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[user_id]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ApplicationUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "ApplicationUser"
+                ],
+                "summary": "Store",
+                "operationId": "62ebc4f53cd13664c1a0c76bfdc1c79e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ApplicationUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/application-user/{id}": {
+            "get": {
+                "tags": [
+                    "ApplicationUser"
+                ],
+                "summary": "Show",
+                "operationId": "13a286cf0ef180af7b09111ec5b73c64",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ApplicationUserSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ApplicationUser"
+                ],
+                "summary": "Delete",
+                "operationId": "0e636f35a22f8cc3d7632adfaa024b5c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/auth/login": {
             "post": {
                 "tags": [
@@ -7383,6 +7601,29 @@
                     },
                     "updated_at": {
                         "type": "string",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
+            "ApplicationUserSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "number",
+                        "example": 5
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
                         "example": "2022-06-28 06:06:17"
                     }
                 },

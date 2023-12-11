@@ -5,6 +5,7 @@ use App\Http\Controllers\AlertController;
 use App\Http\Controllers\AlertUserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
+use App\Http\Controllers\ApplicationUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuildingTypeController;
 use App\Http\Controllers\ChatController;
@@ -94,6 +95,8 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::apiResource('chat', ChatController::class)->only(['index', 'store', 'show']);
     Route::apiResource('chat-user', ChatUserController::class)->only(['index', 'show', 'update', 'destroy']);
+
+    Route::apiResource('application-user', ApplicationUserController::class)->only(['index', 'store', 'show', 'destroy']);
 
     Route::apiResources([
         'post' => PostController::class,
