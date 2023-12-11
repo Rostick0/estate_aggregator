@@ -3641,6 +3641,15 @@
                         "example": "1"
                     },
                     {
+                        "name": "filterLIKE[search]",
+                        "in": "query",
+                        "description": "Поиск по стране, региону, городу",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Россия"
+                    },
+                    {
                         "name": "filterEQ[flat_properties.property_value.property]",
                         "in": "query",
                         "description": "Нужно привести в json формат {property_value_id:1,value:800}, чтобы протестировать",
@@ -7618,7 +7627,7 @@
                         "type": "number",
                         "example": 1702
                     },
-                    "district": {
+                    "district_string": {
                         "type": "string",
                         "example": "Редкий город"
                     },

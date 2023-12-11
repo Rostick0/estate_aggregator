@@ -26,6 +26,18 @@ class Filter
         return $data;
     }
 
+    public static function query($request, Model $model, array $fillable_block = [], array $where = [])
+    {
+        $data = $model->with(QueryString::convertToArray($request->extends));
+        $data = FilterRequestUtil::all($request, $data, $fillable_block);
+        $data = FilterHasRequestUtil::all($request, $data, $fillable_block);
+        $data = OrderByUtil::set($request->sort, $data);
+
+        if ($where) $data->where($where);
+
+        return $data;
+    }
+
     public static function one($request, Model $model, int $id, array $where = [])
     {
         $data =  $model->with(QueryString::convertToArray($request->extends));

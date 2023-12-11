@@ -18,6 +18,7 @@ class UserController extends Controller
         'country_id',
         'type_social',
         'is_confirm',
+        'role',
         'about',
         'work_experience',
         'company_id',

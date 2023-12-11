@@ -18,7 +18,6 @@ class UserController extends Controller
         'name',
         'email',
         'phone',
-        'role',
         'image_id',
         'country_id',
         'type_social',

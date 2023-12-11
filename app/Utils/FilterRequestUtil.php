@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\builder;
 
 class FilterRequestUtil
 {
-    // public static function eq($request, array $fillable = [])
+    // public static function eq($request, array $fillable_block = [])
     // {
     //     $where = [];
 
@@ -23,15 +23,15 @@ class FilterRequestUtil
      * @param class-string<"NULL"|"LIKE"> $type_where
      */
 
-    public static function template($request, Builder $builder, array $fillable = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
+    public static function template($request, Builder $builder, array $fillable_block = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
     {
-        collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
+        collect($request)->each(function ($value, $key) use ($builder, $fillable_block, $type, $type_where) {
             if (FilterTypeUtil::check($key)) return;
 
-            if (!empty($fillable) && array_search($key, $fillable) === false) return;
+            if (!empty($fillable_block) && array_search($key, $fillable_block) !== false) return;
             $where = [];
 
-
+            
             if (!isset($value)) {
             } else if ($type_where === 'NULL') {
                 $where[] = [$key, $type, NULL];
@@ -47,53 +47,22 @@ class FilterRequestUtil
         return $builder;
     }
 
-    public static function in($request, Builder $builder, array $fillable = []): Builder
-    {
-        collect($request)->each(function ($value, $key) use ($builder, $fillable) {
-            if (FilterTypeUtil::check($key)) return;
-           
-            if (!empty($fillable) && array_search($key, $fillable) === false) return;
-            $where = QueryString::convertToArray($value);
-
-            $builder->whereIn($key, $where);
-        });
-
-        return $builder;
-    }
-
-    public static function notIn($request, Builder $builder, array $fillable = []): Builder
-    {
-        collect($request)->each(function ($value, $key) use ($builder, $fillable) {
-            if (FilterTypeUtil::check($key)) return;
-           
-            if (!empty($fillable) && array_search($key, $fillable) === false) return;
-            $where = QueryString::convertToArray($value);
-
-            $builder->whereNotIn($key, $where);
-        });
-
-        return $builder;
-    }
-
-    public static function all($request, Builder $builder, array $fillable = []): Builder
+    public static function all($request, Builder $builder, array $fillable_block = []): Builder
     {
         $data = $builder;
 
-        if ($request->filterEQ) $data = FilterRequestUtil::template($request->filterEQ, $builder, $fillable, '=');
-        if ($request->filterNEQ) $data = FilterRequestUtil::template($request->filterNEQ, $builder, $fillable, '!=');
+        if ($request->filterEQ) $data = FilterRequestUtil::template($request->filterEQ, $builder, $fillable_block, '=');
+        if ($request->filterNEQ) $data = FilterRequestUtil::template($request->filterNEQ, $builder, $fillable_block, '!=');
 
-        if ($request->filterEQN) $data = FilterRequestUtil::template($request->filterEQN, $builder, $fillable, '=', 'NULL');
-        if ($request->filterNEQN) $data = FilterRequestUtil::template($request->filterNEQN, $builder, $fillable, '!=', 'NULL');
+        if ($request->filterEQN) $data = FilterRequestUtil::template($request->filterEQN, $builder, $fillable_block, '=', 'NULL');
+        if ($request->filterNEQN) $data = FilterRequestUtil::template($request->filterNEQN, $builder, $fillable_block, '!=', 'NULL');
 
-        if ($request->filterGEQ) $data = FilterRequestUtil::template($request->filterGEQ, $builder, $fillable, '>=');
-        if ($request->filterLEQ) $data = FilterRequestUtil::template($request->filterLEQ, $builder, $fillable, '<=');
-        if ($request->filterGE) $data = FilterRequestUtil::template($request->filterGE, $builder, $fillable, '>');
-        if ($request->filterLE) $data = FilterRequestUtil::template($request->filterLE, $builder, $fillable, '<');
+        if ($request->filterGEQ) $data = FilterRequestUtil::template($request->filterGEQ, $builder, $fillable_block, '>=');
+        if ($request->filterLEQ) $data = FilterRequestUtil::template($request->filterLEQ, $builder, $fillable_block, '<=');
+        if ($request->filterCE) $data = FilterRequestUtil::template($request->filterCE, $builder, $fillable_block, '>');
+        if ($request->filterLE) $data = FilterRequestUtil::template($request->filterLE, $builder, $fillable_block, '<');
 
-        if ($request->filterLIKE) $data = FilterRequestUtil::template($request->filterLIKE, $builder, $fillable, 'LIKE', 'LIKE');
-
-        if ($request->filterIN) $data = FilterRequestUtil::in($request->filterIN, $builder, $fillable);
-        if ($request->filterNIN) $data = FilterRequestUtil::notIn($request->filterIN, $builder, $fillable);
+        if ($request->filterLIKE) $data = FilterRequestUtil::template($request->filterLIKE, $builder, $fillable_block, 'LIKE', 'LIKE');
 
         return $data;
     }

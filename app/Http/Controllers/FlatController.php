@@ -13,6 +13,7 @@ use App\Utils\QueryString;
 use App\Utils\FilterRequestUtil;
 use App\Utils\OrderByUtil;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class FlatController extends Controller
@@ -79,6 +80,15 @@ class FlatController extends Controller
      *          example="1",
      *          @OA\Schema(
      *              type="number"
+     *          ),
+     *     ),
+     *      @OA\Parameter( 
+     *          name="filterLIKE[search]",
+     *          description="Поиск по стране, региону, городу",
+     *          in="query",
+     *          example="Россия",
+     *          @OA\Schema(
+     *              type="string"
      *          ),
      *     ),
      *     @OA\Parameter( 
@@ -148,8 +158,27 @@ class FlatController extends Controller
      */
     public function index(IndexFlatRequest $request)
     {
+        $data =  Filter::query($request, new Flat, ['search'], $this::getWhere());
+
+        if (isset($request->filterLIKE['search'])) {
+            $data->where(function ($query) use ($request) {
+                $query->where('district_string', 'LIKE', '%' . $request->filterLIKE['search'] . '%')
+                    ->orWhereHas('district', function (Builder $query) use ($request) {
+                        $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
+                    })
+                    ->orWhereHas('district.region', function (Builder $query) use ($request) {
+                        $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
+                    })
+                    ->orWhereHas('district.region.country', function (Builder $query) use ($request) {
+                        $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
+                    });
+            });
+
+            // dd($data->toSql());
+        }
+
         return new JsonResponse(
-            Filter::all($request, new Flat, [], $this::getWhere())
+            $data->paginate($request->limit)
         );
     }
 

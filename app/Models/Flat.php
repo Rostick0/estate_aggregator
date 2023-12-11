@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *       @OA\Property(property="type_id", type="number", example=1),
  *       @OA\Property(property="country_id", type="number", example=5),
  *       @OA\Property(property="district_id", type="number", example=1702),
- *       @OA\Property(property="district", type="string", example="Редкий город"),
+ *       @OA\Property(property="district_string", type="string", example="Редкий город"),
  *       @OA\Property(property="address", type="string", example="Пушкин 1"),
  *       @OA\Property(property="longitude", type="string", example="31.31"),
  *       @OA\Property(property="latitude", type="string", example="79.01"),
