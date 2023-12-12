@@ -29,7 +29,7 @@ class CompanyController extends Controller
             User::whereIn('id', QueryString::convertToArray($request->staffs))
                 ->where('role', 'realtor')
                 ->update([
-                    'company' => $data->id
+                    'company_id' => $data->id
                 ]);
         }
     }
