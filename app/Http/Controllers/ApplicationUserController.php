@@ -145,7 +145,6 @@ class ApplicationUserController extends Controller
      *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
-     *          description="Сортировка по параметру",
      *          in="path",
      *          example="1",
      *          @OA\Schema(
