@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AlertController;
 use App\Http\Controllers\AlertUserController;
+use App\Http\Controllers\ApplicationCompanyController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\ApplicationUserController;
@@ -108,7 +109,8 @@ Route::group(['middleware' => 'api'], function () {
         'alert' => AlertController::class,
         'alert-user' => AlertUserController::class,
         'recruitment' => RecruitmentController::class,
-        'message' => MessageController::class
+        'message' => MessageController::class,
+        'application-company' => ApplicationCompanyController::class,
     ]);
 })->middleware('throttle:5000,1');
 
