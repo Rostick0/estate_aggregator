@@ -340,8 +340,8 @@ class UserController extends Controller
     {
         if (!Hash::check($request->password, auth()->user()->password)) {
             return new JsonResponse([
-                'message' => 'Invalid password'
-            ], 401);
+                'message' => 'Неверный пароль'
+            ], 403);
         }
 
         User::find(auth()->id())->update([
@@ -349,7 +349,7 @@ class UserController extends Controller
         ]);
 
         return new JsonResponse([
-            'message' => 'Password changed'
+            'message' => 'Пароль успешно изменён'
         ]);
     }
 
