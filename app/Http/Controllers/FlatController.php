@@ -158,22 +158,27 @@ class FlatController extends Controller
      */
     public function index(IndexFlatRequest $request)
     {
-        $data =  Filter::query($request, new Flat, ['search'], $this::getWhere());
+        $data = Filter::query($request, new Flat, ['search'], $this::getWhere());
 
         if (isset($request->filterLIKE['search'])) {
-            $data->where(function ($query) use ($request) {
-                $query->where('district_string', 'LIKE', '%' . $request->filterLIKE['search'] . '%')
-                    ->orWhereHas('district', function (Builder $query) use ($request) {
+            $data->where('district_string', 'LIKE', '%' . $request->filterLIKE['search'] . '%')
+                ->union(
+                    Filter::query($request, new Flat, ['search'], $this::getWhere())->whereHas('district', function (Builder $query) use ($request) {
                         $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
                     })
-                    ->orWhereHas('district.region', function (Builder $query) use ($request) {
+                )
+                ->union(
+                    Filter::query($request, new Flat, ['search'], $this::getWhere())->whereHas('district.region', function (Builder $query) use ($request) {
                         $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
                     })
-                    ->orWhereHas('district.region.country', function (Builder $query) use ($request) {
+                )
+                ->union(
+                    Filter::query($request, new Flat, ['search'], $this::getWhere())->whereHas('district.region.country', function (Builder $query) use ($request) {
                         $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
-                    });
-            });
+                    })
+                );
 
+            // dd($data);
             // dd($data->toSql());
         }
 
