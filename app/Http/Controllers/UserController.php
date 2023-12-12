@@ -341,7 +341,7 @@ class UserController extends Controller
         if (!Hash::check($request->password, auth()->user()->password)) {
             return new JsonResponse([
                 'message' => 'Неверный пароль'
-            ], 400);
+            ], 401);
         }
 
         User::find(auth()->id())->update([
