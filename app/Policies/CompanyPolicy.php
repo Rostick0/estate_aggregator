@@ -37,7 +37,7 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company): bool
     {
-        return $user->role == 'admin' || ($user->company_id == $company->id && array_search($user->role, ['agency', 'builder']) !== false);
+        return $user->role == 'admin' || ($user->company_id == $company->id && (array_search($user->role, ['agency', 'builder']) !== false));
     }
 
     /**
