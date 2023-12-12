@@ -24,7 +24,7 @@ class StoreApplicationCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_id' => 'required|numeric|' . Rule::exists('companys', 'id'),
+            'company_id' => 'required|numeric|' . Rule::exists('companies', 'id'),
         ];
     }
 }
