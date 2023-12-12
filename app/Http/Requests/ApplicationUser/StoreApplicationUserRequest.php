@@ -22,7 +22,7 @@ class StoreApplicationUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'role' => 'required|in:client,realtor,agency,builder' 
         ];
     }
 }

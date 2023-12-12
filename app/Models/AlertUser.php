@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *       @OA\Property(property="user_id", type="number", example="Описание"),
  *       @OA\Property(property="is_read", type="boolean", example="0"),
  *       @OA\Property(property="send_at", type="datetime", example="2022-06-28 06:07:17"),
- *       @OA\Property(property="status", type="string", example="active"),
+ *       @OA\Property(property="status", type="enum", enum={"active", "archive", "hidden"}),
  *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),  
  *  )

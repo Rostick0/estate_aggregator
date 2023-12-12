@@ -35,6 +35,7 @@ class ApplicationUserController extends Controller
      *              type="object",
      *              example={
      *                 "filter[id]":null,
+     *                 "filter[role]":null,
      *                 "filter[user_id]":null,
      *                 "filter[created_at]":null,
      *                 "filter[updated_at]":null,
@@ -103,6 +104,13 @@ class ApplicationUserController extends Controller
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
+     *              @OA\Schema(
+     *                 required={"role"},
+     *                 @OA\Property(
+     *                  property="role",
+     *                  type="enum", enum={"client", "realtor", "agency", "builder"}
+     *                 ),
+     *              )
      *         )
      *      ),
      *      @OA\Response(
@@ -120,6 +128,7 @@ class ApplicationUserController extends Controller
     public function store(StoreApplicationUserRequest $request)
     {
         $data = ApplicationUser::create([
+            ...$request->validated(),
             'user_id' => auth()->id()
         ]);
 

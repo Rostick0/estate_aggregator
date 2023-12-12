@@ -143,8 +143,8 @@ class AlertController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="role",
-     *                          type="enum: client,realtor,agency,builder",
-     *                          example="3000"
+     *                          type="enum",
+     *                          enum={"client", "realtor", "agency", "builder"}
      *                      ),
      *                      @OA\Property(
      *                          property="type",
@@ -291,8 +291,8 @@ class AlertController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="role",
-     *                          type="enum: client,realtor,agency,builder",
-     *                          example="3000"
+     *                          type="enum",
+     *                          enum={"client", "realtor", "agency", "builder"}
      *                      ),
      *                      @OA\Property(
      *                          property="type",

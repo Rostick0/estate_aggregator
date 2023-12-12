@@ -255,8 +255,8 @@ class AlertUserController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="status",
-     *                          type="array",
-     *                          @OA\Items(type="enum", enum={"active", "archive", "hidden"}),
+     *                          type="enum",
+     *                          enum={"active", "archive", "hidden"}
      *                         ),
      *                 ),
      *                 example={

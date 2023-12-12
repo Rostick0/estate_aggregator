@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  *       @OA\Property(property="country_id", type="string", example="5"),
  *       @OA\Property(property="role", type="string", example="client"),
  *       @OA\Property(property="type", type="string", example="null"),
- *       @OA\Property(property="status", type="string", example="active"),
+ *       @OA\Property(property="status", type="enum", enum={"client", "realtor", "agency", "builder"}),
  *       @OA\Property(property="user_id", type="number", example="1"),
  *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),

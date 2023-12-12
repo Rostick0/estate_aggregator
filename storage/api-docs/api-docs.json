@@ -230,8 +230,13 @@
                                         "example": "5"
                                     },
                                     "role": {
-                                        "type": "enum: client,realtor,agency,builder",
-                                        "example": "3000"
+                                        "type": "enum",
+                                        "enum": [
+                                            "client",
+                                            "realtor",
+                                            "agency",
+                                            "builder"
+                                        ]
                                     },
                                     "type": {
                                         "type": "string",
@@ -408,8 +413,13 @@
                                         "example": "5"
                                     },
                                     "role": {
-                                        "type": "enum: client,realtor,agency,builder",
-                                        "example": "3000"
+                                        "type": "enum",
+                                        "enum": [
+                                            "client",
+                                            "realtor",
+                                            "agency",
+                                            "builder"
+                                        ]
                                     },
                                     "type": {
                                         "type": "string",
@@ -785,15 +795,12 @@
                                                 "type": "number"
                                             },
                                             "status": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "enum",
-                                                    "enum": [
-                                                        "active",
-                                                        "archive",
-                                                        "hidden"
-                                                    ]
-                                                }
+                                                "type": "enum",
+                                                "enum": [
+                                                    "active",
+                                                    "archive",
+                                                    "hidden"
+                                                ]
                                             }
                                         },
                                         "type": "object"
@@ -1194,6 +1201,7 @@
                             "type": "object",
                             "example": {
                                 "filter[id]": null,
+                                "filter[role]": null,
                                 "filter[user_id]": null,
                                 "filter[created_at]": null,
                                 "filter[updated_at]": null
@@ -1268,7 +1276,25 @@
                 "operationId": "62ebc4f53cd13664c1a0c76bfdc1c79e",
                 "requestBody": {
                     "content": {
-                        "application/json": {}
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "role"
+                                ],
+                                "properties": {
+                                    "role": {
+                                        "type": "enum",
+                                        "enum": [
+                                            "client",
+                                            "realtor",
+                                            "agency",
+                                            "builder"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
                     }
                 },
                 "responses": {
@@ -7458,8 +7484,13 @@
                         "example": "null"
                     },
                     "status": {
-                        "type": "string",
-                        "example": "active"
+                        "type": "enum",
+                        "enum": [
+                            "client",
+                            "realtor",
+                            "agency",
+                            "builder"
+                        ]
                     },
                     "user_id": {
                         "type": "number",
@@ -7502,8 +7533,12 @@
                         "example": "2022-06-28 06:07:17"
                     },
                     "status": {
-                        "type": "string",
-                        "example": "active"
+                        "type": "enum",
+                        "enum": [
+                            "active",
+                            "archive",
+                            "hidden"
+                        ]
                     },
                     "created_at": {
                         "type": "string",
@@ -7611,6 +7646,10 @@
                     "id": {
                         "type": "number",
                         "example": 1
+                    },
+                    "role": {
+                        "type": "enum",
+                        "example": "realtor"
                     },
                     "user_id": {
                         "type": "number",
