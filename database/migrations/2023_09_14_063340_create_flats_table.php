@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->foreignId('currency_id')->references('id')->on('currencies')->onDelete('cascade');
-            $table->decimal('price', 10);
+            $table->decimal('price', 14);
             $table->float('price_per_meter')->nullable();
             $table->float('price_day')->nullable();
             $table->float('price_week')->nullable();
