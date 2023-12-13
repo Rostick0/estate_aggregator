@@ -35,9 +35,9 @@ class MainBannerPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, MainBanner $mainBanner): bool
+    public function update(User $user): bool
     {
-        return $user?->role === 'admin';
+        return auth()?->user()?->role === 'admin';
     }
 
     /**

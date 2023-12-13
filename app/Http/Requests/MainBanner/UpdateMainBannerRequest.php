@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\MainBanner;
 
+use App\Models\MainBanner;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateMainBannerRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateMainBannerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()?->user()?->can('create', MainBanner::class);
+        return auth()->check() && auth()?->user()?->can('update', MainBanner::class);
     }
 
     /**
