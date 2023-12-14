@@ -29,7 +29,7 @@ class UpdateFlatRequest extends FormRequest
             'country_id' => 'numeric|' . Rule::exists('countries', 'id'),
             'district_id' => 'numeric|' . Rule::exists('districts', 'id'),
             'district_string' => 'nullable|string',
-            'address' => 'string',
+            'address' => 'nullable',
             'longitude' => 'nullable',
             'latitude' => 'nullable',
             'currency_id' => 'numeric|' . Rule::exists('currencies', 'id'),
