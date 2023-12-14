@@ -95,7 +95,7 @@ class MainBannerController extends Controller
      */
     public function update(UpdateMainBannerRequest $request)
     {
-        MainBanner::all()->delete();
+        MainBanner::truncate();
 
         foreach (QueryString::convertToArray($request->images) as $id) {
             MainBanner::create([

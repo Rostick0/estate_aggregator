@@ -23,7 +23,7 @@ class UpdateMainBannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images' => ['required', 'regex:/^\d+(,\d+)*$/'],
+            'images' => ['nullable', 'regex:/^\d+(,\d+)*$/'],
         ];
     }
 }

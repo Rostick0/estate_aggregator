@@ -21,7 +21,7 @@ class MainBanner extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image'
+        'image_id'
     ];
 
     public function image(): BelongsTo
