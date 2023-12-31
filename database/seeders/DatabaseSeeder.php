@@ -43,11 +43,11 @@ class DatabaseSeeder extends Seeder
             ImageSeeder::class,
         ]);
 
-        // Image::factory(50)->create();
+        Image::factory(50)->create();
 
-        // Post::factory(10)
-        //     ->has(ImageRelat::factory(5), 'images')
-        //     ->create();
+        Post::factory(10)
+            ->has(ImageRelat::factory(5), 'images')
+            ->create();
 
         User::factory()
             // ->has(FlatOwner::factory(2), 'flat_owners')
@@ -96,46 +96,46 @@ class DatabaseSeeder extends Seeder
                 'work_experience' => null
             ]);
 
-        // Company::factory(10)
-        //     ->has(
-        //         User::factory(3, [
-        //             'role' => 'realtor'
-        //         ]),
-        //         'staffs'
-        //     )
-        //     ->create();
+        Company::factory(10)
+            ->has(
+                User::factory(3, [
+                    'role' => 'realtor'
+                ]),
+                'staffs'
+            )
+            ->create();
 
-        // for ($i = 3; $i <= 10; $i++) {
-        //     User::factory()
-        //         // ->has(FlatOwner::factory(2), 'flat_owners')
-        //         ->has(ColRelat::factory(1, [
-        //             'collection_id' => 1
-        //         ]), 'collection_relats')->create([
-        //             'company_id' => $i
-        //         ]);
-        // }
+        for ($i = 3; $i <= 10; $i++) {
+            User::factory()
+                // ->has(FlatOwner::factory(2), 'flat_owners')
+                ->has(ColRelat::factory(1, [
+                    'collection_id' => 1
+                ]), 'collection_relats')->create([
+                    'company_id' => $i
+                ]);
+        }
 
-        // Flat::factory(100)
-        //     ->has(ImageRelat::factory(5), 'images')
-        //     ->has(FlatProperty::factory(5), 'flat_properties')
-        //     ->create();
+        Flat::factory(100)
+            ->has(ImageRelat::factory(5), 'images')
+            ->has(FlatProperty::factory(5), 'flat_properties')
+            ->create();
 
 
-        // Recruitment::factory(10)
-        //     ->has(RecruitmentFlat::factory(3), 'recruitment_flats')
-        //     ->create();
+        Recruitment::factory(10)
+            ->has(RecruitmentFlat::factory(3), 'recruitment_flats')
+            ->create();
 
-        // User::factory(10)
-        //     ->has(ColRelat::factory(1, [
-        //         'collection_id' => 1
-        //     ]), 'collection_relats')
-        //     ->create([
-        //         'role' => 'client',
-        //         'work_experience' => null
-        //     ]);
+        User::factory(10)
+            ->has(ColRelat::factory(1, [
+                'collection_id' => 1
+            ]), 'collection_relats')
+            ->create([
+                'role' => 'client',
+                'work_experience' => null
+            ]);
 
-        // Alert::factory(30)->create();
+        Alert::factory(30)->create();
 
-        // MainBanner::factory(10)->create();
+        MainBanner::factory(10)->create();
     }
 }
