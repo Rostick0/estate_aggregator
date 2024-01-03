@@ -14,15 +14,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Filter
 {
-    public static function all($request, Model $model, array $fillable = [], array $where = []): Paginator
+    public static function all($request, Model $model, array $fillable_block = [], array $where = []): Paginator
     {
-        $data = $model->with(QueryString::convertToArray($request->extends));
-        $data = FilterRequestUtil::all($request, $data, $fillable);
-        $data = FilterHasRequestUtil::all($request, $data, $fillable);
-        $data = FilterSomeRequestUtil::all($request, $data, $fillable);
-        $data = FilterHasUtil::all($request, $data, $fillable);
-        $data = OrderByUtil::set($request->sort, $data);
-        $data = Filter::where($data, $where);
+        $data = Filter::query($request, $model, $fillable_block, $where);
+        
         $data = $data->paginate($request->limit);
 
         return $data;
@@ -33,6 +28,7 @@ class Filter
         $data = $model->with(QueryString::convertToArray($request->extends));
         $data = FilterRequestUtil::all($request, $data, $fillable_block);
         $data = FilterHasRequestUtil::all($request, $data, $fillable_block);
+        $data = FilterHasUtil::all($request, $data, $fillable_block);
         $data = OrderByUtil::set($request->sort, $data);
 
         if ($where) $data->where($where);
