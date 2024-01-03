@@ -3,6 +3,7 @@
 namespace App\Filters;
 
 use App\Utils\FilterHasRequestUtil;
+use App\Utils\FilterHasUtil;
 use App\Utils\FilterRequestUtil;
 use App\Utils\FilterSomeRequestUtil;
 use App\Utils\OrderByUtil;
@@ -19,6 +20,7 @@ class Filter
         $data = FilterRequestUtil::all($request, $data, $fillable);
         $data = FilterHasRequestUtil::all($request, $data, $fillable);
         $data = FilterSomeRequestUtil::all($request, $data, $fillable);
+        $data = FilterHasUtil::all($request, $data, $fillable);
         $data = OrderByUtil::set($request->sort, $data);
         $data = Filter::where($data, $where);
         $data = $data->paginate($request->limit);
