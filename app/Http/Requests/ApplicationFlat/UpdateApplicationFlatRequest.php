@@ -3,6 +3,7 @@
 namespace App\Http\Requests\ApplicationFlat;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateApplicationFlatRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateApplicationFlatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check() && auth()->user()?->role === 'admin';
     }
 
     /**
@@ -22,7 +23,15 @@ class UpdateApplicationFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'flat_id' => 'required|numeric|' . Rule::exists('flats', 'id'),
+            'is_information' => 'nullable',
+            'is_viewing' => 'nullable',
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'email' => 'email|max:255',
+            'text' => 'required|min:10|max:255',
+            'messager_type' => 'in:telegram,whatsapp,viber',
+            'status_id' => 'required|' . Rule::exists('collections', 'id')->where('type', 'application'),
         ];
     }
 }

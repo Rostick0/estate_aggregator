@@ -36,7 +36,13 @@ class ApplicationFlat extends Model
         'email',
         'text',
         'messager_type',
+        'status_id',
     ];
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Collection::class, 'status_id', 'id');
+    }
 
     public function flat(): BelongsTo {
         return $this->belongsTo(Flat::class, 'flat_id', 'id');

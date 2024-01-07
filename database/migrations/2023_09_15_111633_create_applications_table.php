@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->text('text');
             $table->string('messager_type')->nullable(); // telegram | whatsapp | viber
+            $table->integer('status_id')->default(6);
             $table->timestamps();
         });
     }

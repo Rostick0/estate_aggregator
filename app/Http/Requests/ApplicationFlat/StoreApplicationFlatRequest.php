@@ -24,15 +24,14 @@ class StoreApplicationFlatRequest extends FormRequest
     {
         return [
             'flat_id' => 'required|numeric|' . Rule::exists('flats', 'id'),
-            'is_information',
-            'is_viewing',
+            'is_information' => 'nullable',
+            'is_viewing' => 'nullable',
             'name' => 'required|max:255',
             'phone' => 'required|max:255',
             'email' => 'email|max:255',
             'text' => 'required|min:10|max:255',
             'messager_type' => 'in:telegram,whatsapp,viber',
             'is_agree' => 'required|accepted'
-
         ];
     }
 }

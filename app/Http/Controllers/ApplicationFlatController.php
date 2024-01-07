@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\Filter;
+use App\Http\Requests\ApplicationFlat\DestroyApplicationFlatRequest;
 use App\Models\ApplicationFlat;
 use App\Http\Requests\ApplicationFlat\StoreApplicationFlatRequest;
 use App\Http\Requests\ApplicationFlat\UpdateApplicationFlatRequest;
@@ -196,26 +197,34 @@ class ApplicationFlatController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(ApplicationFlat $applicationFlat)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateApplicationFlatRequest $request, ApplicationFlat $applicationFlat)
+    public function update(UpdateApplicationFlatRequest $request, int $id)
     {
-        //
+        $data = ApplicationFlat::findOrFail($id);
+        $data->update(
+            $request->validated()
+        );
+
+        return new JsonResponse([
+            'data' => ApplicationFlat::find($id)
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ApplicationFlat $applicationFlat)
+    public function destroy(DestroyApplicationFlatRequest $request, int $id)
     {
-        //
+        $deleted = ApplicationFlat::destroy($id);
+
+        if (!$deleted) return new JsonResponse([
+            'message' => 'Not deleted',
+            404
+        ]);
+
+        return new JsonResponse([
+            'message' => 'Deleted'
+        ]);
     }
 }

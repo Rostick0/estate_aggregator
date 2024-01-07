@@ -2,16 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Filter;
+use App\Http\Requests\Application\DestroyApplicationRequest;
 use App\Models\Application;
 use App\Http\Requests\Application\StoreApplicationRequest;
 use App\Http\Requests\Application\UpdateApplicationRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
-    public function index()
+    private static function getWhere()
     {
-        //
+        $where = [];
+
+        if (auth()?->user()?->role !== 'admin') {
+            $where[] = ['id', '=', 'null'];
+        }
+
+        return $where;
+    }
+
+    public function index(Request $request)
+    {
+        return new JsonResponse(
+            Filter::all($request, new Application, [], $this::getWhere())
+        );
     }
 
     /**
@@ -99,26 +115,34 @@ class ApplicationController extends Controller
     {
         $data = Application::create($request->validated());
 
-        return new JsonResponse(
-            [
-                'data' => $data
-            ],
-            201
+        return new JsonResponse([
+            'data' => $data
+        ], 201);
+    }
+
+    public function update(UpdateApplicationRequest $request, int $id)
+    {
+        $data = Application::findOrFail($id);
+        $data->update(
+            $request->validated()
         );
+
+        return new JsonResponse([
+            'data' => Application::find($id)
+        ]);
     }
 
-    public function show(Application $application)
+    public function destroy(DestroyApplicationRequest $request, int $id)
     {
-        //
-    }
+        $deleted = Application::destroy($id);
 
-    public function update(UpdateApplicationRequest $request, Application $application)
-    {
-        //
-    }
+        if (!$deleted) return new JsonResponse([
+            'message' => 'Not deleted',
+            404
+        ]);
 
-    public function destroy(Application $application)
-    {
-        //
+        return new JsonResponse([
+            'message' => 'Deleted'
+        ]);
     }
 }

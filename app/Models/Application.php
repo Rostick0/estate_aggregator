@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @OA\Schema(
@@ -29,5 +30,11 @@ class Application extends Model
         'email',
         'text',
         'messager_type',
+        'status_id',
     ];
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Collection::class, 'status_id', 'id');
+    }
 }

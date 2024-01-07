@@ -25,7 +25,23 @@ class CollectionSeeder extends Seeder
             [
                 'value' => 'Татарский',
                 'type' => 'language',
-            ]
+            ],
+            [
+                'value' => 'Завершена',
+                'type' => 'application'
+            ],
+            [
+                'value' => 'В работе',
+                'type' => 'application'
+            ],
+            [
+                'value' => 'Новая',
+                'type' => 'application'
+            ],
+            [
+                'value' => 'Архив',
+                'type' => 'application'
+            ],
         ];
 
         Collection::insert($collections);
