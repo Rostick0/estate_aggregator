@@ -108,6 +108,56 @@ class CompanyController extends Controller
     }
 
     /**
+     * Show
+     * @OA\get (
+     *     path="/api/company/{id}",
+     *     tags={"Company"},
+     *      @OA\Parameter( 
+     *          name="id",
+     *          description="Id",
+     *          in="path",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="number"
+     *          ),
+     *      ),
+     *      @OA\Parameter(
+     *          name="extends",
+     *          description="Extends data",
+     *          in="query",
+     *          example="country,images,user",
+     *          @OA\Schema(
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/AlertSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="Not found"),
+     *                  ),
+     *          )
+     *      )
+     * )
+     */
+    public function show(Request $request, int $id)
+    {
+        return new JsonResponse([
+            'data' => Filter::one($request, new Company, $id)
+        ]);
+    }
+
+    /**
      * Update
      * @OA\Put (
      *     path="/api/company/{id}",

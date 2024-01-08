@@ -90,7 +90,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::apiResource('user', UserController::class)->only(['index', 'show', 'update', 'destroy']);
     Route::put('user-password', [UserController::class, 'update_password']);
 
-    Route::apiResource('company', CompanyController::class)->only(['index', 'update']);
+    Route::apiResource('company', CompanyController::class)->only(['index', 'show', 'update']);
 
     Route::apiResource('recruitment-flat', RecruitmentFlatController::class)->only(['index', 'store', 'show', 'destroy']);
 
