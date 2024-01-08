@@ -40,6 +40,8 @@ class Message implements ShouldBroadcast
 
         $channels = [];
 
+        dd($chat);
+
         foreach ($chat->chat_users ?? [] as $user) {
             $channels[] = new Channel('message.' . $user->user_id);
         }
