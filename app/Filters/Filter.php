@@ -31,7 +31,7 @@ class Filter
         $data = FilterHasUtil::all($request, $data, $fillable_block);
         $data = OrderByUtil::set($request->sort, $data);
 
-        if ($where) $data->where($where);
+        if ($where) $data = Filter::where($data, $where);
 
         return $data;
     }
