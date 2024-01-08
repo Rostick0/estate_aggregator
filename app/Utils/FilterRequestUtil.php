@@ -47,6 +47,22 @@ class FilterRequestUtil
         return $builder;
     }
 
+    public static function in($request, Builder $builder, array $fillable = [], bool $is_not = false): Builder
+    {
+        collect($request)->each(function ($value, $key) use ($builder, $fillable, $is_not) {
+            if (!empty($fillable) && array_search($key, $fillable) !== false) return;
+            $where = QueryString::convertToArray($value);
+
+            if ($is_not) {
+                $builder->whereNotIn($key, $where);
+            } else {
+                $builder->whereIn($key, $where);
+            }
+        });
+
+        return $builder;
+    }
+
     public static function all($request, Builder $builder, array $fillable_block = []): Builder
     {
         $data = $builder;
@@ -63,6 +79,9 @@ class FilterRequestUtil
         if ($request->filterLE) $data = FilterRequestUtil::template($request->filterLE, $builder, $fillable_block, '<');
 
         if ($request->filterLIKE) $data = FilterRequestUtil::template($request->filterLIKE, $builder, $fillable_block, 'LIKE', 'LIKE');
+
+        if ($request->filterIN) $data = FilterRequestUtil::in($request->filterIN, $builder, $fillable_block);
+        if ($request->filterNotIN) $data = FilterRequestUtil::in($request->filterIN, $builder, $fillable_block, true);
 
         return $data;
     }
