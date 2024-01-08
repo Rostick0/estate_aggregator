@@ -9,6 +9,7 @@ use App\Models\Chat;
 use App\Models\Recruitment;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class ChatController extends Controller
 {
@@ -148,14 +149,34 @@ class ChatController extends Controller
      */
     public function store(StoreChatRequest $request)
     {
+        $user_id = null;
+
         if ($request->type === 'Recruitment') {
-            Recruitment::findOrFail($request->type_id);
+            $user_id =  Recruitment::findOrFail($request->type_id)?->user_id;
         }
 
-        $data = Chat::firstOrCreate([
+        $data = Chat::where([
             'chatsable_type' => "App\\Models\\" . $request->type,
             'chatsable_id' => $request->type_id,
-        ]);
+        ])->whereHas('chat_users', function (Builder $query) {
+            $query->where('user_id', '=', auth()->id());
+        });
+
+        if (!$data) {
+            $data = Chat::create([
+                'chatsable_type' => "App\\Models\\" . $request->type,
+                'chatsable_id' => $request->type_id,
+            ]);
+
+            $data->chat_users()->createMany([
+                [
+                    'user_id' => $user_id
+                ],
+                [
+                    'user_id' => auth()->id()
+                ]
+            ]);
+        }
 
         return new JsonResponse([
             'data' => $data
