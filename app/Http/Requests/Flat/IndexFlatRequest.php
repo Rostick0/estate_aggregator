@@ -28,7 +28,7 @@ class IndexFlatRequest extends FormRequest
             'filterLIKE' => 'array',
             'sort' => '',
             'page' => 'numeric',
-            'limit' => 'numeric|max:50',
+            'limit' => 'numeric|max:1000',
             'extends' => 'string',
             'flat_properties' => 'array',
         ];

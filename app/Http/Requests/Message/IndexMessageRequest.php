@@ -22,7 +22,7 @@ class IndexMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'limit' => 'nullable|max:300'
+            'limit' => 'nullable|max:1000'
         ];
     }
 }

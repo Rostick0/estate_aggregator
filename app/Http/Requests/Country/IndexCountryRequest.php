@@ -25,7 +25,7 @@ class IndexCountryRequest extends FormRequest
         return [
             'name' => 'string',
             'page' => 'numeric',
-            'limit' => 'numeric|max:150',
+            'limit' => 'numeric|max:1000',
             'extends' => 'string'
         ];
     }

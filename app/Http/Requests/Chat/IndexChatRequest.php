@@ -22,7 +22,7 @@ class IndexChatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'limit' => 'nullable|numeric|max:100'
+            'limit' => 'nullable|numeric|max:1000'
         ];
     }
 }

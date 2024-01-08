@@ -25,7 +25,7 @@ class IndexRubricRequest extends FormRequest
             'filterEQ' => 'array',
             'filterLIKE' => 'array',
             'page' => 'numeric',
-            'limit' => 'numeric|max:150',
+            'limit' => 'numeric|max:1000',
             'extends' => 'string'
         ];
     }
