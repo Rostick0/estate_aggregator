@@ -160,7 +160,7 @@ class ChatController extends Controller
             'chatsable_id' => $request->type_id,
         ])->whereHas('chat_users', function (Builder $query) {
             $query->where('user_id', '=', auth()->id());
-        });
+        })->first();
 
         if (!$data) {
             $data = Chat::create([
