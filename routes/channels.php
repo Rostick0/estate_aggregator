@@ -21,7 +21,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('message.{user_id}', function (User $user, $user_id) {
-    // return true;
+    return true;
     return (int) $user->id === (int) $user_id;
 });
 
