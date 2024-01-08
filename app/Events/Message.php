@@ -41,7 +41,7 @@ class Message implements ShouldBroadcast
         $channels = [];
 
         foreach ($chat->chat_users ?? [] as $user) {
-            $channels[] = new PrivateChannel('message.' . $user->user_id);
+            $channels[] = new Channel('message.' . $user->user_id);
         }
         
         return $channels;
