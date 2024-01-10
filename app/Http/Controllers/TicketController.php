@@ -3,31 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Filters\Filter;
-use App\Http\Requests\ApplicationFlat\DestroyApplicationFlatRequest;
-use App\Models\ApplicationFlat;
-use App\Http\Requests\ApplicationFlat\StoreApplicationFlatRequest;
-use App\Http\Requests\ApplicationFlat\UpdateApplicationFlatRequest;
+use App\Http\Requests\Ticket\DestroyTicketRequest;
+use App\Http\Requests\Ticket\IndexTicketRequest;
+use App\Http\Requests\Ticket\ShowTicketRequest;
+use App\Models\Ticket;
+use App\Http\Requests\Ticket\StoreTicketRequest;
+use App\Http\Requests\Ticket\UpdateTicketRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
-class ApplicationFlatController extends Controller
+class TicketController extends Controller
 {
-    private static function getWhere()
-    {
-        $where = [];
-
-        if (auth()?->user()?->role !== 'admin') {
-            $where[] = ['contact_id', '=', auth()?->id(), 'flat'];
-        }
-
-        return $where;
-    }
-
     /**
      * Index
      * @OA\Get (
-     *     path="/api/application-flat",
-     *     tags={"ApplicationFlat"},
+     *     path="/api/ticket",
+     *     tags={"Ticket"},
      *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="filter",
@@ -36,15 +26,15 @@ class ApplicationFlatController extends Controller
      *              type="object",
      *              example={
      *                 "filter[id]":null,
-     *                 "filter[flat_id]":null,
-     *                 "filter[is_information]":null,
-     *                 "filter[is_viewing]":null,
-     *                 "filter[name]":null,
-     *                 "filter[phone]":null,
      *                 "filter[email]":null,
+     *                 "filter[phone]":null,
+     *                 "filter[full_name]":null,
      *                 "filter[text]":null,
-     *                 "filter[messager_type]":null,
-     *                 "filter[status_id]":null,
+     *                 "filter[communiction_method]":null,
+     *                 "filter[purpose]":null,
+     *                 "filter[link_from]":null,
+     *                 "filter[ticket_type_cid]":null,
+     *                 "filter[status_cid]":null,
      *                 "filter[created_at]":null,
      *                 "filter[updated_at]":null,
      *               }
@@ -91,41 +81,42 @@ class ApplicationFlatController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/ApplicationFlatSchema"
+     *                  ref="#/components/schemas/TicketSchema"
      *              ),
      *          )
      *      ),
      * )
      */
-    public function index(Request $request)
+    public function index(IndexTicketRequest $request)
     {
         return new JsonResponse(
-            Filter::all($request, new ApplicationFlat, [], $this::getWhere())
+            Filter::all($request, new Ticket)
         );
     }
 
     /**
      * Store
      * @OA\Post (
-     *     path="/api/application-flat",
-     *     tags={"ApplicationFlat"},
+     *     path="/api/ticket",
+     *     tags={"Ticket"},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                      required={"name", "phone", "text", "messager_type"},
+     *                  required={"phone", "full_name", "text", "communiction_method", "link_from", "ticket_type_cid"},
+     *                  @OA\Property(
+     *                      property="data",
      *                      type="object",
      *                      @OA\Property(
-     *                          property="name",
+     *                          property="email",
      *                          type="string"
-     *                      ),
+     *                      ),                   
      *                      @OA\Property(
      *                          property="phone",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="email",
+     *                          property="full_name",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
@@ -133,24 +124,31 @@ class ApplicationFlatController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="messager_type",
+     *                          property="communiction_method",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="is_agree",
-     *                          type="boolean"
+     *                          property="purpose",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="link_from",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="ticket_type_cid",
+     *                          type="number"
      *                      ),
      *                 ),
      *                 example={
-     *                     "flat_id": 1,
-     *                     "is_information": 0,
-     *                     "is_viewing": 0,
-     *                     "name":"Олег",
      *                     "email":"john@test.com",
      *                     "phone":"+799999",
-     *                     "text": "Мне понравилась ваша квартира, хотел бы ...",
-     *                     "messager_type": "telegram",
-     *                     "is_agree": true
+     *                     "full_name":"Олег",
+     *                     "text": "Мне понравилась одна квартира, хотел бы ...",
+     *                     "communiction_method": "telegram",
+     *                     "purpose": null,
+     *                     "link_from": "http://92.63.179.235:3002/",
+     *                     "ticket_type_cid": 8,
      *                }
      *             )
      *         )
@@ -160,8 +158,7 @@ class ApplicationFlatController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/ApplicationFlatSchema"
-     *                  ),
+     *                  ref="#/components/schemas/TicketSchema"
      *              ),
      *          ),
      *      ),
@@ -188,20 +185,20 @@ class ApplicationFlatController extends Controller
      *      )
      * )
      */
-    public function store(StoreApplicationFlatRequest $request)
+    public function store(StoreTicketRequest $request)
     {
-        $data = ApplicationFlat::create($request->validated());
+        $data = Ticket::create($request->validated());
 
         return new JsonResponse([
-            'data' => $data,
+            'data' => $data
         ], 201);
     }
 
     /**
      * Show
      * @OA\Get (
-     *     path="/api/application-flat/{id}",
-     *     tags={"ApplicationFlat"},
+     *     path="/api/ticket/{id}",
+     *     tags={"Ticket"},
      *      @OA\Parameter( 
      *          name="id",
      *          in="path",
@@ -215,7 +212,7 @@ class ApplicationFlatController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="status,flat",
+     *          example="status",
      *          @OA\Schema(
      *              type="string",
      *          )
@@ -225,7 +222,7 @@ class ApplicationFlatController extends Controller
      *          description="Success",
      *          @OA\JsonContent(
      *              @OA\Property(property="data", type="object",
-     *                  ref="#/components/schemas/ApplicationFlatSchema"
+     *                  ref="#/components/schemas/TicketSchema"
      *              ),
      *          )
      *      ),
@@ -239,43 +236,36 @@ class ApplicationFlatController extends Controller
      *      )
      * )
      */
-    public function show(Request $request, int $id)
+    public function show(ShowTicketRequest $request, int $id)
     {
         return new JsonResponse([
-            'data' => Filter::one($request, new ApplicationFlat, $id, $this::getWhere())
+            'data' => Filter::one($request, new Ticket, $id)
         ]);
     }
 
     /**
      * Update
      * @OA\Put (
-     *     path="/api/application-flat/{id}",
-     *     tags={"ApplicationFlat"},
-     *     security={{"bearer_token": {}}},
-     *      @OA\Parameter(
-     *          name="id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
+     *     path="/api/ticket/{id}",
+     *     tags={"Ticket"},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                   required={"name", "phone", "text", "messager_type"},
+     *                  required={"phone", "full_name", "text", "communiction_method", "link_from", "ticket_type_cid", "status_cid"},
+     *                  @OA\Property(
+     *                      property="data",
      *                      type="object",
      *                      @OA\Property(
-     *                          property="name",
+     *                          property="email",
      *                          type="string"
-     *                      ),
+     *                      ),                   
      *                      @OA\Property(
      *                          property="phone",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="email",
+     *                          property="full_name",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
@@ -283,71 +273,92 @@ class ApplicationFlatController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="messager_type",
+     *                          property="communiction_method",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="is_agree",
-     *                          type="boolean"
+     *                          property="purpose",
+     *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="status_id",
+     *                          property="link_from",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="ticket_type_cid",
+     *                          type="number"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="status_cid",
      *                          type="number"
      *                      ),
      *                 ),
      *                 example={
-     *                     "flat_id": 1,
-     *                     "is_information": 0,
-     *                     "is_viewing": 0,
-     *                     "name":"Олег",
      *                     "email":"john@test.com",
      *                     "phone":"+799999",
-     *                     "text": "Мне понравилась ваша квартира, хотел бы ...",
-     *                     "messager_type": "telegram",
-     *                     "is_agree": true,
-     *                     "status_id": 6,
+     *                     "full_name":"Олег",
+     *                     "text": "Мне понравилась одна квартира, хотел бы ...",
+     *                     "communiction_method": "telegram",
+     *                     "purpose": null,
+     *                     "link_from": "http://92.63.179.235:3002/",
+     *                     "ticket_type_cid": 8,
+     *                     "status_cid": 4,
      *                }
+     *             )
      *         )
      *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Success",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="object",
-     *                  ref="#/components/schemas/ApplicationFlatSchema"
-     *              )
-     *          )
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/TicketSchema"
+     *              ),
+     *          ),
      *      ),
      *      @OA\Response(
      *          response=400,
      *          description="Validation error",
      *          @OA\JsonContent(
-     *                  @OA\Property(property="message", type="string", example="The name field is required."),
+     *                  @OA\Property(property="message", type="string", example="The email field is required. (and 1 more errors)"),
+     *                  @OA\Property(property="errors", type="object",
+     *                      @OA\Property(property="email", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The email field is required.",
+     *                          )
+     *                      ),
+     *                      @OA\Property(property="phone", type="array", collectionFormat="multi",
+     *                        @OA\Items(
+     *                          type="string",
+     *                          example="The phone field is required.",
+     *                          )
+     *                      ),
+     *                  ),
      *          )
      *      )
      * )
      */
-    public function update(UpdateApplicationFlatRequest $request, int $id)
+    public function update(UpdateTicketRequest $request, int $id)
     {
-        $data = ApplicationFlat::findOrFail($id);
+        $data = Ticket::findOrFail($id);
         $data->update(
             $request->validated()
         );
 
         return new JsonResponse([
-            'data' => ApplicationFlat::find($id)
+            'data' => Ticket::find($id)
         ]);
     }
 
     /**
      * Delete
      * @OA\Delete (
-     *     path="/api/application-flat/{id}",
-     *     tags={"ApplicationFlat"},
+     *     path="/api/ticket/{id}",
+     *     tags={"Ticket"},
      *     security={{"bearer_token": {}}},
      *     @OA\Parameter(
      *          name="id",
-     *          description="Alert id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -371,9 +382,9 @@ class ApplicationFlatController extends Controller
      *      )
      * )
      */
-    public function destroy(DestroyApplicationFlatRequest $request, int $id)
+    public function destroy(DestroyTicketRequest $request, int $id)
     {
-        $deleted = ApplicationFlat::destroy($id);
+        $deleted = Ticket::destroy($id);
 
         if (!$deleted) return new JsonResponse([
             'message' => 'Not deleted',

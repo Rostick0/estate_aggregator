@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\ApplicationFlat;
+namespace App\Http\Requests\Ticket;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroyApplicationFlatRequest extends FormRequest
+class DestroyTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

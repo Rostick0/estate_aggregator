@@ -4,8 +4,6 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AlertController;
 use App\Http\Controllers\AlertUserController;
 use App\Http\Controllers\ApplicationCompanyController;
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\ApplicationFlatController;
 use App\Http\Controllers\ApplicationUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuildingTypeController;
@@ -25,12 +23,12 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ObjectFlatController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\RecruitmentChatController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\RecruitmentFlatController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -68,11 +66,11 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('building-type', [BuildingTypeController::class, 'index']);
 
     Route::group(['middleware' => 'throttle:30,1'], function () {
-        Route::apiResource('application', ApplicationController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::apiResource('application-flat', ApplicationFlatController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::apiResource('ticket', TicketController::class)->only(['store']);
     });
 
-    Route::apiResource('application-flat', ApplicationFlatController::class)->only(['index']);
+    Route::apiResource('ticket', TicketController::class)->only(['index', 'show', 'update', 'destroy']);
+
 
     Route::get('main-banner', [MainBannerController::class, 'index']);
     Route::put('main-banner', [MainBannerController::class, 'update']);

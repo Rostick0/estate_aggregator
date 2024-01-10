@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Application;
+namespace App\Http\Requests\Ticket;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreApplicationRequest extends FormRequest
+class IndexTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check() && auth()->user()?->role === 'admin';
     }
 
     /**
@@ -22,12 +22,7 @@ class StoreApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'phone' => 'required|max:255',
-            'email' => 'email|max:255',
-            'text' => 'required|min:10|max:255',
-            'messager_type' => 'in:telegram,whatsapp,viber',
-            'is_agree' => 'required|accepted'
+            //
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Collection;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CollectionSeeder extends Seeder
@@ -27,20 +26,32 @@ class CollectionSeeder extends Seeder
                 'type' => 'language',
             ],
             [
-                'value' => 'Завершена',
-                'type' => 'application'
+                'value' => 'done',
+                'type' => 'ticket_statuses'
             ],
             [
-                'value' => 'В работе',
-                'type' => 'application'
+                'value' => 'pending',
+                'type' => 'ticket_statuses'
             ],
             [
-                'value' => 'Новая',
-                'type' => 'application'
+                'value' => 'new',
+                'type' => 'ticket_statuses'
             ],
             [
-                'value' => 'Архив',
-                'type' => 'application'
+                'value' => 'archive',
+                'type' => 'ticket_statuses'
+            ],
+            [
+                'value' => 'question',
+                'type' => 'ticket_types'
+            ],
+            [
+                'value' => 'buy',
+                'type' => 'ticket_types'
+            ],
+            [
+                'value' => 'preview',
+                'type' => 'ticket_types'
             ],
         ];
 

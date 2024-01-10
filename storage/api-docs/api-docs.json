@@ -1243,817 +1243,6 @@
                 ]
             }
         },
-        "/api/application": {
-            "get": {
-                "tags": [
-                    "Application"
-                ],
-                "summary": "Index",
-                "operationId": "4e0a5b51b8c9343deaf00302868fa724",
-                "parameters": [
-                    {
-                        "name": "filter",
-                        "in": "query",
-                        "schema": {
-                            "type": "object",
-                            "example": {
-                                "filter[id]": null,
-                                "filter[name]": null,
-                                "filter[phone]": null,
-                                "filter[email]": null,
-                                "filter[text]": null,
-                                "filter[messager_type]": null,
-                                "filter[status_id]": null,
-                                "filter[created_at]": null,
-                                "filter[updated_at]": null
-                            }
-                        }
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "2"
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "Limit data",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "20"
-                    },
-                    {
-                        "name": "extends",
-                        "in": "query",
-                        "description": "Extends data",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "flat,status"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ApplicationFlatSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "Application"
-                ],
-                "summary": "Store",
-                "operationId": "cc41c1539aa97a2fcda663894b0afec3",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "phone",
-                                    "text",
-                                    "messager_type"
-                                ],
-                                "properties": {
-                                    "data": {
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "phone": {
-                                                "type": "string"
-                                            },
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "text": {
-                                                "type": "string"
-                                            },
-                                            "messager_type": {
-                                                "type": "string"
-                                            },
-                                            "is_agree": {
-                                                "type": "boolean"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "name": "Олег",
-                                    "email": "john@test.com",
-                                    "phone": "+799999",
-                                    "text": "Мне понравилась одна квартира, хотел бы ...",
-                                    "messager_type": "telegram",
-                                    "is_agree": true
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ApplicationSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The email field is required. (and 1 more errors)"
-                                        },
-                                        "errors": {
-                                            "properties": {
-                                                "email": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string",
-                                                        "example": "The email field is required."
-                                                    },
-                                                    "collectionFormat": "multi"
-                                                },
-                                                "phone": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string",
-                                                        "example": "The phone field is required."
-                                                    },
-                                                    "collectionFormat": "multi"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/application/{id}": {
-            "get": {
-                "tags": [
-                    "Application"
-                ],
-                "summary": "Show",
-                "operationId": "b1a2862dde72db57d6767b4472bed205",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "extends",
-                        "in": "query",
-                        "description": "Extends data",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "status"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ApplicationSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Not found"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Application"
-                ],
-                "summary": "Update",
-                "operationId": "da9299ce71fdc243cf107e3a28fd7d67",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "phone",
-                                    "text",
-                                    "messager_type"
-                                ],
-                                "properties": {
-                                    "data": {
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "phone": {
-                                                "type": "string"
-                                            },
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "text": {
-                                                "type": "string"
-                                            },
-                                            "messager_type": {
-                                                "type": "string"
-                                            },
-                                            "is_agree": {
-                                                "type": "boolean"
-                                            },
-                                            "status_id": {
-                                                "type": "number"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "name": "Олег",
-                                    "email": "john@test.com",
-                                    "phone": "+799999",
-                                    "text": "Мне понравилась одна квартира, хотел бы ...",
-                                    "messager_type": "telegram",
-                                    "is_agree": true,
-                                    "status_id": 6
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "$ref": "#/components/schemas/ApplicationSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The name field is required."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Application"
-                ],
-                "summary": "Delete",
-                "operationId": "b1ce7ef19f645a66fa3194b878595ae3",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Alert id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Deleted"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Access error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "No access"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            }
-        },
-        "/api/application-flat": {
-            "get": {
-                "tags": [
-                    "ApplicationFlat"
-                ],
-                "summary": "Index",
-                "operationId": "b11c5863d589474ec451479b148e6ca5",
-                "parameters": [
-                    {
-                        "name": "filter",
-                        "in": "query",
-                        "schema": {
-                            "type": "object",
-                            "example": {
-                                "filter[id]": null,
-                                "filter[flat_id]": null,
-                                "filter[is_information]": null,
-                                "filter[is_viewing]": null,
-                                "filter[name]": null,
-                                "filter[phone]": null,
-                                "filter[email]": null,
-                                "filter[text]": null,
-                                "filter[messager_type]": null,
-                                "filter[status_id]": null,
-                                "filter[created_at]": null,
-                                "filter[updated_at]": null
-                            }
-                        }
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Сортировка по параметру",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "id"
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "2"
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "Limit data",
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "20"
-                    },
-                    {
-                        "name": "extends",
-                        "in": "query",
-                        "description": "Extends data",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "flat,status"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ApplicationFlatSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "ApplicationFlat"
-                ],
-                "summary": "Store",
-                "operationId": "9d200ac88f2204a654e5ebdd9882468e",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "": {
-                                        "required": [
-                                            "name",
-                                            "phone",
-                                            "text",
-                                            "messager_type"
-                                        ],
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "phone": {
-                                                "type": "string"
-                                            },
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "text": {
-                                                "type": "string"
-                                            },
-                                            "messager_type": {
-                                                "type": "string"
-                                            },
-                                            "is_agree": {
-                                                "type": "boolean"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "flat_id": 1,
-                                    "is_information": 0,
-                                    "is_viewing": 0,
-                                    "name": "Олег",
-                                    "email": "john@test.com",
-                                    "phone": "+799999",
-                                    "text": "Мне понравилась ваша квартира, хотел бы ...",
-                                    "messager_type": "telegram",
-                                    "is_agree": true
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ApplicationFlatSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/application-flat/{id}": {
-            "get": {
-                "tags": [
-                    "ApplicationFlat"
-                ],
-                "summary": "Show",
-                "operationId": "b81b091530e76a76bfc7d1ebc063655f",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
-                        },
-                        "example": "1"
-                    },
-                    {
-                        "name": "extends",
-                        "in": "query",
-                        "description": "Extends data",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "status,flat"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/ApplicationFlatSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Not found"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "ApplicationFlat"
-                ],
-                "summary": "Update",
-                "operationId": "4175151149ee0c097844ee4fc5cee6a9",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "phone",
-                                    "text",
-                                    "messager_type"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "phone": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "text": {
-                                        "type": "string"
-                                    },
-                                    "messager_type": {
-                                        "type": "string"
-                                    },
-                                    "is_agree": {
-                                        "type": "boolean"
-                                    },
-                                    "status_id": {
-                                        "type": "number"
-                                    }
-                                },
-                                "type": "object"
-                            },
-                            "example": {
-                                "flat_id": 1,
-                                "is_information": 0,
-                                "is_viewing": 0,
-                                "name": "Олег",
-                                "email": "john@test.com",
-                                "phone": "+799999",
-                                "text": "Мне понравилась ваша квартира, хотел бы ...",
-                                "messager_type": "telegram",
-                                "is_agree": true,
-                                "status_id": 6
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "$ref": "#/components/schemas/ApplicationFlatSchema"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The name field is required."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "ApplicationFlat"
-                ],
-                "summary": "Delete",
-                "operationId": "e91d2867ee7a0a9b23bce512596172ec",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Alert id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Deleted"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Access error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "No access"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            }
-        },
         "/api/application-user": {
             "get": {
                 "tags": [
@@ -7958,6 +7147,457 @@
                 ]
             }
         },
+        "/api/ticket": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Index",
+                "operationId": "0c4907ec7353d133ef22fb72c50f4e66",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "filter[id]": null,
+                                "filter[email]": null,
+                                "filter[phone]": null,
+                                "filter[full_name]": null,
+                                "filter[text]": null,
+                                "filter[communiction_method]": null,
+                                "filter[purpose]": null,
+                                "filter[link_from]": null,
+                                "filter[ticket_type_cid]": null,
+                                "filter[status_cid]": null,
+                                "filter[created_at]": null,
+                                "filter[updated_at]": null
+                            }
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Сортировка по параметру",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "id"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "2"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit data",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "20"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "flat,status"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/TicketSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Store",
+                "operationId": "c3e39f1002b325b5b28c2335f69843d8",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phone",
+                                    "full_name",
+                                    "text",
+                                    "communiction_method",
+                                    "link_from",
+                                    "ticket_type_cid"
+                                ],
+                                "properties": {
+                                    "data": {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "full_name": {
+                                                "type": "string"
+                                            },
+                                            "text": {
+                                                "type": "string"
+                                            },
+                                            "communiction_method": {
+                                                "type": "string"
+                                            },
+                                            "purpose": {
+                                                "type": "string"
+                                            },
+                                            "link_from": {
+                                                "type": "string"
+                                            },
+                                            "ticket_type_cid": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "john@test.com",
+                                    "phone": "+799999",
+                                    "full_name": "Олег",
+                                    "text": "Мне понравилась одна квартира, хотел бы ...",
+                                    "communiction_method": "telegram",
+                                    "purpose": null,
+                                    "link_from": "http://92.63.179.235:3002/",
+                                    "ticket_type_cid": 8
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/TicketSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The email field is required. (and 1 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The email field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "phone": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The phone field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Show",
+                "operationId": "6acf0d4d743f82777a7239b8ada53ecb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "extends",
+                        "in": "query",
+                        "description": "Extends data",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "status"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/TicketSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Update",
+                "operationId": "554eae33f31f3bf26351e22196e59d10",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phone",
+                                    "full_name",
+                                    "text",
+                                    "communiction_method",
+                                    "link_from",
+                                    "ticket_type_cid",
+                                    "status_cid"
+                                ],
+                                "properties": {
+                                    "data": {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "full_name": {
+                                                "type": "string"
+                                            },
+                                            "text": {
+                                                "type": "string"
+                                            },
+                                            "communiction_method": {
+                                                "type": "string"
+                                            },
+                                            "purpose": {
+                                                "type": "string"
+                                            },
+                                            "link_from": {
+                                                "type": "string"
+                                            },
+                                            "ticket_type_cid": {
+                                                "type": "number"
+                                            },
+                                            "status_cid": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "john@test.com",
+                                    "phone": "+799999",
+                                    "full_name": "Олег",
+                                    "text": "Мне понравилась одна квартира, хотел бы ...",
+                                    "communiction_method": "telegram",
+                                    "purpose": null,
+                                    "link_from": "http://92.63.179.235:3002/",
+                                    "ticket_type_cid": 8,
+                                    "status_cid": 4
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/TicketSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The email field is required. (and 1 more errors)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The email field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                },
+                                                "phone": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The phone field is required."
+                                                    },
+                                                    "collectionFormat": "multi"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Delete",
+                "operationId": "7988715938e134d642195ed746d5cb24",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Access error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No access"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/user": {
             "get": {
                 "tags": [
@@ -8481,45 +8121,6 @@
                 },
                 "type": "object"
             },
-            "ApplicationSchema": {
-                "properties": {
-                    "id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Олег"
-                    },
-                    "phone": {
-                        "type": "string",
-                        "example": "+79999999"
-                    },
-                    "email": {
-                        "type": "string",
-                        "example": "email@mail.ru"
-                    },
-                    "text": {
-                        "type": "string",
-                        "example": "Есть вопрос по поводу осмотра"
-                    },
-                    "messager_type": {
-                        "type": "string",
-                        "example": "telegram"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2022-06-28 06:06:17"
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2022-06-28 06:06:17"
-                    }
-                },
-                "type": "object"
-            },
             "ApplicationCompanySchema": {
                 "properties": {
                     "id": {
@@ -8550,55 +8151,6 @@
                     "updated_at": {
                         "type": "string",
                         "format": "date-time",
-                        "example": "2022-06-28 06:06:17"
-                    }
-                },
-                "type": "object"
-            },
-            "ApplicationFlatSchema": {
-                "properties": {
-                    "id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "flat_id": {
-                        "type": "number",
-                        "example": 1
-                    },
-                    "is_information": {
-                        "type": "boolean",
-                        "example": "0"
-                    },
-                    "is_viewing": {
-                        "type": "boolean",
-                        "example": "1"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Олег"
-                    },
-                    "phone": {
-                        "type": "string",
-                        "example": "+79999999"
-                    },
-                    "email": {
-                        "type": "string",
-                        "example": "email@mail.ru"
-                    },
-                    "text": {
-                        "type": "string",
-                        "example": "Есть вопрос по поводу осмотра"
-                    },
-                    "messager_type": {
-                        "type": "string",
-                        "example": "telegram"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "example": "2022-06-28 06:06:17"
-                    },
-                    "updated_at": {
-                        "type": "string",
                         "example": "2022-06-28 06:06:17"
                     }
                 },
@@ -9288,6 +8840,61 @@
                 },
                 "type": "object"
             },
+            "TicketSchema": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "email@mail.ru"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "+79999999"
+                    },
+                    "full_name": {
+                        "type": "string",
+                        "example": "Олег"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Есть вопрос по поводу осмотра"
+                    },
+                    "communiction_method": {
+                        "type": "string",
+                        "example": "telegram"
+                    },
+                    "purpose": {
+                        "type": "записаться на просмотр",
+                        "example": "flat"
+                    },
+                    "link_from": {
+                        "type": "string",
+                        "example": "http://92.63.179.235:3002/"
+                    },
+                    "ticket_type_cid": {
+                        "type": "number",
+                        "example": "8"
+                    },
+                    "status_cid": {
+                        "type": "number",
+                        "example": "4"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-06-28 06:06:17"
+                    }
+                },
+                "type": "object"
+            },
             "UserSchema": {
                 "properties": {
                     "id": {
@@ -9363,45 +8970,6 @@
                     }
                 },
                 "type": "object"
-            }
-        },
-        "responses": {
-            "400": {
-                "description": "Validation error",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "type": "string",
-                                    "example": "The email field is required. (and 1 more errors)"
-                                },
-                                "errors": {
-                                    "properties": {
-                                        "email": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string",
-                                                "example": "The email field is required."
-                                            },
-                                            "collectionFormat": "multi"
-                                        },
-                                        "phone": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string",
-                                                "example": "The phone field is required."
-                                            },
-                                            "collectionFormat": "multi"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
             }
         },
         "securitySchemes": {
