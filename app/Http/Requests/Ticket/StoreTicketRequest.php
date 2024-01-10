@@ -24,7 +24,7 @@ class StoreTicketRequest extends FormRequest
     {
         return [
             'email' => 'nullable|email|max:255',
-            'phome' => 'required|max:255',
+            'phone' => 'required|max:255',
             'full_name' => 'nullable|max:255',
             'text' => 'nullable|max:65536',
             'communiction_method' => 'nullable|max:255',
