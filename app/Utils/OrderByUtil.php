@@ -29,8 +29,29 @@ class OrderByUtil
     {
         if (!$name) return $builder;
 
+        $table = $builder->getModel()->getTable();
+        $builder->select($table . '.*');
+
+        $sort_name = $name;
+
+        $name_array = explode('.', $name);
+
+        if (isset($name_array[1])) {
+            $relat = $builder->getRelation(OrderByUtil::removeMinus($name_array[0]));
+            $relat_table = $relat->getModel()->getTable();
+            
+            $builder->join(
+                $relat_table,
+                $table . '.' . $relat->getForeignKeyName(),
+                '=',
+                $relat_table . '.' . $relat->getOwnerKeyName()
+            );
+
+            $sort_name = $relat_table . '.' . $name_array[1];
+        }
+
         return $builder->orderBy(
-            OrderByUtil::removeMinus($name) ?? 'id',
+            OrderByUtil::removeMinus($sort_name) ?? 'id',
             OrderByUtil::type($name)
         );
     }
