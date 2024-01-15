@@ -339,4 +339,23 @@ class MessageController extends Controller
             'message' => 'Deleted'
         ]);
     }
+
+    public function read(Request $request, int $id)
+    {
+        $message = Filter::one($request, new Message, $id, $this::getWhere());
+
+        if (!$message) return AccessUtil::errorMessage();
+
+        Message::where([
+            ['id', '<=', $id],
+            ['chat_id', '=', $message->chat_id],
+            ['user_id', '!=', auth()->id()],
+        ])->update([
+            'is_read' => 1
+        ]);
+
+        return new JsonResponse([
+            'message' => 'read',
+        ]);
+    }
 }

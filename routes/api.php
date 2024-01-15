@@ -27,6 +27,7 @@ use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\RecruitmentFlatController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
+use App\Http\Controllers\SetReadController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
@@ -110,6 +111,8 @@ Route::group(['middleware' => 'api'], function () {
         'message' => MessageController::class,
         'application-company' => ApplicationCompanyController::class,
     ]);
+
+    Route::patch('/message/{id}/read')->middleware('jwt');
 })->middleware('throttle:5000,1');
 
 Route::get('test', [TestController::class, 'test']);
