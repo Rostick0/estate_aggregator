@@ -52,7 +52,7 @@ class OrderByUtil
                     $relat_child = $relat->getForeignKeyName();
                 } catch (Exception $e){
                     $relat_child = $relat->getLocalKeyName();
-                    $relat_parent = $relat->getLocalKeyName();
+                    $relat_parent = $relat->getForeignKeyName();
                 }
                 
                 $builder->join(
