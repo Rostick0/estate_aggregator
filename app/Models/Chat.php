@@ -35,7 +35,7 @@ class Chat extends Model
     }
 
     public function flat() {
-        dd($this);
+        if (!$this->where('chatsable_type', 'App\\Models\\Flat')->get()) return;
         return $this->belongsTo(Flat::class, 'chatsable_id');
     }
 
