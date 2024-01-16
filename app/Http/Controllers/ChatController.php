@@ -6,6 +6,7 @@ use App\Filters\Filter;
 use App\Http\Requests\Chat\IndexChatRequest;
 use App\Http\Requests\Chat\StoreChatRequest;
 use App\Models\Chat;
+use App\Models\Flat;
 use App\Models\Recruitment;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -153,6 +154,8 @@ class ChatController extends Controller
 
         if ($request->type === 'Recruitment') {
             $user_id =  Recruitment::findOrFail($request->type_id)?->user_id;
+        } else if ($request->type === 'Flat') {
+            Flat::findOrFail($request->type_id)?->user_id;
         }
 
         $data = Chat::where([
