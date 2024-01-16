@@ -31,7 +31,10 @@ class Chat extends Model
 
     public function chatsable(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo()->morphWith([
+            Flat::class => ['flat'],
+            Recruitment::class => ['recruitment'],
+        ]);;
     }
 
     public function chat_users(): HasMany
