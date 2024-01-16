@@ -31,10 +31,15 @@ class Chat extends Model
 
     public function chatsable(): MorphTo
     {
-        return $this->morphTo()->morphWith([
-            'flat' => Flat::class,
-            Recruitment::class => ['recruitment'],
-        ]);
+        return $this->morphTo();
+    }
+
+    public function flat() {
+        return $this->belongsTo(Flat::class, 'chatsable_id');
+    }
+
+    public function recruitment() {
+        return $this->belongsTo(Recruitment::class, 'chatsable_id');
     }
 
     public function chat_users(): HasMany
