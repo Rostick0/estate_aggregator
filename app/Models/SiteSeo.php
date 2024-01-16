@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @OA\Schema(
- *    schema="SiteInfoSchema",
+ *    schema="SiteSeoSchema",
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="title", type="string", example="Купить или арендовать недвижимость"),
  *       @OA\Property(property="text", type="string", example="Если вы хотите купить недвижимость за рубежом или арендовать её — в каталоге LOGO более 170 тысяч объявлений со всего мира."),
+ *       @OA\Property(property="deleted_at", type="datetime", example="NULL"),
  *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
  *    )

@@ -79,6 +79,52 @@ class SiteInfoController extends Controller
         );
     }
 
+    /**
+     * Store
+     * @OA\Post (
+     *     path="/api/site-info",
+     *     tags={"SiteInfo"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                      @OA\Property(
+     *                          property="title",
+     *                          type="string",
+     *                          example="Заголовок",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="text",
+     *                          type="string",
+     *                          example="Текст"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="key",
+     *                          type="string",
+     *                          example="Ключ"
+     *                      ),
+     *              )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/SiteInfoSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The title field is required when none of images, files are present"),
+     *          )
+     *      )
+     * )
+     */
     public function store(StoreSiteInfoRequest $request)
     {
         $data = SiteInfo::create($request->validated());
@@ -88,6 +134,31 @@ class SiteInfoController extends Controller
         ], 201);
     }
 
+    /**
+     * Show
+     * @OA\get (
+     *     path="/api/site-info/{id}",
+     *     tags={"SiteInfo"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          example="1",
+     *          in="path",
+     *          @OA\Schema(
+     *              type="number"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/SiteInfoSchema"
+     *              ),
+     *          )
+     *      ),
+     * )
+     */
     public function show(Request $request, int $id)
     {
         return new JsonResponse([
@@ -95,6 +166,61 @@ class SiteInfoController extends Controller
         ]);
     }
 
+    /**
+     * Update
+     * @OA\Patch (
+     *     path="/api/site-info/{id}",
+     *     tags={"SiteInfo"},
+     *     security={{"bearer_token": {}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                      @OA\Property(
+     *                          property="title",
+     *                          type="string",
+     *                          example="Заголовок",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="text",
+     *                          type="string",
+     *                          example="Текст"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="key",
+     *                          type="string",
+     *                          example="Ключ"
+     *                      ),
+     *              )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="data", type="object",
+     *                  ref="#/components/schemas/SiteInfoSchema"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="The title field is required when none of images, files are present"),
+     *          )
+     *      )
+     * )
+     */
     public function update(UpdateSiteInfoRequest $request, int $id)
     {
         $data = SiteInfo::findOrFail($id);
@@ -110,6 +236,37 @@ class SiteInfoController extends Controller
         ]);
     }
 
+    /**
+     * Delete
+     * @OA\Delete (
+     *     path="/api/site-info/{id}",
+     *     tags={"SiteInfo"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Deleted"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Access error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="No access"),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
     public function destroy(int $id)
     {
         $data = SiteInfo::findOrFail($id);
@@ -123,6 +280,37 @@ class SiteInfoController extends Controller
         ]);
     }
 
+    /**
+     * Restore
+     * @OA\Patch (
+     *     path="/api/site-info/{id}/restore",
+     *     tags={"SiteInfo"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Deleted"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Access error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="No access"),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
     public function restore(int $id)
     {
         $data = SiteInfo::onlyTrashed()->findOrFail($id);
@@ -136,6 +324,38 @@ class SiteInfoController extends Controller
         ]);
     }
 
+
+    /**
+     * forceDelete
+     * @OA\Delete (
+     *     path="/api/site-info/{id}/force-delete",
+     *     tags={"SiteInfo"},
+     *     security={{"bearer_token": {}}},
+     *     @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Deleted"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Access error",
+     *          @OA\JsonContent(
+     *                  @OA\Property(property="message", type="string", example="No access"),
+     *                 ),
+     *          )
+     *      )
+     * )
+     */
     public function forceDelete(int $id)
     {
         $data = SiteInfo::findOrFail($id);

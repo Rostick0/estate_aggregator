@@ -28,11 +28,11 @@ use App\Http\Controllers\RecruitmentFlatController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\SetReadController;
+use App\Http\Controllers\SiteInfoController;
+use App\Http\Controllers\SiteSeoController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
-use App\Models\SiteInfo;
-use App\Models\SiteSeo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -112,9 +112,23 @@ Route::group(['middleware' => 'api'], function () {
         'recruitment' => RecruitmentController::class,
         'message' => MessageController::class,
         'application-company' => ApplicationCompanyController::class,
-        'site-seo' => SiteSeo::class,
-        'site-info' => SiteInfo::class,
+        'site-seo' => SiteSeoController::class,
+        'site-info' => SiteInfoController::class,
     ]);
+
+    Route::group([
+        'prefix' => 'site-info/{id}'
+    ], function () {
+        Route::patch('/restore', [SiteInfoController::class, 'restore']);
+        Route::delete('/force-delete', [SiteInfoController::class, 'forceDelete']);
+    });
+
+    Route::group([
+        'prefix' => 'site-seo/{id}'
+    ], function () {
+        Route::patch('/restore', [SiteSeoController::class, 'restore']);
+        Route::delete('/force-delete', [SiteSeoController::class, 'forceDelete']);
+    });
 
     Route::patch('/message/{id}/read')->middleware('jwt');
 })->middleware('throttle:5000,1');

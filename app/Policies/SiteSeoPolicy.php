@@ -50,16 +50,16 @@ class SiteSeoPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    // public function restore(User $user, SiteSeo $siteSeo): bool
-    // {
-    //     //
-    // }
+    public function restore(User $user, SiteSeo $siteSeo): bool
+    {
+        return $user->role === 'admin';
+    }
 
     // /**
     //  * Determine whether the user can permanently delete the model.
     //  */
-    // public function forceDelete(User $user, SiteSeo $siteSeo): bool
-    // {
-    //     //
-    // }
+    public function forceDelete(User $user, SiteSeo $siteSeo): bool
+    {
+        return $user->role === 'admin';
+    }
 }
