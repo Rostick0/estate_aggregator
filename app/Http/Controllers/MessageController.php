@@ -180,7 +180,7 @@ class MessageController extends Controller
 
         return new JsonResponse([
             'data' => $data
-        ]);
+        ], 201);
     }
 
     /**

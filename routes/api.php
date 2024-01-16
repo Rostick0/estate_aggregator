@@ -31,6 +31,8 @@ use App\Http\Controllers\SetReadController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use App\Models\SiteInfo;
+use App\Models\SiteSeo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -110,6 +112,8 @@ Route::group(['middleware' => 'api'], function () {
         'recruitment' => RecruitmentController::class,
         'message' => MessageController::class,
         'application-company' => ApplicationCompanyController::class,
+        'site-seo' => SiteSeo::class,
+        'site-info' => SiteInfo::class,
     ]);
 
     Route::patch('/message/{id}/read')->middleware('jwt');

@@ -20,8 +20,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *       @OA\Property(property="rubric_id", type="number", example=1),
  *       @OA\Property(property="source", type="string", example="<a href="">источник<a>"),
  *       @OA\Property(property="count_view", type="number", example=100),
- *       @OA\Property(property="created_at", type="string", example="2022-06-28 06:06:17"),
- *       @OA\Property(property="updated_at", type="string", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
+ *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
  *    )
  * )
  */
