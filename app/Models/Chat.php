@@ -35,7 +35,7 @@ class Chat extends Model
     }
 
     public function flat() {
-        dd($this->belongsTo(Flat::class, 'chatsable_id'));
+        dd($this);
         return $this->belongsTo(Flat::class, 'chatsable_id');
     }
 
