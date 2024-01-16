@@ -40,6 +40,7 @@ class Chat extends Model
     }
 
     public function recruitment() {
+        if (!$this->where('chatsable_type', 'App\\Models\\Recruitment')->get()) return;
         return $this->belongsTo(Recruitment::class, 'chatsable_id');
     }
 
