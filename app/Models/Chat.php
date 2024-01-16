@@ -35,11 +35,12 @@ class Chat extends Model
     }
 
     public function flat() {
-        return $this->where('chatsable_type', 'App\\Models\\Chat')->belongsTo(Flat::class, 'chatsable_id');
+        dd($this->belongsTo(Flat::class, 'chatsable_id'));
+        return $this->belongsTo(Flat::class, 'chatsable_id');
     }
 
     public function recruitment() {
-        return $this->belongsTo(Recruitment::class, 'chatsable_id')->where('chatsable_type', 'App\\Models\\Recruitment');
+        return $this->belongsTo(Recruitment::class, 'chatsable_id');
     }
 
     public function chat_users(): HasMany
