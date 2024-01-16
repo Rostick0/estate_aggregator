@@ -23,7 +23,7 @@ class StoreChatRequest extends FormRequest
     {
         return [
             'type_id' => 'required|numeric',
-            'type' => 'required|in:Recruitment',
+            'type' => 'required|in:Recruitment,Flat',
         ];
     }
 }

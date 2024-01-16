@@ -155,7 +155,7 @@ class ChatController extends Controller
         if ($request->type === 'Recruitment') {
             $user_id =  Recruitment::findOrFail($request->type_id)?->user_id;
         } else if ($request->type === 'Flat') {
-            Flat::findOrFail($request->type_id)?->user_id;
+            $user_id = Flat::findOrFail($request->type_id)?->user_id;
         }
 
         $data = Chat::where([

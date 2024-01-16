@@ -13,19 +13,19 @@ class ChatObserver
      */
     public function created(Chat $chat): void
     {
-        if ($chat->chatsable_type == 'App\Models\Recruitment') {
-            $recruitment = Recruitment::find($chat->chatsable_id);
+        // if ($chat->chatsable_type == 'App\Models\Recruitment') {
+        //     $recruitment = Recruitment::find($chat->chatsable_id);
 
-            ChatUser::create([
-                'chat_id' => $chat->id,
-                'user_id' => $recruitment->user_id
-            ]);
-        }
+        //     ChatUser::create([
+        //         'chat_id' => $chat->id,
+        //         'user_id' => $recruitment->user_id
+        //     ]);
+        // }
 
-        ChatUser::create([
-            'chat_id' => $chat->id,
-            'user_id' => auth()->id()
-        ]);
+        // ChatUser::create([
+        //     'chat_id' => $chat->id,
+        //     'user_id' => auth()->id()
+        // ]);
     }
 
     /**

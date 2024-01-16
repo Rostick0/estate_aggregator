@@ -153,6 +153,11 @@ class Flat extends Model
         return $this->hasMany(RecruitmentFlat::class, 'flat_id', 'id');
     }
 
+    public function chats(): MorphMany
+    {
+        return $this->morphMany(Chat::class, 'chatsable');
+    }
+
     public function is_recruitment()
     {
         return $this->hasOne(RecruitmentFlat::class, 'flat_id', 'id')

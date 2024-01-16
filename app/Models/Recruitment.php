@@ -40,7 +40,7 @@ class Recruitment extends Model
         return $this->hasMany(RecruitmentFlat::class, 'recruitment_id', 'id');
     }
 
-    public function chat(): MorphMany
+    public function chats(): MorphMany
     {
         return $this->morphMany(Chat::class, 'chatsable');
     }
