@@ -35,7 +35,7 @@ class Chat extends Model
     }
 
     public function flat() {
-        return $this->belongsTo(Flat::class, 'chatsable_id')->where('chatsable_type', 'App\\Models\\Chat');
+        return $this->where('chatsable_type', 'App\\Models\\Chat')->belongsTo(Flat::class, 'chatsable_id');
     }
 
     public function recruitment() {
