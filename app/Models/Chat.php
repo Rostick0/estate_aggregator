@@ -32,9 +32,9 @@ class Chat extends Model
     public function chatsable(): MorphTo
     {
         return $this->morphTo()->morphWith([
-            Flat::class => ['flat'],
+            'flat' => Flat::class,
             Recruitment::class => ['recruitment'],
-        ]);;
+        ]);
     }
 
     public function chat_users(): HasMany
@@ -42,7 +42,8 @@ class Chat extends Model
         return $this->hasMany(ChatUser::class, 'chat_id', 'id');
     }
 
-    public function last_message(): HasOne {
+    public function last_message(): HasOne
+    {
         return $this->hasOne(Message::class)->latestOfMany();
     }
 }
