@@ -29,7 +29,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Chat::observe(ChatObserver::class);
+        // Chat::observe(ChatObserver::class);
         Message::observe(MessageObserver::class);
     }
 
