@@ -32,6 +32,7 @@ class UpdateTicketRequest extends FormRequest
             'link_from' => 'nullable|max:255',
             'ticket_type_cid' => 'nullable|numeric|' . Rule::exists('collections', 'id')->where('type', 'ticket_types'),
             'status_cid' => 'nullable|numeric|' . Rule::exists('collections', 'id')->where('type', 'ticket_statuses'),
+            'flat_id' => 'nullable|numeric|' . Rule::exists('flats', 'id'),
         ];
     }
 }

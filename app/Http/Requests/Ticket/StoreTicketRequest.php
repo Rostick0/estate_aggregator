@@ -31,6 +31,7 @@ class StoreTicketRequest extends FormRequest
             'purpose' => 'nullable|max:255',
             'link_from' => 'nullable|max:255',
             'ticket_type_cid' => 'nullable|numeric|' . Rule::exists('collections', 'id')->where('type', 'ticket_types'),
+            'flat_id' => 'nullable|numeric|' . Rule::exists('flats', 'id'),
         ];
     }
 }
