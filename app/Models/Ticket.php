@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  * @OA\Schema(
@@ -38,6 +39,7 @@ class Ticket extends Model
         'link_from',
         'ticket_type_cid',
         'status_cid',
+        'flat_id',
     ];
 
     public function ticket_type(): BelongsTo
@@ -48,5 +50,10 @@ class Ticket extends Model
     public function status(): BelongsTo
     {
         return $this->belongsTo(Collection::class, 'status_cid', 'id')->where('type', 'ticket_statuses');
+    }
+
+    public function flat(): BelongsTo
+    {
+        return $this->belongsTo(Flat::class);
     }
 }

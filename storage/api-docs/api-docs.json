@@ -8237,7 +8237,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "example": "status"
+                        "example": "flat,status"
                     }
                 ],
                 "responses": {

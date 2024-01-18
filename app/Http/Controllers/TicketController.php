@@ -212,7 +212,7 @@ class TicketController extends Controller
      *          name="extends",
      *          description="Extends data",
      *          in="query",
-     *          example="status",
+     *          example="flat,status",
      *          @OA\Schema(
      *              type="string",
      *          )

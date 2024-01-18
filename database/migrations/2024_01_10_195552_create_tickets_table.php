@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('link_from')->nullable();
             $table->foreignId('ticket_type_cid')->references('id')->on('collections')->onDelete('cascade');
             $table->integer('status_cid')->default(6);
+            $table->integer('flat_id')->nullable();
             $table->timestamps();
         });
     }
