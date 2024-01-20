@@ -37,7 +37,7 @@ class RecruitmentPolicy
      */
     public function update(User $user, Recruitment $recruitment): bool
     {
-        return $user?->id == $recruitment->user_id;
+        return $user->role == 'admin' || $user?->id == $recruitment->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class RecruitmentPolicy
      */
     public function delete(User $user, Recruitment $recruitment): bool
     {
-        return $user?->id == $recruitment->user_id;
+        return $user->role == 'admin' || $user?->id == $recruitment->user_id;
     }
 
     /**
