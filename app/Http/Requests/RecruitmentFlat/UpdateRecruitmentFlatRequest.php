@@ -3,9 +3,8 @@
 namespace App\Http\Requests\RecruitmentFlat;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreRecruitmentFlatRequest extends FormRequest
+class UpdateRecruitmentFlatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +22,6 @@ class StoreRecruitmentFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'recruitment_id' => 'required|' . Rule::exists('recruitments', 'id'),
-            'flat_id' => 'required|' . Rule::exists('flats', 'id'),
             'comment' => 'nullable|max:255',
         ];
     }

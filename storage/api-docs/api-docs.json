@@ -6668,6 +6668,76 @@
                         "bearer_token": []
                     }
                 ]
+            },
+            "patch": {
+                "tags": [
+                    "RecruitmentFlat"
+                ],
+                "summary": "Update",
+                "operationId": "1b1a2caa4ccc81847b00f9bf385555b1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "Моя очень хорошая квартира"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RecruitmentFlatSchema"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Comment max lenght 255"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/region": {
@@ -7392,7 +7462,6 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "User id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -7818,7 +7887,6 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "User id",
                         "required": true,
                         "schema": {
                             "type": "integer"

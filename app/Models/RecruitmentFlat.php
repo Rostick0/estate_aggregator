@@ -24,6 +24,7 @@ class RecruitmentFlat extends Model
     protected $fillable = [
         'recruitment_id',
         'flat_id',
+        'comment',
     ];
 
     public function recruitment(): BelongsTo

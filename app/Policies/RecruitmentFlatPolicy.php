@@ -13,6 +13,10 @@ class RecruitmentFlatPolicy
         return auth()?->id() ==  Recruitment::find($recruitment_id)->user_id;
     }
 
+    public function update(User $user, RecruitmentFlat $recruitment_flat) {
+        return $user->role == 'admin' || $user?->id == $recruitment_flat->recruitment->user_id;
+    }
+
     public function delete(User $user, RecruitmentFlat $recruitment_flat) {
         return $user->role == 'admin' || $user?->id == $recruitment_flat->recruitment->user_id;
     }

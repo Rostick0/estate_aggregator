@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
             $table->foreignId('flat_id')->references('id')->on('flats')->onDelete('cascade');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

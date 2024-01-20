@@ -174,7 +174,6 @@ class SiteInfoController extends Controller
      *     security={{"bearer_token": {}}},
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(

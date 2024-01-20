@@ -93,8 +93,6 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::apiResource('company', CompanyController::class)->only(['index', 'show', 'update']);
 
-    Route::apiResource('recruitment-flat', RecruitmentFlatController::class)->only(['index', 'store', 'show', 'destroy']);
-
     Route::apiResource('chat', ChatController::class)->only(['index', 'store', 'show']);
     Route::apiResource('chat-user', ChatUserController::class)->only(['index', 'show', 'update', 'destroy']);
 
@@ -114,6 +112,7 @@ Route::group(['middleware' => 'api'], function () {
         'application-company' => ApplicationCompanyController::class,
         'site-seo' => SiteSeoController::class,
         'site-info' => SiteInfoController::class,
+        'recruitment-flat' => RecruitmentFlatController::class,
     ]);
 
     Route::group([
