@@ -41,7 +41,7 @@ class Chat extends Model
 
     public function interlocutor()
     {
-        return $this->hasOne(ChatUser::class, 'chat_id', 'id')->where('user_id', '!=', auth()->id())->limit(1);
+        return $this->hasOne(ChatUser::class, 'chat_id', 'id')->where('user_id', '!=', auth()->id())->latestOfMany();
     }
 
     public function messages() {
