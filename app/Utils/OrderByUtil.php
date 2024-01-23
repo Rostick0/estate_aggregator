@@ -78,10 +78,8 @@ class OrderByUtil
 
         // dd($sort_name);
 
-        dd($name);
-        dd($sort_name);
-
-        
+        // dd($name);
+        // dd($sort_name);
 
         return $builder->orderBy(
             OrderByUtil::removeMinus(
