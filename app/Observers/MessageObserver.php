@@ -3,7 +3,9 @@
 namespace App\Observers;
 
 use App\Events\Message as EventsMessage;
+use App\Models\Chat;
 use App\Models\Message;
+use Carbon\Carbon;
 
 class MessageObserver
 {
@@ -16,6 +18,8 @@ class MessageObserver
             'data' => $message,
             'type' => 'create'
         ]);
+
+        Chat::find($message->chat_id)->update(['last_message_created_at' => Carbon::now()]);
     }
 
     /**

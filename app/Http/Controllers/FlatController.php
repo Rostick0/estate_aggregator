@@ -177,9 +177,6 @@ class FlatController extends Controller
                         $query->where('name', 'LIKE', '%' . $request->filterLIKE['search'] . '%');
                     })
                 );
-
-            // dd($data);
-            // dd($data->toSql());
         }
 
         return new JsonResponse(

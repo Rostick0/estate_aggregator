@@ -81,7 +81,7 @@ class FilterRequestUtil
         if ($request->filterLIKE) $data = FilterRequestUtil::template($request->filterLIKE, $builder, $fillable_block, 'LIKE', 'LIKE');
 
         if ($request->filterIN) $data = FilterRequestUtil::in($request->filterIN, $builder, $fillable_block);
-        if ($request->filterNotIN) $data = FilterRequestUtil::in($request->filterIN, $builder, $fillable_block, true);
+        if ($request->filterNotIN) $data = FilterRequestUtil::in($request->filterNotIN, $builder, $fillable_block, true);
 
         return $data;
     }

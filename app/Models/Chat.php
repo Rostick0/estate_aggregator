@@ -27,6 +27,7 @@ class Chat extends Model
     protected $fillable = [
         'chatsable_type',
         'chatsable_id',
+        'last_message_created_at'
     ];
 
     public function chatsable(): MorphTo

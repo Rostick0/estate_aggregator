@@ -28,11 +28,11 @@ class OrderByUtil
 
     public static function set(?string $name, Builder $builder): Builder
     {
-        if (!$name) return $builder;
+        if (!$name) return $builder->orderByDesc('id');
 
         $table = $builder->getModel()->getTable();
         $builder->select($table . '.*');
-
+        // $builder->distinct("$table.id");
         $sort_name = '';
 
         $name_array = explode('.', $name);
@@ -50,11 +50,11 @@ class OrderByUtil
                 try {
                     $relat_parent = $relat->getOwnerKeyName();
                     $relat_child = $relat->getForeignKeyName();
-                } catch (Exception $e){
+                } catch (Exception $e) {
                     $relat_child = $relat->getLocalKeyName();
                     $relat_parent = $relat->getForeignKeyName();
                 }
-                
+
                 $builder->join(
                     $relat_table,
                     $my_relat->getModel()->getTable() . '.' . $relat_child,
@@ -68,8 +68,20 @@ class OrderByUtil
         }
 
         $sort_name .= end($name_array);
+        // $builder->distinct();
+        // $builder->select([
+        //     "$table.id",
+        //     OrderByUtil::removeMinus(
+        //         $sort_name
+        //     ) ?? 'id'
+        // ]);
 
         // dd($sort_name);
+
+        dd($name);
+        dd($sort_name);
+
+        
 
         return $builder->orderBy(
             OrderByUtil::removeMinus(

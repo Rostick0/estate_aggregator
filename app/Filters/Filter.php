@@ -29,10 +29,10 @@ class Filter
         $data = FilterRequestUtil::all($request, $data, $fillable_block);
         $data = FilterHasRequestUtil::all($request, $data, $fillable_block);
         $data = FilterHasUtil::all($request, $data, $fillable_block);
-        $data = OrderByUtil::set($request->sort, $data);
-
+        if ($request->has('sort')) $data = OrderByUtil::set($request->sort, $data);
         if ($where) $data = Filter::where($data, $where);
 
+        // dd($data->toSql());
         return $data;
     }
 
