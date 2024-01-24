@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('is_read')->default(0);
             $table->timestamp('send_at')->useCurrent();
-            $table->enum('status', ['active', 'pending', 'hidden'])->default('pending');
+            $table->enum('status', ['active', 'pending', 'hidden'])->default('active');
             $table->timestamps();
         });
     }
