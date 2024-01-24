@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('country_id')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder'])->nullable();
             $table->enum('type', ['system', 'flat', 'recruitment', 'news'])->default('news');
-            $table->enum('status', ['active', 'archive', 'processing'])->default('processing');
+            $table->enum('status', ['new', 'archive', 'processing', 'sended'])->default('processing');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

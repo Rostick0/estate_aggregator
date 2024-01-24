@@ -28,7 +28,7 @@ class UpdateAlertRequest extends FormRequest
             'country_id' => 'nullable|' . Rule::exists('countries', 'id'),
             'role' => 'nullable|in:client,realtor,agency,builder',
             'type',
-            'status' => 'required|in:active,archive,processing'
+            'status' => 'required|in:new,processing,archive,sended'
         ];
     }
 }
