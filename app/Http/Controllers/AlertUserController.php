@@ -41,7 +41,7 @@ class AlertUserController extends Controller
      *              example={
      *                 "filter[id]":null,
      *                 "filter[alert_id]":null,
-     *                 "filter[user_id]":null,
+     *                 "filter[recipient_id]":null,
      *                 "filter[is_read]":null,
      *                 "filter[created_at]":null,
      *                 "filter[updated_at]":null,
@@ -121,7 +121,7 @@ class AlertUserController extends Controller
      *                          type="number"
      *                      ),
      *                      @OA\Property(
-     *                          property="user_id",
+     *                          property="recipient_id",
      *                          type="number"
      *                      ),
      *                      @OA\Property(
@@ -139,7 +139,7 @@ class AlertUserController extends Controller
      *                 ),
      *                 example={
      *                     "alert_id": "1",
-     *                     "user_id": null,
+     *                     "recipient_id": null,
      *                     "country_id": null,
      *                     "role": "cleint",
      *                     "send_at": null,
@@ -168,9 +168,9 @@ class AlertUserController extends Controller
      */
     public function store(StoreAlertUserRequest $request)
     {
-        if ($request->has('user_id')) {
+        if ($request->has('recipient_id')) {
             AlertUser::create(
-                $request->only(['alert_id', 'user_id', 'send_at'])
+                $request->only(['alert_id', 'recipient_id', 'send_at'])
             );
         } else {
             $alert = Alert::find($request->alert_id);

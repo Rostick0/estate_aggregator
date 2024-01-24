@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('alert_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('alert_id')->references('id')->on('alerts')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('recipient_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('is_read')->default(0);
             $table->timestamp('send_at')->useCurrent();
             $table->enum('status', ['active', 'pending', 'hidden'])->default('active');
