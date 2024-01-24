@@ -13,14 +13,6 @@ use Illuminate\Http\Request;
 
 class AlertController extends Controller
 {
-    private $request_only = [
-        'title',
-        'description',
-        'country_id',
-        'role',
-        'type',
-    ];
-
     private static function extendsMutation($data, $request)
     {
         $data->images()->delete();
@@ -201,7 +193,7 @@ class AlertController extends Controller
     public function store(StoreAlertRequest $request)
     {
         $data = Alert::create([
-            ...$request->only($this->request_only),
+            ...$request->validated(),
             'user_id' => auth()->id()
         ]);
 
@@ -358,7 +350,7 @@ class AlertController extends Controller
         if (AccessUtil::cannot('update', $data)) return AccessUtil::errorMessage();
 
         $data->update(
-            $request->only($this->request_only)
+            $request->validated()
         );
 
         $this::extendsMutation($data, $request);
