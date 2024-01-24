@@ -142,6 +142,7 @@
                                 "filter[role]": null,
                                 "filter[type]": null,
                                 "filter[status]": null,
+                                "filter[recipient_id]": null,
                                 "filter[user_id]": null,
                                 "filter[created_at]": null,
                                 "filter[updated_at]": null
@@ -229,7 +230,7 @@
                                         "type": "number",
                                         "example": "5"
                                     },
-                                    "user_id": {
+                                    "recipient_id": {
                                         "type": "number",
                                         "example": "5"
                                     },
@@ -416,7 +417,7 @@
                                         "type": "number",
                                         "example": "5"
                                     },
-                                    "user_id": {
+                                    "recipient_id": {
                                         "type": "number",
                                         "example": "5"
                                     },

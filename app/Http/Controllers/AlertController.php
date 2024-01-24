@@ -56,6 +56,7 @@ class AlertController extends Controller
      *                 "filter[role]":null,
      *                 "filter[type]":null,
      *                 "filter[status]":null,
+     *                 "filter[recipient_id]":null,
      *                 "filter[user_id]":null,
      *                 "filter[created_at]":null,
      *                 "filter[updated_at]":null,
@@ -143,7 +144,7 @@ class AlertController extends Controller
      *                          example="5"
      *                      ),
      *                      @OA\Property(
-     *                          property="user_id",
+     *                          property="recipient_id",
      *                          type="number",
      *                          example="5"
      *                      ),
@@ -296,7 +297,7 @@ class AlertController extends Controller
      *                          example="5"
      *                      ),
      *                      @OA\Property(
-     *                          property="user_id",
+     *                          property="recipient_id",
      *                          type="number",
      *                          example="5"
      *                      ),
