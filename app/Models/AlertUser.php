@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *    schema="AlertUserSchema",
  *       @OA\Property(property="id", type="number", example=1),
  *       @OA\Property(property="alert_id", type="number", example="Новое уведомление"),
- *       @OA\Property(property="user_id", type="number", example="Описание"),
+ *       @OA\Property(property="recipient_id", type="number", example="1"),
  *       @OA\Property(property="is_read", type="boolean", example="0"),
  *       @OA\Property(property="send_at", type="datetime", example="2022-06-28 06:07:17"),
  *       @OA\Property(property="status", type="enum", enum={"active", "archive", "hidden"}),

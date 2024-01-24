@@ -113,7 +113,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function alert(): HasMany
     {
-        return $this->hasMany(AlertUser::class, 'user_id', 'id');
+        return $this->hasMany(AlertUser::class, 'recipient_id', 'id');
     }
 
     public function image(): BelongsTo
