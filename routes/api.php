@@ -29,6 +29,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RubricController;
 use App\Http\Controllers\SetReadController;
 use App\Http\Controllers\SiteInfoController;
+use App\Http\Controllers\SitePageController;
 use App\Http\Controllers\SiteSeoController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TicketController;
@@ -113,6 +114,7 @@ Route::group(['middleware' => 'api'], function () {
         'site-seo' => SiteSeoController::class,
         'site-info' => SiteInfoController::class,
         'recruitment-flat' => RecruitmentFlatController::class,
+        'site-page' => SitePageController::class,
     ]);
 
     Route::group([
