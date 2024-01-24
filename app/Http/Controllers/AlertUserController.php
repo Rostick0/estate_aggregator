@@ -20,7 +20,7 @@ class AlertUserController extends Controller
         $where = [];
 
         if (auth()?->user()?->role !== 'admin') {
-            $where[] = ['user_id', '=', auth()?->id()];
+            $where[] = ['recipient_id', '=', auth()?->id()];
             $where[] = ['status', '!=', 'pending'];
         }
 
