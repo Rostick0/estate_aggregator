@@ -48,6 +48,11 @@ class Alert extends Model
         return $this->morphMany(ImageRelat::class, 'image_relatsable');
     }
 
+    public function recipient(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'recipient_id', 'id');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
