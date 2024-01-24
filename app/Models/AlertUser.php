@@ -34,7 +34,7 @@ class AlertUser extends Model
 
     public function alert(): BelongsTo
     {
-        return $this->belongsTo(Alert::class, 'alert_id', 'id');
+        return $this->belongsTo(Alert::class, 'recipient_id', 'id');
     }
 
     public function recipient(): BelongsTo
