@@ -26,7 +26,7 @@ class AlertUser extends Model
 
     protected $fillable = [
         'alert_id',
-        'user_id',
+        'recipient_id',
         'is_read',
         'send_at',
         'status'
@@ -37,8 +37,8 @@ class AlertUser extends Model
         return $this->belongsTo(Alert::class, 'alert_id', 'id');
     }
 
-    public function user(): BelongsTo
+    public function recipient(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'recipient_id', 'id');
     }
 }
