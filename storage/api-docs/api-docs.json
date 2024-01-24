@@ -229,6 +229,10 @@
                                         "type": "number",
                                         "example": "5"
                                     },
+                                    "user_id": {
+                                        "type": "number",
+                                        "example": "5"
+                                    },
                                     "role": {
                                         "type": "enum",
                                         "enum": [
@@ -409,6 +413,10 @@
                                         "example": "Описание описания"
                                     },
                                     "country_id": {
+                                        "type": "number",
+                                        "example": "5"
+                                    },
+                                    "user_id": {
                                         "type": "number",
                                         "example": "5"
                                     },

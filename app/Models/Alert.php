@@ -31,6 +31,7 @@ class Alert extends Model
         'title',
         'description',
         'country_id',
+        'recipient_id',
         'role',
         'type',
         'status',

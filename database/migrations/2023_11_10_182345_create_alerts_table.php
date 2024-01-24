@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->integer('country_id')->nullable();
+            $table->integer('recipient_id')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder'])->nullable();
             $table->enum('type', ['system', 'flat', 'recruitment', 'news'])->default('news');
             $table->enum('status', ['new', 'archive', 'processing', 'sended'])->default('processing');

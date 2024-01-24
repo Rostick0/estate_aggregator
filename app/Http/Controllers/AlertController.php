@@ -136,8 +136,14 @@ class AlertController extends Controller
      *                          property="description",
      *                          type="string",
      *                          example="Описание описания"
-     *                      ), @OA\Property(
+     *                      ),
+     *                      @OA\Property(
      *                          property="country_id",
+     *                          type="number",
+     *                          example="5"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="user_id",
      *                          type="number",
      *                          example="5"
      *                      ),
@@ -286,6 +292,11 @@ class AlertController extends Controller
      *                          example="Описание описания"
      *                      ), @OA\Property(
      *                          property="country_id",
+     *                          type="number",
+     *                          example="5"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="user_id",
      *                          type="number",
      *                          example="5"
      *                      ),
