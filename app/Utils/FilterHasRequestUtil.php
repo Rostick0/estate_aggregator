@@ -25,6 +25,7 @@ class FilterHasRequestUtil
             $where = [];
 
             if (!isset($value)) {
+                return $builder;
             } else if ($type_where === 'NULL') {
                 $where[] = [$key, $type, NULL];
             } else if ($type_where === 'LIKE') {
