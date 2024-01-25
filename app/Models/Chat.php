@@ -35,9 +35,25 @@ class Chat extends Model
         return $this->morphTo();
     }
 
+    public function flat() {
+        if ($this->first()->chatsable_type === 'App\Models\Flat') {
+            return $this->belongsTo(Flat::class, 'chatsable_id', 'id');
+        }
+
+        return $this->belongsTo(Flat::class, 'chatsable_id', 'id')->where('id', -1);
+    }
+
+    public function recruitment() {
+        if ($this->value('chatsable_type') === 'App\Models\Recruitment'){
+            return $this->belongsTo(Recruitment::class, 'chatsable_id', 'id');
+        }
+
+        return $this->belongsTo(Recruitment::class, 'chatsable_id', 'id')->where('id', -1);
+    }
+
     public function chat_users(): HasMany
     {
-        return $this->hasMany(ChatUser::class, 'chat_id', 'id');
+        return $this->hasMany(ChatUser::class);
     }
 
     public function interlocutor()
