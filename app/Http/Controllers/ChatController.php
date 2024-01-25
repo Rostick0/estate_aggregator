@@ -8,6 +8,7 @@ use App\Http\Requests\Chat\StoreChatRequest;
 use App\Models\Chat;
 use App\Models\Flat;
 use App\Models\Recruitment;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
@@ -169,6 +170,7 @@ class ChatController extends Controller
             $data = Chat::create([
                 'chatsable_type' => "App\\Models\\" . $request->type,
                 'chatsable_id' => $request->type_id,
+                'last_message_created_at' => Carbon::now()
             ]);
 
             $data->chat_users()->createMany([
