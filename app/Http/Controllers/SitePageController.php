@@ -19,15 +19,6 @@ class SitePageController extends Controller
         );
     }
 
-    public function store(StoreSitePageRequest $request)
-    {
-        $data = SitePage::create($request->validated());
-
-        return new JsonResponse([
-            'data' => $data
-        ], 201);
-    }
-
     public function show(string $path)
     {
         return new JsonResponse([
@@ -47,17 +38,6 @@ class SitePageController extends Controller
             'data' => SitePage::firstWhere([
                 'path' => $path,
             ])
-        ]);
-    }
-
-    public function destroy(DestroySitePageRequest $request, int $path)
-    {
-        SitePage::firstWhere([
-            'path' => $path,
-        ])->delete();
-
-        return new JsonResponse([
-            'message' => 'Deleted'
         ]);
     }
 }

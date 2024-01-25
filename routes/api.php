@@ -99,6 +99,8 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::apiResource('application-user', ApplicationUserController::class)->only(['index', 'store', 'show', 'destroy']);
 
+    Route::apiResource('site-page', SitePageController::class)->only(['index', 'show', 'update']);
+
     Route::apiResources([
         'post' => PostController::class,
         'flat' => FlatController::class,
@@ -114,7 +116,6 @@ Route::group(['middleware' => 'api'], function () {
         'site-seo' => SiteSeoController::class,
         'site-info' => SiteInfoController::class,
         'recruitment-flat' => RecruitmentFlatController::class,
-        'site-page' => SitePageController::class,
     ]);
 
     Route::group([

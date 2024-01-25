@@ -26,7 +26,6 @@ class UpdateSitePageRequest extends FormRequest
             'description' => 'nullable|max:255',
             'keywords' => 'nullable|max:255',
             'robots' => 'nullable|max:255',
-            'path' => 'required|max:255',
         ];
     }
 }
