@@ -13,6 +13,17 @@ use Illuminate\Http\JsonResponse;
 
 class TicketController extends Controller
 {
+    private static function getWhere()
+    {
+        $where = [];
+
+        if (auth()?->user()?->role !== 'admin') {
+            $where[] = ['user_id', '=', auth()?->id(), 'flat.contact_id'];
+        }
+
+        return $where;
+    }
+
     /**
      * Index
      * @OA\Get (
@@ -90,7 +101,7 @@ class TicketController extends Controller
     public function index(IndexTicketRequest $request)
     {
         return new JsonResponse(
-            Filter::all($request, new Ticket)
+            Filter::all($request, new Ticket, [], $this::getWhere())
         );
     }
 
@@ -239,7 +250,7 @@ class TicketController extends Controller
     public function show(ShowTicketRequest $request, int $id)
     {
         return new JsonResponse([
-            'data' => Filter::one($request, new Ticket, $id)
+            'data' => Filter::one($request, new Ticket, $id, $this::getWhere())
         ]);
     }
 
