@@ -37,7 +37,7 @@ class AlertUserPolicy
      */
     public function update(User $user, AlertUser $alertUser): bool
     {
-        return $user->id === $alertUser->user_id;
+        return $user->id === $alertUser->recipient_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class AlertUserPolicy
      */
     public function delete(User $user, AlertUser $alertUser): bool
     {
-        return $user->role === 'admin' || $user->id === $alertUser->user_id;
+        return $user->role === 'admin' || $user->id === $alertUser->recipient_id;
     }
 
     /**
