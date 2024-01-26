@@ -192,7 +192,7 @@ class ChatController extends Controller
 
             $data->messages()->create([
                 'content' => $message_text,
-                'user_id' => $user_id,
+                'user_id' => auth()->id(),
             ]);
         }
 
