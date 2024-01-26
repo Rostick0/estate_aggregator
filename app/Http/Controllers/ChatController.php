@@ -150,12 +150,17 @@ class ChatController extends Controller
      */
     public function store(StoreChatRequest $request)
     {
+        $message_text = null;
         $user_id = null;
 
         if ($request->type === 'Recruitment') {
-            $user_id =  Recruitment::findOrFail($request->type_id)?->user_id;
+            $recruitment = Recruitment::findOrFail($request->type_id);
+            $message_text = 'Здравствуйте! Я по поводу подборки ' . $recruitment->name;
+            $user_id = $recruitment?->user_id;
         } else if ($request->type === 'Flat') {
-            $user_id = Flat::findOrFail($request->type_id)?->contact_id;
+            $flat = Flat::findOrFail($request->type_id);
+            $message_text = 'Здравствуйте! Я по поводу объекта ' . $flat->title;
+            $user_id = $flat?->contact_id;
         }
 
         if ($user_id == auth()->id()) {
@@ -183,6 +188,11 @@ class ChatController extends Controller
                 [
                     'user_id' => auth()->id()
                 ]
+            ]);
+
+            $data->messages()->create([
+                'content' => $message_text,
+                'user_id' => $user_id,
             ]);
         }
 
