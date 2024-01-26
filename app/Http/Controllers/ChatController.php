@@ -8,6 +8,7 @@ use App\Http\Requests\Chat\StoreChatRequest;
 use App\Models\Chat;
 use App\Models\Flat;
 use App\Models\Recruitment;
+use App\Utils\AccessUtil;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -157,6 +158,10 @@ class ChatController extends Controller
             $user_id =  Recruitment::findOrFail($request->type_id)?->user_id;
         } else if ($request->type === 'Flat') {
             $user_id = Flat::findOrFail($request->type_id)?->user_id;
+        }
+
+        if ($user_id == auth()->id()) {
+            return AccessUtil::errorMessage('Forbidden', 400);
         }
 
         $data = Chat::where([

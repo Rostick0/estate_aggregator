@@ -12,10 +12,10 @@ class AccessUtil
         return !auth()->check() || auth()->user()->cannot($method, $model);
     }
 
-    public static function errorMessage(): JsonResponse
+    public static function errorMessage($message = 'No access', $code = 403): JsonResponse
     {
         return new JsonResponse([
-            'message' => 'No access'
-        ],  403);
+            'message' => $message
+        ],  $code);
     }
 }
