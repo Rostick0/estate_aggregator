@@ -15,7 +15,7 @@ class MessageObserver
     public function created(Message $message): void
     {
         EventsMessage::dispatch([
-            'data' => $message,
+            'data' => $message->with(['images.image']),
             'type' => 'create'
         ]);
 
