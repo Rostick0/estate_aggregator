@@ -18,11 +18,9 @@ class ChatController extends Controller
 {
     private static function getWhere()
     {
-        $where = [];
-
-        if (auth()?->user()?->role !== 'admin') {
-            $where[] = ['user_id', '=', auth()?->id(), 'chat_users'];
-        }
+        $where = [
+            ['user_id', '=', auth()?->id(), 'chat_users']
+        ];
 
         return $where;
     }
