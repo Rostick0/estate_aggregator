@@ -8,10 +8,12 @@ use App\Http\Requests\Message\StoreMessageRequest;
 use App\Http\Requests\Message\UpdateMessageRequest;
 use App\Models\Chat;
 use App\Models\Message;
+use App\Events\Message as EventsMessage;
 use App\Utils\AccessUtil;
 use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+
 
 class MessageController extends Controller
 {
@@ -178,6 +180,11 @@ class MessageController extends Controller
 
         $this::extendsMutation($data, $request);
 
+        EventsMessage::dispatch([
+            'data' => Message::with(['images.image'])->find($data->id),
+            'type' => 'create'
+        ]);
+
         return new JsonResponse([
             'data' => $data
         ], 201);
@@ -290,6 +297,11 @@ class MessageController extends Controller
         );
 
         $this::extendsMutation($data, $request);
+
+        EventsMessage::dispatch([
+            'data' => Message::with(['images.image'])->find($id),
+            'type' => 'update'
+        ]);
 
         return new JsonResponse([
             'data' => Filter::one($request, new Message, $id)

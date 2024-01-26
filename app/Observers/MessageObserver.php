@@ -14,11 +14,6 @@ class MessageObserver
      */
     public function created(Message $message): void
     {
-        EventsMessage::dispatch([
-            'data' => Message::with(['images.image'])->find($message->id),
-            'type' => 'create'
-        ]);
-
         Chat::find($message->chat_id)->update(['last_message_created_at' => Carbon::now()]);
     }
 
@@ -27,10 +22,7 @@ class MessageObserver
      */
     public function updated(Message $message): void
     {
-        EventsMessage::dispatch([
-            'data' => $message,
-            'type' => 'update'
-        ]);
+    
     }
 
     /**
