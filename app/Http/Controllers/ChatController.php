@@ -155,16 +155,12 @@ class ChatController extends Controller
         if ($request->type === 'Recruitment') {
             $user_id =  Recruitment::findOrFail($request->type_id)?->user_id;
         } else if ($request->type === 'Flat') {
-            $user_id = Flat::findOrFail($request->type_id)?->user_id;
+            $user_id = Flat::findOrFail($request->type_id)?->contact_id;
         }
 
         if ($user_id == auth()->id()) {
             return AccessUtil::errorMessage('Forbidden', 400);
         }
-
-        return new JsonResponse([
-            'data' => $user_id
-        ]);
 
         $data = Chat::where([
             'chatsable_type' => "App\\Models\\" . $request->type,
