@@ -162,6 +162,10 @@ class ChatController extends Controller
             return AccessUtil::errorMessage('Forbidden', 400);
         }
 
+        return new JsonResponse([
+            'data' => $user_id
+        ]);
+
         $data = Chat::where([
             'chatsable_type' => "App\\Models\\" . $request->type,
             'chatsable_id' => $request->type_id,
