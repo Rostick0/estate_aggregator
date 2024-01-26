@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
             PropertyAndPropertyValueSeeder::class,
             CollectionSeeder::class,
             ImageSeeder::class,
+            SitePageSeeder::class,
         ]);
 
         Image::factory(50)->create();
