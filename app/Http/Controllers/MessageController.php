@@ -49,9 +49,18 @@ class MessageController extends Controller
         }
     }
 
-    private static function event($id, $type) {
+    private static function event($id, $type)
+    {
         EventsMessage::dispatch([
-            'data' => Message::with(['images.image', 'chat.last_message'])->find($id),
+            'data' => Message::with([
+                'images.image',
+                'chat.last_message.user',
+                'chat.interlocutor.user',
+                'flat.district.region.country',
+                'flat.images.image',
+                'recruitment.recruitment_flats.flat.district.region.country',
+                'recruitment.recruitment_flats.flat.images.image',
+            ])->find($id),
             'type' => $type
         ]);
     }
