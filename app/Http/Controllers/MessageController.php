@@ -49,6 +49,13 @@ class MessageController extends Controller
         }
     }
 
+    private static function event($id, $type) {
+        EventsMessage::dispatch([
+            'data' => Message::with(['images.image', 'chat'])->find($id),
+            'type' => $type
+        ]);
+    }
+
     /**
      * Index
      * @OA\get (
@@ -180,10 +187,7 @@ class MessageController extends Controller
 
         $this::extendsMutation($data, $request);
 
-        EventsMessage::dispatch([
-            'data' => Message::with(['images.image'])->find($data->id),
-            'type' => 'create'
-        ]);
+        $this::event($data->id, 'create');
 
         return new JsonResponse([
             'data' => $data
@@ -298,10 +302,7 @@ class MessageController extends Controller
 
         $this::extendsMutation($data, $request);
 
-        EventsMessage::dispatch([
-            'data' => Message::with(['images.image'])->find($id),
-            'type' => 'update'
-        ]);
+        $this::event($id, 'update');
 
         return new JsonResponse([
             'data' => Filter::one($request, new Message, $id)
