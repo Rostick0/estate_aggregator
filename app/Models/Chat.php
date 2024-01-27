@@ -36,7 +36,7 @@ class Chat extends Model
     }
 
     public function flat() {
-        if ($this->first()->chatsable_type === 'App\Models\Flat') {
+        if ($this->value('chatsable_type') === 'App\Models\Flat') {
             return $this->belongsTo(Flat::class, 'chatsable_id', 'id');
         }
 
