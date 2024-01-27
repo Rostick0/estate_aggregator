@@ -36,7 +36,7 @@ class Chat extends Model
     }
 
     public function flat() {
-        if ($this->value('chatsable_type') === 'App\Models\Flat') {
+        if ($this->value('chatsable_type') === 'App\\Models\\Flat') {
             return $this->belongsTo(Flat::class, 'chatsable_id', 'id');
         }
 
@@ -44,7 +44,7 @@ class Chat extends Model
     }
 
     public function recruitment() {
-        if ($this->value('chatsable_type') === 'App\Models\Recruitment'){
+        if ($this->value('chatsable_type') === 'App\\Models\\Recruitment'){
             return $this->belongsTo(Recruitment::class, 'chatsable_id', 'id');
         }
 
