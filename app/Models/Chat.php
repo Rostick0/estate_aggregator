@@ -73,4 +73,9 @@ class Chat extends Model
     {
         return $this->hasOne(Message::class)->latestOfMany();
     }
+
+    public function last_message_interlocutor(): HasOne
+    {
+        return $this->hasOne(Message::class)->where('user_id', '!=', auth()->id())->latestOfMany();
+    }
 }
