@@ -9,6 +9,7 @@ use App\Http\Requests\Ticket\ShowTicketRequest;
 use App\Models\Ticket;
 use App\Http\Requests\Ticket\StoreTicketRequest;
 use App\Http\Requests\Ticket\UpdateTicketRequest;
+use App\Utils\AccessUtil;
 use Illuminate\Http\JsonResponse;
 
 class TicketController extends Controller
@@ -353,6 +354,9 @@ class TicketController extends Controller
     public function update(UpdateTicketRequest $request, int $id)
     {
         $data = Ticket::findOrFail($id);
+     
+        if (AccessUtil::cannot('update', $data)) return AccessUtil::errorMessage();
+     
         $data->update(
             $request->validated()
         );
@@ -395,9 +399,11 @@ class TicketController extends Controller
      */
     public function destroy(DestroyTicketRequest $request, int $id)
     {
-        $deleted = Ticket::destroy($id);
+        $data = Ticket::destroy($id);
 
-        if (!$deleted) return new JsonResponse([
+        if (AccessUtil::cannot('delete', $data)) return AccessUtil::errorMessage();
+
+        if (!$data) return new JsonResponse([
             'message' => 'Not deleted',
             404
         ]);
