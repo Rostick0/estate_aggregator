@@ -44,6 +44,10 @@ class Chat extends Model
     }
 
     public function recruitment() {
+        // dd($this->getVisible());
+        // dd($this->attributes['last_message_created_at']);
+        // dd($this->getOriginal('id'));
+        // // dd($this->currentValue('chatsable_type'));
         if ($this->value('chatsable_type') === 'App\\Models\\Recruitment'){
             return $this->belongsTo(Recruitment::class, 'chatsable_id', 'id');
         }
