@@ -56,10 +56,10 @@ class MessageController extends Controller
                 'images.image',
                 'chat.last_message.user',
                 'chat.interlocutor.user',
-                'flat.district.region.country',
-                'flat.images.image',
-                'recruitment.recruitment_flats.flat.district.region.country',
-                'recruitment.recruitment_flats.flat.images.image',
+                'chat.flat.district.region.country',
+                'chat.flat.images.image',
+                'chat.recruitment.recruitment_flats.flat.district.region.country',
+                'chat.recruitment.recruitment_flats.flat.images.image',
             ])->find($id),
             'type' => $type
         ]);
