@@ -132,7 +132,7 @@ Route::group(['middleware' => 'api'], function () {
         Route::delete('/force-delete', [SiteSeoController::class, 'forceDelete']);
     });
 
-    Route::patch('/message/{id}/read')->middleware('jwt');
+    Route::patch('/message/{id}/read', [MessageController::class, 'read'])->middleware('jwt');
 })->middleware('throttle:5000,1');
 
 Route::get('test', [TestController::class, 'test']);
