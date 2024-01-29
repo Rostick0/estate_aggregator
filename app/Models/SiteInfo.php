@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *       @OA\Property(property="title", type="string", example="Заголовок"),
  *       @OA\Property(property="text", type="string", example="Текст"),
  *       @OA\Property(property="key", type="string", example="Ключ"),
+ *       @OA\Property(property="type", type="string", example="select"),
  *       @OA\Property(property="deleted_at", type="datetime", example="NULL"),
  *       @OA\Property(property="created_at", type="datetime", example="2022-06-28 06:06:17"),
  *       @OA\Property(property="updated_at", type="datetime", example="2022-06-28 06:06:17"),
@@ -27,5 +28,6 @@ class SiteInfo extends Model
         'title',
         'text',
         'key',
+        'type'
     ];
 }
