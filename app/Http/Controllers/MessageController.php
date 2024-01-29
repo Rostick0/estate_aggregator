@@ -9,6 +9,7 @@ use App\Http\Requests\Message\UpdateMessageRequest;
 use App\Models\Chat;
 use App\Models\Message;
 use App\Events\Message as EventsMessage;
+use App\Models\ChatUser;
 use App\Utils\AccessUtil;
 use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
@@ -372,6 +373,13 @@ class MessageController extends Controller
             ['id', '<=', $id],
             ['chat_id', '=', $message->chat_id],
             ['user_id', '!=', auth()->id()],
+        ])->update([
+            'is_read' => 1
+        ]);
+
+        ChatUser::firstWhere([
+            ['chat_id', '=', $message->chat_id],
+            ['user_id', '=', auth()->id()],
         ])->update([
             'is_read' => 1
         ]);
