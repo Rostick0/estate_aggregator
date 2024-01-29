@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Events\Message as EventsMessage;
 use App\Models\Chat;
+use App\Models\ChatUser;
 use App\Models\Message;
 use Carbon\Carbon;
 
@@ -15,6 +16,15 @@ class MessageObserver
     public function created(Message $message): void
     {
         Chat::find($message->chat_id)->update(['last_message_created_at' => Carbon::now()]);
+
+        if ($message->user_id != auth()->id()) {
+            ChatUser::firstWhere([
+                ['chat_id', '=', $message->chat_id],
+                ['user_id', '!=', $message->user_id],
+            ])->update([
+                'is_read' => 0
+            ]);
+        }
     }
 
     /**

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('chat_id')->references('id')->on('chats')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('is_favorite')->default(0);
+            $table->boolean('is_read')->default(0);
             $table->timestamps();
         });
     }

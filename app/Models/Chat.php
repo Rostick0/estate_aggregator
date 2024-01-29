@@ -78,4 +78,8 @@ class Chat extends Model
     {
         return $this->hasOne(Message::class)->where('user_id', '!=', auth()->id())->latestOfMany();
     }
+
+    public function my_chat() {
+        return $this->hasOne(ChatUser::class, 'chat_id', 'id')->where('user_id', '=', auth()->id());
+    }
 }

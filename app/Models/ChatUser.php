@@ -26,6 +26,7 @@ class ChatUser extends Model
         'chat_id',
         'user_id',
         'is_favorite',
+        'is_read'
     ];
 
     public function chat(): BelongsTo
