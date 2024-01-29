@@ -578,7 +578,7 @@
                             "example": {
                                 "filter[id]": null,
                                 "filter[alert_id]": null,
-                                "filter[user_id]": null,
+                                "filter[recipient_id]": null,
                                 "filter[is_read]": null,
                                 "filter[created_at]": null,
                                 "filter[updated_at]": null
@@ -664,7 +664,7 @@
                                             "alert_id": {
                                                 "type": "number"
                                             },
-                                            "user_id": {
+                                            "recipient_id": {
                                                 "type": "number"
                                             },
                                             "country_id": {
@@ -684,7 +684,7 @@
                                 "type": "object",
                                 "example": {
                                     "alert_id": "1",
-                                    "user_id": null,
+                                    "recipient_id": null,
                                     "country_id": null,
                                     "role": "cleint",
                                     "send_at": null
@@ -7318,6 +7318,10 @@
                                     "key": {
                                         "type": "string",
                                         "example": "Ключ"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "select"
                                     }
                                 },
                                 "type": "object"
@@ -7493,6 +7497,10 @@
                                     "key": {
                                         "type": "string",
                                         "example": "Ключ"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "select"
                                     }
                                 },
                                 "type": "object"
@@ -9021,9 +9029,9 @@
                         "type": "number",
                         "example": "Новое уведомление"
                     },
-                    "user_id": {
+                    "recipient_id": {
                         "type": "number",
-                        "example": "Описание"
+                        "example": "1"
                     },
                     "is_read": {
                         "type": "boolean",
@@ -9793,6 +9801,10 @@
                     "key": {
                         "type": "string",
                         "example": "Ключ"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "select"
                     },
                     "deleted_at": {
                         "type": "string",

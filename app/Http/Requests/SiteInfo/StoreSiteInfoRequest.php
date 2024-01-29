@@ -26,6 +26,7 @@ class StoreSiteInfoRequest extends FormRequest
             'title' => 'required|max:255',
             'text' => 'required|max:65536',
             'key' => 'required|max:255',
+            'type' =>  'nullable|max:255',
         ];
     }
 }

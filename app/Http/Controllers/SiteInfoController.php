@@ -104,6 +104,11 @@ class SiteInfoController extends Controller
      *                          type="string",
      *                          example="Ключ"
      *                      ),
+     *                      @OA\Property(
+     *                          property="type",
+     *                          type="string",
+     *                          example="select"
+     *                      ),
      *              )
      *         )
      *      ),
@@ -198,6 +203,11 @@ class SiteInfoController extends Controller
      *                          property="key",
      *                          type="string",
      *                          example="Ключ"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="type",
+     *                          type="string",
+     *                          example="select"
      *                      ),
      *              )
      *         )
