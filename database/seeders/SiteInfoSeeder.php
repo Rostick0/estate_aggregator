@@ -19,8 +19,6 @@ class SiteInfoSeeder extends Seeder
                 "title" => "Номер телефона",
                 "text" => "+ 7 (800) 555-35-35",
                 "key" => "site_phone",
-                "created_at" => "2024-01-17T20:43:19.000000Z",
-                "updated_at" => "2024-01-30T06:54:08.000000Z",
                 "type" => null
             ],
             [
@@ -28,8 +26,6 @@ class SiteInfoSeeder extends Seeder
                 "title" => "Скрыть авторизацию",
                 "text" => "false",
                 "key" => "hide_auth",
-                "created_at" => "2024-01-28T14:30:37.000000Z",
-                "updated_at" => "2024-01-30T17:07:24.000000Z",
                 "type" => 'checkbox'
             ],
             [
@@ -37,8 +33,6 @@ class SiteInfoSeeder extends Seeder
                 "title" => "Электронная почта",
                 "text" => "test@email.com",
                 "key" => "site_email",
-                "created_at" => "2024-01-28T14:39:54.000000Z",
-                "updated_at" => "2024-01-28T14:39:54.000000Z",
                 "type" => null
             ],
             [
@@ -46,8 +40,6 @@ class SiteInfoSeeder extends Seeder
                 "title" => "Название сайте",
                 "text" => "Agregator.ru",
                 "key" => "site_name",
-                "created_at" => "2024-01-30T06:51:50.000000Z",
-                "updated_at" => "2024-01-30T06:51:50.000000Z",
                 "type" => null
             ],
             [
@@ -55,8 +47,6 @@ class SiteInfoSeeder extends Seeder
                 "title" => "Текст главного баннера",
                 "text" => "Агрегатор - лучше всех по поиску недвижимости",
                 "key" => "site_bannertext",
-                "created_at" => "2024-01-30T07:45:51.000000Z",
-                "updated_at" => "2024-01-30T07:49:02.000000Z",
                 "type" => null
             ]
         ];
