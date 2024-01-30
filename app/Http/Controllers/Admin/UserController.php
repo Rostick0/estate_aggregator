@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Filters\Filter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UserUpdateRequest;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
@@ -122,6 +123,14 @@ class UserController extends Controller
         $data->update(
             $request->only($this->request_only)
         );
+
+        if ($request->is_confirm && !$data->company_id && array_search($request->role, ['agency', 'builder'])) {
+            // Company::createOrFirst([
+            //     ''
+            // ]);
+
+            $data->company()->create();
+        }
 
         return new JsonResponse([
             'data' => Filter::one($request, new User, $id)
