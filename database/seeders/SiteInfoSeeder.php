@@ -17,7 +17,7 @@ class SiteInfoSeeder extends Seeder
             [
                 "id" => 1,
                 "title" => "Номер телефона",
-                "text" => "+ 7 (800) 555-35-35",
+                "text" => "",
                 "key" => "site_phone",
                 "type" => null
             ],
@@ -31,21 +31,21 @@ class SiteInfoSeeder extends Seeder
             [
                 "id" => 4,
                 "title" => "Электронная почта",
-                "text" => "test@email.com",
+                "text" => "",
                 "key" => "site_email",
                 "type" => null
             ],
             [
                 "id" => 5,
                 "title" => "Название сайте",
-                "text" => "Agregator.ru",
+                "text" => "",
                 "key" => "site_name",
                 "type" => null
             ],
             [
                 "id" => 6,
                 "title" => "Текст главного баннера",
-                "text" => "Агрегатор - лучше всех по поиску недвижимости",
+                "text" => "",
                 "key" => "site_bannertext",
                 "type" => null
             ]
