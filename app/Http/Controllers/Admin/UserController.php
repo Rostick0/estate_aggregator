@@ -124,12 +124,12 @@ class UserController extends Controller
             $request->only($this->request_only)
         );
 
-        if ($request->is_confirm && !$data->company_id && array_search($request->role, ['agency', 'builder'])) {
-            // Company::createOrFirst([
-            //     ''
-            // ]);
+        if ($request->is_confirm && !$data->company_id && array_search($request->role, ['agency', 'builder']) !== false) {
 
-            $data->company()->create();
+            $company = $data->company()->firstOrCreate();
+            $data->update([
+                'company_id' => $company->id,
+            ]);
         }
 
         return new JsonResponse([
