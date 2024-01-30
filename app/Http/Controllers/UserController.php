@@ -35,6 +35,21 @@ class UserController extends Controller
 
             $data->collection_relats()->createMany($collection_relats);
         }
+
+        if (auth()->user()->role === 'admin') {
+            User::where('company_id', $data->id)
+                ->where('role', 'realtor')
+                ->update([
+                    'company_id' => null
+                ]);
+            if ($request->has('staffs')) {
+                User::whereIn('id', QueryString::convertToArray($request->staffs))
+                    ->where('role', 'realtor')
+                    ->update([
+                        'company_id' => $data->id
+                    ]);
+            }
+        }
     }
 
     /**

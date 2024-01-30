@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('name');
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable();
             $table->string('image_id')->nullable();
             $table->enum('role', ['client', 'realtor', 'agency', 'builder', 'admin'])->default('client');
             $table->integer('country_id')->nullable();
