@@ -31,21 +31,21 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            // CountrySeeder::class,
-            // RegionSeeder::class,
-            // DistrictSeeder::class,
-            // RubricSeeder::class,
-            // UserSeeder::class,
+            CountrySeeder::class,
+            RegionSeeder::class,
+            DistrictSeeder::class,
+            RubricSeeder::class,
+            UserSeeder::class,
             FlatTypeSeeder::class,
-            // ObjectFlatSeeder::class,
-            // CurrencySeeder::class,
-            // BuildingTypeSeeder::class,
-            // SquareLandUnitSeeder::class,
-            // PropertyAndPropertyValueSeeder::class,
-            // CollectionSeeder::class,
-            // ImageSeeder::class,
-            // SitePageSeeder::class,
-            // SiteInfoSeeder::class,
+            ObjectFlatSeeder::class,
+            CurrencySeeder::class,
+            BuildingTypeSeeder::class,
+            SquareLandUnitSeeder::class,
+            PropertyAndPropertyValueSeeder::class,
+            CollectionSeeder::class,
+            ImageSeeder::class,
+            SitePageSeeder::class,
+            SiteInfoSeeder::class,
         ]);
 
         // Image::factory(50)->create();
