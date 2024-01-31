@@ -38,7 +38,7 @@ class FlatPolicy
      */
     public function update(User $user, Flat $flat): bool
     {
-        return $flat->contact_id === $user->id;
+        return $user->role === 'admin' && $flat->contact_id === $user->id;
     }
 
     /**
@@ -46,7 +46,7 @@ class FlatPolicy
      */
     public function delete(User $user, Flat $flat): bool
     {
-        return $flat->contact_id === $user->id;
+        return $user->role === 'admin' && $flat->contact_id === $user->id;
     }
 
     /**
