@@ -28,7 +28,7 @@ class SitePageController extends Controller
         ]);
     }
 
-    public function update(UpdateSitePageRequest $request, int $path)
+    public function update(UpdateSitePageRequest $request, string $path)
     {
         SitePage::firstWhere([
             'path' => $path,
