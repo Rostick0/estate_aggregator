@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UserUpdateRequest;
 use App\Models\Company;
 use App\Models\User;
+use App\Utils\QueryString;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
@@ -130,6 +131,19 @@ class UserController extends Controller
             $data->update([
                 'company_id' => $company->id,
             ]);
+        }
+
+        User::where('company_id', $data->id)
+            ->where('role', 'realtor')
+            ->update([
+                'company_id' => null
+            ]);
+        if ($request->has('staffs')) {
+            User::whereIn('id', QueryString::convertToArray($request->staffs))
+                ->where('role', 'realtor')
+                ->update([
+                    'company_id' => $data->id
+                ]);
         }
 
         return new JsonResponse([
