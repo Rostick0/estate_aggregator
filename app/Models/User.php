@@ -141,6 +141,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Recruitment::class, 'user_id', 'id');
     }
 
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id', 'company_id')->whereIn('role', ['agency', 'builder']);
+    }
+
     public function staffs(): HasMany
     {
         return $this->hasMany(User::class, 'company_id', 'id')->where('role', 'realtor');
