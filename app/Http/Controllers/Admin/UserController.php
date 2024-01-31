@@ -125,25 +125,31 @@ class UserController extends Controller
             $request->only($this->request_only)
         );
 
-        if ($request->is_confirm && !$data->company_id && array_search($request->role, ['agency', 'builder']) !== false) {
+        if (array_search($request->role, ['agency', 'builder']) !== false) {
+            $company_id = null;
+            
+            if ($request->is_confirm) {
 
-            $company = $data->company()->firstOrCreate();
-            $data->update([
-                'company_id' => $company->id,
-            ]);
-        }
+                $company = $data->company()->firstOrCreate();
+                $data->update([
+                    'company_id' => $company->id,
+                ]);
 
-        User::where('company_id', $data->id)
-            ->where('role', 'realtor')
-            ->update([
-                'company_id' => null
-            ]);
-        if ($request->has('staffs')) {
-            User::whereIn('id', QueryString::convertToArray($request->staffs))
+                $company_id = $company->id;
+            }
+
+            User::where('company_id', $company_id)
                 ->where('role', 'realtor')
                 ->update([
-                    'company_id' => $data->id
+                    'company_id' => null
                 ]);
+            if ($request->has('staffs')) {
+                User::whereIn('id', QueryString::convertToArray($request->staffs))
+                    ->where('role', 'realtor')
+                    ->update([
+                        'company_id' => $company_id
+                    ]);
+            }
         }
 
         return new JsonResponse([
