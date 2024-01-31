@@ -25,9 +25,9 @@ return new class extends Migration
             $table->foreignId('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->decimal('price', 14);
             $table->float('price_per_meter')->nullable();
-            $table->float('price_day')->nullable();
-            $table->float('price_week')->nullable();
-            $table->float('price_month')->nullable();
+            $table->decimal('price_day', 12)->nullable();
+            $table->decimal('price_week', 12)->nullable();
+            $table->decimal('price_month', 12)->nullable();
             $table->boolean('not_show_price')->nullable();
             $table->integer('rooms')->nullable();
             $table->integer('bedrooms')->nullable();
