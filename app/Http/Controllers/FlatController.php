@@ -25,6 +25,7 @@ class FlatController extends Controller
         'country_id',
         'district_id',
         'district_string',
+        'price_per_meter',
         'address',
         'longitude',
         'latitude',
