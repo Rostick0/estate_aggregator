@@ -45,7 +45,7 @@ class StoreFlatRequest extends FormRequest
             'bathrooms' => 'required|numeric',
             'square' => '',
             'square_land' => '',
-            'square_land_unit' => 'numeric|' . Rule::exists('square_land_units', 'id'),
+            'square_land_unit' => 'nullable|numeric|' . Rule::exists('square_land_units', 'id'),
             'floor' => 'required|numeric',
             'total_floor' => 'required|numeric',
             'building_type' => 'required|numeric|' . Rule::exists('building_types', 'id'),

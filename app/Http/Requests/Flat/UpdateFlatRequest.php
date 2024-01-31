@@ -43,7 +43,7 @@ class UpdateFlatRequest extends FormRequest
             'bathrooms' => 'numeric',
             'square' => '',
             'square_land' => '',
-            'square_land_unit' => 'numeric|' . Rule::exists('square_land_units', 'id'),
+            'square_land_unit' => 'nullable|numeric|' . Rule::exists('square_land_units', 'id'),
             'floor' => 'numeric',
             'total_floor' => 'numeric',
             'building_type' => 'numeric|' . Rule::exists('building_types', 'id'),
