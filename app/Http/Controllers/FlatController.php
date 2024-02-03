@@ -709,8 +709,10 @@ class FlatController extends Controller
 
         $flat->update($request->only($this->request_only));
 
-        $flat->flat_properties()->delete();
-        if ($request->properties_values) FlatPropertyController::createProperites($request->properties_values, $flat);
+        if ($request->has('properties_values')) {
+            $flat->flat_properties()->delete();
+            FlatPropertyController::createProperites($request->properties_values, $flat);
+        }
 
         $this::extendsMutation($flat, $request);
 
