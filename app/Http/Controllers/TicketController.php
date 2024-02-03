@@ -19,7 +19,11 @@ class TicketController extends Controller
         $where = [];
 
         if (auth()?->user()?->role !== 'admin') {
-            $where[] = ['contact_id', '=', auth()?->id(), 'flat'];
+            if (array_search(auth()?->user()?->role, ['agency', 'builder']) === false) {
+                $where[] = ['contact_id', '=', auth()?->id(), 'flat'];
+            } else {
+                $where[] = ['company_id', '=', auth()?->user()?->company_id, 'flat.user'];
+            }
         }
 
         return $where;
