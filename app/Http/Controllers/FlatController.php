@@ -54,8 +54,9 @@ class FlatController extends Controller
 
     private static function extendsMutation($data, $request)
     {
-        $data->images()->delete();
         if ($request->has('images')) {
+            $data->images()->delete();
+            
             $images = array_map(function ($image_id) {
                 return ['image_id' => $image_id];
             }, QueryString::convertToArray($request->images));
