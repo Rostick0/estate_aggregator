@@ -168,7 +168,7 @@ class AlertUserController extends Controller
      */
     public function store(StoreAlertUserRequest $request)
     {
-        if ($request->has('recipient_id')) {
+        if ($request->has('recipient_id') && $request->recipient_id) {
             AlertUser::create(
                 $request->only(['alert_id', 'recipient_id', 'send_at'])
             );
@@ -180,12 +180,11 @@ class AlertUserController extends Controller
             if ($alert?->role) $user->where('role', $alert->role);
 
             $user->lazy()->each(function ($user_item) use ($request) {
-                AlertUser::create([
+                $user_item->alert()->create([
                     'recipient_id' => $user_item->id,
                     'alert_id' => $request->alert_id,
                     'send_at' => $request?->send_at ?? Carbon::now()
                 ]);
-                // $user_item->alert()->create();
             });
         }
 
