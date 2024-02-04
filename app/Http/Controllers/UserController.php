@@ -270,7 +270,7 @@ class UserController extends Controller
         $data = User::findOrFail($id);
 
         if (AccessUtil::cannot('update', $data)) return AccessUtil::errorMessage();
-
+       
         $data->update(
             $request->only($this->request_only)
         );

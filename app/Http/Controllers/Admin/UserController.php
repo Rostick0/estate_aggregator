@@ -120,14 +120,11 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, int $id)
     {
         $data = User::findOrFail($id);
-
-        $data->update(
-            $request->only($this->request_only)
-        );
+        // dd($data->role);
 
         if (array_search($request->role, ['agency', 'builder']) !== false) {
             $company_id = null;
-            
+
             if ($request->is_confirm) {
 
                 $company = $data->company()->firstOrCreate();
@@ -139,6 +136,7 @@ class UserController extends Controller
             }
 
             User::where('company_id', $company_id)
+                ->where('id', '!=', $data->id)
                 ->where('role', 'realtor')
                 ->update([
                     'company_id' => null
@@ -150,7 +148,18 @@ class UserController extends Controller
                         'company_id' => $company_id
                     ]);
             }
+        } else if (array_search($data->role, ['agency', 'builder']) !== false) {
+            Company::find($data->company_id)?->forceDelete();
+
+            User::where('company_id', $data?->company_id)
+                ->update([
+                    'company_id' => null,
+                ]);
         }
+
+        $data->update(
+            $request->only($this->request_only)
+        );
 
         return new JsonResponse([
             'data' => Filter::one($request, new User, $id)

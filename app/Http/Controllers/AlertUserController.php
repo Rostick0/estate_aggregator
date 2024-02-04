@@ -176,8 +176,8 @@ class AlertUserController extends Controller
             $alert = Alert::find($request->alert_id);
             $user = User::query();
 
-            if ($alert->country_id) $user->where('country_id', $alert->country_id);
-            if ($alert->role) $user->where('role', $alert->role);
+            if ($alert?->country_id) $user->where('country_id', $alert->country_id);
+            if ($alert?->role) $user->where('role', $alert->role);
 
             $user->lazy()->each(function ($user_item) use ($request) {
                 $user_item->alert()->create([
