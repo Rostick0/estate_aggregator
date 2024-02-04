@@ -180,11 +180,12 @@ class AlertUserController extends Controller
             if ($alert?->role) $user->where('role', $alert->role);
 
             $user->lazy()->each(function ($user_item) use ($request) {
-                $user_item->alert()->create([
+                AlertUser::create([
                     'recipient_id' => $user_item->id,
                     'alert_id' => $request->alert_id,
                     'send_at' => $request?->send_at ?? Carbon::now()
                 ]);
+                // $user_item->alert()->create();
             });
         }
 
