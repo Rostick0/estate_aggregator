@@ -16,7 +16,7 @@ class ApplicationCompanyController extends Controller
     {
         $where = [];
 
-        if (auth()?->user()?->role !== 'admin' && array_search(auth()?->user()->role, ['agency', 'builder'])) {
+        if (auth()?->user()?->role !== 'admin' && array_search(auth()?->user()?->role, ['agency', 'builder'])) {
             $where[] = ['company_id', '=', auth()?->user()->company_id];
         } else {
             $where[] = ['user_id', '=', auth()?->id()];
