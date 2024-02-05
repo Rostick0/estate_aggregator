@@ -89,6 +89,7 @@ class Flat extends Model
         'description',
         'filename',
         'tour_link',
+        'residential_complex',
         'status',
     ];
 
