@@ -4232,6 +4232,11 @@
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
                                     },
+                                    "residential_complex": {
+                                        "description": "ЖК",
+                                        "type": "string",
+                                        "example": "Алые паруса"
+                                    },
                                     "status": {
                                         "type": "enum: active, archive",
                                         "example": "active"
@@ -4534,6 +4539,11 @@
                                         "description": "Ссылка на онлайн тур",
                                         "type": "string",
                                         "example": "https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+                                    },
+                                    "residential_complex": {
+                                        "description": "ЖК",
+                                        "type": "string",
+                                        "example": "Алые паруса"
                                     },
                                     "status": {
                                         "type": "enum: active, archive",
@@ -9467,6 +9477,10 @@
                     "tour_link": {
                         "type": "string",
                         "example": "https://my.matterport.com/show/?m=aPjao3BZ25x"
+                    },
+                    "residential_complex": {
+                        "type": "string",
+                        "example": "Алые паруса"
                     },
                     "status": {
                         "type": "enum",

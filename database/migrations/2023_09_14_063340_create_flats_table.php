@@ -44,6 +44,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('filename')->nullable();
             $table->string('tour_link')->nullable();
+            $table->string('residential_complex')->nullable();
             $table->enum('status', ['active', 'archive']);
             $table->softDeletes();
             $table->timestamps();
