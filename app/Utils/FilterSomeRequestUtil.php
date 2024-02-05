@@ -11,12 +11,12 @@ class FilterSomeRequestUtil
      * @param class-string<"NULL"|"LIKE"> $type_where
      */
 
-    public static function template($request, Builder $builder, array $fillable = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
+    public static function template($request, Builder $builder, array $fillable_block = [], $type = '=', ?string $type_where = "NULL|LIKE"): Builder
     {
-        collect($request)->each(function ($value, $key) use ($builder, $fillable, $type, $type_where) {
+        collect($request)->each(function ($value, $key) use ($builder, $fillable_block, $type, $type_where) {
             $values = Json::decode($value, false);
 
-            if (!empty($fillable) && array_search($key, $fillable) === false) return;
+            if (!empty($fillable_block) && array_search($key, $fillable_block) !== false) return;
 
             if (!is_array($values)) {
                 $values = [$values];
@@ -58,12 +58,12 @@ class FilterSomeRequestUtil
         });
     }
 
-    private static function in($request, Builder $builder, array $fillable = [])
+    private static function in($request, Builder $builder, array $fillable_block = [])
     {
-        collect($request)->each(function ($value, $key) use ($builder, $fillable) {
+        collect($request)->each(function ($value, $key) use ($builder, $fillable_block) {
             $values = Json::decode($value, false);
 
-            if (!empty($fillable) && array_search($key, $fillable) === false) return;
+            if (!empty($fillable_block) && array_search($key, $fillable_block) !== false) return;
 
             if (!is_array($values)) $values = [$values];
 
@@ -79,24 +79,24 @@ class FilterSomeRequestUtil
         return $builder;
     }
 
-    public static function all($request, Builder $builder, array $fillable = []): Builder
+    public static function all($request, Builder $builder, array $fillable_block = []): Builder
     {
         $data = $builder;
 
-        if ($request->filterSomeEQ) $data = FilterSomeRequestUtil::template($request->filterSomeEQ, $builder, $fillable, '=');
-        if ($request->filterSomeNEQ) $data = FilterSomeRequestUtil::template($request->filterSomeNEQ, $builder, $fillable, '!=');
+        if ($request->filterSomeEQ) $data = FilterSomeRequestUtil::template($request->filterSomeEQ, $builder, $fillable_block, '=');
+        if ($request->filterSomeNEQ) $data = FilterSomeRequestUtil::template($request->filterSomeNEQ, $builder, $fillable_block, '!=');
 
-        if ($request->filterSomeEQN) $data = FilterSomeRequestUtil::template($request->filterSomeEQN, $builder, $fillable, '=', 'NULL');
-        if ($request->filterSomeNEQN) $data = FilterSomeRequestUtil::template($request->filterSomeNEQN, $builder, $fillable, '!=', 'NULL');
+        if ($request->filterSomeEQN) $data = FilterSomeRequestUtil::template($request->filterSomeEQN, $builder, $fillable_block, '=', 'NULL');
+        if ($request->filterSomeNEQN) $data = FilterSomeRequestUtil::template($request->filterSomeNEQN, $builder, $fillable_block, '!=', 'NULL');
 
-        if ($request->filterSomeGEQ) $data = FilterSomeRequestUtil::template($request->filterSomeGEQ, $builder, $fillable, '>=');
-        if ($request->filterSomeLEQ) $data = FilterSomeRequestUtil::template($request->filterSomeLEQ, $builder, $fillable, '<=');
-        if ($request->filterSomeGE) $data = FilterSomeRequestUtil::template($request->filterSomeGE, $builder, $fillable, '>');
-        if ($request->filterSomeLE) $data = FilterSomeRequestUtil::template($request->filterSomeLE, $builder, $fillable, '<');
+        if ($request->filterSomeGEQ) $data = FilterSomeRequestUtil::template($request->filterSomeGEQ, $builder, $fillable_block, '>=');
+        if ($request->filterSomeLEQ) $data = FilterSomeRequestUtil::template($request->filterSomeLEQ, $builder, $fillable_block, '<=');
+        if ($request->filterSomeGE) $data = FilterSomeRequestUtil::template($request->filterSomeGE, $builder, $fillable_block, '>');
+        if ($request->filterSomeLE) $data = FilterSomeRequestUtil::template($request->filterSomeLE, $builder, $fillable_block, '<');
 
-        if ($request->filterSomeLIKE) $data = FilterSomeRequestUtil::template($request->filterSomeLIKE, $builder, $fillable, 'LIKE', 'LIKE');
+        if ($request->filterSomeLIKE) $data = FilterSomeRequestUtil::template($request->filterSomeLIKE, $builder, $fillable_block, 'LIKE', 'LIKE');
 
-        if ($request->filterSomeIN) $data = FilterSomeRequestUtil::in($request->filterSomeIN, $builder, $fillable);
+        if ($request->filterSomeIN) $data = FilterSomeRequestUtil::in($request->filterSomeIN, $builder, $fillable_block);
 
         return $data;
     }

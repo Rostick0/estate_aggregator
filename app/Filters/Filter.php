@@ -29,6 +29,7 @@ class Filter
         $data = FilterRequestUtil::all($request, $data, $fillable_block);
         $data = FilterHasRequestUtil::all($request, $data, $fillable_block);
         $data = FilterHasUtil::all($request, $data, $fillable_block);
+        $data = FilterSomeRequestUtil::all($request, $data, $fillable_block);
         if ($request->has('sort')) $data = OrderByUtil::set($request->sort, $data);
         if ($where) $data = Filter::where($data, $where);
 
