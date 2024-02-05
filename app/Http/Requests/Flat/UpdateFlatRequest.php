@@ -52,6 +52,7 @@ class UpdateFlatRequest extends FormRequest
             'description' => 'nullable|string|max:65536',
             'filename' => 'nullable|string|max:255',
             'tour_link' => 'nullable|string|max:255',
+            'residential_complex' => 'nullable|max:255',
             'properties_values' => 'nullable',
             'images' => 'nullable|string',
         ];

@@ -49,6 +49,7 @@ class FlatController extends Controller
         'description',
         'filename',
         'tour_link',
+        'residential_complex',
         'status',
     ];
 
@@ -347,6 +348,12 @@ class FlatController extends Controller
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
      *                      ),
      *                      @OA\Property(
+     *                          property="residential_complex",
+     *                          description="ЖК",
+     *                          type="string",
+     *                          example="Алые паруса"
+     *                      ),
+     *                      @OA\Property(
      *                          property="status",
      *                          type="enum: active, archive",
      *                          example="active"
@@ -643,6 +650,12 @@ class FlatController extends Controller
      *                          type="string",
      *                          description="Ссылка на онлайн тур",
      *                          example="https://www.youtube.com/watch?v=4KZ2GeRWs1g"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="residential_complex",
+     *                          description="ЖК",
+     *                          type="string",
+     *                          example="Алые паруса"
      *                      ),
      *                      @OA\Property(
      *                          property="status",

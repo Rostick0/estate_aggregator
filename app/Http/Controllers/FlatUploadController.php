@@ -89,36 +89,37 @@ class FlatUploadController extends Controller
             ->each(function ($elem) {
                 $elem->each(function ($item) {
                     try {
-                        if ((int) $item?->contact_id === 0 || empty($item->contact)) return;
+                        // dd($item);
+                        // if ((int) $item?->contact_id === 0 || empty($item?->contact)) return;
 
                         $item->contact = (object) $item->contact;
-                        $user = User::find((int) $item?->contact_id);
-                        if ($user) {
-                            $user->update([
-                                'name' => $item?->contact?->name,
-                                'email' => $item?->contact?->email,
-                                'phone' => $item?->contact?->phone,
-                                'image_id' => EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
-                            ]);
-                        } else {
-                            $user = User::create([
-                                'id' => (int) $item?->contact_id,
-                                'name' => $item?->contact?->name,
-                                'email' => $item?->contact?->email,
-                                'password' => Hash::make(Str::random(random_int(10, 14))),
-                                'phone' => $item?->contact?->phone,
-                                'image_id' =>  EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
-                            ]);
-                        }
+                        // $user = User::find((int) $item?->contact_id);
+                        // if ($user) {
+                        //     $user->update([
+                        //         'name' => $item?->contact?->name,
+                        //         'email' => $item?->contact?->email,
+                        //         'phone' => $item?->contact?->phone,
+                        //         'image_id' => EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
+                        //     ]);
+                        // } else {
+                        //     $user = User::create([
+                        //         'id' => (int) $item?->contact_id,
+                        //         'name' => $item?->contact?->name,
+                        //         'email' => $item?->contact?->email,
+                        //         'password' => Hash::make(Str::random(random_int(10, 14))),
+                        //         'phone' => $item?->contact?->phone,
+                        //         'image_id' =>  EmptyUtil::valueOrNull($item?->contact?->photo, 'string'),
+                        //     ]);
+                        // }
 
-                        $user->contacts()->delete();
-                        if (!empty($item?->contact) && !empty($item?->contact->messengers)) {
-                            foreach (explode(',', $item?->contact->messengers) as $messager) {
-                                $user->contacts()->create([
-                                    'type' => $messager
-                                ]);
-                            }
-                        }
+                        // $user->contacts()->delete();
+                        // if (!empty($item?->contact) && !empty($item?->contact->messengers)) {
+                        //     foreach (explode(',', $item?->contact->messengers) as $messager) {
+                        //         $user->contacts()->create([
+                        //             'type' => $messager
+                        //         ]);
+                        //     }
+                        // }
 
                         $flat = Flat::firstOrCreate(
                             ['id' => $item?->id],
@@ -147,9 +148,9 @@ class FlatUploadController extends Controller
                                 'square_land_unit' => EmptyUtil::valueOrNull($item?->square_land_unit ?? null, 'float'),
                                 'floor' => EmptyUtil::valueOrNull($item?->floor ?? null, 'int'),
                                 'total_floor' => EmptyUtil::valueOrNull($item?->total_floor ?? null, 'int'),
-                                'building_type' => $item?->building_type,
+                                'building_type' => $item?->building_type ?? null,
                                 'building_date' => $item?->building_date ?? null,
-                                'contact_id' => (int) $item?->contact_id,
+                                'contact_id' => 1,
                                 'specialtxt' => $item?->specialtxt ?? null,
                                 'description' => $item?->description ?? null,
                                 'filename' => $item?->filename ?? null,
@@ -168,11 +169,11 @@ class FlatUploadController extends Controller
                                         'name' => Str::random(10),
                                         'path' => (string) $image->filename[0],
                                         'type' => 'image/' . pathinfo($image->filename[0], PATHINFO_EXTENSION),
-                                        'user_id' => (int) $item?->contact_id
+                                        'user_id' => 1
                                     ]);
 
-                                    $flat->files()->create([
-                                        'file_id' => $file->id
+                                    $flat->images()->create([
+                                        'image_id' => $file->id
                                     ]);
                                 }
                             }
@@ -185,14 +186,20 @@ class FlatUploadController extends Controller
                             if (!empty($item?->properties->property)) {
                                 foreach ($item?->properties->property as $property) {
                                     $property = (object) $property;
-
-                                    if (isset($property->property_value_enum)) $this::uploadCreateProperties($property->property_value_enum, $property->property_id, $property->property_value_id, $flat);
-                                    if (isset($property->property_value)) $this::uploadCreateProperties($property->property_value, $property->property_id, $property->property_value_id, $flat);
+                                    $flat->flat_properties()->create([
+                                        'value_enum' => $property?->value_enum ?? null,
+                                        'value' => $property?->value ?? null,
+                                        'property_id' =>  $property->property_id ?? null,
+                                        'property_value_id' => $property->property_value_id ?? null,
+                                    ]);
+                                    // dd($property);
+                                    // if (isset($property?->property_value_enum)) $this::uploadCreateProperties($property->property_value_enum, $property->property_id, $property->property_value_id, $flat);
+                                    // if (isset($property?->property_value)) $this::uploadCreateProperties($property->property_value, $property->property_id, $property->property_value_id, $flat);
                                 }
                             }
                         }
                     } catch (Exception $e) {
-                        // dd($item, $e);
+                        dd($item, $e);
                     }
                 });
 

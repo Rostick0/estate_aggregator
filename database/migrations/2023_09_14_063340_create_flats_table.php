@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('flats', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->foreignId('object_id')->references('id')->on('object_flats')->onDelete('cascade');
             $table->foreignId('type_id')->references('id')->on('flat_types')->onDelete('cascade');
             $table->integer('country_id')->nullable();
@@ -37,7 +37,7 @@ return new class extends Migration
             $table->integer('square_land_unit')->nullable();
             $table->integer('floor')->nullable();
             $table->integer('total_floor')->nullable();
-            $table->foreignId('building_type')->references('id')->on('building_types')->onDelete('cascade');
+            $table->integer('building_type')->nullable();
             $table->string('building_date')->nullable();
             $table->foreignId('contact_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('specialtxt')->nullable();
