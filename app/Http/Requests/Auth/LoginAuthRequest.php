@@ -23,8 +23,8 @@ class LoginAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => 'required_without:email',
-            'email' => 'required_without:phone|email',
+            'phone' => 'required_without:email|' . Rule::exists('users', 'phone'),
+            'email' => 'required_without:phone|email|' . Rule::exists('users', 'email'),
             'password' => 'required|min:6',
         ];
     }
